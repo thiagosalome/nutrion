@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+header
+{
+    background-color:#333333;
+}
+
+.block-description
+{
+    font-family: Roboto-Light, AdobeInvisFont MyriadPro-Regular;
+    font-size: 15pt;
+    color: rgba(255, 255, 255, 255);
+    text-align: center;
+}
+
+h1
+{
+font-family: Roboto-Bold, AdobeInvisFont, MyriadPro-Regular;
+font-size: 25pt;
+color: rgba(69, 37, 49, 255);
+text-align: left
+}
+label
+{
+font-family: Roboto-Regular, AdobeInvisFont, MyriadPro-Regular;
+font-size: 12pt;
+color: rgba(145, 31, 77, 255);
+text-align: left;
+}
