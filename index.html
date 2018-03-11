@@ -14,22 +14,23 @@
         </header>
 
         <div class="main-block">
+            
             <div class="block-description">
                 <img src="./system/public/images/logo_mini.png" alt="" class="description-logo">
                 <p>Nutrion é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
-                <button name="description-button">CADASTRAR</button>
+                <button name="description-button" id="description-button">CADASTRAR</button>
             </div>
 
             <div class="block-form">
                 <h1>Login</h1>
                 <form method="POST" action="cadastro.php" class="form-login">
                     <label>Usuário:</label>
-                    <input type="text" name="login" id="login"required><br>
+                    <input type="text" name="user" id="user"required><br>
                     <label>Senha:</label>
                     <input type="password" name="senha" id="senha"><br>
                     <input type="submit" value="LOGIN" id="login" name="login"required>
                 </form>
-                <a href="">Esqueceu a senha?</a>
+                <a href="" id="esqueceu">Esqueceu a senha? </a>
             </div>
         </div>
 
