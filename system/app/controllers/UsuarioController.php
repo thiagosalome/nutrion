@@ -1,5 +1,5 @@
 <?php
-include "UsuarioVO.php"
+
 class UsuarioController{
 
     public function cadastrar(){
