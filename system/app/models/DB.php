@@ -5,6 +5,9 @@
     Criar método getConnection passando os dados de conexão para o $conn
     Criar método execSQL passando a variável $sql como parâmetro*/
 
+    /**
+     * Classe de conexão e interação com o Banco de Dados
+     */
     class DB{
         private $conn;
 
@@ -14,7 +17,7 @@
          * @return void
          */
         public function getConnection(){
-            $this->conn = new mysqli("localhost", "root", "150711");
+            $this->conn = new mysqli("localhost", "root", "");
         }
 
         /**
