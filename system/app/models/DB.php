@@ -3,7 +3,9 @@
     Criar class DB
     Criar atributo privado $conn
     Criar método getConnection passando os dados de conexão para o $conn
-    Criar método execSQL passando a variável $sql como parâmetro*/
+    Criar método execSQL passando a variável $sql como parâmetro
+    Criar método __destruct para encerrar a conexão ($this->conn->close())
+    */
 
     /**
      * Classe de conexão e interação com o Banco de Dados
@@ -17,7 +19,7 @@
          * @return void
          */
         public function getConnection(){
-            $this->conn = new mysqli("localhost", "root", "");
+            $this->conn = new mysqli("localhost", "root", "", "nutrion");
         }
 
         /**
@@ -38,6 +40,13 @@
          */
         public function execSQL($sql){
             return $this->conn->prepare($sql);
+        }
+
+        /**
+         * Função para fechar conexão
+         */
+        public function __destruct(){
+            $this->conn->close();
         }
     }
 

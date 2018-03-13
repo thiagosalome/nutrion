@@ -37,6 +37,13 @@
             Criar um while($reg = $query->fetch_array(MYSQLI_ASSOC))
                 Dentro do while setar os dados no objeto do UsuarioVO (Ex: $usuario->setNome($reg["nome"]);)
             Retornar objeto do tipo UsuarioVO
+
+        Criar método getAll
+            Criar variável $sql que recebe o comando de select de tudo
+            Instanciar banco
+            Realizar uma nova conexão
+            Criar variável $query que irá receber o método de execReader($sql) do banco
+            Retornar a variável $query
         */
     class UsuarioDAO{
 
@@ -140,6 +147,17 @@
             }
 
             return $usuario;
+        }
+
+        public function getAll(){
+            $sql = "SELECT * FROM usuarios";
+
+            $db = new DB();
+            $db->getConnection();
+
+            $query = $db->execReader($sql);
+
+            return $query;
         }
     }
 ?>
