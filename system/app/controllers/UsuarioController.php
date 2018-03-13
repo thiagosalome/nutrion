@@ -23,7 +23,14 @@
             Setar os valores no objeto do UsuarioVo através do post ($_POST['nome']), incluindo $id
             Verificar se o método update da model foi inserido (if($model->update($usuario)){})
             Retornar uma $_SESSION['msg'] = "Mensagem a passar"
+
+        Fazer includes das Models(VO,DAO,Model) e DB
 */
+
+include "app/models/usuario/UsuarioDAO.php";
+include "app/models/usuario/UsuarioVo.php";
+include "app/models/usuario/UsuarioModel.php";
+include "app/models/DB.php";
 
 class UsuarioController{
 
@@ -36,7 +43,7 @@ class UsuarioController{
         $usuario->setEmail($_POST["email"]);
         $usuario->setSenha($_POST["senha"]);
 
-        if($usuarioModel->insert($usuario)){
+        if($usuarioModel->insertModel($usuario)){
             $_SESSION["msg"] = "Usuário cadastrado com sucesso!";
         }
         else{
@@ -48,9 +55,13 @@ class UsuarioController{
         /* Rota para view de cadastro */
     }
 
+    public function login(){
+        include "app/views/usuario/login.php";
+    }
+
     public function edita(){
         $usuarioModel = new UsuarioModel();
-        $usuario = $usuarioModel->getById($_GET["id"]);
+        $usuario = $usuarioModel->getByIdModel($_GET["id"]);
 
         $_SESSION["id"] = $usuario->getById();
         $_SESSION["nome"] = $usuario->getNome();
@@ -71,7 +82,7 @@ class UsuarioController{
         $usuario->setEmail($_POST["email"]);
         $usuario->setSenha($_POST["senha"]);
 
-        if($usuarioModel->update($usuario)){
+        if($usuarioModel->updateModel($usuario)){
             $_SESSION["msg"] = "Usuário atualizado com sucesso!";
         }
         else{

@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./system/public/css/style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="./app/public/css/style.css">
+    <title>Login</title>
 </head>
 <body>
     <main class="main">
         <header class="main-header">
-            <img src="./system/public/images/logo.png" alt="" class="header-logo">
+            <img src="./app/public/images/logo.png" alt="" class="header-logo">
         </header>
-
         <div class="main-block">
             
             <div class="block-description">
-                <img src="./system/public/images/logo_mini.png" alt="" class="description-logo">
+                <img src="./app/public/images/logo_mini.png" alt="" class="description-logo">
                 <p>Nutrion é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" id="description-button">CADASTRAR</button>
             </div>
