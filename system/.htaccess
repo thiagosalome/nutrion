@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^/?$ index.php?Controller=usuario&Action=login
+RewriteRule ^([a-zA-Z0-9]+)/?$ index.php?Controller=$1&Action=login
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)$ index.php?Controller=$1&Action=$2
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)/([a-zA-z0-9]+)$ index.php?Controller=$1&Action=$2&id=$3
