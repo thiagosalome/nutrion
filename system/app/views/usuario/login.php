@@ -22,9 +22,9 @@
 
             <div class="block-form">
                 <h1>Login</h1>
-                <form method="POST" action="cadastro.php" class="form-login">
+                <form method="POST" action="/nutrion/system/usuario/logar" class="form-login">
                     <label>Usuário:</label>
-                    <input type="text" name="user" id="user"required><br>
+                    <input type="text" name="usuario" id="usuario"required><br>
                     <label>Senha:</label>
                     <input type="password" name="senha" id="senha"><br>
                     <input type="submit" value="LOGIN" id="login" name="login"required>

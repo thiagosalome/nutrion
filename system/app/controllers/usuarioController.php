@@ -38,7 +38,7 @@ class UsuarioController{
         $usuarioModel = new UsuarioModel();
         $usuario = new UsuarioVo();
         
-        $usuario->setName($_POST["nome"]);
+        $usuario->setNome($_POST["usuario"]);
         $usuario->setTipo($_POST["tipo"]);
         $usuario->setEmail($_POST["email"]);
         $usuario->setSenha($_POST["senha"]);
@@ -51,12 +51,22 @@ class UsuarioController{
         }
     }
 
-    public function cadastro(){
-        /* Rota para view de cadastro */
+    public function login(){
+        // Rota para view de login e cadastro
+        include "app/views/usuario/login.php";
     }
 
-    public function login(){
-        include "app/views/usuario/login.php";
+    public function logar(){
+        $usuarioModel = new UsuarioModel();
+        $usuario = new UsuarioVo();
+        
+        $usuario->setNome($_POST["usuario"]);
+        $usuario->setSenha($_POST["senha"]);
+        
+        //Caso precisem saber quais dados estão sendo passados para o objeto
+        echo "<pre>";
+            print_r($usuario);
+        echo "</pre>";
     }
 
     public function edita(){
