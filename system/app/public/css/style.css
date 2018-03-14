@@ -5,36 +5,60 @@
 
 header
 {
-display:flex;
-background-color: lightslategray;
-height:78px;
-align-items:center;
+    display:flex;
+    background-color: rgba(0,0,0,0.5);
+    height:78px;
+    align-items:center;
 }
 
 .header-logo
 {
-margin-left: auto;
-margin-right: auto;   
+    margin-left: auto;
+    margin-right: auto;   
 }
 
-.main-block
-{
-display:flex;
-background-color: lightblue;
-width:862px;
-height:358px; 
-margin: auto;
-margin-top: 93px;
-font-family: Roboto-Light, AdobeInvisFont MyriadPro-Regular;
-font-size: 15pt;
-color: rgba(255, 255, 255, 255);
+.main{
+    background-image: url("../../public/images/background-main.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    z-index: 2;
+    position: relative;
 }
+
+.main::after{
+    content: '';
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+    .main-block
+    {
+        display:flex;
+        background-color: lightblue;
+        width:862px;
+        height:358px; 
+        margin: auto;
+        margin-top: 93px;
+        font-family: Roboto-Light, AdobeInvisFont MyriadPro-Regular;
+        font-size: 15pt;
+        color: rgba(255, 255, 255, 255);
+    }
 
 .block-description
 {
 display: block;
-width: 55,57%; 
+width: 55.57%; 
 text-align: center;
+background-image: url("../../public/images/background-description.jpeg");
+background-size: cover;
+background-repeat: no-repeat;
+padding: 0 20px;
 }
 
 .description-logo
@@ -55,7 +79,7 @@ font-size: 15pt;
 {
 display: block;
 background-color: lightskyblue;
-width: 44,43%;
+width: 44.43%;
 }
 
 .form-login
