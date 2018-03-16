@@ -159,5 +159,30 @@
 
             return $query;
         }
+
+        public function GetByEmail($email){
+            $sql = "SELECT * FROM usuarios WHERE email = " . $email;
+
+            $db = new DB();
+            $db->getConnection();
+            
+            $query = $db->execReader($sql);
+
+            $usuario = new UsuarioVO();
+
+            if (mysql_num_rows($query) != 1){
+                usuario = NULL;
+            }
+            else{
+
+                while($reg = $query->fetch_array(MYSQLI_ASSOC)){
+                $usuario->setId($reg["id"]);
+                $usuario->setNome($reg["nome"]);
+                $usuario->setTipo($reg["tipo"]);
+                $usuario->setEmail($reg["email"]);            
+            }
+            return $usuario;
+
+        }
     }
 ?>

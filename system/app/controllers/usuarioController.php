@@ -62,7 +62,31 @@ class UsuarioController{
         
         $usuario->setNome($_POST["usuario"]);
         $usuario->setSenha($_POST["senha"]);
-        
+
+        if (usuarioModel->validaCamposPreenchidosLogin($usuario)!=true) {
+            $_SESSION["msg"] = "Campo não preechido!";
+        }
+
+        if (usuarioModel->loga($usuario)!=true) {
+            $_SESSION["msg"] = "Email e/ou senha invalido";            
+        }
+        else{
+            $_SESSION["msg"] = "Logado com sucesso";
+
+
+            if (!isset($_SESSION)) session_start();
+
+            $_SESSION["id"] = $usuario->getById();
+            $_SESSION["nome"] = $usuario->getNome();
+            $_SESSION["tipo"] = $usuario->getTipo();
+            $_SESSION["email"] = $usuario->getEmail();
+            $_SESSION["senha"] = $usuario->getSenha();
+
+
+            header("Location: restrito.php");????
+        }
+
+               
         //Caso precisem saber quais dados estão sendo passados para o objeto
         echo "<pre>";
             print_r($usuario);

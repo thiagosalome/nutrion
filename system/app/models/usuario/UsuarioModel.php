@@ -27,6 +27,8 @@
             Retornar método getAll do objeto $usuariodao
 
 */
+include "app/models/usuario/UsuarioDAO.php";
+include "app/models/usuario/UsuarioVo.php";
 
 class UsuarioModel{
 
@@ -99,6 +101,26 @@ class UsuarioModel{
 
         return $usuarioDao->getAll();
     }
-}
 
+    public function validaCamposPreenchidosLogin(UsuarioVO $usuario){
+        if (empty(usuario->getEmail())or empty(usuario->getSenha())) {
+            return false;
+        }
+    }
+
+    public function loga(UsuarioVO $usuario){
+        $usuarioDao = new UsuarioDAO;
+        
+        $usuarioBD = new UsuarioVo()
+        usuarioBD = usuarioDao->GetByEmail(usuario->getEmail());
+
+        if (!is_null(usuarioBD)) {
+            if (usuario->getSenha()== usuarioBD->getSenha()) {
+                return true;               
+            }
+        }
+
+        return false;
+    }
+}
 ?>
