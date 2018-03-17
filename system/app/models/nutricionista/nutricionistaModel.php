@@ -27,8 +27,8 @@
             Retornar método getAll do objeto $nutricionistadao
 
 */
-include "app/models/nutricionista/nutricionistaDAO.php";
-include "app/models/nutricionista/nutricionistaVo.php";
+//include "app/models/nutricionista/nutricionistaDAO.php";
+//include "app/models/nutricionista/nutricionistaVo.php";
 
 class nutricionistaModel{
 
@@ -38,6 +38,8 @@ class nutricionistaModel{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
+    /*
+
     public function insertModel(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO;
 
@@ -48,7 +50,7 @@ class nutricionistaModel{
             return $nutricionistaDao->insert($nutricionista);
         }
     }
-
+*/
     /**
      * Método para definir regras de negócio no select e chamar método getById da classe nutricionistaDAO
      *
@@ -110,19 +112,20 @@ class nutricionistaModel{
 
     public function logar(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO();
-        $nutricionistaBD = new nutricionistaVo();
+        
+        if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha())) {
+            return false;//campo não preenchido, como mandar mensagem?
+        }        
+        else{
+            $senhaBD = $nutricionistaDao->GetSenhaByEmail($nutricionista->getSenha());
 
-        //$nutricionistaBD = $nutricionistaDao->GetByEmail($nutricionista->getEmail());
-
-        /*if (empty($nutricionista->getEmail())or empty($nutricionista->getSenha())) {
-            return false;
-        }*/
-
-       /* if (!is_null($nutricionistaBD)) {
-            if ($nutricionista->getSenha()== $nutricionistaBD->getSenha()) {
-                return true;               
+            if (!is_null($senhaBD)) {
+                if ($nutricionista->getSenha()==$senhaBD) {
+                    return true;               
+                }
             }
-        }*/
+            return false;
+        }   
     }
 }
 ?>

@@ -160,29 +160,20 @@
             return $query;
         }
 
-        /*public function GetByEmail($email){
-            $sql = "SELECT * FROM nutricionistas WHERE email = " . $email;
+        public function GetSenhaByEmail($email){
+            $sql = "SELECT senha FROM nutricionistas WHERE email = " . $email;
 
             $db = new DB();
-            $db->getConnection();
-            
+            $db->getConnection();            
             $query = $db->execReader($sql);
 
-            $nutricionista = new nutricionistaVO();
-
             if (mysql_num_rows($query) != 1){
-                $nutricionista = NULL;
+                $senha = NULL;
             }
             else{
-
-                while($reg = $query->fetch_array(MYSQLI_ASSOC)){
-                    $nutricionista->setId($reg["id"]);
-                    $nutricionista->setNome($reg["nome"]);
-                    $nutricionista->setTipo($reg["tipo"]);
-                    $nutricionista->setEmail($reg["email"]);            
-                }
+                $senha = $query                
             }
-            return $nutricionista;
-        }*/
+            return $senha;
+        }
     }
 ?>
