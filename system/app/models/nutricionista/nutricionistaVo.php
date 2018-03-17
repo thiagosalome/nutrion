@@ -1,13 +1,16 @@
 <?php
 
-class UsuarioVO{
+class nutricionistaVO{
     private $id;
     private $nome;
     private $tipo;
     private $email;
     private $senha;
 
-    
+    public function __construct($email,$senha){
+        $this->email = $email;
+        $this->senha = $senha;
+    }
 
     /**
      * Get the value of id

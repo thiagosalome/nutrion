@@ -1,0 +1,13 @@
+ctrl+enter=criar item
+alt+d=done
+alt+c=cancelled
+
+Back-end:
+    ☐ Realizar cadastro de Usuário
+        ☐ function cadastrar
+            ☐ se ta vazio e login existe, se nao, verifica todo o formulário e ai insere
+            
+    ☐ Realizar login de Usuário
+        ☐ function logar
+            ☐ no controller, model e na dao bater com o banco
+Front-end:
