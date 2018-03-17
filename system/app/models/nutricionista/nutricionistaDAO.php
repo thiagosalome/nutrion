@@ -171,8 +171,8 @@
                 $senha = NULL;
             }
             else{
-                $senha = $query                
-            }
+                $senha = $query;
+            }          
             return $senha;
         }
     }
