@@ -23,9 +23,9 @@
 
             <div class="block-form">
                 <h1>Login</h1>
-                <form method="POST" action="/nutrion/system/usuario/logar" class="form-login">
-                    <label>Usuário:</label>
-                    <input type="text" name="usuario" id="usuario"required><br>
+                <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-login">
+                    <label>Email:</label>
+                    <input type="text" name="email" id="email"required><br>
                     <label>Senha:</label>
                     <input type="password" name="senha" id="senha"><br>
                     <input type="submit" value="LOGIN" id="login" name="login"required>
@@ -33,7 +33,6 @@
                 <a href="" id="esqueceu">Esqueceu a senha? </a>
             </div>
         </div>
-
     </main>
 </body>
 </html>
