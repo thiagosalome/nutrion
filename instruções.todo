@@ -1,0 +1,21 @@
+Instruções Git:
+    Git Clone - Quando precisar clonar um repositório no git
+        Comando: git clone "https://github.com/thiagosalome/nutrion.git"
+
+    Git Pull - Quando precisar puxar todas as atualizações do repositório
+        OBS: Toda vez que for mexer no código do sistema, dê um git pull antes
+        Comando: git pull
+    
+    Git Status - Verificar o status dos arquivos que foram modificados
+        Comando: git status
+
+    Subindo modificações no git:
+    Git Add - Propõe mudanças no repositório
+        Comando: git add .
+        OBS: O '.'significar para adicionar todos os arquivos
+    
+    Git Commit - Confirma as mudanças feitas. O arquivo é enviado para o HEAD, mas ainda não para o repositório remoto.
+        Comando: git commit -m "Comentários das Alterações"
+    
+    Git Push - Envia estas alterações ao seu repositório remoto
+        Comando: git push
