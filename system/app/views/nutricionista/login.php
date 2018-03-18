@@ -17,21 +17,37 @@
             
             <div class="block-description">
                 <img src="/nutrion/system/app/public/images/logo_mini.png" alt="" class="description-logo">
-                <p>Nutrion é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
+                <p>NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" id="description-button">CADASTRAR</button>
             </div>
 
             <div class="block-form">
                 <h1>Login</h1>
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-login">
-                    <label>Email:</label>
+                    <label>Email</label>
                     <input type="text" name="email" id="email"required><br>
-                    <label>Senha:</label>
+                    <label>Senha</label>
                     <input type="password" name="senha" id="senha"><br>
                     <input type="submit" value="LOGIN" id="login" name="login"required>
                 </form>
                 <a href="" id="esqueceu">Esqueceu a senha? </a>
+                
             </div>
+
+            <div class="block-cad">
+                <h1>Cadastro</h1>
+                
+                <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-cad">
+                    <label>Nome</label>
+                    <input type="text" name="nome" id="nome"required><br>
+                    <label>Email</label>
+                    <input type="text" name="email" id="email"required><br>
+                    <label>Senha:</label>
+                    <input type="password" name="senha" id="senha"><br>
+                    <input type="submit" value="CADASTRAR" id="cadastrar" name="cadastrar"required>
+                </form>
+            </div>
+
         </div>
     </main>
 </body>
