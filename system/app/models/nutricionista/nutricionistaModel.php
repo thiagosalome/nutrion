@@ -115,6 +115,9 @@ class nutricionistaModel{
         
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha())) {
             return false;//campo não preenchido, como mandar mensagem?
+        }
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
+            return false;
         }        
         else{
             /*$senhaBD = $nutricionistaDao->GetSenhaByEmail($nutricionista->getEmail(),$nutricionista->getSenha());
