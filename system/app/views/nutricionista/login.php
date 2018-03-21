@@ -17,25 +17,25 @@
             
             <div class="block-description">
                 <img src="/nutrion/system/app/public/images/logo_mini.png" alt="" class="description-logo">
-                <p>NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
-                <button name="description-button" id="description-button">CADASTRAR</button>
+                <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
+                <button name="description-button" class="description-button">CADASTRAR</button>
             </div>
 
             <div class="block-form">
-                <h1>Login</h1>
+                <h1 class="logh1">Login</h1>
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-login">
                     <label>Email</label>
                     <input type="text" name="email" id="email"required><br>
                     <label>Senha</label>
                     <input type="password" name="senha" id="senha"><br>
-                    <input type="submit" value="LOGIN" id="login" name="login"required>
+                    <input type="submit" value="LOGIN" class="login" name="login"required>
                 </form>
-                <a href="" id="esqueceu">Esqueceu a senha? </a>
+                <a href="" class="esqueceu">Esqueceu a senha? </a>
                 
             </div>
 
             <div class="block-cad">
-                <h1>Cadastro</h1>
+                <h1 class="cadh1">Cadastro</h1>
                 
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-cad">
                     <label>Nome</label>
@@ -44,7 +44,7 @@
                     <input type="text" name="email" id="email"required><br>
                     <label>Senha:</label>
                     <input type="password" name="senha" id="senha"><br>
-                    <input type="submit" value="CADASTRAR" id="cadastrar" name="cadastrar"required>
+                    <input type="submit" value="CADASTRAR" class="cadastrar" name="cadastrar"required>
                 </form>
             </div>
 

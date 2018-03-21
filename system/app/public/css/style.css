@@ -1,97 +1,96 @@
 *   {
     margin: 0;
     padding: 0;
+}
+
+header{
+        display:flex;
+        background-color: rgba(0,0,0,0.5);
+        height:78px;
+        align-items:center;
     }
 
-header
+.header-logo
     {
-    display:flex;
-    background-color: rgba(0,0,0,0.5);
-    height:78px;
-    align-items:center;
-    }
-
-    .header-logo
-        {
         margin-left: auto;
         margin-right: auto;   
-        }
+    }
 
 .main
-    {
+{
     background-image: url("../../public/images/background-main.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     z-index: 0;
     position: relative;
-    }
+}
 
-    .main::after
-    {
-        content: '';
-        background-color: rgba(0,0,0,0.5);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-    }
+.main::after
+{
+    content: '';
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
 
-    .main-block
-    {
-        display:flex;
-        position: relative;
-        width:862px;
-        height:358px; 
-        margin: auto;
-        margin-top: 93px;
-        font-family: 'Roboto', sans-serif;
-        z-index: 0;
-        
-    }
+.main-block
+{
+    display:flex;
+    position: relative;
+    width:862px;
+    height:358px; 
+    margin: auto;
+    margin-top: 93px;
+    font-family: 'Roboto', sans-serif;
+    z-index: 0;
+    
+}
 
 /*este será o bloco principal*/
-        .block-description 
-        {
-            display: block;
-            position: relative;
-            width: 55.57%; 
-            font-family: 'Roboto', sans-serif;
-            font-size: 15px;
-            color:white;            
-            background-image: url("../../public/images/background-description.jpeg");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        p
-        {
-            margin: 160px 84px 147px 84px;
-            position:absolute;
-            text-align:center;
-            z-index: 2;
-        }
+    .block-description 
+    {
+        display: block;
+        position: relative;
+        width: 55.57%; 
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        color:white;            
+        background-image: url("../../public/images/background-description.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .description-project
+    {
+        margin: 160px 84px 147px 84px;
+        position:absolute;
+        text-align:center;
+        z-index: 2;
+    }
 
-             .block-description::after{
-                content: '';
-                background: linear-gradient(to bottom, rgba(164,55,77,0.5),rgba(225,129,74,0.6));
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 0;
-                }
-                .description-logo
-                {
-                position:absolute;
-                margin: 25px 207px ;
-                z-index:1;
+         .block-description::after{
+            content: '';
+            background: linear-gradient(to bottom, rgba(164,55,77,0.5),rgba(225,129,74,0.6));
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
             }
-
-             #description-button
+            .description-logo
             {
+            position:absolute;
+            margin: 25px 207px ;
+            z-index:1;
+        }
+
+         .description-button
+        {
             position:absolute;
             background-color: transparent;
             margin: 247px 166px;
@@ -101,81 +100,10 @@ header
             border: 1px solid white;              
             color: white;
             z-index:1;
-            }
-
-        .block-form
-        {
-        display: none;
-        position:relative;
-        background-color: white;
-        width: 44.43%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
         }
-            h1
-            {
-            position: absolute;
-            font-family: 'Roboto', sans-serif;
-            font-size: 25px;
-            color: rgba(69, 37, 49, 255);
-            margin:58px 273px 276px 49px;
-            }
 
-            .form-login,.form-cad
-            {
-            position: absolute;
-            margin:124px 49px 206px 49px; 
-            }
-              
-                input
-                {
-                
-                font: 1em sans-serif;
-                /* Para dar o mesmo tamanho a todos os campo de texto */
-                width: 286px;
-                box-sizing: border-box;
-
-                /* Para harmonizar o look & feel das bordas nos campos de texto*/
-                border: 1px solid #999;
-                }
-
-  
-                label
-                {
-                font-family: 'Roboto', sans-serif;
-                font-size: 16px;
-                color: rgba(79, 79, 79, 255);
-                text-align: left;
-                }
-
-                #esqueceu
-                {
-                position: absolute;
-                margin:303px 200px 41px 54px;
-                font-size: 15px;
-                color: rgba(145,31,77,255);
-                }
-
-              #login,#cadastrar
-                {
-                    
-                background-color: transparent;
-                border: 1px solid;              
-                color: rgba(145,31,77,255);
-                position: absolute;
-                margin:34px 0px;
-                width: 287px;
-                height: 42px;
-                font-size: 16px;
-                }   
-
-
-
-        .block-cad
-        {
+    .block-form
+    {
         display: block;
         position:relative;
         background-color: white;
@@ -185,5 +113,73 @@ header
         right: 0;
         bottom: 0;
         z-index: 0;
+    }
+        .cadh1,.logh1
+        {
+            position: absolute;
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+            color: rgba(69, 37, 49, 255);
+            margin:58px 273px 276px 49px;
         }
-  
+
+        .form-login,.form-cad
+        {
+            position: absolute;
+            margin:124px 49px 206px 49px; 
+        }
+          
+            input
+            {
+            
+                font: 1em sans-serif;
+                /* Para dar o mesmo tamanho a todos os campo de texto */
+                width: 286px;
+                box-sizing: border-box;
+
+                /* Para harmonizar o look & feel das bordas nos campos de texto*/
+                border: 1px solid #999;
+            }
+
+
+            label
+            {
+                font-family: 'Roboto', sans-serif;
+                font-size: 16px;
+                color: rgba(79, 79, 79, 255);
+                text-align: left;
+            }
+
+           .esqueceu
+            {
+                position: absolute;
+                margin:303px 200px 41px 54px;
+                font-size: 15px;
+                color: rgba(145,31,77,255);
+            }
+
+          .cadastrar,.login
+            {
+                
+                background-color: transparent;
+                border: 1px solid;              
+                color: rgba(145,31,77,255);
+                position: absolute;
+                margin:34px 0px;
+                width: 287px;
+                height: 42px;
+                font-size: 16px;
+            }   
+
+    .block-cad
+    {
+        display: none;
+        position:relative;
+        background-color: white;
+        width: 44.43%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+    }
