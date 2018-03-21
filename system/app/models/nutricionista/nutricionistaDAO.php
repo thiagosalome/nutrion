@@ -160,23 +160,14 @@
 
         public function GetSenhaByEmail($email, $senha){
             // $sql = "SELECT senha FROM tb_nutricionista WHERE email = " . $email;
-            echo $email;
-            echo $senha;
-            $sql = "SELECT * FROM tb_nutricionista WHERE email = " . $email . " AND senha = " . $senha;
+            $sql = "SELECT * FROM tb_nutricionista WHERE email = '" . $email . "' AND senha = '" . $senha . "'";
 
             $db = new DB();
             $db->getConnection();            
             $query = $db->execReader($sql);
             
-            $teste = mysqli_num_rows($query);
-            echo $teste;
-            /*if (mysqli_num_rows($query) != 1){
-                $senha = NULL;
-            }
-            else{
-                $senha = $query;
-            }          
-            return $senha;*/
+            $rows = mysqli_num_rows($query);
+            return $rows;
         }
     }
 ?>

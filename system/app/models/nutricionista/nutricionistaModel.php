@@ -117,14 +117,24 @@ class nutricionistaModel{
             return false;//campo não preenchido, como mandar mensagem?
         }        
         else{
-            $senhaBD = $nutricionistaDao->GetSenhaByEmail($nutricionista->getEmail(),$nutricionista->getSenha());
+            /*$senhaBD = $nutricionistaDao->GetSenhaByEmail($nutricionista->getEmail(),$nutricionista->getSenha());
 
             if (!is_null($senhaBD)) {
                 if ($nutricionista->getSenha()==$senhaBD) {
                     return true;               
                 }
             }
-            return false;
+            return false;*/
+            
+            $row = $nutricionistaDao->GetSenhaByEmail($nutricionista->getEmail(), $nutricionista->getSenha());
+            // Se encontrou usuário
+            if($row > 0){
+                return true;
+            }
+            // Se não encontrou usuário
+            else{
+                return false;
+            }
         }   
     }
 }

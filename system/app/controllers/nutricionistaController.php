@@ -61,17 +61,13 @@ class nutricionistaController{
         $nutricionista = new nutricionistaVO($_POST["email"], $_POST["senha"]);      
         
         if ($nutricionistaModel->logar($nutricionista)) {
-            $_SESSION["msg"] = "Logado com sucesso";
-
             if (!isset($_SESSION)){
                 session_start();
-                header("Location: /nutrion/system/nutricionista/interna");                
+                $_SESSION["msg"] = "Logado com sucesso";
+                $_SESSION["email"] = $nutricionista->getEmail();
+
+                header("Location: /nutrion/system/nutricionista/interna"); 
             }       
-                       
-            //Caso precisem saber quais dados estão sendo passados para o objeto
-            echo "<pre>";
-                print_r($nutricionista);
-            echo "</pre>";
         }
     }
 
