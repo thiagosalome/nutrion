@@ -1,23 +1,9 @@
-*   {
+* {
     margin: 0;
     padding: 0;
 }
 
-header{
-        display:flex;
-        background-color: rgba(0,0,0,0.5);
-        height:78px;
-        align-items:center;
-    }
-
-.header-logo
-    {
-        margin-left: auto;
-        margin-right: auto;   
-    }
-
-.main
-{
+.main {
     background-image: url("../../public/images/background-main.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -26,10 +12,9 @@ header{
     position: relative;
 }
 
-.main::after
-{
-    content: '';
-    background-color: rgba(0,0,0,0.5);
+.main::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     left: 0;
@@ -38,148 +23,165 @@ header{
     z-index: -1;
 }
 
-.main-block
-{
-    display:flex;
-    position: relative;
-    width:862px;
-    height:358px; 
-    margin: auto;
-    margin-top: 93px;
-    font-family: 'Roboto', sans-serif;
-    z-index: 0;
-    
-}
-
-/*este será o bloco principal*/
-    .block-description 
-    {
-        display: block;
-        position: relative;
-        width: 55.57%; 
-        font-family: 'Roboto', sans-serif;
-        font-size: 15px;
-        color:white;            
-        background-image: url("../../public/images/background-description.jpeg");
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    .description-project
-    {
-        margin: 160px 84px 147px 84px;
-        position:absolute;
-        text-align:center;
-        z-index: 2;
+    .main-header {
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 78px;
+        align-items: center;
     }
 
-         .block-description::after{
-            content: '';
-            background: linear-gradient(to bottom, rgba(164,55,77,0.5),rgba(225,129,74,0.6));
+        .header-logo {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    .main-block {
+        display: flex;
+        position: absolute;
+        width: 862px;
+        height: 358px;
+        font-family: "Roboto", sans-serif;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 34px));
+    }
+
+        /*este será o bloco principal*/
+        .block-description {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            width: 55%;
+            background-image: url("../../public/images/background-description.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 40px 64px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .block-description::after {
+            content: "";
+            background: linear-gradient(to bottom, rgba(164, 54, 76, 0.5), rgba(225, 129, 74, 0.6));
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: 0;
-            }
-            .description-logo
-            {
-            position:absolute;
-            margin: 25px 207px ;
-            z-index:1;
+            z-index: -1;
         }
 
-         .description-button
-        {
-            position:absolute;
-            background-color: transparent;
-            margin: 247px 166px;
-            width: 148px;
-            height: 40px;            
-            font-size: 16px;
-            border: 1px solid white;              
-            color: white;
-            z-index:1;
-        }
-
-    .block-form
-    {
-        display: block;
-        position:relative;
-        background-color: white;
-        width: 44.43%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-    }
-        .cadh1,.logh1
-        {
-            position: absolute;
-            font-family: 'Roboto', sans-serif;
-            font-size: 25px;
-            color: rgba(69, 37, 49, 255);
-            margin:58px 273px 276px 49px;
-        }
-
-        .form-login,.form-cad
-        {
-            position: absolute;
-            margin:124px 49px 206px 49px; 
-        }
-          
-            input
-            {
-            
-                font: 1em sans-serif;
-                /* Para dar o mesmo tamanho a todos os campo de texto */
-                width: 286px;
-                box-sizing: border-box;
-
-                /* Para harmonizar o look & feel das bordas nos campos de texto*/
-                border: 1px solid #999;
-            }
-
-
-            .block-cad label, .block-form label
-            {
-                font-family: 'Roboto', sans-serif;
-                font-size: 16px;
-                color: rgba(79, 79, 79, 255);
-                text-align: left;
-            }
-
-           .esqueceu
-            {
-                position: absolute;
-                margin:303px 200px 41px 54px;
+            .description-project {
+                margin: 25px 0 34px;
+                color: #ffffff;
+                font-family: "Roboto", sans-serif;
                 font-size: 15px;
-                color: rgba(145,31,77,255);
             }
 
-          .cadastrar,.login
-            {
-                
+            .description-button {
                 background-color: transparent;
-                border: 1px solid;              
-                color: rgba(145,31,77,255);
-                position: absolute;
-                margin:34px 0px;
-                width: 287px;
-                height: 42px;
                 font-size: 16px;
-            }   
+                padding: 10px 30px;
+                border: 1px solid #ffffff;
+                color: #ffffff;
+                text-transform: uppercase;
+                transition: 0.5s;
+            }
 
-    .block-cad
-    {
-        display: none;
-        position:relative;
-        background-color: white;
-        width: 44.43%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-    }
+            .description-button:hover{
+                cursor: pointer;
+                color: #452531;
+                background-color: #ffffff;
+            }
+
+        .block-form {
+            display: block;
+            position: relative;
+            background-color: #ffffff;
+            box-sizing: border-box;
+            
+        }
+
+        .block-form-cad{
+            padding: 27px 49px;
+            order: 0;
+            flex: 0 0 55%;
+        }
+
+        .block-form-log{
+            padding: 58px 49px;
+            order: 1;
+            flex: 0 0 45%;
+        }
+
+            .form-title{
+                font-family: "Roboto", sans-serif;
+                font-size: 25px;
+                color: #452531;
+            }
+
+            .form-content{
+                background-color: transparent;
+                color: #911f4d;
+                font-size: 16px;
+            }
+                
+                .form-field{
+                    position: relative;
+                    margin-top: 30px;
+                    display: block;
+                }
+                
+                .form-field input {
+                    font-size: 16px;
+                    font-family: "Roboto", sans-serif;
+                    width: 100%;
+                    border: none;
+                    border-bottom: 1px solid transparent;
+                    /*border-image: linear-gradient(to right, rgb(164, 55, 77), rgb(225, 129, 74));*/
+                    border-image: linear-gradient(to right, #333333, #333333);
+                    border-image-slice: 1;
+                    padding: 5px 0;
+                    outline: none;
+                }
+
+                .form-field label {
+                    font-family: "Roboto", sans-serif;
+                    font-size: 16px;
+                    color: #4f4f4f;
+                    position: absolute;
+                    top: 0;
+                }
+
+                .form-content input[type="submit"]{
+                    margin-top: 34px;
+                    padding: 8px 15px;
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    color: #911f4d;
+                    border: 1px solid transparent;
+                    border-image: linear-gradient(to right, #a4374d, #e1814a);
+                    border-image-slice: 1;
+                    background: transparent;
+                    font-weight: lighter;
+                    transition: 0.5s;
+                }
+
+                .form-content input[type="submit"]:hover{
+                    cursor: pointer;
+                    color: #ffffff;
+                    background: linear-gradient(to right, #a4374d, #e1814a);
+                    /* background-color: #452531; */
+                }
+
+            .form-forgot{
+                font-size: 15px;
+                color: #911f4d;
+                margin-top: 13px;
+                display: inline-block;
+                text-decoration: none;
+                font-weight: lighter;
+            }
