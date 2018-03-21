@@ -24,12 +24,12 @@
             <img src="/nutrion/system/app/public/images/logo.png" alt="" title="" class="header-logo">
         </header>
         <div class="main-block">
-            <div class="block-description">
+            <div class="block-description js-block-description" data-position="left">
                 <img src="/nutrion/system/app/public/images/logo_mini.png" alt="" class="description-logo">
                 <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
-                <button name="description-button" class="description-button">Cadastrar</button>
+                <button name="description-button" class="description-button js-btn-slide-block">Cadastrar</button>
             </div>
-            <div class="block-form block-form-log">
+            <div class="block-form block-form-log js-form-log">
                 <h1 class="form-title">Login</h1>
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-content">
                     <span class="form-field">
@@ -44,7 +44,7 @@
                 </form>
                 <a href="" class="form-forgot">Esqueceu a senha?</a>
             </div>
-            <div class="block-form block-form-cad">
+            <div class="block-form block-form-cad js-form-cad">
                 <h1 class="form-title">Cadastro</h1>
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-content">
                     <span class="form-field">
@@ -64,6 +64,7 @@
             </div>
         </div>
     </main>
-    <script type="text/javascript" src="/nutrion/system/app/public/js/focus-form.js"></script>
+    <script type="text/javascript" src="/nutrion/system/app/public/js/config.js"></script>
+    <script type="text/javascript" src="/nutrion/system/app/public/js/app.js"></script>
 </body>
 </html>

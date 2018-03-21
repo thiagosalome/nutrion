@@ -83,17 +83,18 @@
             .description-button {
                 background-color: transparent;
                 font-size: 16px;
-                padding: 10px 30px;
+                padding: 8px 30px;
                 border: 1px solid #ffffff;
                 color: #ffffff;
                 text-transform: uppercase;
                 transition: 0.5s;
+                outline: none;
             }
 
             .description-button:hover{
                 cursor: pointer;
-                color: #452531;
-                background-color: #ffffff;
+                padding: 8px 40px;
+                background-color : rgba(255,255,255, 0.2);
             }
 
         .block-form {
@@ -101,7 +102,6 @@
             position: relative;
             background-color: #ffffff;
             box-sizing: border-box;
-            
         }
 
         .block-form-cad{
@@ -109,6 +109,10 @@
             order: 0;
             flex: 0 0 55%;
         }
+
+            .block-form-cad .form-title, .block-form-cad .form-content{
+                display: none;
+            }
 
         .block-form-log{
             padding: 58px 49px;
