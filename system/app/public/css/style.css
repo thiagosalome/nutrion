@@ -140,11 +140,17 @@
                     width: 100%;
                     border: none;
                     border-bottom: 1px solid transparent;
-                    /*border-image: linear-gradient(to right, rgb(164, 55, 77), rgb(225, 129, 74));*/
                     border-image: linear-gradient(to right, #333333, #333333);
                     border-image-slice: 1;
-                    padding: 5px 0;
+                    padding: 6px 0;
                     outline: none;
+                    color: #333333;
+                }
+
+                .form-field input.focus{
+                    border-bottom: 1px solid transparent;
+                    border-image: linear-gradient(to right, rgb(164, 55, 77), rgb(225, 129, 74));
+                    border-image-slice: 1;
                 }
 
                 .form-field label {
@@ -153,6 +159,13 @@
                     color: #4f4f4f;
                     position: absolute;
                     top: 0;
+                    transition: 0.5s;
+                }
+
+                .form-field.focus label{
+                    color: #911f4d;
+                    top: -12px;
+                    font-size: 13px;
                 }
 
                 .form-content input[type="submit"]{

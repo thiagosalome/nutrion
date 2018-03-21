@@ -33,12 +33,12 @@
                 <h1 class="form-title">Login</h1>
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-content">
                     <span class="form-field">
-                        <label>Email</label>
-                        <input type="text" name="email" id="email" required><br>
+                        <label for="emaillog">Email</label>
+                        <input class="js-input-field" type="text" name="email" id="emaillog" required><br>
                     </span>
                     <span class="form-field">
-                        <label>Senha</label>
-                        <input type="password" name="senha" id="senha" required><br>
+                        <label for="senhalog">Senha</label>
+                        <input class="js-input-field" type="password" name="senha" id="senhalog" required><br>
                     </span>
                     <input type="submit" value="login" name="login">
                 </form>
@@ -48,21 +48,22 @@
                 <h1 class="form-title">Cadastro</h1>
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-content">
                     <span class="form-field">
-                        <label>Nome</label>
-                        <input type="text" name="nome" id="nome" required>
+                        <label for"nomecad">Nome</label>
+                        <input class="js-input-field" type="text" name="nome" id="nomecad" required>
                     </span>
                     <span class="form-field">
-                        <label>Email</label>
-                        <input type="text" name="email" id="email" required>
+                        <label for"emailcad">Email</label>
+                        <input class="js-input-field" type="text" name="email" id="emailcad" required>
                     </span>
                     <span class="form-field">
-                        <label>Senha:</label>
-                        <input type="password" name="senha" id="senha" required>
+                        <label for"senhacad">Senha:</label>
+                        <input class="js-input-field" type="password" name="senha" id="senhacad" required>
                     </span>
                     <input type="submit" value="Cadastrar" class="form-button" name="cadastrar">
                 </form>
             </div>
         </div>
     </main>
+    <script type="text/javascript" src="/nutrion/system/app/public/js/focus-form.js"></script>
 </body>
 </html>
