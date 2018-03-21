@@ -73,7 +73,7 @@ class nutricionistaModel{
     public function updateModel(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO;
 
-        if($nutricionista->getNome() == '' || $nutricionista->getTipo() == '' || $nutricionista->getEmail == '' || $nutricionista->getSenha == ''){
+        if($nutricionista->getNome() == '' || $nutricionista->getEmail == '' || $nutricionista->getSenha == ''){
             return false;
         }
         else{
@@ -117,7 +117,7 @@ class nutricionistaModel{
             return false;//campo não preenchido, como mandar mensagem?
         }        
         else{
-            $senhaBD = $nutricionistaDao->GetSenhaByEmail($nutricionista->getSenha());
+            $senhaBD = $nutricionistaDao->GetSenhaByEmail($nutricionista->getEmail(),$nutricionista->getSenha());
 
             if (!is_null($senhaBD)) {
                 if ($nutricionista->getSenha()==$senhaBD) {

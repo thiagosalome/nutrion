@@ -54,8 +54,8 @@
          * @return void
          */
         public function insert(nutricionistaVO $nutricionista){
-            $sql = "INSERT INTO nutricionistas (nome, tipo, email, senha) VALUES(";
-            $sql. "?, ?, ?, ?)";
+            $sql = "INSERT INTO tb_nutricionista (nome, email, senha) VALUES(";
+            $sql. "?, ?, ?)";
 
             $db = new DB();
             $db->getConnection();
@@ -81,14 +81,13 @@
          * @return void
          */
         public function update(nutricionistaVO $nutricionista){
-            $sql = "UPDATE nutricionistas SET nome = ?, tipo = ?, email = ?, senha = ?  WHERE id = ?";
+            $sql = "UPDATE tb_nutricionista SET nome = ?, email = ?, senha = ?  WHERE id = ?";
 
             $db = new DB();
             $db->getConnection();
             $pstm = $db->execSQL($sql);
             
             $pstm->bind_param('s', $nutricionista->getNome());
-            $pstm->bind_param('s', $nutricionista->getTipo());
             $pstm->bind_param('s', $nutricionista->getEmail());
             $pstm->bind_param('s', $nutricionista->getSenha());
             $pstm->bind_param('i', $nutricionista->getId());
@@ -108,7 +107,7 @@
          * @return void
          */
         public function delete(nutricionistaVO $nutricionista){
-            $sql = "DELETE FROM nutricionistas WHERE id = ?";
+            $sql = "DELETE FROM tb_nutricionista WHERE id = ?";
 
             $db = new DB();
             $db->getConnection();
@@ -131,7 +130,7 @@
          * @return void
          */
         public function getById($id){
-            $sql = "SELECT * FROM nutricionistas WHERE id = " . $id;
+            $sql = "SELECT * FROM tb_nutricionista WHERE id = " . $id;
 
             $db = new DB();
             $db->getConnection();
@@ -142,7 +141,6 @@
             while($reg = $query->fetch_array(MYSQLI_ASSOC)){
                 $nutricionista->setId($reg["id"]);
                 $nutricionista->setNome($reg["nome"]);
-                $nutricionista->setTipo($reg["tipo"]);
                 $nutricionista->setEmail($reg["email"]);
             }
 
@@ -150,7 +148,7 @@
         }
 
         public function getAll(){
-            $sql = "SELECT * FROM nutricionistas";
+            $sql = "SELECT * FROM tb_nutricionista";
 
             $db = new DB();
             $db->getConnection();
@@ -160,20 +158,25 @@
             return $query;
         }
 
-        public function GetSenhaByEmail($email){
-            $sql = "SELECT senha FROM nutricionistas WHERE email = " . $email;
+        public function GetSenhaByEmail($email, $senha){
+            // $sql = "SELECT senha FROM tb_nutricionista WHERE email = " . $email;
+            echo $email;
+            echo $senha;
+            $sql = "SELECT * FROM tb_nutricionista WHERE email = " . $email . " AND senha = " . $senha;
 
             $db = new DB();
             $db->getConnection();            
             $query = $db->execReader($sql);
-
-            if (mysql_num_rows($query) != 1){
+            
+            $teste = mysqli_num_rows($query);
+            echo $teste;
+            /*if (mysqli_num_rows($query) != 1){
                 $senha = NULL;
             }
             else{
                 $senha = $query;
             }          
-            return $senha;
+            return $senha;*/
         }
     }
 ?>
