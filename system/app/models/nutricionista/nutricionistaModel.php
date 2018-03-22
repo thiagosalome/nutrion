@@ -133,6 +133,7 @@ class nutricionistaModel{
             }
             // Se não encontrou usuário
             else{
+                
                 return false;
             }
         }   
