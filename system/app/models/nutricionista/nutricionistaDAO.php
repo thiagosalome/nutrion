@@ -158,7 +158,7 @@
             return $query;
         }
 
-        public function GetSenhaByEmail($email, $senha){
+        public function verifyUser($email, $senha){
             // $sql = "SELECT senha FROM tb_nutricionista WHERE email = " . $email;
             $sql = "SELECT * FROM tb_nutricionista WHERE email = '" . $email . "' AND senha = '" . $senha . "'";
 

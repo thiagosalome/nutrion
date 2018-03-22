@@ -65,7 +65,7 @@ class nutricionistaController{
         $nutricionistaModel = new nutricionistaModel();
         $nutricionista = new nutricionistaVO($_POST["email"], $_POST["senha"]);      
         
-        if ($nutricionistaModel->logar($nutricionista)) {
+        if ($nutricionistaModel->logar($nutricionista) == 1) {
             if (!isset($_SESSION)){
                 session_start();
                 $_SESSION["msg"] = "Logado com sucesso";
@@ -73,6 +73,14 @@ class nutricionistaController{
 
                 header("Location: /nutrion/system/nutricionista/dashboard"); 
             }       
+        }
+        else if ($nutricionistaModel->logar($nutricionista) == 101) {
+            if (!isset($_SESSION)){
+                session_start();
+                $_SESSION["error"] = "Email e/ou senha inválidos.";
+
+                header("Location: /nutrion/system/nutricionista/login");
+            }
         }
     }
 

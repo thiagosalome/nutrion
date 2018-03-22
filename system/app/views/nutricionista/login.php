@@ -63,6 +63,14 @@
                 </form>
             </div>
         </div>
+        <?php
+             session_start();
+            if(isset($_SESSION["error"])) {
+               $msg = $_SESSION["error"];
+               echo "<p style='background-color: #333333; color: #ffffff; padding: 10px; width: 835px; display: block; margin: auto;'>" . $msg . "</p>";
+            }
+            unset($_SESSION["error"]);
+        ?>
     </main>
     <script type="text/javascript" src="/nutrion/system/app/public/js/config.js"></script>
     <script type="text/javascript" src="/nutrion/system/app/public/js/app.js"></script>
