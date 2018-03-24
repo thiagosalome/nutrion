@@ -73,7 +73,7 @@ class nutricionistaModel{
     public function updateModel(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO;
 
-        if($nutricionista->getNome() == '' || $nutricionista->getTipo() == '' || $nutricionista->getEmail == '' || $nutricionista->getSenha == ''){
+        if($nutricionista->getNome() == '' || $nutricionista->getEmail == '' || $nutricionista->getSenha == ''){
             return false;
         }
         else{
@@ -115,16 +115,32 @@ class nutricionistaModel{
         
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha())) {
             return false;//campo não preenchido, como mandar mensagem?
+        }
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
+            //return false;
+            echo "Não validou";
         }        
         else{
-            $senhaBD = $nutricionistaDao->GetSenhaByEmail($nutricionista->getSenha());
+            /*$senhaBD = $nutricionistaDao->verifyUser($nutricionista->getEmail(),$nutricionista->getSenha());
 
             if (!is_null($senhaBD)) {
                 if ($nutricionista->getSenha()==$senhaBD) {
                     return true;               
                 }
             }
-            return false;
+            return false;*/
+            
+            $row = $nutricionistaDao->verifyUser($nutricionista->getEmail(), $nutricionista->getSenha());
+            // Se encontrou usuário
+            if($row > 0){
+                echo "Encontrou";   
+                return 1;
+            }
+            // Se não encontrou usuário
+            else{  
+                echo "Não encontrou";           
+                return 101;
+            }
         }   
     }
 }

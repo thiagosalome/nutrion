@@ -19,7 +19,7 @@
          * @return void
          */
         public function getConnection(){
-            $this->conn = new mysqli("localhost", "root", "", "nutrion");
+            $this->conn = new mysqli("localhost", "root", "", "db_nutrion");
         }
 
         /**

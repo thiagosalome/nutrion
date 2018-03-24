@@ -1,138 +1,254 @@
-*   {
+* {
     margin: 0;
     padding: 0;
-    }
+}
 
-header
-    {
-    display:flex;
-    background-color: rgba(0,0,0,0.5);
-    height:78px;
-    align-items:center;
-    }
-
-    .header-logo
-    {
-    margin-left: auto;
-    margin-right: auto;   
-    }
-
-.main{
+.main {
     background-image: url("../../public/images/background-main.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    z-index: 2;
+    z-index: 0;
     position: relative;
 }
 
-    .main::after{
-        content: '';
-        background-color: rgba(0,0,0,0.5);
+.main::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+    .main-header {
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 78px;
+        align-items: center;
+    }
+
+        .header-logo {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    .main-block {
+        display: flex;
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
+        width: 862px;
+       // height: 358px;
+        font-family: "Roboto", sans-serif;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 34px));
     }
 
-    .main-block
-    {
-        display:flex;
-        background-color: lightblue;
-        width:862px;
-        height:358px; 
-        margin: auto;
-        margin-top: 93px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 15px;
-        color: rgba(255, 255, 255, 255);
-    }
-
-        .block-description
-        {
-        display: block;
-        width: 55.57%; 
-        text-align: center;
-        background-image: url("../../public/images/background-description.jpeg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        padding: 0 20px;
+        /*este será o bloco principal*/
+        .block-description {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            width: 55%;
+            background-image: url("../../public/images/background-description.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 40px 64px;
+            box-sizing: border-box;
+            z-index: 1;
         }
 
-            .description-logo
-            {
-            margin-top: 4px;
-            padding: 25px;
-            }
-
-             #description-button
-            {
-            margin-top: 45px;
-            width: 148px;
-            padding: 4px;
-            font-size: 15px;
-            }
-
-        .block-form
-        {
-        display: block;
-        background-color: lightskyblue;
-        width: 44.43%;
+        .block-description::after {
+            content: "";
+            background: linear-gradient(to bottom, rgba(164, 54, 76, 0.5), rgba(225, 129, 74, 0.6));
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
         }
-            h1
-            {
-            font-family: 'Roboto', sans-serif;
-            font-size: 25px;
-            color: rgba(69, 37, 49, 255);
-            margin-left:49px;
-            margin-top: 58px;
-            }
 
-            .form-login
-            {
-            margin-top: 30px;
-            margin-left:49px;
-            }
-
-                label
-                {
-                display: inline-block;
-                width: 55px;
-                text-align: right;  
-                }
-
-                input
-                {
-                margin-right: 48px; 
-                font: 1em sans-serif;
-                /* Para dar o mesmo tamanho a todos os campo de texto */
-                width: 287px;
-                box-sizing: border-box;
-
-                /* Para harmonizar o look & feel das bordas nos campos de texto*/
-                border: 1px solid #999;
-                }
-
-                #login
-                {
-                margin-top: 25px;
-                margin-bottom: 05px;
-                padding: 4px;
+            .description-project {
+                margin: 25px 0 34px;
+                color: #ffffff;
+                font-family: "Roboto", sans-serif;
                 font-size: 15px;
-                }   
+            }
 
-                #esqueceu
-                {
-                margin-left:49px; 
-                font-size: 12px;
+            .description-button {
+                background-color: transparent;
+                font-size: 16px;
+                padding: 8px 30px;
+                border: 1px solid #ffffff;
+                color: #ffffff;
+                text-transform: uppercase;
+                transition: 0.5s;
+                outline: none;
+            }
+
+            .description-button:hover{
+                cursor: pointer;
+                padding: 8px 40px;
+                background-color : rgba(255,255,255, 0.2);
+            }
+
+        .block-form {
+            display: block;
+            position: relative;
+            background-color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        .block-form-cad{
+            padding: 27px 49px;
+            order: 0;
+            flex: 0 0 55%;
+        }
+
+            .block-form-cad .form-title, .block-form-cad .form-content{
+                display: none;
+            }
+
+        .block-form-log{
+            padding: 58px 49px;
+            order: 1;
+            flex: 0 0 45%;
+        }
+
+            .form-title{
+                font-family: "Roboto", sans-serif;
+                font-size: 25px;
+                color: #452531;
+            }
+
+            .form-content{
+                background-color: transparent;
+                color: #911f4d;
+                font-size: 16px;
+            }
+                
+                .form-field{
+                    position: relative;
+                    margin-top: 30px;
+                    display: block;
+                }
+                
+                .form-field input {
+                    font-size: 16px;
+                    font-family: "Roboto", sans-serif;
+                    width: 100%;
+                    border: none;
+                    border-bottom: 1px solid transparent;
+                    border-image: linear-gradient(to right, #333333, #333333);
+                    border-image-slice: 1;
+                    padding: 6px 0;
+                    outline: none;
+                    color: #333333;
                 }
 
-                label
-                {
-                font-family: 'Roboto', sans-serif;
-                font-size: 12px;
-                color: rgba(145, 31, 77, 255);
-                text-align: left;
+                .form-field input.focus{
+                    border-bottom: 1px solid transparent;
+                    border-image: linear-gradient(to right, rgb(164, 55, 77), rgb(225, 129, 74));
+                    border-image-slice: 1;
                 }
+
+                .form-field label {
+                    font-family: "Roboto", sans-serif;
+                    font-size: 16px;
+                    color: #4f4f4f;
+                    position: absolute;
+                    top: 0;
+                    transition: 0.5s;
+                }
+
+                .form-field.focus label{
+                    color: #911f4d;
+                    top: -12px;
+                    font-size: 13px;
+                }
+
+                .form-content input[type="submit"]{
+                    margin-top: 34px;
+                    padding: 8px 15px;
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    color: #911f4d;
+                    border: 1px solid transparent;
+                    border-image: linear-gradient(to right, #a4374d, #e1814a);
+                    border-image-slice: 1;
+                    background: transparent;
+                    font-weight: lighter;
+                    transition: 0.5s;
+                }
+
+                .form-content input[type="submit"]:hover{
+                    cursor: pointer;
+                    color: #ffffff;
+                    background: linear-gradient(to right, #a4374d, #e1814a);
+                    /* background-color: #452531; */
+                }
+
+            .form-forgot{
+                font-size: 15px;
+                color: #911f4d;
+                margin-top: 13px;
+                display: inline-block;
+                text-decoration: none;
+                font-weight: lighter;
+            }
+
+@media (min-width: 768px) and (max-width: 991px) 
+{
+   .main-block {
+        width: 650px;
+       height: 350px;
+    }   
+}
+
+@media (min-width: 425px) and (max-width: 767px) 
+{
+    /*Falta corrigir a altura da imagem de back em relação a tela*/
+    .main{ 
+        height: 100vh;
+    }
+
+    .main-header {
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 5;
+    width: 100%;
+    position: fixed;
+    height: 60px;
+    left: 50%;
+    transform: translate(-50%, calc(-50% + 30px));
+}
+    
+    .main-block {
+        margin-top: 95px;
+        width: 350px;
+        height: 680px
+    } 
+ 
+        .block-description {
+            
+            top: 0;
+            width: 100%;
+            height: 50%;
+        }
+        .block-form {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+
+}
+
+@media (max-width: 424px) 
+{
+}

@@ -56,22 +56,31 @@ class nutricionistaController{
         include "app/views/nutricionista/login.php";
     }
 
+    public function dashboard(){
+        // Rota para view de login e cadastro
+        include "app/views/nutricionista/dashboard.php";
+    }
+
     public function logar(){
         $nutricionistaModel = new nutricionistaModel();
         $nutricionista = new nutricionistaVO($_POST["email"], $_POST["senha"]);      
         
-        if ($nutricionistaModel->logar($nutricionista)) {
-            $_SESSION["msg"] = "Logado com sucesso";
-
+        if ($nutricionistaModel->logar($nutricionista) == 1) {
             if (!isset($_SESSION)){
                 session_start();
-                header("Location: /nutrion/system/nutricionista/interna");                
+                $_SESSION["msg"] = "Logado com sucesso";
+                $_SESSION["email"] = $nutricionista->getEmail();
+
+                header("Location: /nutrion/system/nutricionista/dashboard"); 
             }       
-                       
-            //Caso precisem saber quais dados estão sendo passados para o objeto
-            echo "<pre>";
-                print_r($nutricionista);
-            echo "</pre>";
+        }
+        else if ($nutricionistaModel->logar($nutricionista) == 101) {
+            if (!isset($_SESSION)){
+                session_start();
+                $_SESSION["error"] = "Email e/ou senha inválidos.";
+
+                header("Location: /nutrion/system/nutricionista/login");
+            }
         }
     }
 
@@ -94,7 +103,6 @@ class nutricionistaController{
         
         $nutricionista->setId($_POST["id"]);
         $nutricionista->setName($_POST["nome"]);
-        $nutricionista->setTipo($_POST["tipo"]);
         $nutricionista->setEmail($_POST["email"]);
         $nutricionista->setSenha($_POST["senha"]);
 
