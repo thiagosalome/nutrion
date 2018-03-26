@@ -115,7 +115,7 @@ class nutricionistaModel{
         
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha())) {
             return false;//campo não preenchido, como mandar mensagem?
-        }
+        }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
             //return false;
             echo "Não validou";
@@ -142,6 +142,31 @@ class nutricionistaModel{
                 return 101;
             }
         }   
+    }
+
+    public function cadastrar(nutricionistaVO $nutricionista){
+        $nutricionistaDao = new nutricionistaDAO();
+
+        if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
+            return false;//campo não preenchido, como mandar mensagem?
+        }   
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
+            //return false;
+            echo "Não validou";
+        }
+        else {
+            $row = $nutricionistaDao->insert($nutricionista);
+            // Se cadastrou usuário
+            if($row > 0){
+                echo "Ok";   
+                return true;
+            }
+            // Se não cadastrou usuário
+            else{  
+                echo "Não ok";           
+                return false;
+            }
+        }
     }
 }
 ?>

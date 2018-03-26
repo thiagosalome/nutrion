@@ -62,7 +62,6 @@
             $pstm = $db->execSQL($sql);
             
             $pstm->bind_param('s', $nutricionista->getNome());
-            $pstm->bind_param('s', $nutricionista->getTipo());
             $pstm->bind_param('s', $nutricionista->getEmail());
             $pstm->bind_param('s', $nutricionista->getSenha());
 
@@ -169,5 +168,6 @@
             $rows = mysqli_num_rows($query);
             return $rows;
         }
+
     }
 ?>

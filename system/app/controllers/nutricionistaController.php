@@ -39,15 +39,16 @@ class nutricionistaController{
         $nutricionista = new nutricionistaVo();
         
         $nutricionista->setNome($_POST["nutricionista"]); ///verificar campos!!!
-        $nutricionista->setTipo($_POST["tipo"]);
         $nutricionista->setEmail($_POST["email"]);
         $nutricionista->setSenha($_POST["senha"]);
 
         if($nutricionistaModel->insertModel($nutricionista)){
             $_SESSION["msg"] = "Usuário cadastrado com sucesso!";
+            header("Location: /nutrion/system/nutricionista/dashboard");
         }
         else{
             $_SESSION["msg"] = "Erro ao cadastrar usuário!";
+            header("Location: /nutrion/system/nutricionista/login");
         }
     }
 
@@ -63,7 +64,10 @@ class nutricionistaController{
 
     public function logar(){
         $nutricionistaModel = new nutricionistaModel();
-        $nutricionista = new nutricionistaVO($_POST["email"], $_POST["senha"]);      
+        $nutricionista = new nutricionistaVO();  
+        
+        $nutricionista->setEmail($_POST["email"]);
+        $nutricionista->setSenha($_POST["senha"]);
         
         if ($nutricionistaModel->logar($nutricionista) == 1) {
             if (!isset($_SESSION)){
@@ -90,7 +94,6 @@ class nutricionistaController{
 
         $_SESSION["id"] = $nutricionista->getById();
         $_SESSION["nome"] = $nutricionista->getNome();
-        $_SESSION["tipo"] = $nutricionista->getTipo();
         $_SESSION["email"] = $nutricionista->getEmail();
         $_SESSION["senha"] = $nutricionista->getSenha();
 

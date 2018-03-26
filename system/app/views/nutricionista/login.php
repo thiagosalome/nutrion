@@ -46,7 +46,7 @@
             </div>
             <div class="block-form block-form-cad js-form-cad">
                 <h1 class="form-title">Cadastro</h1>
-                <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-content">
+                <form method="POST" action="/nutrion/system/nutricionista/cadastrar" class="form-content">
                     <span class="form-field">
                         <label for"nomecad">Nome</label>
                         <input class="js-input-field" type="text" name="nome" id="nomecad" required>
