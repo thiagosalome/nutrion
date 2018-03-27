@@ -64,12 +64,12 @@
             </div>
         </div>
         <?php
-             session_start();
-            if(isset($_SESSION["error"])) {
-               $msg = $_SESSION["error"];
+            session_start();
+            if(isset($_SESSION["msg"])) {
+               $msg = $_SESSION["msg"];
                echo "<p style='background-color: #333333; color: #ffffff; padding: 10px; width: 835px; display: block; margin: auto;'>" . $msg . "</p>";
+               unset($_SESSION["msg"]);
             }
-            unset($_SESSION["error"]);
         ?>
     </main>
     <script type="text/javascript" src="/nutrion/system/app/public/js/config.js"></script>

@@ -27,8 +27,6 @@
             Retornar método getAll do objeto $nutricionistadao
 
 */
-//include "app/models/nutricionista/nutricionistaDAO.php";
-//include "app/models/nutricionista/nutricionistaVo.php";
 
 class nutricionistaModel{
 
@@ -144,27 +142,24 @@ class nutricionistaModel{
         }   
     }
 
-    public function cadastrar(nutricionistaVO $nutricionista){
+    public function insertModel(nutricionistaVo $nutricionistaVo){
         $nutricionistaDao = new nutricionistaDAO();
 
-        if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
-            return false;//campo não preenchido, como mandar mensagem?
+        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome()))) {
+            return 2;
         }   
-        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
-            //return false;
-            echo "Não validou";
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
+            return 3;
         }
         else {
-            $row = $nutricionistaDao->insert($nutricionista);
+            $cadastro = $nutricionistaDao->insert($nutricionistaVo);
             // Se cadastrou usuário
-            if($row > 0){
-                echo "Ok";   
-                return true;
+            if($cadastro == true){
+                return 1;
             }
             // Se não cadastrou usuário
             else{  
-                echo "Não ok";           
-                return false;
+                return 0;
             }
         }
     }

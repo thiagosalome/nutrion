@@ -45,129 +45,131 @@
             Criar variável $query que irá receber o método de execReader($sql) do banco
             Retornar a variável $query
         */
-    class nutricionistaDAO{
 
-        /**
-         * Método de inserção do usuário
-         *
-         * @param nutricionistaVO $nutricionista
-         * @return void
-         */
-        public function insert(nutricionistaVO $nutricionista){
-            $sql = "INSERT INTO tb_nutricionista (nome, email, senha) VALUES(";
-            $sql. "?, ?, ?)";
+class nutricionistaDAO{
 
-            $db = new DB();
-            $db->getConnection();
-            $pstm = $db->execSQL($sql);
-            
-            $pstm->bind_param('s', $nutricionista->getNome());
-            $pstm->bind_param('s', $nutricionista->getEmail());
-            $pstm->bind_param('s', $nutricionista->getSenha());
+    /**
+     * Método de inserção do usuário
+     *
+     * @param nutricionistaVO $nutricionista
+     * @return void
+     */
+    public function insert(nutricionistaVo $nutricionistaVo){
+        require_once "app/bootstrap.php"; // Fazendo o require do arquivo bootstrap.php para poder utilizar o entityManager
 
-            if($pstm->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
+        try{
+            $nutricionista = new Nutricionista;
+            $nutricionista->setNome($nutricionistaVo->getNome());
+            $nutricionista->setEmail($nutricionistaVo->getEmail());
+            $nutricionista->setSenha($nutricionistaVo->getSenha());
+    
+            // O método persist recebe um objeto de forma a colocá-lo na fila de instruções a serem executadas
+            $entityManager->persist($nutricionista);
+    
+            // O método flush executa no banco de dados todas as funções definidas pelo persist
+            $entityManager->flush();
+
+            return true;
         }
-
-        /**
-         * Método de edição do usuário
-         *
-         * @param nutricionistaVO $nutricionista
-         * @return void
-         */
-        public function update(nutricionistaVO $nutricionista){
-            $sql = "UPDATE tb_nutricionista SET nome = ?, email = ?, senha = ?  WHERE id = ?";
-
-            $db = new DB();
-            $db->getConnection();
-            $pstm = $db->execSQL($sql);
-            
-            $pstm->bind_param('s', $nutricionista->getNome());
-            $pstm->bind_param('s', $nutricionista->getEmail());
-            $pstm->bind_param('s', $nutricionista->getSenha());
-            $pstm->bind_param('i', $nutricionista->getId());
-
-            if($pstm->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
+        catch (Expection $e){
+            return false;
         }
-
-        /**
-         * Método de exclusão do usuário
-         *
-         * @param nutricionistaVO $nutricionista
-         * @return void
-         */
-        public function delete(nutricionistaVO $nutricionista){
-            $sql = "DELETE FROM tb_nutricionista WHERE id = ?";
-
-            $db = new DB();
-            $db->getConnection();
-            $pstm = $db->execSQL($sql);
-            
-            $pstm->bind_param('i', $nutricionista->getId());
-
-            if($pstm->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        /**
-         * Método de seleção do usuário
-         *
-         * @param nutricionistaVO $nutricionista
-         * @return void
-         */
-        public function getById($id){
-            $sql = "SELECT * FROM tb_nutricionista WHERE id = " . $id;
-
-            $db = new DB();
-            $db->getConnection();
-            
-            $query = $db->execReader($sql);
-            $nutricionista = new nutricionistaVO();
-
-            while($reg = $query->fetch_array(MYSQLI_ASSOC)){
-                $nutricionista->setId($reg["id"]);
-                $nutricionista->setNome($reg["nome"]);
-                $nutricionista->setEmail($reg["email"]);
-            }
-
-            return $nutricionista;
-        }
-
-        public function getAll(){
-            $sql = "SELECT * FROM tb_nutricionista";
-
-            $db = new DB();
-            $db->getConnection();
-
-            $query = $db->execReader($sql);
-
-            return $query;
-        }
-
-        public function verifyUser($email, $senha){
-            // $sql = "SELECT senha FROM tb_nutricionista WHERE email = " . $email;
-            $sql = "SELECT * FROM tb_nutricionista WHERE email = '" . $email . "' AND senha = '" . $senha . "'";
-
-            $db = new DB();
-            $db->getConnection();            
-            $query = $db->execReader($sql);
-            
-            $rows = mysqli_num_rows($query);
-            return $rows;
-        }
-
     }
+
+    /**
+     * Método de edição do usuário
+     *
+     * @param nutricionistaVO $nutricionista
+     * @return void
+     */
+    public function update(nutricionistaVO $nutricionista){
+        $sql = "UPDATE tb_nutricionista SET nome = ?, email = ?, senha = ?  WHERE id = ?";
+
+        $db = new DB();
+        $db->getConnection();
+        $pstm = $db->execSQL($sql);
+        
+        $pstm->bind_param('s', $nutricionista->getNome());
+        $pstm->bind_param('s', $nutricionista->getEmail());
+        $pstm->bind_param('s', $nutricionista->getSenha());
+        $pstm->bind_param('i', $nutricionista->getId());
+
+        if($pstm->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * Método de exclusão do usuário
+     *
+     * @param nutricionistaVO $nutricionista
+     * @return void
+     */
+    public function delete(nutricionistaVO $nutricionista){
+        $sql = "DELETE FROM tb_nutricionista WHERE id = ?";
+
+        $db = new DB();
+        $db->getConnection();
+        $pstm = $db->execSQL($sql);
+        
+        $pstm->bind_param('i', $nutricionista->getId());
+
+        if($pstm->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * Método de seleção do usuário
+     *
+     * @param nutricionistaVO $nutricionista
+     * @return void
+     */
+    public function getById($id){
+        $sql = "SELECT * FROM tb_nutricionista WHERE id = " . $id;
+
+        $db = new DB();
+        $db->getConnection();
+        
+        $query = $db->execReader($sql);
+        $nutricionista = new nutricionistaVO();
+
+        while($reg = $query->fetch_array(MYSQLI_ASSOC)){
+            $nutricionista->setId($reg["id"]);
+            $nutricionista->setNome($reg["nome"]);
+            $nutricionista->setEmail($reg["email"]);
+        }
+
+        return $nutricionista;
+    }
+
+    public function getAll(){
+        $sql = "SELECT * FROM tb_nutricionista";
+
+        $db = new DB();
+        $db->getConnection();
+
+        $query = $db->execReader($sql);
+
+        return $query;
+    }
+
+    public function verifyUser($email, $senha){
+        // $sql = "SELECT senha FROM tb_nutricionista WHERE email = " . $email;
+        $sql = "SELECT * FROM tb_nutricionista WHERE email = '" . $email . "' AND senha = '" . $senha . "'";
+
+        $db = new DB();
+        $db->getConnection();            
+        $query = $db->execReader($sql);
+        
+        $rows = mysqli_num_rows($query);
+        return $rows;
+    }
+}
 ?>

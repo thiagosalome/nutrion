@@ -27,28 +27,42 @@
         Fazer includes das Models(VO,DAO,Model) e DB
 */
 
-include "app/models/nutricionista/nutricionistaDAO.php";
-include "app/models/nutricionista/nutricionistaVo.php";
-include "app/models/nutricionista/nutricionistaModel.php";
-include "app/models/DB.php";
+require_once "app/models/nutricionista/nutricionistaDAO.php";
+require_once "app/models/nutricionista/nutricionistaVo.php";
+require_once "app/models/nutricionista/nutricionistaModel.php";
 
 class nutricionistaController{
 
     public function cadastrar(){
         $nutricionistaModel = new nutricionistaModel();
-        $nutricionista = new nutricionistaVo();
+        $nutricionistaVo = new nutricionistaVo();
         
-        $nutricionista->setNome($_POST["nutricionista"]); ///verificar campos!!!
-        $nutricionista->setEmail($_POST["email"]);
-        $nutricionista->setSenha($_POST["senha"]);
+        $nutricionistaVo->setNome($_POST["nome"]); ///verificar campos!!!
+        $nutricionistaVo->setEmail($_POST["email"]);
+        $nutricionistaVo->setSenha($_POST["senha"]);
 
-        if($nutricionistaModel->insertModel($nutricionista)){
-            $_SESSION["msg"] = "Usuário cadastrado com sucesso!";
-            header("Location: /nutrion/system/nutricionista/dashboard");
-        }
-        else{
-            $_SESSION["msg"] = "Erro ao cadastrar usuário!";
-            header("Location: /nutrion/system/nutricionista/login");
+        $insertModel = $nutricionistaModel->insertModel($nutricionistaVo);
+        session_start();
+        switch ($insertModel) {
+            case 0:
+                $_SESSION["msg"] = "Erro ao cadastrar usuário.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
+            
+            case 1:
+                $_SESSION["msg"] = "Usuário cadastrado com sucesso.";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
+
+            case 2:
+                $_SESSION["msg"] = "Há campos vazios.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
+
+            case 3:
+                $_SESSION["msg"] = "O email digitado é inválido.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
         }
     }
 
