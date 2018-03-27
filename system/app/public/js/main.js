@@ -33,34 +33,58 @@ var mainSlider = {
 
     //Functions
     'onClickSlider' : function(speed){
-        this.js_btn_slider_block.on("click", function(){
+        if(window.innerWidth > 767){
+            this.js_btn_slider_block.on("click", function(){
+                
+                if(mainSlider.js_block_description.data('position') == 'left'){
+                    jQuery(this).text("Logar");
+                    mainSlider.js_block_description.data("position", "right");
+                    
+                    mainSlider.js_block_description.animate({
+                        right : '0',
+                    }, speed, function(){
+                        mainSlider.js_form_cad.css("flex", "0 0 45%").children(".form-content, .form-title").fadeIn(speed);
+                        mainSlider.js_form_log.css("flex", "0 0 55%").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
+                    });
             
-            if(mainSlider.js_block_description.data('position') == 'left'){
-                jQuery(this).text("Logar");
-                mainSlider.js_block_description.data("position", "right");
+                    mainSlider.js_block_description.removeAttr("style");
+                }
+                else{
+                    jQuery(this).text("Cadastrar");
+                    mainSlider.js_block_description.data("position", "left");
+                    
+                    mainSlider.js_block_description.animate({
+                        left : '0',
+                    }, speed, function(){
+                        mainSlider.js_form_cad.css("flex", "0 0 55%").children(".form-content, .form-title").fadeOut(speed);
+                        mainSlider.js_form_log.css("flex", "0 0 45%").children(".form-content, .form-title, .form-forgot").fadeIn(speed);
+                    });
+            
+                   mainSlider.js_block_description.removeAttr("style");
+                }
+            });
+        }
+        else{
+            // console.log("Bateu aqui");
+            this.js_btn_slider_block.on("click", function(){
+                if(mainSlider.js_block_description.data('position') == 'left'){
+                    jQuery(this).text("Logar");
+                    mainSlider.js_block_description.data("position", "right");
+
+                    mainSlider.js_form_log.fadeOut('slow', function(){
+                        mainSlider.js_form_cad.fadeIn('slow');
+                    });
+                }
+                else{
+                    jQuery(this).text("Cadastrar");
+                    mainSlider.js_block_description.data("position", "left");
+
+                    mainSlider.js_form_cad.fadeOut('slow', function(){
+                        mainSlider.js_form_log.fadeIn('slow');
+                    });
+                }
                 
-                mainSlider.js_block_description.animate({
-                    right : '0',
-                }, speed, function(){
-                    mainSlider.js_form_cad.css("flex", "0 0 45%").children(".form-content, .form-title").fadeIn(speed);
-                    mainSlider.js_form_log.css("flex", "0 0 55%").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
-                });
-        
-                mainSlider.js_block_description.removeAttr("style");
-            }
-            else{
-                jQuery(this).text("Cadastrar");
-                mainSlider.js_block_description.data("position", "left");
-                
-                mainSlider.js_block_description.animate({
-                    left : '0',
-                }, speed, function(){
-                    mainSlider.js_form_cad.css("flex", "0 0 55%").children(".form-content, .form-title").fadeOut(speed);
-                    mainSlider.js_form_log.css("flex", "0 0 45%").children(".form-content, .form-title, .form-forgot").fadeIn(speed);
-                });
-        
-               mainSlider.js_block_description.removeAttr("style");
-            }
-        });
+            });
+        }
     }
 }

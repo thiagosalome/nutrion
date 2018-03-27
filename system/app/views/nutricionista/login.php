@@ -34,7 +34,7 @@
                 <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-content">
                     <span class="form-field">
                         <label for="emaillog">Email</label>
-                        <input class="js-input-field" type="text" name="email" id="emaillog" required><br>
+                        <input class="js-input-field" type="email" name="email" id="emaillog" required><br>
                     </span>
                     <span class="form-field">
                         <label for="senhalog">Senha</label>
@@ -53,7 +53,7 @@
                     </span>
                     <span class="form-field">
                         <label for"emailcad">Email</label>
-                        <input class="js-input-field" type="text" name="email" id="emailcad" required>
+                        <input class="js-input-field" type="email" name="email" id="emailcad" required>
                     </span>
                     <span class="form-field">
                         <label for"senhacad">Senha:</label>

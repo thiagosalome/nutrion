@@ -21,3 +21,6 @@ Back-end:
             ☐ se ta vazio e login existe, se nao, verifica todo o formulário e ai insere
     
 Front-end:
+    ✔ Consertar responsivo no Tablet @done (2018-3-26 23:48:03)
+    ✔ Consertar responsivo no mobile @done (2018-3-26 23:48:04)
+    ✔ Refazer animação para mobile @done (2018-3-27 07:05:07)

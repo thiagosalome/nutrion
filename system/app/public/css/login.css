@@ -4,7 +4,7 @@
 }
 
 .main {
-    background-image: url("../../public/images/background-main.jpeg");
+    background-image: url("../../public/images/background-main-md.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -39,6 +39,7 @@
         display: flex;
         position: absolute;
         width: 862px;
+        height: 358px;
         font-family: "Roboto", sans-serif;
         top: 50%;
         left: 50%;
@@ -52,7 +53,7 @@
             bottom: 0;
             top: 0;
             width: 55%;
-            background-image: url("../../public/images/background-description.jpeg");
+            background-image: url("../../public/images/background-description-md.jpeg");
             background-size: cover;
             background-repeat: no-repeat;
             text-align: center;
@@ -204,109 +205,148 @@
 
 @media (min-width: 768px) and (max-width: 991px) 
 {
-   .main-block {
-        width: 650px;
-       /*height: 350px;*/
-    }   
+
+    .main{
+        background-image: url("../../public/images/background-main-sm.jpeg");
+    }
+        .main-block {
+            width: 650px;
+        }
+
+            .block-description{
+                background-image: url("../../public/images/background-description-sm.jpeg");
+                padding: 58px 30px;
+            }
+
+            .block-form{
+                padding: 40px 30px;
+            }
 }
 
 @media (min-width: 425px) and (max-width: 767px) 
 {
     .main{ 
         height: auto;
+        background-image: url("../../public/images/background-main-sm.jpeg");
     }
 
-    .main-header {
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 55;
-        width: 100%;
-        display: block;
-        height: 60px;
-        text-align: center;
-}
-
-    .main-block {
-        position: relative;
-        width: 80%;
-        display:block;
-        transform: inherit;
-        top: 0;
-        left: 0;
-        margin: 5px auto 0;
-    }
-
-        .block-description {
-          
-            position: relative;
+        .main-header {
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 55;
             width: 100%;
+            display: block;
+            height: 60px;
+            text-align: center;
+        }
+
+            .header-logo{
+                height: 40px;
+                margin-top: 10px;
+            }
+
+        .main-block {
+            position: relative;
+            max-width: 80%;
+            display: block;
+            transform: inherit;
             top: 0;
-            padding: 20px 44px;
-        }
-    
-        .block-form {
-            width: 100%;
-            bottom: 0;
-            padding: 20px 44px;
-            position: relative;
-        }
-        .block-form-log
-        {
-            padding: 20px 44px 0;
-        }
-        .block-form-cad
-        {
-            padding: 0 44px 20px;
+            left: 0;
+            height: auto;
+            margin: auto;
+            padding: 30px 0;
         }
 
-       }
+            .block-description {
+                background-image: url("../../public/images/background-description-sm.jpeg");
+                position: relative;
+                width: 100%;
+                top: 0;
+                padding: 20px 44px;
+            }
+        
+            .block-form {
+                width: 100%;
+                bottom: 0;
+                padding: 20px 44px;
+                position: relative;
+            }
+
+                .block-form-log
+                {
+                    padding: 20px 44px;
+                }
+
+                .block-form-cad
+                {
+                    padding: 20px 44px;
+                    display: none;
+                }
+
+                .block-form-cad .form-title, .block-form-cad .form-content{
+                    display: block;
+                }
+
+}
 
 @media (max-width: 424px) 
 {
-        .main{ 
+    .main{ 
         height: auto;
+        background-attachment: fixed;
+        background-image: url("../../public/images/background-main-sm.jpeg");
     }
 
-    .main-header {
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 55;
-        width: 100%;
-        display: block;
-        height: 60px;
-        text-align: center;
-}
-
-    .main-block {
-        position: relative;
-        width: 90%;
-        display:block;
-        transform: inherit;
-        top: 0;
-        left: 0;
-        margin: 5px auto 0;
-    }
-
-        .block-description {
-          
-            position: relative;
+        .main-header {
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 55;
             width: 100%;
+            display: block;
+            height: 60px;
+            text-align: center;
+        }
+
+            .header-logo{
+                height: 40px;
+                margin-top: 10px;
+            }
+
+        .main-block {
+            position: relative;
+            max-width: 85%;
+            display: block;
+            transform: inherit;
             top: 0;
-            padding: 10px 24px;
-        }
-    
-        .block-form {
-            width: 100%;
-            bottom: 0;
-            padding: 10px 24px;
-            position: relative;
-        }
-        .block-form-log
-        {
-            padding: 10px 24px 0;
-        }
-        .block-form-cad
-        {
-            padding: 0 24px 10px;
+            left: 0;
+            height: auto;
+            margin: auto;
+            padding: 30px 0;
         }
 
-       }
+            .block-description {
+                background-image: url("../../public/images/background-description-sm.jpeg");
+                position: relative;
+                width: 100%;
+                top: 0;
+                padding: 25px;
+            }
+        
+            .block-form {
+                width: 100%;
+                bottom: 0;
+                padding: 10px 24px;
+                position: relative;
+            }
+                .block-form-log
+                {
+                    padding: 20px 44px;
+                }
+                .block-form-cad
+                {
+                    padding: 20px 44px;
+                    display: none;
+                }
+
+                .block-form-cad .form-title, .block-form-cad .form-content{
+                    display: block;
+                }
 }
