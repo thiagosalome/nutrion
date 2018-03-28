@@ -1,32 +1,4 @@
 <?php
-
-/*
-    Passos:
-        Criar método cadastrar (action)
-            Instanciar classe nutricionistaModel
-            Instanciar class nutricionistaVo
-            Setar os valores no objeto do nutricionistaVo através do post ($_POST['nome'])
-            Verificar se o método insert da model foi inserido (if($model->insert($nutricionista)){})
-            Retornar uma $_SESSION['msg'] = "Mensagem a passar"
-
-        Criar método cadastro (rota para view)
-
-        Criar método edita (rota para view)
-            Instanciar classe nutricionistaModel
-            Criar variável $nutricionista que recebe $model->getById($_GET["id"]);
-            Passar os dados do $nutricionista para cada section referente
-                Ex: $_SESSION["id"] = $nutricionista->getId();
-        
-        Criar método atualizar (action)
-            Instanciar classe nutricionistaModel
-            Instanciar class nutricionistaVo
-            Setar os valores no objeto do nutricionistaVo através do post ($_POST['nome']), incluindo $id
-            Verificar se o método update da model foi inserido (if($model->update($nutricionista)){})
-            Retornar uma $_SESSION['msg'] = "Mensagem a passar"
-
-        Fazer includes das Models(VO,DAO,Model) e DB
-*/
-
 require "app/models/nutricionista/nutricionistaDAO.php";
 require "app/models/nutricionista/nutricionistaVo.php";
 require "app/models/nutricionista/nutricionistaModel.php";
