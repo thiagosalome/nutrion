@@ -27,9 +27,9 @@
         Fazer includes das Models(VO,DAO,Model) e DB
 */
 
-require_once "app/models/nutricionista/nutricionistaDAO.php";
-require_once "app/models/nutricionista/nutricionistaVo.php";
-require_once "app/models/nutricionista/nutricionistaModel.php";
+require "app/models/nutricionista/nutricionistaDAO.php";
+require "app/models/nutricionista/nutricionistaVo.php";
+require "app/models/nutricionista/nutricionistaModel.php";
 
 class nutricionistaController{
 
@@ -51,6 +51,7 @@ class nutricionistaController{
             
             case 1:
                 $_SESSION["msg"] = "Usuário cadastrado com sucesso.";
+                $_SESSION["email"] = $nutricionistaVo->getEmail();
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;
 

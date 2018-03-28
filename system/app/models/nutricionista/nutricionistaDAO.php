@@ -55,7 +55,7 @@ class nutricionistaDAO{
      * @return void
      */
     public function insert(nutricionistaVo $nutricionistaVo){
-        require_once "app/bootstrap.php"; // Fazendo o require do arquivo bootstrap.php para poder utilizar o entityManager
+        require "app/bootstrap.php"; // Fazendo o require do arquivo bootstrap.php para poder utilizar o entityManager
 
         try{
             $nutricionista = new Nutricionista;
@@ -161,7 +161,7 @@ class nutricionistaDAO{
     }
 
     public function verifyUserLog($email, $senha){
-        require_once "app/bootstrap.php";
+        require "app/bootstrap.php";
         
         try{
             $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email, "senha" => $senha));
@@ -179,7 +179,7 @@ class nutricionistaDAO{
     }
     
     public function verifyUserCad($email){
-        require_once "app/bootstrap.php";
+        require "app/bootstrap.php";
         
         try{
             $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email));

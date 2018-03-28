@@ -56,7 +56,7 @@
                         <input class="js-input-field" type="email" name="email" id="emailcad" required>
                     </span>
                     <span class="form-field">
-                        <label for"senhacad">Senha:</label>
+                        <label for"senhacad">Senha</label>
                         <input class="js-input-field" type="password" name="senha" id="senhacad" required>
                     </span>
                     <input type="submit" value="Cadastrar" class="form-button" name="cadastrar">

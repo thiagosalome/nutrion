@@ -19,7 +19,7 @@ $isDevMode = true;
 $conect = array(
     "driver" => "pdo_mysql",
     "user" => "root",
-    "password" => "150711",
+    "password" => "",
     "dbname" => "db_nutrion"
 );
 
