@@ -3,6 +3,11 @@ var mainForm = {
     'js_input' : jQuery(".js-input-field"),
     
     //Functions
+    'onChange' : function(){
+        this.js_input.on("change", function(){
+            jQuery(this).addClass("focus").closest(".form-field").addClass("focus");
+        });
+    },
     'onFocus' : function(){
         this.js_input.on("focus", function(){
             jQuery(this).addClass("focus").closest(".form-field").addClass("focus");

@@ -3,23 +3,10 @@ alt+d=done
 alt+c=cancelled
 
 Back-end:
-    ☐ Mudar o nome da tabela usuarios do banco nutrion para nutricionistas
-        ☐ Entrar no phpmyadmin
-        ☐ Mudar o nome da tabela de usuários para nutricionistas
-        ☐ Retirar a coluna de tipo
-        ☐ Exportar o banco
-        ☐ Trocar pelo arquivo que está dentro da pasta database
-        ☐ Subir para o git
+    ✔ Realizar login de Nutricionista @done (2018-3-27 21:21:16)
+    ✔ Realizar cadastro de Nutricionista @done (2018-3-27 21:21:26)
+    ✔ Aplicar ORM @done (2018-3-27 21:21:37)
 
-    ☐ Realizar login de Nutricionista
-        Model:
-            ✔ Validar se os campos estão em branco @done (2018-3-18 13:23:47)
-            ☐ Validar se o email está correto (preg_match("/^[a-z0-9_\\.\\-]+@[a-z0-9_\\.\\-]*[a-z0-9_\\.\\-]+\\.[a-z]{2,4}$/",$email))
-
-    ☐ Realizar cadastro de Nutricionista
-        ☐ function cadastrar
-            ☐ se ta vazio e login existe, se nao, verifica todo o formulário e ai insere
-    
 Front-end:
     ✔ Consertar responsivo no Tablet @done (2018-3-26 23:48:03)
     ✔ Consertar responsivo no mobile @done (2018-3-26 23:48:04)

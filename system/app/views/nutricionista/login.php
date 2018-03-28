@@ -49,7 +49,7 @@
                 <form method="POST" action="/nutrion/system/nutricionista/cadastrar" class="form-content">
                     <span class="form-field">
                         <label for"nomecad">Nome</label>
-                        <input class="js-input-field" type="text" name="nome" id="nomecad" required>
+                        <input class="js-input-field" type="text" name="nome" id="nomecad" pattern="[a-zA-Z\s]{2,40}" title="Digite um nome válido, com no máximo 40 caracteres" required>
                     </span>
                     <span class="form-field">
                         <label for"emailcad">Email</label>
@@ -67,7 +67,14 @@
             session_start();
             if(isset($_SESSION["msg"])) {
                $msg = $_SESSION["msg"];
-               echo "<p style='background-color: #333333; color: #ffffff; padding: 10px; width: 835px; display: block; margin: auto;'>" . $msg . "</p>";
+               echo "<p class='main-message'>" . $msg . "</p>";
+        ?>
+                <script type="text/javascript">
+                    jQuery(".main-message").fadeIn(300, function(){
+                        setTimeout(function(){jQuery(".main-message").fadeOut(300)}, 2000);
+                    });
+                </script>
+        <?php
                unset($_SESSION["msg"]);
             }
         ?>

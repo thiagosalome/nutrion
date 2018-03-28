@@ -1,5 +1,6 @@
 // mainForm
 config.require('main');
+    mainForm.onChange();
     mainForm.onFocus();
     mainForm.onBlur();
     mainForm.eachInput();

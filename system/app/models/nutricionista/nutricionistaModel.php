@@ -31,25 +31,6 @@
 class nutricionistaModel{
 
     /**
-     * Método para definir regras de negócio na inserção e chamar método insert da classe nutricionistaDAO
-     *
-     * @param nutricionistaVO $nutricionista
-     * @return void
-     */
-    /*
-
-    public function insertModel(nutricionistaVO $nutricionista){
-        $nutricionistaDao = new nutricionistaDAO;
-
-        if($nutricionista->getNome() == '' || $nutricionista->getTipo() == '' || $nutricionista->getEmail == '' || $nutricionista->getSenha == ''){
-            return false;
-        }
-        else{
-            return $nutricionistaDao->insert($nutricionista);
-        }
-    }
-*/
-    /**
      * Método para definir regras de negócio no select e chamar método getById da classe nutricionistaDAO
      *
      * @param [type] $id
@@ -102,42 +83,25 @@ class nutricionistaModel{
         return $nutricionistaDao->getAll();
     }
 
-    /*public function validaCamposPreenchidosLogin(nutricionistaVO $nutricionista){
-        if (empty($nutricionista->getEmail())or empty($nutricionista->getSenha())) {
-            return false;
-        }
-    }*/
-
-    public function logar(nutricionistaVO $nutricionista){
+    public function logarModel(nutricionistaVO $nutricionistaVo){
         $nutricionistaDao = new nutricionistaDAO();
         
-        if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha())) {
-            return false;//campo não preenchido, como mandar mensagem?
+        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
+            return 2;
         }   
-        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
-            //return false;
-            echo "Não validou";
-        }        
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
+            return 3;
+        }
         else{
-            /*$senhaBD = $nutricionistaDao->verifyUser($nutricionista->getEmail(),$nutricionista->getSenha());
-
-            if (!is_null($senhaBD)) {
-                if ($nutricionista->getSenha()==$senhaBD) {
-                    return true;               
-                }
-            }
-            return false;*/
+            $login = $nutricionistaDao->verifyUserLog($nutricionistaVo->getEmail(), $nutricionistaVo->getSenha());
             
-            $row = $nutricionistaDao->verifyUser($nutricionista->getEmail(), $nutricionista->getSenha());
             // Se encontrou usuário
-            if($row > 0){
-                echo "Encontrou";   
+            if($login == true){
                 return 1;
             }
             // Se não encontrou usuário
             else{  
-                echo "Não encontrou";           
-                return 101;
+                return 0;
             }
         }   
     }
@@ -151,15 +115,25 @@ class nutricionistaModel{
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
             return 3;
         }
+        else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionistaVo->getNome())){
+            return 4;  
+        }  
         else {
-            $cadastro = $nutricionistaDao->insert($nutricionistaVo);
-            // Se cadastrou usuário
-            if($cadastro == true){
-                return 1;
+            $verify_cad = $nutricionistaDao->verifyUserCad($nutricionistaVo->getEmail());
+
+            if($verify_cad == true){
+                return 5;
             }
-            // Se não cadastrou usuário
-            else{  
-                return 0;
+            else{
+                $cadastro = $nutricionistaDao->insert($nutricionistaVo);
+                // Se cadastrou usuário
+                if($cadastro == true){
+                    return 1;
+                }
+                // Se não cadastrou usuário
+                else{  
+                    return 0;
+                }
             }
         }
     }

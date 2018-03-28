@@ -160,16 +160,40 @@ class nutricionistaDAO{
         return $query;
     }
 
-    public function verifyUser($email, $senha){
-        // $sql = "SELECT senha FROM tb_nutricionista WHERE email = " . $email;
-        $sql = "SELECT * FROM tb_nutricionista WHERE email = '" . $email . "' AND senha = '" . $senha . "'";
-
-        $db = new DB();
-        $db->getConnection();            
-        $query = $db->execReader($sql);
+    public function verifyUserLog($email, $senha){
+        require_once "app/bootstrap.php";
         
-        $rows = mysqli_num_rows($query);
-        return $rows;
+        try{
+            $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email, "senha" => $senha));
+            
+            if($nutricionista != null){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
+    
+    public function verifyUserCad($email){
+        require_once "app/bootstrap.php";
+        
+        try{
+            $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email));
+            
+            if($nutricionista != null){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(Exception $e){
+            return false;
+        }
     }
 }
 ?>
