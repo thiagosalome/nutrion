@@ -31,7 +31,7 @@
             </div>
             <div class="block-form block-form-log js-form-log">
                 <h1 class="form-title">Login</h1>
-                <form method="POST" action="/nutrion/system/nutricionista/logar" class="form-content">
+                <form method="POST" action="/nutrion/system/nutricionista/signIn" class="form-content">
                     <span class="form-field">
                         <label for="emaillog">Email</label>
                         <input class="js-input-field" type="email" name="email" id="emaillog" required><br>
@@ -46,7 +46,7 @@
             </div>
             <div class="block-form block-form-cad js-form-cad">
                 <h1 class="form-title">Cadastro</h1>
-                <form method="POST" action="/nutrion/system/nutricionista/cadastrar" class="form-content">
+                <form method="POST" action="/nutrion/system/nutricionista/signUp" class="form-content">
                     <span class="form-field">
                         <label for"nomecad">Nome</label>
                         <input class="js-input-field" type="text" name="nome" id="nomecad" pattern="[a-zA-Z\s]{2,40}" title="Digite um nome válido, com no máximo 40 caracteres" required>

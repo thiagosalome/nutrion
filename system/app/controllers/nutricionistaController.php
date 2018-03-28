@@ -31,51 +31,7 @@ require "app/models/nutricionista/nutricionistaDAO.php";
 require "app/models/nutricionista/nutricionistaVo.php";
 require "app/models/nutricionista/nutricionistaModel.php";
 
-class nutricionistaController{
-
-    public function cadastrar(){
-        $nutricionistaModel = new nutricionistaModel();
-        $nutricionistaVo = new nutricionistaVo();
-        
-        $nutricionistaVo->setNome($_POST["nome"]); ///verificar campos!!!
-        $nutricionistaVo->setEmail($_POST["email"]);
-        $nutricionistaVo->setSenha($_POST["senha"]);
-
-        $insertModel = $nutricionistaModel->insertModel($nutricionistaVo);
-        session_start();
-        switch ($insertModel) {
-            case 0:
-                $_SESSION["msg"] = "Erro ao cadastrar usuário.";
-                header("Location: /nutrion/system/nutricionista/login");
-                break;
-            
-            case 1:
-                $_SESSION["msg"] = "Usuário cadastrado com sucesso.";
-                $_SESSION["email"] = $nutricionistaVo->getEmail();
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;
-
-            case 2:
-                $_SESSION["msg"] = "Há campos vazios.";
-                header("Location: /nutrion/system/nutricionista/login");
-                break;
-
-            case 3:
-                $_SESSION["msg"] = "O email digitado é inválido.";
-                header("Location: /nutrion/system/nutricionista/login");
-                break;
-            
-            case 4:
-                $_SESSION["msg"] = "O nome deve ter entre 2 e 40 caracteres.";
-                header("Location: /nutrion/system/nutricionista/login");
-                break;
-            
-            case 5:
-                $_SESSION["msg"] = "Esse usuário já está cadastrado no banco.";
-                header("Location: /nutrion/system/nutricionista/login");
-                break;
-        }
-    }
+class nutricionistaController{  
 
     public function login(){
         // Rota para view de login e cadastro
@@ -87,67 +43,154 @@ class nutricionistaController{
         include "app/views/nutricionista/dashboard.php";
     }
 
-    public function logar(){
+    public function signIn(){
         $nutricionistaModel = new nutricionistaModel();
         $nutricionistaVo = new nutricionistaVO();  
         
         $nutricionistaVo->setEmail($_POST["email"]);
         $nutricionistaVo->setSenha($_POST["senha"]);
         
-        $logarModel = $nutricionistaModel->logarModel($nutricionistaVo);
+        $logarModel = $nutricionistaModel->signIn($nutricionistaVo);
         session_start();
-        switch ($logarModel) {
-            case 0:
-                $_SESSION["msg"] = "Usuário inválido ou inexistente.";
-                header("Location: /nutrion/system/nutricionista/login");
-                break;
-
-            case 1:
-                $_SESSION["msg"] = "Usuário logado com sucesso";
-                $_SESSION["email"] = $nutricionistaVo->getEmail();
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;
-
-            case 2:
+        switch ($logarModel) {               
+            case "empty":
                 $_SESSION["msg"] = "Há campos vazios.";
                 header("Location: /nutrion/system/nutricionista/login");
                 break;
 
-            case 3:
+            case "not_an_email":
                 $_SESSION["msg"] = "O email digitado é inválido.";
                 header("Location: /nutrion/system/nutricionista/login");
+                break;
+
+            case "unregistered":
+                $_SESSION["msg"] = "Usuário inválido ou inexistente.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
+
+            case "loginfailed":
+                $_SESSION["msg"] = "Usuário e/ou senha inválido.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
+
+            case "sucess":
+                $_SESSION["msg"] = "Usuário logado com sucesso";
+                $_SESSION["email"] = $nutricionistaVo->getEmail();                
+                header("Location: /nutrion/system/nutricionista/dashboard");
                 break;
         }
     }
 
-    public function edita(){
+    public function signUp(){
         $nutricionistaModel = new nutricionistaModel();
-        $nutricionista = $nutricionistaModel->getByIdModel($_GET["id"]);
+        $nutricionistaVo = new nutricionistaVO();  
+        
+        $nutricionistaVo->setNome($_POST["nome"]);
+        $nutricionistaVo->setEmail($_POST["email"]);
+        $nutricionistaVo->setSenha($_POST["senha"]);
+        
+        $logarModel = $nutricionistaModel->signUp($nutricionistaVo);
+        session_start();
+        switch ($logarModel) {               
+            case "empty":
+                $_SESSION["msg"] = "Há campos vazios.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
 
-        $_SESSION["id"] = $nutricionista->getById();
-        $_SESSION["nome"] = $nutricionista->getNome();
-        $_SESSION["email"] = $nutricionista->getEmail();
-        $_SESSION["senha"] = $nutricionista->getSenha();
+            case "not_an_email":
+                $_SESSION["msg"] = "O email digitado é inválido.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
 
-        /* Rota para a view de edição */
+            case "invalid_name":
+                $_SESSION["msg"] = "O nome deve ter entre 2 e 40 caracteres.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
+
+            case "already_registered":
+                $_SESSION["msg"] = "Email já cadastrado.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
+
+            case "failed":
+                $_SESSION["msg"] = "Erro ao cadastrar o usuário.";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;    
+
+            case "sucess":
+                $_SESSION["msg"] = "Usuário cadastrado com sucesso";
+                $_SESSION["email"] = $nutricionistaVo->getEmail();
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
+        }
     }
 
-    public function atualizar(){
+    public function delete(){
         $nutricionistaModel = new nutricionistaModel();
-        $nutricionista = new nutricionistaVo();
+        $nutricionistaVo = new nutricionistaVO();  
         
-        $nutricionista->setId($_POST["id"]);
-        $nutricionista->setName($_POST["nome"]);
-        $nutricionista->setEmail($_POST["email"]);
-        $nutricionista->setSenha($_POST["senha"]);
+        //Precisa ter o objeto VO do usuario LOGADO desejado para passar como parametro
+        $nutricionistaVo->setId(4);        
+        
+        $deletar = $nutricionistaModel->delete($nutricionistaVo);
+        session_start();
+        switch ($deletar) {               
+            case "sucess":
+                $_SESSION["msg"] = "Usuário deletado com sucesso";
+                header("Location: /nutrion/system/nutricionista/login");
+                break;
 
-        if($nutricionistaModel->updateModel($nutricionista)){
-            $_SESSION["msg"] = "Usuário atualizado com sucesso!";
-        }
-        else{
-            $_SESSION["msg"] = "Erro ao atualizar usuário!";
+            case "failed":
+                $_SESSION["msg"] = "Usuário não deletado";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
+            }       
+    }
+
+    public function update(){
+        $nutricionistaModel = new nutricionistaModel();
+        $nutricionistaDao = new nutricionistaDAO();
+        
+        //usuario "NOVO" com informações novas
+        $nutricionista = new nutricionistaVo();
+        $nutricionista->setNome("carlos"); 
+        $nutricionista->setEmail("carlos@email.com");
+        $nutricionista->setSenha("senha");
+
+        $nutricionistaModel=$nutricionistaModel->update($nutricionista);
+        session_start();
+        switch ($nutricionistaModel) {
+            case "empty":
+                $_SESSION["msg"] = "Há campos vazios.";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
+
+            case "not_an_email":
+                $_SESSION["msg"] = "O email digitado é inválido.";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
+
+            case "invalid_name":
+                $_SESSION["msg"] = "O nome deve ter entre 2 e 40 caracteres.";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
+
+            case "already_registered":
+                $_SESSION["msg"] = "Email já cadastrado.";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
+
+            case "failed":
+                $_SESSION["msg"] = "Erro ao atualizar o usuário.";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;    
+
+            case "sucess":
+                $_SESSION["msg"] = "Usuário atualizado com sucesso";
+               
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                break;
         }
     }
 }
-
 ?>

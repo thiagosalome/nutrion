@@ -37,7 +37,9 @@
                 <p>Header</p>
             </header>
             <div class="dashboard-content">
-                <p>Seja bem vindo <?php echo $email; ?></p>
+                <p>Seja bem vindo <?php echo $email; ?></p></br>
+                <a href="/nutrion/system/nutricionista/delete">delete</a></br>
+                <a href="/nutrion/system/nutricionista/update">uptade</a></br>                
             </div>
             <footer class="dashboard-footer">
                 <p>Footer</p>

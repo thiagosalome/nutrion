@@ -1,46 +1,23 @@
 <?php
-
-/*
-    Passos:
-        Criar classe nutricionistaModel
-        
-        Criar método insertModel que recebe nutricionistaVo como parâmetro
-            Criar instância nutricionistaDAO
-            Criar regras de negócio (restrições, validações, condições, exceções)
-            Retornar método insert do objeto $nutricionistadao
-
-        Criar método getByIdModel que recebe uma variável $id como parâmetro
-            Criar instância nutricionistaDAO
-            Criar uma variável $nutricionista que recebe o método getById do objeto da classe nutricionistaDAO
-            Retornar a variável $nutricionista
-
-        Criar método deleteModel que recebe nutricionistaVo como parâmetro
-            Criar instância nutricionistaDAO
-            Retornar método delete do objeto $nutricionistadao
-        
-        Criar método updateModel que recebe nutricionistaVo como parâmetro
-            Criar instância nutricionistaDAO
-            Retornar método update do objeto $nutricionistadao
-        
-        Criar método getAllModel
-            Criar instância nutricionistaDAO
-            Retornar método getAll do objeto $nutricionistadao
-
-*/
-
 class nutricionistaModel{
-
+    
     /**
-     * Método para definir regras de negócio no select e chamar método getById da classe nutricionistaDAO
+     * Método para definir regras de negócio na exclusão e chamar método delete da classe nutricionistaDAO
      *
-     * @param [type] $id
+     * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function getByIdModel($id){
+    public function delete(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO;
 
-        $nutricionista = $nutricionistaDao->getById($id);
-        return $nutricionista;
+        // validar senha? confirmar a senha
+
+        if($nutricionistaDao->delete($nutricionista)){
+            return "sucess";
+        }
+        else{
+            return "failed";
+        }
     }
 
     /**
@@ -49,93 +26,96 @@ class nutricionistaModel{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function updateModel(nutricionistaVO $nutricionista){
-        $nutricionistaDao = new nutricionistaDAO;
-
-        if($nutricionista->getNome() == '' || $nutricionista->getEmail == '' || $nutricionista->getSenha == ''){
-            return false;
+    public function update(nutricionistaVO $nutricionista){              
+        if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
+            return "empty";
+        }   
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
+            return "not_an_email";
+        }
+        else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionista->getNome())){
+            return "invalid_name"; 
         }
         else{
-            return $nutricionistaDao->update($nutricionista);
-        }
-    }
-
-    /**
-     * Método para definir regras de negócio na exclusão e chamar método delete da classe nutricionistaDAO
-     *
-     * @param nutricionistaVO $nutricionista
-     * @return void
-     */
-    public function deleteModel(nutricionistaVO $nutricionista){
-        $nutricionistaDao = new nutricionistaDAO;
-
-        return $nutricionistaDao->delete($nutricionista);
-    }
-
-    /**
-     * Método para definir regras de negócio no select e chamar método getAll da classe nutricionistaDAO
-     *
-     * @return void
-     */
-    public function getAllModel(){
-        $nutricionistaDao = new nutricionistaDAO;
-
-        return $nutricionistaDao->getAll();
-    }
-
-    public function logarModel(nutricionistaVO $nutricionistaVo){
-        $nutricionistaDao = new nutricionistaDAO();
-        
-        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
-            return 2;
-        }   
-        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return 3;
-        }
-        else{
-            $login = $nutricionistaDao->verifyUserLog($nutricionistaVo->getEmail(), $nutricionistaVo->getSenha());
-            
-            // Se encontrou usuário
-            if($login == true){
-                return 1;
-            }
-            // Se não encontrou usuário
-            else{  
-                return 0;
-            }
-        }   
-    }
-
-    public function insertModel(nutricionistaVo $nutricionistaVo){
-        $nutricionistaDao = new nutricionistaDAO();
-
-        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome()))) {
-            return 2;
-        }   
-        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return 3;
-        }
-        else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionistaVo->getNome())){
-            return 4;  
-        }  
-        else {
-            $verify_cad = $nutricionistaDao->verifyUserCad($nutricionistaVo->getEmail());
-
-            if($verify_cad == true){
-                return 5;
+            $nutricionistaDao = new nutricionistaDAO();
+            $update = $nutricionistaDao->update($nutricionista);
+            if($update != true){
+                return "failed";
             }
             else{
-                $cadastro = $nutricionistaDao->insert($nutricionistaVo);
-                // Se cadastrou usuário
-                if($cadastro == true){
-                    return 1;
+                return "sucess";
+            }
+
+            //verificar se novo email já está no BD:
+            /*
+                $user = $nutricionistaDao->getByEmail($nutricionista->getEmail());            
+                if($user != null){
+                    return "already_registered";
+                }            
+                else{
+                    $update = $nutricionistaDao->update($nutricionista);
+                    if($update != true){
+                        return "failed";
+                    }
+                    else{
+                        return "sucess";
+                    }
+                }*/
+        }
+    }    
+   
+    public function signIn(nutricionistaVO $nutricionistaVo){
+               
+        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
+            return "empty";
+        }   
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
+            return "not_an_email";
+        }
+        else{
+            $nutricionistaDao = new nutricionistaDAO();                       
+            $user = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
+            if($user == null){
+                return "unregistered";
+            }            
+            else{ 
+                if($nutricionistaVo->getSenha()!=$user->getSenha()){
+                    return "loginfailed";
                 }
-                // Se não cadastrou usuário
-                else{  
-                    return 0;
+                else{
+                    return "sucess";
                 }
             }
+        }   
+    }
+
+    public function signUp(nutricionistaVO $nutricionistaVo){
+               
+        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome()))) {
+            return "empty";
+        }   
+        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
+            return "not_an_email";
         }
+        else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionistaVo->getNome())){
+            return "invalid_name"; 
+        }
+        else{
+            $nutricionistaDao = new nutricionistaDAO();                       
+            $user = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
+            if($user != null){
+                return "already_registered";
+            }            
+            else{
+                $cadastro = $nutricionistaDao->insert($nutricionistaVo);
+                if($cadastro != true){
+                    return "failed";
+                }
+                else{
+                    return "sucess";
+                }
+            }
+        }   
     }
 }
 ?>
