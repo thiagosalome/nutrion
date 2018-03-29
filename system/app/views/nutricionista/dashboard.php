@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    if(isset($_SESSION["email"])){
-        $email = $_SESSION["email"];
-    }
-    else{
-        header("Location: /nutrion/system/");
-    }
+    // session_start();
+    // if(isset($_SESSION["email"])){
+    //     $email = $_SESSION["email"];
+    // }
+    // else{
+    //     header("Location: /nutrion/system/");
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,9 +37,26 @@
                 <p>Header</p>
             </header>
             <div class="dashboard-content">
-                <p>Seja bem vindo <?php echo $email; ?></p></br>
-                <a href="/nutrion/system/nutricionista/delete">delete</a></br>
-                <a href="/nutrion/system/nutricionista/update">uptade</a></br>                
+                <!-- <p>Seja bem vindo <?php echo $email; ?></p></br> -->
+                <!-- <p>Seja bem vindo</p></br> -->
+                <!-- <h1 class="form-title">Atualizar Dados</h1> -->
+                <form method="POST" action="/nutrion/system/nutricionista/edit" class="form-content">
+                    <span class="form-field">
+                        <label for"nomeupdate">Nome</label>
+                        <input class="js-input-field" type="text" name="nome" id="nomeupdate" pattern="[a-zA-Z\s]{2,40}" title="Digite um nome válido, com no máximo 40 caracteres" required>
+                    </span>
+                    <span class="form-field">
+                        <label for"emailupdate">Email</label>
+                        <input class="js-input-field" type="email" name="email" id="emailupdate" required>
+                    </span>
+                    <span class="form-field">
+                        <label for"senhaupdate">Senha</label>
+                        <input class="js-input-field" type="password" name="senha" id="senhaupdate" required>
+                    </span>
+                    <input type="submit" value="Atualizar" class="form-button" name="atualizar">
+                </form>
+                <!-- <a href="/nutrion/system/nutricionista/delete">delete</a></br> -->
+                <!-- <a href="/nutrion/system/nutricionista/update">uptade</a></br>                 -->
             </div>
             <footer class="dashboard-footer">
                 <p>Footer</p>
