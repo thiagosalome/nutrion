@@ -26,7 +26,7 @@ class nutricionistaModel{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function update(nutricionistaVO $nutricionista){              
+    public function update(nutricionistaVO $nutricionista,$emailUsuarioLogado){              
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
             return "empty";
         }   
@@ -38,7 +38,7 @@ class nutricionistaModel{
         }
         else{
             $nutricionistaDao = new nutricionistaDAO();
-            $update = $nutricionistaDao->update($nutricionista);
+            $update = $nutricionistaDao->update($nutricionista,$emailUsuarioLogado);
             if($update != true){
                 return "failed";
             }

@@ -35,10 +35,13 @@ class nutricionistaDAO{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function delete(nutricionistaVO $nutricionista){
+    public function delete($emailUsuarioLogado){
         require "app/bootstrap.php";
-        try{                     
-            $excluir = $entityManager->find('Nutricionista',$nutricionista->getId());
+        try{
+            $nutricionistaDAO = new UsuarioDAO; 
+            $nutricionistaLogado = new UsuarioVO;
+            $nutricionistaLogado = $nutricionistaDAO->getByEmail($emailUsuarioLogado);                   
+            $excluir = $entityManager->find('Nutricionista',$nutricionistaLogado->getId());
             $entityManager->remove($excluir); 
             $entityManager->flush();
             return true;
@@ -54,17 +57,17 @@ class nutricionistaDAO{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function update(nutricionistaVO $nutricionista){
+    public function update(nutricionistaVO $nutricionista,$emailUsuarioLogado){
         require "app/bootstrap.php";
         try{
-            // pegar usuario logado:
-            $n=new NutricionistaVo();
-            $n->setId(1);
+            $nutricionistaDAO = new UsuarioDAO; 
+            $nutricionistaLogado = new UsuarioVO;
+            $nutricionistaLogado = $nutricionistaDAO->getByEmail($emailUsuarioLogado);
 
-            $update = $entityManager->find('Nutricionista',$n->getId());
-
+            $update = $entityManager->find('Nutricionista',$nutricionistaLogado->getId());
             $update->setNome($nutricionista->getNome()); 
-            $update->setEmail($nutricionista->getEmail()); 
+            $update->setEmail($nutricionista->getEmail());
+            $update->setSenha($nutricionista->getSenha());  
             $entityManager->persist($update); 
             $entityManager->flush();
             return true;

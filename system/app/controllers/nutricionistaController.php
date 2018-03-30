@@ -5,6 +5,8 @@ require "app/models/nutricionista/nutricionistaModel.php";
 
 class nutricionistaController{  
 
+    public $emailUsuarioLogado;
+
     public function login(){
         // Rota para view de login e cadastro
         include "app/views/nutricionista/login.php";
@@ -47,7 +49,7 @@ class nutricionistaController{
 
             case "sucess":
                 $_SESSION["msg"] = "Usuário logado com sucesso";
-                $_SESSION["email"] = $nutricionistaVo->getEmail();                
+                $emailUsuarioLogado = $nutricionistaVo->getEmail();               
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;
         }
@@ -91,20 +93,15 @@ class nutricionistaController{
 
             case "sucess":
                 $_SESSION["msg"] = "Usuário cadastrado com sucesso";
-                $_SESSION["email"] = $nutricionistaVo->getEmail();
+                $emailUsuarioLogado = $nutricionistaVo->getEmail(); 
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;
         }
     }
 
     public function delete(){
-        $nutricionistaModel = new nutricionistaModel();
-        $nutricionistaVo = new nutricionistaVO();  
-        
-        //Precisa ter o objeto VO do usuario LOGADO desejado para passar como parametro
-        $nutricionistaVo->setId(4);        
-        
-        $deletar = $nutricionistaModel->delete($nutricionistaVo);
+        $nutricionistaModel = new nutricionistaModel();              
+        $deletar = $nutricionistaModel->delete($emailUsuarioLogado);
         session_start();
         switch ($deletar) {               
             case "sucess":
@@ -119,17 +116,20 @@ class nutricionistaController{
             }       
     }
 
-    public function update(){
-        $nutricionistaModel = new nutricionistaModel();
-        $nutricionistaDao = new nutricionistaDAO();
-        
-        //usuario "NOVO" com informações novas
+    public function update(){                          
         $nutricionista = new nutricionistaVo();
-        $nutricionista->setNome("carlos"); 
-        $nutricionista->setEmail("carlos@email.com");
+        /* $nutricionista->setNome($_POST["nome"]);
+        $nutricionista->setEmail($_POST["email"]);
+        $nutricionista->setSenha($_POST["senha"]); */
+
+        $nutricionista->setNome("nome");
+        $nutricionista->setEmail("email@email.com");
         $nutricionista->setSenha("senha");
 
-        $nutricionistaModel=$nutricionistaModel->update($nutricionista);
+        
+
+        $nutricionistaModel = new nutricionistaModel();
+        $nutricionistaModel=$nutricionistaModel->update($nutricionista,$emailUsuarioLogado);
         session_start();
         switch ($nutricionistaModel) {
             case "empty":
