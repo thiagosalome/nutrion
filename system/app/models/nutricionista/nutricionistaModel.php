@@ -24,7 +24,7 @@ class nutricionistaModel{
         $delete = $nutricionistaDao->delete($emailUsuarioLogado);
 
         if($delete){
-            return "sucess";
+            return "success";
         }
         else{
             return "failed";
@@ -56,7 +56,7 @@ class nutricionistaModel{
                 return "failed";
             }
             else{
-                return "sucess";
+                return "success";
             }
 
             //verificar se novo email já está no BD:
@@ -71,7 +71,7 @@ class nutricionistaModel{
                         return "failed";
                     }
                     else{
-                        return "sucess";
+                        return "success";
                     }
                 }*/
         }
@@ -96,7 +96,7 @@ class nutricionistaModel{
                     return "loginfailed";
                 }
                 else{
-                    return "sucess";
+                    return "success";
                 }
             }
         }   
@@ -125,7 +125,7 @@ class nutricionistaModel{
                     return "failed";
                 }
                 else{
-                    return "sucess";
+                    return "success";
                 }
             }
         }   

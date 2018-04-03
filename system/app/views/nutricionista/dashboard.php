@@ -1,11 +1,11 @@
 <?php
-    // session_start();
-    // if(isset($_SESSION["email"])){
-    //     $email = $_SESSION["email"];
-    // }
-    // else{
-    //     header("Location: /nutrion/system/");
-    // }
+    session_start();
+    if(isset($_SESSION["loggeduser"])){
+        $email = $_SESSION["loggeduser"];
+    }
+    else{
+        header("Location: /nutrion/system/");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,7 +37,7 @@
                 <p>Header</p>
             </header>
             <div class="dashboard-content">
-                <!-- <p>Seja bem vindo <?php  $email; ?></p></br> -->
+                <p>Seja bem vindo <?php  echo $email; ?></p></br>
                 <!-- <p>Seja bem vindo</p></br> -->
                 <!-- <h1 class="form-title">Atualizar Dados</h1> -->
                 <!--<form method="POST" action="/nutrion/system/nutricionista/update" class="form-content">
@@ -55,8 +55,8 @@
                     </span>
                     <input type="submit" value="Atualizar" class="form-button" name="atualizar">
                 </form>-->
-                <a href="/nutrion/system/nutricionista/delete">delete </a></br>
-                <a href="/nutrion/system/nutricionista/update"> update</a></br>
+                <a href="/nutrion/system/nutricionista/delete">Delete</a></br>
+                <a href="/nutrion/system/nutricionista/update">Update</a></br>
             </div>
             <footer class="dashboard-footer">
                 <p>Footer</p>

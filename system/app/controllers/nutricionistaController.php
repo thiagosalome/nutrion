@@ -47,7 +47,7 @@ class nutricionistaController{
                 header("Location: /nutrion/system/nutricionista/login");
                 break;
 
-            case "sucess":
+            case "success":
                 $_SESSION["msg"] = "Usuário logado com sucesso";
                 $_SESSION["loggeduser"] = $nutricionistaVo->getEmail();
                 $emailUsuarioLogado = $nutricionistaVo->getEmail();               
@@ -92,7 +92,7 @@ class nutricionistaController{
                 header("Location: /nutrion/system/nutricionista/login");
                 break;    
 
-            case "sucess":
+            case "success":
                 $_SESSION["msg"] = "Usuário cadastrado com sucesso";
                 $emailUsuarioLogado = $nutricionistaVo->getEmail(); 
                 header("Location: /nutrion/system/nutricionista/dashboard");
@@ -161,7 +161,7 @@ class nutricionistaController{
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;    
 
-            case "sucess":
+            case "success":
                 $_SESSION["msg"] = "Usuário atualizado com sucesso";            
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;
