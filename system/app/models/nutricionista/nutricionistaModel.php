@@ -7,12 +7,23 @@ class nutricionistaModel{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function delete(nutricionistaVO $nutricionista){
-        $nutricionistaDao = new nutricionistaDAO;
+    //public function delete(nutricionistaVO $nutricionista){
+    public function delete(){
+        $nutricionistaDao = new nutricionistaDAO();
+        $nutricionista = new nutricionistaVo();
 
+        session_start();
+        if(isset($_SESSION['loggeduser'])){ 
+            $emailUsuarioLogado = $_SESSION["loggeduser"];
+            //echo $emailUsuarioLogado;
+        }
+
+        //$nutricionista = $nutricionistaDao->getByEmail($emailUsuarioLogado);
         // validar senha? confirmar a senha
 
-        if($nutricionistaDao->delete($nutricionista)){
+        $delete = $nutricionistaDao->delete($emailUsuarioLogado);
+
+        if($delete){
             return "sucess";
         }
         else{
@@ -26,7 +37,8 @@ class nutricionistaModel{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function update(nutricionistaVO $nutricionista,$emailUsuarioLogado){              
+    //public function update(nutricionistaVO $nutricionista,$emailUsuarioLogado){  
+        public function update(nutricionistaVO $nutricionista){                
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
             return "empty";
         }   
@@ -38,7 +50,8 @@ class nutricionistaModel{
         }
         else{
             $nutricionistaDao = new nutricionistaDAO();
-            $update = $nutricionistaDao->update($nutricionista,$emailUsuarioLogado);
+            //$update = $nutricionistaDao->update($nutricionista,$emailUsuarioLogado);
+            $update = $nutricionistaDao->update($nutricionista);
             if($update != true){
                 return "failed";
             }

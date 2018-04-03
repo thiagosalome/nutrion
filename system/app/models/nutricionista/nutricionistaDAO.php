@@ -38,11 +38,13 @@ class nutricionistaDAO{
     public function delete($emailUsuarioLogado){
         require "app/bootstrap.php";
         try{
-            $nutricionistaDAO = new UsuarioDAO; 
-            $nutricionistaLogado = new UsuarioVO;
-            $nutricionistaLogado = $nutricionistaDAO->getByEmail($emailUsuarioLogado);                   
-            $excluir = $entityManager->find('Nutricionista',$nutricionistaLogado->getId());
-            $entityManager->remove($excluir); 
+            $nutricionistaDAO = new nutricionistaDAO(); 
+            $nutricionistaLogado = new nutricionistaVo();
+            $nutricionistaLogado = $nutricionistaDAO->getByEmail($emailUsuarioLogado);
+                  
+            $delete = new Nutricionista;
+            $delete = $entityManager->find('Nutricionista',$nutricionistaLogado->getId());
+            $entityManager->remove($delete); 
             $entityManager->flush();
             return true;
         }
@@ -57,14 +59,27 @@ class nutricionistaDAO{
      * @param nutricionistaVO $nutricionista
      * @return void
      */
-    public function update(nutricionistaVO $nutricionista,$emailUsuarioLogado){
+    //public function update(nutricionistaVO $nutricionista,$emailUsuarioLogado){
+    public function update(nutricionistaVO $nutricionista){
+        
+        if(isset($_SESSION['loggeduser'])){ 
+            $emailUsuarioLogado = $_SESSION["loggeduser"];
+            //echo $emailUsuarioLogado;
+        }
+        
         require "app/bootstrap.php";
         try{
-            $nutricionistaDAO = new UsuarioDAO; 
-            $nutricionistaLogado = new UsuarioVO;
+            //$nutricionistaDAO = new UsuarioDAO; 
+            //$nutricionistaLogado = new UsuarioVO;
+            $nutricionistaLogado = new nutricionistaVo();
+            //$nutricionistaLogado = $nutricionistaDAO->getByEmail($emailUsuarioLogado);
+            //$nutricionistaLogado->setEmail($emailUsuarioLogado);
+            $nutricionistaDAO = new nutricionistaDAO;
             $nutricionistaLogado = $nutricionistaDAO->getByEmail($emailUsuarioLogado);
 
+            $update = new Nutricionista;
             $update = $entityManager->find('Nutricionista',$nutricionistaLogado->getId());
+
             $update->setNome($nutricionista->getNome()); 
             $update->setEmail($nutricionista->getEmail());
             $update->setSenha($nutricionista->getSenha());  
