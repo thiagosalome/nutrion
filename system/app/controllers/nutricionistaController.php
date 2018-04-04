@@ -94,8 +94,9 @@ class nutricionistaController{
 
             case "success":
                 $_SESSION["msg"] = "Usuário cadastrado com sucesso";
+                $_SESSION["loggeduser"] = $nutricionistaVo->getEmail();
                 $emailUsuarioLogado = $nutricionistaVo->getEmail(); 
-                header("Location: /nutrion/system/nutricionista/dashboard");
+                header("Location: /nutrion/system/nutricionista/login");
                 break;
         }
     }
