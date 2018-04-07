@@ -47,8 +47,9 @@ class nutricionistaController{
                 header("Location: /nutrion/system/nutricionista/login");
                 break;
 
-            case "sucess":
+            case "success":
                 $_SESSION["msg"] = "Usuário logado com sucesso";
+                $_SESSION["loggeduser"] = $nutricionistaVo->getEmail();
                 $emailUsuarioLogado = $nutricionistaVo->getEmail();               
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;
@@ -91,46 +92,50 @@ class nutricionistaController{
                 header("Location: /nutrion/system/nutricionista/login");
                 break;    
 
-            case "sucess":
+            case "success":
                 $_SESSION["msg"] = "Usuário cadastrado com sucesso";
+                $_SESSION["loggeduser"] = $nutricionistaVo->getEmail();
                 $emailUsuarioLogado = $nutricionistaVo->getEmail(); 
-                header("Location: /nutrion/system/nutricionista/dashboard");
+                header("Location: /nutrion/system/nutricionista/login");
                 break;
         }
     }
 
     public function delete(){
-        $nutricionistaModel = new nutricionistaModel();              
-        $deletar = $nutricionistaModel->delete($emailUsuarioLogado);
-        session_start();
-        switch ($deletar) {               
-            case "sucess":
-                $_SESSION["msg"] = "Usuário deletado com sucesso";
-                header("Location: /nutrion/system/nutricionista/login");
-                break;
+        $nutricionistaModel = new nutricionistaModel();
+        //$nutricionistaVo = new nutricionistaVO();
+        
+        $deleteNutricionista = $nutricionistaModel->delete();
 
-            case "failed":
-                $_SESSION["msg"] = "Usuário não deletado";
-                header("Location: /nutrion/system/nutricionista/dashboard");
+        switch ($deleteNutricionista) {
+            case "success":
+                $_SESSION["msg"] = "Usuário excluído com sucesso";            
+                header("Location: /nutrion/system/nutricionista/login");
+                echo $_SESSION["msg"];
                 break;
-            }       
+            case "failed":
+                $_SESSION["msg"] = "Erro ao excluir o usuário.";
+                header("Location: /nutrion/system/nutricionista/dashboard");
+                echo $_SESSION["msg"];
+                break; 
+        }
     }
 
     public function update(){                          
-        $nutricionista = new nutricionistaVo();
+        $novoNutricionista = new nutricionistaVo();
         /* $nutricionista->setNome($_POST["nome"]);
         $nutricionista->setEmail($_POST["email"]);
         $nutricionista->setSenha($_POST["senha"]); */
-
-        $nutricionista->setNome("nome");
-        $nutricionista->setEmail("email@email.com");
-        $nutricionista->setSenha("senha");
+        session_start();
+        $novoNutricionista->setNome("nome");
+        $novoNutricionista->setEmail("email@email.com");
+        $novoNutricionista->setSenha("senha");
 
         
 
         $nutricionistaModel = new nutricionistaModel();
-        $nutricionistaModel=$nutricionistaModel->update($nutricionista,$emailUsuarioLogado);
-        session_start();
+        //$nutricionistaModel=$nutricionistaModel->update($novoNutricionista,$emailUsuarioLogado);
+        $nutricionistaModel=$nutricionistaModel->update($novoNutricionista);
         switch ($nutricionistaModel) {
             case "empty":
                 $_SESSION["msg"] = "Há campos vazios.";
@@ -157,9 +162,8 @@ class nutricionistaController{
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;    
 
-            case "sucess":
-                $_SESSION["msg"] = "Usuário atualizado com sucesso";
-               
+            case "success":
+                $_SESSION["msg"] = "Usuário atualizado com sucesso";            
                 header("Location: /nutrion/system/nutricionista/dashboard");
                 break;
         }
