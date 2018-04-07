@@ -9,7 +9,7 @@ Version: 1.0;
   00 - @pagina de Login CSS
 ---------------------*/
 /* Login */
-@import url('/nutrion/system/app/public/css/login.css');
+@import url('/nutrion/app/public/css/login.css');
 
 /* Dashboard */
-@import url('/nutrion/system/app/public/css/dashboard.css');
+@import url('/nutrion/app/public/css/dashboard.css');

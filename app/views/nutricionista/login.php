@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- link css -->
-    <link rel="stylesheet" href="/nutrion/system/app/public/css/style.css">
+    <link rel="stylesheet" href="/nutrion/app/public/css/style.css">
     
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -21,17 +21,17 @@
 <body>
     <main class="main">
         <header class="main-header">
-            <img src="/nutrion/system/app/public/images/logo.png" alt="" title="" class="header-logo">
+            <img src="/nutrion/app/public/images/logo.png" alt="" title="" class="header-logo">
         </header>
         <div class="main-block">
             <div class="block-description js-block-description" data-position="left">
-                <img src="/nutrion/system/app/public/images/logo_mini.png" alt="" class="description-logo">
+                <img src="/nutrion/app/public/images/logo_mini.png" alt="" class="description-logo">
                 <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" class="description-button js-btn-slide-block">Cadastrar</button>
             </div>
             <div class="block-form block-form-log js-form-log">
                 <h1 class="form-title">Login</h1>
-                <form method="POST" action="/nutrion/system/nutricionista/signIn" class="form-content">
+                <form method="POST" action="/nutrion/nutricionista/signIn" class="form-content">
                     <span class="form-field">
                         <label for="emaillog">Email</label>
                         <input class="js-input-field" type="email" name="email" id="emaillog" required><br>
@@ -46,7 +46,7 @@
             </div>
             <div class="block-form block-form-cad js-form-cad">
                 <h1 class="form-title">Cadastro</h1>
-                <form method="POST" action="/nutrion/system/nutricionista/signUp" class="form-content">
+                <form method="POST" action="/nutrion/nutricionista/signUp" class="form-content">
                     <span class="form-field">
                         <label for"nomecad">Nome</label>
                         <input class="js-input-field" type="text" name="nome" id="nomecad" pattern="[a-zA-Z\s]{2,40}" title="Digite um nome válido, com no máximo 40 caracteres" required>
@@ -79,7 +79,7 @@
             }
         ?>
     </main>
-    <script type="text/javascript" src="/nutrion/system/app/public/js/config.js"></script>
-    <script type="text/javascript" src="/nutrion/system/app/public/js/app.js"></script>
+    <script type="text/javascript" src="/nutrion/app/public/js/config.js"></script>
+    <script type="text/javascript" src="/nutrion/app/public/js/app.js"></script>
 </body>
 </html>
