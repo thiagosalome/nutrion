@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- link css -->
-    <link rel="stylesheet" href="/nutrion/app/public/css/style.css">
+    <link rel="stylesheet" href="/nutrion/app/public/css/login.css">
     
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
