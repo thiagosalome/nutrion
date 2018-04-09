@@ -15,4 +15,11 @@ Front-end:
         ☐ Criar tela interna de Paciente (Layout e Design)
         ☐ Criar tela de Adição de Paciente (Layout e Design)
         ☐ Criar tela de Relatórios (Layout e Design)
-        ☐ Implementar AJAX
+        ✔ Implementar AJAX @done (2018-4-9 14:15:06)
+
+Outras Tarefas:
+    ✔ Hospedar site no Azure @done (2018-4-9 14:23:00)
+    ☐ Realizar conexão com o banco de dados MySQL do Azure
+    ☐ Criar .htaccess para o Azure para tornar as urls amigáveis
+    ☐ Configurar links para funcionar em homologação e produção
+    ☐ Criar branch de homologação no git

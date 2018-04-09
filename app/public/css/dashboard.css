@@ -1,8 +1,8 @@
 /* Menu 
-@import url('/nutrion/app/public/css/objects/menu.css');
+@import url('./app/public/css/objects/menu.css');
 
 /* Tabela 
-@import url('/nutrion/app/public/css/objects/table.css');*/
+@import url('./app/public/css/objects/table.css');*/
 
 * {
     margin: 0;

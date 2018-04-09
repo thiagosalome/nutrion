@@ -11,7 +11,6 @@ var mainForm = {
                 data : jQuery(this).serialize(),
                 type: "POST",
                 success : function(result){
-                    debugger;
                     mainForm.showMessage(messages[result]);
                     if(result == "success_signup"){
                         mainSlider.js_btn_slider_block.click();
