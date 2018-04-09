@@ -1,8 +1,8 @@
 /* Menu 
-@import url('./app/public/css/objects/menu.css');
+@import url('https://nutrion.azurewebsites.net/app/public/css/objects/menu.css');
 
 /* Tabela 
-@import url('./app/public/css/objects/table.css');*/
+@import url('https://nutrion.azurewebsites.net/app/public/css/objects/table.css');*/
 
 * {
     margin: 0;

@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- link css -->
-    <link rel="stylesheet" href="./app/public/css/dashboard.css">
+    <link rel="stylesheet" href="https://nutrion.azurewebsites.net/app/public/css/dashboard.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
     <!-- google fonts -->
@@ -36,7 +36,7 @@
             <aside class = "aside-lateral">
 
                 <header class="header-aside">
-                    <img src="./app/public/images/dashboard/logo_menu.png" alt="" title="" class="header-logo">
+                    <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/logo_menu.png" alt="" title="" class="header-logo">
                 </header>
 
                 <nav class="nav-menu">
@@ -44,55 +44,55 @@
                         <li>
                             <img src="nutrion/app/public/images/dashboard/patient_icon.png" alt="" class="icon-list">
                             <p class="li-item">Pacientes</p>
-                            <img src="./app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
+                            <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
                             <ul>
                                 <li>
                                     <a href="#" title="Item">
-                                        <img src="./app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
+                                        <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
                                         <p class="li-subitem">Consultar Pacientes</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" title="Item">
-                                        <img src="./app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
+                                        <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
                                         <p class="li-subitem">Adicionar Paciente</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <img src="./app/public/images/dashboard/aliments_icon.png" alt="" class="icon-list">
+                            <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/aliments_icon.png" alt="" class="icon-list">
                             <p class="li-item">Alimentos</p>
-                            <img src="./app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
+                            <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
                             <ul>
                                 <li>
                                     <a href="#" title="Item">
-                                        <img src="./app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
+                                        <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
                                         <p class="li-subitem">Consultar Alimentos</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" title="Item">
-                                        <img src="./app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
+                                        <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
                                         <p class="li-subitem">Adicionar Alimentos</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <img src="./app/public/images/dashboard/menu_icon.png" alt="" class="icon-list">
+                            <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/menu_icon.png" alt="" class="icon-list">
                             <p class="li-item">Dieta</p>
-                            <img src="./app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
+                            <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
                             <ul>
                                 <li>
                                     <a href="#" title="Item">
-                                        <img src="./app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
+                                        <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
                                         <p class="li-subitem">Consultar Dieta</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" title="Item">
-                                        <img src="./app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
+                                        <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
                                         <p class="li-subitem">Adicionar Dieta</p>
                                     </a>
                                 </li>
@@ -123,17 +123,17 @@
 
             <section class="section-divs">
                 <div class="icons-pacients1">
-                <img src="./app/public/images/dashboard/icon_patients.png" alt="" title="" class="person-blue">
+                <img src="https://nutrion.azurewebsites.net/app/public/images/dashboard/icon_patients.png" alt="" title="" class="person-blue">
                 <span class="number-up">192</span>
                 <p class="icons-title">Pacientes</p>
 
                 <div class="icons-pacients2">
-                <img src="./app/public/images//dashboard/icon_patients.png" alt="" title="" class="person-blue-green">
+                <img src="https://nutrion.azurewebsites.net/app/public/images//dashboard/icon_patients.png" alt="" title="" class="person-blue-green">
                 <span class="number-up">192</span>
                 <p class="icons-title">Pacientes</p>
 
                 <div class="icons-pacients3">
-                <img src="./app/public/images//dashboard/icon_patients.png" alt="" title="" class="person-green">
+                <img src="https://nutrion.azurewebsites.net/app/public/images//dashboard/icon_patients.png" alt="" title="" class="person-green">
                 <span class="number-up">192</span>
                 <p class="icons-title">Pacientes</p>
             </section>
@@ -379,7 +379,7 @@
             <div class="dashboard-content">
                 <!-- <p>Seja bem vindo</p></br> -->
                 <!-- <h1 class="form-title">Atualizar Dados</h1> -->
-                <!--<form method="POST" action="./nutricionista/update" class="form-content">
+                <!--<form method="POST" action="https://nutrion.azurewebsites.net/nutricionista/update" class="form-content">
                     <span class="form-field">
                         <label for"nomeupdate">Nome</label>
                         <input class="js-input-field" type="text" name="nome" id="nomeupdate" pattern="[a-zA-Z\s]{2,40}" title="Digite um nome válido, com no máximo 40 caracteres" required>
@@ -394,15 +394,15 @@
                     </span>
                     <input type="submit" value="Atualizar" class="form-button" name="atualizar">
                 </form>
-                <a href="./nutricionista/delete">Delete</a></br>
-                <a href="./nutricionista/update">Update</a></br>
+                <a href="https://nutrion.azurewebsites.net/nutricionista/delete">Delete</a></br>
+                <a href="https://nutrion.azurewebsites.net/nutricionista/update">Update</a></br>
             </div>
             <footer class="dashboard-footer">
                 <p>Footer</p>
             </footer>
         </section>
     </main>
-    <script type="text/javascript" src="./app/public/js/config.js"></script>
-    <script type="text/javascript" src="./app/public/js/app.js"></script>
+    <script type="text/javascript" src="https://nutrion.azurewebsites.net/app/public/js/config.js"></script>
+    <script type="text/javascript" src="https://nutrion.azurewebsites.net/app/public/js/app.js"></script>
 </body>-->
 </html>

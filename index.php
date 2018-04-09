@@ -12,7 +12,7 @@
                     Ex: eval("\$controller->" . $_GET['Action'] . " ();");
 
 */
-    if(isset($_GET["Controller"])){
+    /*if(isset($_GET["Controller"])){
         include "app/controllers/" . $_GET["Controller"] . "Controller.php";
 
         $class = $_GET["Controller"] . "Controller";
@@ -21,5 +21,7 @@
         if(isset($_GET["Action"])){
             eval("\$controller->" . $_GET['Action'] . " ();");
         }
-    }
+    }*/
+
+    require_once "config.php";
 ?>

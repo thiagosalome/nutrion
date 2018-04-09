@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- link css -->
-    <link rel="stylesheet" href="./app/public/css/login.css">
+    <link rel="stylesheet" href="https://nutrion.azurewebsites.net/app/public/css/login.css">
     
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -21,11 +21,11 @@
 <body>
     <main class="main">
         <header class="main-header">
-            <img src="./app/public/images/logo.png" alt="" title="" class="header-logo">
+            <img src="https://nutrion.azurewebsites.net/app/public/images/logo.png" alt="" title="" class="header-logo">
         </header>
         <div class="main-block">
             <div class="block-description js-block-description" data-position="left">
-                <img src="./app/public/images/logo_mini.png" alt="" class="description-logo">
+                <img src="https://nutrion.azurewebsites.net/app/public/images/logo_mini.png" alt="" class="description-logo">
                 <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" class="description-button js-btn-slide-block">Cadastrar</button>
             </div>
@@ -64,23 +64,8 @@
             </div>
         </div>
         <p class='main-message js-message'></p>
-        <!-- <?php
-            session_start();
-            if(isset($_SESSION["msg"])) {
-               $msg = $_SESSION["msg"];
-               echo "<p class='main-message'>" . $msg . "</p>";
-        ?>
-                <script type="text/javascript">
-                    jQuery(".main-message").fadeIn(300, function(){
-                        setTimeout(function(){jQuery(".main-message").fadeOut(300)}, 2000);
-                    });
-                </script>
-        <?php
-               unset($_SESSION["msg"]);
-            }
-        ?> -->
     </main>
-    <script type="text/javascript" src="./app/public/js/config.js"></script>
-    <script type="text/javascript" src="./app/public/js/app.js"></script>
+    <script type="text/javascript" src="https://nutrion.azurewebsites.net/app/public/js/config.js"></script>
+    <script type="text/javascript" src="https://nutrion.azurewebsites.net/app/public/js/app.js"></script>
 </body>
 </html>
