@@ -1,11 +1,42 @@
 var mainForm = {
     //Attributes
+    'js_message' : jQuery(".js-message"),
+
+    //Functions
+    'onSubmit' : function(form, url){
+        jQuery(document).on("submit", form, function(e){
+            e.preventDefault();
+            jQuery.ajax({
+                url : url,
+                data : jQuery(this).serialize(),
+                type: "POST",
+                success : function(result){
+                    debugger;
+                    mainForm.showMessage(messages[result]);
+                    if(result == "success_signup"){
+                        mainSlider.js_btn_slider_block.click();
+                    }
+                }
+            });
+        });
+    },
+    'showMessage' : function(msg){
+        this.js_message.text(msg).fadeIn(300, function(){
+            setTimeout(function(){mainForm.js_message.fadeOut(300)}, 2000);
+        });
+    }
+}
+
+var mainInputs = {
+    //Attributes
     'js_input' : jQuery(".js-input-field"),
-    
+
     //Functions
     'onChange' : function(){
         this.js_input.on("change", function(){
-            jQuery(this).addClass("focus").closest(".form-field").addClass("focus");
+            if(jQuery(this).val()){
+                jQuery(this).addClass("focus").closest(".form-field").addClass("focus");
+            }
         });
     },
     'onFocus' : function(){
@@ -50,6 +81,7 @@ var mainSlider = {
                     }, speed, function(){
                         mainSlider.js_form_cad.css("flex", "0 0 45%").children(".form-content, .form-title").fadeIn(speed);
                         mainSlider.js_form_log.css("flex", "0 0 55%").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
+                        mainInputs.js_input.val("").blur();;
                     });
             
                     mainSlider.js_block_description.removeAttr("style");
@@ -63,6 +95,7 @@ var mainSlider = {
                     }, speed, function(){
                         mainSlider.js_form_cad.css("flex", "0 0 55%").children(".form-content, .form-title").fadeOut(speed);
                         mainSlider.js_form_log.css("flex", "0 0 45%").children(".form-content, .form-title, .form-forgot").fadeIn(speed);
+                        mainInputs.js_input.val("").blur();
                     });
             
                    mainSlider.js_block_description.removeAttr("style");
@@ -70,7 +103,6 @@ var mainSlider = {
             });
         }
         else{
-            // console.log("Bateu aqui");
             this.js_btn_slider_block.on("click", function(){
                 if(mainSlider.js_block_description.data('position') == 'left'){
                     jQuery(this).text("Logar");
@@ -78,6 +110,7 @@ var mainSlider = {
 
                     mainSlider.js_form_log.fadeOut('slow', function(){
                         mainSlider.js_form_cad.fadeIn('slow');
+                        mainInputs.js_input.val("").blur();
                     });
                 }
                 else{
@@ -86,6 +119,7 @@ var mainSlider = {
 
                     mainSlider.js_form_cad.fadeOut('slow', function(){
                         mainSlider.js_form_log.fadeIn('slow');
+                        mainInputs.js_input.val("").blur();
                     });
                 }
                 

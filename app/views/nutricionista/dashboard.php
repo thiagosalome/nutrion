@@ -377,7 +377,6 @@
                 <p>Header</p>
             </header>
             <div class="dashboard-content">
-                <p>Seja bem vindo <?php  echo $email; ?></p></br>
                 <!-- <p>Seja bem vindo</p></br> -->
                 <!-- <h1 class="form-title">Atualizar Dados</h1> -->
                 <!--<form method="POST" action="/nutrion/nutricionista/update" class="form-content">

@@ -10,6 +10,9 @@ Back-end:
     ☐ Realizar remoção de Nutricionista
 
 Front-end:
-    ✔ Consertar responsivo no Tablet @done (2018-3-26 23:48:03)
-    ✔ Consertar responsivo no mobile @done (2018-3-26 23:48:04)
-    ✔ Refazer animação para mobile @done (2018-3-27 07:05:07)
+    Sprint 2:
+        ☐ Criar tela de Consultas de Pacientes (Layout e Design)
+        ☐ Criar tela interna de Paciente (Layout e Design)
+        ☐ Criar tela de Adição de Paciente (Layout e Design)
+        ☐ Criar tela de Relatórios (Layout e Design)
+        ☐ Implementar AJAX

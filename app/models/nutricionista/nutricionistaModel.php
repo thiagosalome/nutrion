@@ -93,10 +93,10 @@ class nutricionistaModel{
             }            
             else{ 
                 if($nutricionistaVo->getSenha()!=$user->getSenha()){
-                    return "loginfailed";
+                    return "login_failed";
                 }
                 else{
-                    return "success";
+                    return "success_signin";
                 }
             }
         }   
@@ -122,10 +122,10 @@ class nutricionistaModel{
             else{
                 $cadastro = $nutricionistaDao->insert($nutricionistaVo);
                 if($cadastro != true){
-                    return "failed";
+                    return "failed_signup";
                 }
                 else{
-                    return "success";
+                    return "success_signup";
                 }
             }
         }   
