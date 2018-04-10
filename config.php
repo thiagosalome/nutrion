@@ -8,7 +8,7 @@ define( 'ABSPATH', dirname( __FILE__ ) );
 
 // Pega o host
 $host = $_SERVER["HTTP_HOST"];
-if($host == "localhost" || "127.0.0.1"){
+if($host == "localhost" || $host == "127.0.0.1"){
     define('HOME_URI', '/nutrion/'); // URL da home
     define( 'HOSTNAME', 'localhost'); // Nome do host da base de dados
     define( 'DB_NAME', 'db_nutrion'); // Nome do DB
@@ -30,7 +30,7 @@ else{
     }
 
     define('HOSTNAME', $servername); // Nome do host da base de dados
-    define('DB_NAME', 'db_nutrion'); // Nome do DB
+    define('DB_NAME', $dbname); // Nome do DB
     define('DB_USER', $username); // Usuário do DB
     define('DB_PASSWORD', $password); // Senha do DB
 }

@@ -5,7 +5,6 @@ var mainForm = {
     //Functions
     'onSubmit' : function(form, url){
         jQuery(document).on("submit", form, function(e){
-            debugger;
             e.preventDefault();
             jQuery.ajax({
                 url : url,
