@@ -20,7 +20,8 @@ $conect = array(
     "driver" => "pdo_mysql",
     "user" => DB_USER,
     "password" => DB_PASSWORD,
-    "dbname" => DB_NAME
+    "dbname" => DB_NAME,
+    "host" => HOSTNAME
 );
 
 // Setar as configurações definidas
