@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- link css -->
-    <link rel="stylesheet" href="https://nutrion.azurewebsites.net/app/public/css/login.css">
+    <link rel="stylesheet" href="<?php echo HOME_URI; ?>app/public/css/login.css">
     
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -20,12 +20,15 @@
 </head>
 <body>
     <main class="main">
+        <?php 
+            
+        ?>
         <header class="main-header">
-            <img src="https://nutrion.azurewebsites.net/app/public/images/logo.png" alt="" title="" class="header-logo">
+            <img src="<?php echo HOME_URI; ?>app/public/images/logo.png" alt="" title="" class="header-logo">
         </header>
         <div class="main-block">
             <div class="block-description js-block-description" data-position="left">
-                <img src="https://nutrion.azurewebsites.net/app/public/images/logo_mini.png" alt="" class="description-logo">
+                <img src="<?php echo HOME_URI; ?>app/public/images/logo_mini.png" alt="" class="description-logo">
                 <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" class="description-button js-btn-slide-block">Cadastrar</button>
             </div>
@@ -65,7 +68,7 @@
         </div>
         <p class='main-message js-message'></p>
     </main>
-    <script type="text/javascript" src="https://nutrion.azurewebsites.net/app/public/js/config.js"></script>
-    <script type="text/javascript" src="https://nutrion.azurewebsites.net/app/public/js/app.js"></script>
+    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
+    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

@@ -10,15 +10,17 @@ class Routes{
     private $not_found = "404.php"; // Caminho da página não encontrada
 
     public function __construct () {
- 
-        if(isset($_GET["Controller"])){
-            include "app/controllers/" . $_GET["Controller"] . "Controller.php";
+        $this->controller = $_GET["Controller"];
+        $this->action = $_GET["Action"];
+
+        if(isset($this->controller)){
+            include "app/controllers/" . $this->controller . "Controller.php";
     
-            $class = $_GET["Controller"] . "Controller";
+            $class = $this->controller. "Controller";
             eval("\$controller = new $class();");
             
-            if(isset($_GET["Action"])){
-                eval("\$controller->" . $_GET['Action'] . " ();");
+            if(isset($this->action)){
+                eval("\$controller->" . $this->action . " ();");
             }
         }
     }

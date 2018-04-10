@@ -18,9 +18,9 @@ $isDevMode = true;
 // Definir as configurações de conexão
 $conect = array(
     "driver" => "pdo_mysql",
-    "user" => "root",
-    "password" => "",
-    "dbname" => "db_nutrion"
+    "user" => DB_USER,
+    "password" => DB_PASSWORD,
+    "dbname" => DB_NAME
 );
 
 // Setar as configurações definidas

@@ -15,7 +15,7 @@ if (!defined('DEBUG') || DEBUG === false ) {
 }
 
 // Carrega a aplicação
-require_once "Routes.php";
+require_once "routes.php";
 $routes = new Routes();
 
 ?>

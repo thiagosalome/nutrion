@@ -8,8 +8,9 @@ config.require('main'); // require main file
     mainInputs.eachInput();
 
     // Form
-    mainForm.onSubmit('.js-form-signin', '/nutrion/nutricionista/signIn');
-    mainForm.onSubmit('.js-form-signup', '/nutrion/nutricionista/signUp');
+    var home_uri = config.getHomeUri();
+    mainForm.onSubmit('.js-form-signin', home_uri + 'nutricionista/signIn');
+    mainForm.onSubmit('.js-form-signup', home_uri + 'nutricionista/signUp');
 
     // Slider
     mainSlider.onClickSlider(500);
