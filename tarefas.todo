@@ -19,7 +19,7 @@ Front-end:
 
 Outras Tarefas:
     ✔ Hospedar site no Azure @done (2018-4-9 14:23:00)
-    ☐ Realizar conexão com o banco de dados MySQL do Azure
-    ☐ Criar .htaccess para o Azure para tornar as urls amigáveis
+    ✔ Realizar conexão com o banco de dados MySQL do Azure @done (2018-4-10 16:24:35)
+    ✔ Criar .htaccess para o Azure para tornar as urls amigáveis @done (2018-4-10 16:24:40)
     ✔ Configurar links para funcionar em homologação e produção @done (2018-4-9 14:54:48)
     ☐ Criar branch de homologação no git

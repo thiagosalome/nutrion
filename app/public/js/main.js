@@ -1,6 +1,7 @@
 var mainForm = {
     //Attributes
     'js_message' : jQuery(".js-message"),
+    'js_load' : jQuery(".js-load"),
 
     //Functions
     'onSubmit' : function(form, url){
@@ -10,16 +11,25 @@ var mainForm = {
                 url : url,
                 data : jQuery(this).serialize(),
                 type: "POST",
+                beforeSend : function(){
+                    mainForm.js_load.fadeIn('slow');
+                },
                 success : function(result){
-                    if(result.indexOf("exception") != -1){
-                        console.log(result);
-                    }
-                    else{
-                        mainForm.showMessage(messages[result]);
-                        if(result == "success_signup"){
-                            mainSlider.js_btn_slider_block.click();
+                    mainForm.js_load.fadeOut('slow', function(){
+                        if(result.indexOf("exception") != -1){
+                            console.log(result);
                         }
-                    }
+                        else if(result == "success_signin"){
+                            var home_uri = config.getHomeUri();
+                            location = home_uri + "nutricionista/dashboard"
+                        }
+                        else{
+                            mainForm.showMessage(messages[result]);
+                            if(result == "success_signup"){
+                                mainSlider.js_btn_slider_block.click();
+                            }
+                        }
+                    });
                 }
             });
         });

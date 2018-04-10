@@ -217,6 +217,15 @@
         transform: translate(-50%, calc(-50% + 34px + 179px + 50px));
     }
 
+    .main-load{
+        width: 30px;
+        top: 50%;
+        transform: translate(-50%, calc(-50% + 34px + 179px + 50px));
+        left: 50%;
+        position: absolute;
+        display: none;
+    }
+
 @media (min-width: 768px) and (max-width: 991px) 
 {
 

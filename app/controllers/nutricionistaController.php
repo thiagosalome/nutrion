@@ -28,11 +28,8 @@ class nutricionistaController{
         if($logarModel == "success_signin"){
             session_start();
             $_SESSION["loggeduser"] = $nutricionistaVo->getEmail();
-            header("Location: /nutrion/nutricionista/dashboard");
         }
-        else{
-            echo $logarModel;
-        }
+        echo $logarModel;
     }
 
     public function signUp(){
