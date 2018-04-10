@@ -88,17 +88,23 @@ class nutricionistaModel{
         else{
             $nutricionistaDao = new nutricionistaDAO();                       
             $user = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
-            if($user == null){
-                return "unregistered";
-            }            
-            else{ 
-                if($nutricionistaVo->getSenha()!=$user->getSenha()){
+
+            //Caso não encontrou o usuário
+            if(is_object($user)){
+                if($nutricionistaVo->getSenha() != $user->getSenha()){
                     return "login_failed";
                 }
                 else{
                     return "success_signin";
                 }
             }
+            else if($user == null){
+                return "unregistered";
+            }
+            else{
+                return "exception " . $user;
+            }
+            
         }   
     }
 
@@ -116,17 +122,23 @@ class nutricionistaModel{
         else{
             $nutricionistaDao = new nutricionistaDAO();                       
             $user = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
-            if($user != null){
+            
+            // Verifica se usuário já existe
+            if(is_object($user)){
                 return "already_registered";
-            }            
-            else{
+            }
+            else if($user == null){
                 $cadastro = $nutricionistaDao->insert($nutricionistaVo);
-                if($cadastro != true){
-                    return "failed_signup";
-                }
-                else{
+
+                if($cadastro == true){
                     return "success_signup";
                 }
+                else{
+                    return "exception " . $user;
+                }
+            }
+            else{
+                return "exception " . $user;
             }
         }   
     }

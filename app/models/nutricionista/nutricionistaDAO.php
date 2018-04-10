@@ -25,7 +25,7 @@ class nutricionistaDAO{
             return true;
         }
         catch (Expection $e){
-            return false;
+            return $e->getMessage();
         }
     }    
 
@@ -99,7 +99,7 @@ class nutricionistaDAO{
             return $nutricionista;
         }
         catch(Exception $e){
-            return false;
+            return $e->getMessage();
         }
     }
 }

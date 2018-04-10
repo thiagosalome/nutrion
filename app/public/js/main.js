@@ -11,9 +11,14 @@ var mainForm = {
                 data : jQuery(this).serialize(),
                 type: "POST",
                 success : function(result){
-                    mainForm.showMessage(messages[result]);
-                    if(result == "success_signup"){
-                        mainSlider.js_btn_slider_block.click();
+                    if(result.indexOf("exception") != -1){
+                        console.log(result);
+                    }
+                    else{
+                        mainForm.showMessage(messages[result]);
+                        if(result == "success_signup"){
+                            mainSlider.js_btn_slider_block.click();
+                        }
                     }
                 }
             });
