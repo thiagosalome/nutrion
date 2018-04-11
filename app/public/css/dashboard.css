@@ -21,6 +21,7 @@
     display:flex;
     flex-direction: column;
     min-width: 220px;
+    
     justify-content: flex-start;
 }
 
@@ -32,27 +33,15 @@
 }
 
     .aside-lateral{
-       position: relative;
        color:white;
        background: linear-gradient(to bottom, rgba(145, 32, 77, 1), rgba(228, 132, 74, 1));
+       color:white;
     }
-        .aside-lateral::after{
-            content: "";
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;      
-        }
-        .header-aside {
-            position: absolute;
-            padding: 5px 10px;
 
-        }
-            .header-logo {
-                margin-left: auto;
-                margin-right: auto;
-            }
+        .header-aside {
+            align-items: center;
+            padding: 10px 20px;
+        }           
 
         .nav-menu{
             align-items: center;
@@ -61,49 +50,53 @@
         }
 
         .icon-list{
-            margin-left: 0;
+            display : inline-block;
             }
         .li-item{
-            margin-inline-end: 5px;
+            display : inline-block;
             font-size: 16px;
         }
 
        .icon-view{
+            display : inline-block;
             margin-left: 0;
             font-size: 16px;
         }
 
         .li-subitem{
-            margin-inline-end: 5px;
+            display : inline-block;
             font-size: 15px;
             color:white;
         }
         .rodape-menu{
-            flex:1;
             font-family: "Roboto", sans-serif;
         }
-
-    .section-superior{
-        flex:1;
-        font-family: "Roboto", sans-serif;
-    }
-
+     
     .section-main{
-        flex:1;
-        background-color: blue;
+        background-color: rgb(239,239,239);
     }
         .header-main{
-            color: brown;
+            background-color: rgb(79,79,79);
+            padding: 5px 64px;
         }
-        .h1{
-            color:blueviolet;
+        .title-page{
+            font-size: 25px;
+            color:white;
         }
 
-    .section-divs{
-        flex-direction: row;
-        flex:2;
-        background-color:royalblue;
-    }
+        .section-divs{
+            display: flex;
+            background-color:royalblue;
+        }
+            .icons-pacients1 {
+                display : inline-flex;
+            }
+            .icons-pacients2 {
+                display : inline-flex;
+            }
+            .icons-pacients3 {
+                display : inline-flex;
+            }
 .icons-pacients1 .icons-pacients2 .icons-pacients3{
 flex:2;
 }
@@ -111,4 +104,4 @@ flex:2;
     .section-table{
         flex:5;
         background-color:whitesmoke;
-    }
+    }   
