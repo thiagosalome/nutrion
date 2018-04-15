@@ -12,11 +12,6 @@ class nutricionistaController{
         include "app/views/nutricionista/login.php";
     }
 
-    public function dashboard(){
-        // Rota para view de login e cadastro
-        include "app/views/nutricionista/dashboard.php";
-    }
-
     public function signIn(){
         $nutricionistaModel = new nutricionistaModel();
         $nutricionistaVo = new nutricionistaVO();  
