@@ -13,8 +13,13 @@ class nutricionistaController{
     }
 
     public function dashboard(){
-        // Rota para view de login e cadastro
+        // Rota para view da dashboard
         include "app/views/nutricionista/dashboard.php";
+    }
+
+    public function adicionarPaciente(){
+        // Rota para view de cadastro paciente
+        //include "app/views/nutricionista/login.php";
     }
 
     public function signIn(){

@@ -59,13 +59,13 @@ class pacienteVo{
         return $this;
     }
     
-    public function getdataNasc()
+    public function getDataNasc()
     {
         return $this->dataNasc;
     }
 
     
-    public function setdataNasc($dataNasc)
+    public function setDataNasc($dataNasc)
     {
         $this->dataNasc = $dataNasc;
 

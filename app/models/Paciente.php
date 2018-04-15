@@ -61,24 +61,24 @@ class Paciente{
         return $this;
     }
     
-    public function getsexo()
+    public function getSexo()
     {
         return $this->sexo;
     }
 
-    public function setsexo($sexo)
+    public function setSexo($sexo)
     {
         $this->sexo = $sexo;
 
         return $this;
     }
 
-    public function getdataNasc()
+    public function getDataNasc()
     {
         return $this->dataNasc;
     }
 
-    public function setdataNasc($dataNasc)
+    public function setDataNasc($dataNasc)
     {
         $this->dataNasc = $dataNasc;
 
