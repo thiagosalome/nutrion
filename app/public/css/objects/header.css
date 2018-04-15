@@ -1,0 +1,84 @@
+.dashboard-header{
+    background-color: #cccccc;
+}
+
+.header-top{
+    overflow: hidden;
+    background-color: #ffffff;
+    padding: 20px 0;
+}
+
+    .header-search{
+        margin-right: 30px;
+        border: 1px solid #9d2f4c;
+        border-radius: 10px;
+        float: right;
+    }
+
+        .search-icon{
+            padding: 5px;
+            height: 22px;
+        }
+
+        .search-input{
+            border: none;
+            padding: 5px 10px 5px 0;
+            height: 22px;
+        }
+
+    .header-perfil{
+        float: right;
+    }
+
+        .perfil-name{
+            font-family: ﻿"Roboto Light";
+            font-size: 18px;
+            color: #9d2f4c;
+        }
+
+        .perfil-arrow{
+
+        }
+
+.header-bottom{
+    background-color: #414141;
+    padding: 20px 0 20px 80px;
+}
+
+    .header-title{
+        color: #ffffff;
+        font-family: ﻿"Roboto Light";
+        font-size: 25px;
+        margin: 0;
+    }
+
+.dashboard-statistics{
+    margin: 40px 0;
+}
+
+.statistics-item{
+    display: inline-flex;
+    margin-right: 30px;
+}
+
+.statistics-item-image{
+    background-color: #009fe3;
+    padding: 10px;
+}
+
+.statistics-item-description{
+    background-color: #ffffff;
+    font-family: ﻿"Roboto Light";
+    color: #414141;
+    text-align: center;
+    height: 60px;
+    width: 155px;
+}
+
+.statistics-item-description span{
+    font-size: 25px;
+}
+
+.statistics-item-description p{
+    margin: 0;
+}

@@ -1,0 +1,59 @@
+.aside{
+    background: linear-gradient(to bottom, rgba(145, 32, 77, 1), rgba(228, 132, 74, 1));
+    flex: 0 0 15%;
+}
+
+    .aside-header {
+        margin-top: 23px;
+        text-align: center;
+    }
+    
+        .header-logo{
+            
+        }
+
+    .aside-nav{
+        margin-top: 60px;
+    }
+
+        .nav-item{
+            padding: 10px 20px 0;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+
+            .item-description{
+                color: #ffffff;
+                display: inline-block;
+            }
+
+            .item-icon-info{
+                margin-right: 17px;
+            }
+
+            .item-icon-arrow{
+                float: right;
+            }
+
+        .nav-submenu{
+            margin-left: 60px;
+            list-style: none;
+        }
+            
+            .nav-submenu li{
+                padding: 15px 0 5px;
+            }
+
+                .submenu-icon{
+                    margin-right: 10px;
+                }
+
+                .submenu-description{
+                    color: #ffffff;
+                    display: inline-block;
+                }
+
+
+    .rodape-menu{
+        font-family: "Roboto", sans-serif;
+    }

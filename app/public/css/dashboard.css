@@ -1,8 +1,11 @@
-/* Menu 
-@import url('https://nutrion.azurewebsites.net/app/public/css/objects/menu.css');
+/* Menu */
+@import url('objects/menu.css');
 
-/* Tabela 
-@import url('https://nutrion.azurewebsites.net/app/public/css/objects/table.css');*/
+/* Menu */
+@import url('objects/header.css');
+
+/* Tabela */
+@import url('objects/table.css'); 
 
 * {
     margin: 0;
@@ -10,67 +13,16 @@
 }
 
 .main {
-    height: 100vh;
+    height: -webkit-fill-available;
     z-index: 0;
     display:flex;
-    flex-direction: row;
-    
 }
 
-.column-menu {
-    display:flex;
-    flex-direction: column;
-    min-width: 220px;
-    
-    justify-content: flex-start;
-}
-
-.column-page{
-    display:flex;
+.dashboard{
     position: relative;
-    flex-direction: column;
-    flex:3;
+    flex: 0 0 85%;
+    background-color: #efefef;
 }
-
-    .aside-lateral{
-       color:white;
-       background: linear-gradient(to bottom, rgba(145, 32, 77, 1), rgba(228, 132, 74, 1));
-       color:white;
-    }
-
-        .header-aside {
-            align-items: center;
-            padding: 10px 20px;
-        }           
-
-        .nav-menu{
-            align-items: center;
-            padding: 70px 24px;
-            z-index: 1;
-        }
-
-        .icon-list{
-            display : inline-block;
-            }
-        .li-item{
-            display : inline-block;
-            font-size: 16px;
-        }
-
-       .icon-view{
-            display : inline-block;
-            margin-left: 0;
-            font-size: 16px;
-        }
-
-        .li-subitem{
-            display : inline-block;
-            font-size: 15px;
-            color:white;
-        }
-        .rodape-menu{
-            font-family: "Roboto", sans-serif;
-        }
      
     .section-main{
         background-color: rgb(239,239,239);
@@ -78,10 +30,6 @@
         .header-main{
             background-color: rgb(79,79,79);
             padding: 5px 64px;
-        }
-        .title-page{
-            font-size: 25px;
-            color:white;
         }
 
         .section-divs{
