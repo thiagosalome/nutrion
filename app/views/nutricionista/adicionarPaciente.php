@@ -36,53 +36,91 @@
         <section class="dashboard">
             <header class="dashboard-header">
                 <div class="header-top">
-                    <div class="container">
-                        <div class="header-perfil">
-                            <p class="perfil-name">Thiago Gonçalves</p>
-                            <img class="perfil-arrow" src="" alt="" title="">
-                        </div>
-                        <div class="header-search">
-                            <img class="search-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_search.png" alt="" title="">
-                            <input class="search-input" type="text" name="search" id="">
-                        </div>
+                    <div class="header-perfil">
+                        <p class="perfil-name">Thiago Gonçalves</p>
+                        <img class="perfil-arrow" src="" alt="" title="">
+                    </div>
+                    <div class="header-search">
+                        <img class="search-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_search.png" alt="" title="">
+                        <input class="search-input" type="text" name="search" id="">
                     </div>
                 </div>
                 <div class="header-bottom">
-                    <div class="container">
-                        <h1 class="header-title">Adicionar Paciente</h1>
-                    </div>
+                    <h1 class="header-title">Adicionar Paciente</h1>
                 </div>
             </header>
             <div class="dashboard-statistics">
-                <div class="container">
-                    <div class="statistics-item">
-                        <div class="statistics-item-image">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
-                        </div>
-                        <div class="statistics-item-description">
-                            <span>192</span>
-                            <p>Pacientes</p>
-                        </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                     </div>
-                    <div class="statistics-item">
-                        <div class="statistics-item-image">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
-                        </div>
-                        <div class="statistics-item-description">
-                            <span>192</span>
-                            <p>Pacientes</p>
-                        </div>
-                    </div>
-                    <div class="statistics-item">
-                        <div class="statistics-item-image">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
-                        </div>
-                        <div class="statistics-item-description">
-                            <span>192</span>
-                            <p>Pacientes</p>
-                        </div>
+                    <div class="statistics-item-description">
+                        <span>192</span>
+                        <p>Pacientes</p>
                     </div>
                 </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>192</span>
+                        <p>Pacientes</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>192</span>
+                        <p>Pacientes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-form">
+                <!-- <div class="container"> -->
+                    <form role="form" class="largewidth">
+                        <h3 class="formheader">Adicionar Paciente</h3>
+                            <div class="row">
+                                <div class="text-left col-sm-6 form-group has-feedback">
+                                    <input type="text" class="form-control input-default" name="Nome" placeholder="Nome">
+                                    <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
+                                </div>
+                                <div class="text-left col-sm-6 form-group has-feedback">
+                                    <input type="tel" class="form-control input-default" name="Telefone" placeholder="Telefone">
+                                    <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="email" class="form-control input-default" name="email" placeholder="Email">
+                                <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <select name="sexo" class="form-control input-default">
+                                    <option value="">Sexo</option>
+                                    <option>Masculino</option>
+                                    <option>Feminino</option>
+                                    </select>
+                                    <i class="glyphicon glyphicon-chevron-down "></i> 
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <input type="text" class="form-control input-default" name="nascimento" placeholder="Data de nascimento : DD/MM/YY">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control input-default" name="cpf" placeholder="CPF">
+                                <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control input-default" name="endereco" placeholder="Endereço">
+                            </div>
+                            <div class="form-group text-center" style="margin-bottom: 0px;">
+                                <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
+                            </div>
+                    </form>
+                <!-- </div> -->
             </div>
         </section>       
     </main>

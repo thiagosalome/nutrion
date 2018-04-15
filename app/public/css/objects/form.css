@@ -1,0 +1,330 @@
+.formheader {		/*class for form header*/
+	margin:-31px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	margin-top: 0px !important;
+	margin-bottom: 18px !important;
+	background: #9d2f4c;
+	padding: 15px;
+	box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.24);
+	color:white !important;
+	text-align:center;
+}
+.btn-default {				/*customized buttons eg: send, register, done.... present in each form*/
+	width:100%;
+	border-radius: 2px !important;
+	box-shadow:1px 4px 7px 0px rgba(99, 97, 97, 0.24);
+	color:white !important;
+	background-color: #9d2f4c !important;
+	border-color: transparent !important;
+}
+.form-control-feedback {
+	height: 44px !important;
+	width: 44px !important;
+	line-height: 44px !important;
+	color: lightgrey !important;
+}
+.glyphiconalign {		/*for smaller fields like first and last name in same row*/
+	text-align:left !important;
+}
+.form-control {		
+	border-radius: 0px !important;
+	color: #999 !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: 1px solid #ddd !important;
+}
+.form-control:focus {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border-color: #9d2f4c!important;
+	-webkit-transition: linear 0.5s;
+	transition: linear 0.5s;
+	-moz-transition: linear 0.5s;
+	-ms-transition: linear 0.5s;
+	-o-transition: linear 0.5s;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus, input.checkbox:focus {
+	outline:0px auto -webkit-focus-ring-color !important;
+}
+.btn-default.focus, .btn-default:focus, .btn-default:hover {
+	color: #9d2f4c !important;
+    background-color: white !important;
+    border: 1px solid #9d2f4c !important;
+    text-decoration: none;
+}
+.btn:active {
+	box-shadow:none !important;
+}
+.input-default {		/*Default input field */
+	height: 44px !important;
+}
+.input-group-addon {		/*border-radius of input-group-addon*/
+	border-radius:0px !important;
+}
+select {
+	text-indent:1px;
+	-webkit-appearance:none !important;
+	-moz-appearance:none;
+	-o-appearance:none;
+}
+select + i.glyphicon {		/*glyphicon for select tag Eg. selection of male/female...*/
+	float:right;
+	margin-top:-30px;
+	margin-right:5px;
+	pointer-events:none;
+	padding-right:5px;
+	color: lightgrey;
+	z-index:10;
+}
+select:focus {
+	z-index:auto !important;
+}
+input:focus, input:active, input:active:focus, input:active.focus {
+    outline:0 !important;
+}
+input:focus + .glyphicon, textarea:focus + .glyphicon, select:focus + .glyphicon {		/*glyphicons effect on focus for input field*/
+	color: #9d2f4c !important;		/*color of icon on focus*/
+	transition: all 0.7s ease-out;
+	-moz-transition: all 0.7s ease-out;
+	-ms-transition: all 0.7s ease-out;
+	-o-transition: all 0.7s ease-out;
+	-webkit-transition: all 0.7s ease-out;
+	transform: scale(1.1,1.1);		/*scaling of glyphicon*/
+	-moz-transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+	-o-transform: scale(1.1,1.1);
+	-webkit-transform: scale(1.1,1.1);
+	z-index:10;
+}
+
+
+/*SMALL WIDTH FORMS*/
+.smallwidth {			/*small width forms such as login form, feedback form, subscribe form...*/
+	max-width: 365px;		/*width of the form*/
+	padding: 0px 30px 15px;
+	box-shadow: 0px 2px 1px #ddd;
+	margin: 0 auto;
+	background-color: #fff;
+	border-top: 0px !important;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.smallwidth .checkbox {
+    font-weight: normal;
+}
+.smallwidth .form-control {		/*form-control fields for small width forms*/
+	position: relative;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.smallwidth .form-control:focus {
+    z-index: 2;
+}
+.smallwidth input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.smallwidth input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+/*LARGE WIDTH FORMS*/
+.largewidth {			/*for large width forms such as contact us, registration, checkout...*/
+    max-width: 630px;	/*width of the form*/
+	padding: 0px 30px 15px;
+	box-shadow: 0px 2px 1px #ddd;
+	background-color: #fff;
+	border-top: 0px !important;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.largewidth .form-control {		/*form-control field inside largewidth*/
+	position: relative;
+	padding: 10px;
+	-webkit-box-sizing: border-box;		/*webkit used for chrome and safari*/
+	-moz-box-sizing: border-box;		/*moz used for mozilla firefox*/
+	box-sizing: border-box;
+}
+
+/*Login-1 FORM*/
+.social-icon {		/*social icons on login-1 page*/
+	width: 32px;		
+	height: 32px;
+    margin: 1px;
+	padding-top: 8px;
+	font-size: 14px;
+	line-height: 14px;
+	display: inline-block;
+	color: #fff;
+	text-align: center;
+	-o-transition: all .3s; 
+	-moz-transition: all .3s; 
+	-webkit-transition: all .3s; 
+	-ms-transition: all .3s; 
+	transition: all .3s;
+	border-radius: 50%;
+}
+.social-icon:hover, .social-icon:focus, .social-icon:active { outline: 0; opacity: 0.8; color: #fff !important; }
+.social-facebook { background: #4862a3; }
+.social-google-plus { background: #dd4b39; }
+.social-twitter { background: #55acee; }
+
+
+/*SEARCH FIELD FORM */
+#custom-search-input {			/*used for 1st and 2nd search fields*/
+	margin: 30px 0;
+	border:solid 1px #25ade1 !important;
+	box-shadow: 0px 3px 6px 0px rgba(204, 197, 199, 0.58);
+}
+#custom-search-input input{		/*for INPUT tag inside the custom-search-input*/
+	border:0px !important;
+	box-shadow:none;
+	height:40px;
+}
+#custom-search-input button {	/*for BUTTON tag inside the custom-search-input*/
+	margin:2px 0 0 0;
+	background:none;
+	box-shadow:none;
+	border:0;
+	color:#25ade1;
+	padding:0 8px 0 10px;
+	border-left:solid 1px #25ade1 !important;
+}
+#custom-search-input button:hover, #custom-search-input button:focus{	
+	border:0px !important;
+	box-shadow:none;
+	border-left:solid 1px #25ade1 !important;
+}
+#custom-search-input .glyphicon-search{
+	font-size:18px;
+}
+#custom-search-input-1 {			/*used for 3rd and 4th search fields(with blue buttons on right)*/
+	margin: 30px 0;
+	border-radius:0px;
+}
+#custom-search-input-1 input{		/*for INPUT tag inside the custom-search-input-1*/
+	border:1px solid #25ade1 !important;
+	box-shadow:none;
+	height:40px;
+	box-shadow: 0px 3px 6px 0px rgba(204, 197, 199, 0.58) !important;
+}
+#custom-search-input-1 button {		/*for BUTTON tag inside the custom-search-input-1*/
+	box-shadow: 0px 3px 6px 0px rgba(204, 197, 199, 0.58);
+	height: 40px;
+}
+#custom-search-input-1 button:hover, #custom-search-input-1 button:focus {
+	color:white !important;
+	background-color:#9d2f4c !important;
+	
+}
+
+
+/*FEEDBACK FORM*/
+.starrr a{			
+	font-size: 20px !important;		/*size of stars*/
+	color:#9d2f4c !important;
+}
+
+
+/*CONTACT US FORM*/
+.btn-browse {					/*BROWSE button*/
+	background-color:#9d2f4c;
+	color:white;
+	border-radius:0px !important;
+	height:44px;
+}
+.btn-browse:hover, .btn-browse:focus {
+	background-color:#9d2f4c !important;
+	color:white !important;
+}
+#map-canvas {				/*Google Map Customization*/
+	width: 100%;
+	height: 300px;
+	margin-bottom: 15px;
+	border: 2px solid #fff;
+}
+.file {
+	visibility:hidden;
+	position:absolute;
+}
+
+
+/*FORM FIELDS*/
+.alert {		/*text within alert box*/
+	text-align:left;
+	border-radius: 0px !important;
+}
+legend {
+	text-align:left;
+	color:#888 !important;
+}
+.lefticon {		/*glyphicon position to left*/
+	left:0;
+}
+.leftpad {		/*text padding for lefticon*/
+	padding-left: 44px !important;
+}
+.otherbtns {	/* for buttons such as success, info, danger, warning */
+	width:100%;
+	border-radius: 2px !important;
+	box-shadow:1px 4px 7px 0px rgba(99, 97, 97, 0.24);
+	border-color: transparent !important;
+	text-decoration: none;
+}
+.otherbtns:hover, otherbtns:active, otherbtns:focus {
+	background-color: white !important;
+	text-decoration: none;
+}
+.btn-success {		/*for success button*/
+	background-color: #4CAF50 !important;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+	border-color: #4CAF50 !important;
+	color:#4CAF50 !important;
+}
+.btn-info {			/*for info button*/
+	background-color: #03A9F4 !important;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+	border-color: #03A9F4 !important;
+	color:#03A9F4 !important;
+}
+.btn-danger {		/*for danger button*/
+	background-color: #f51d1d !important;
+}
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+	border-color: #f51d1d !important;
+	color:#f51d1d !important;
+}
+.btn-warning {		/*for warning button*/
+	background-color: #FF9800 !important;
+}
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active {
+	border-color: #FF9800 !important;
+	color:#FF9800 !important;
+}
+#inputSuccess {		/*for success input*/
+	border: 1px solid #4caf50 !important
+}
+#inputError {		/*for error input*/
+	border: 1px solid #a94442 !important
+}
+#inputWarning {		/*for warning input*/
+	border: 1px solid #ff9800 !important
+}
+#iconSuccess {		/*for success icon*/
+	color: #4caf50 !important;
+}
+#iconError {		/*for error icon*/
+	color: #a94442 !important;
+}
+#iconWarning {		/*for warning icon*/
+	color: #ff9800 !important;
+}

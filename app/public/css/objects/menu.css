@@ -1,6 +1,6 @@
 .aside{
     background: linear-gradient(to bottom, rgba(145, 32, 77, 1), rgba(228, 132, 74, 1));
-    flex: 0 0 15%;
+    width: 255px;
 }
 
     .aside-header {
@@ -14,10 +14,15 @@
 
     .aside-nav{
         margin-top: 60px;
+        padding: 0 20px;
     }
 
+        .aside-nav li{
+            list-style: none;
+        }
+
         .nav-item{
-            padding: 10px 20px 0;
+            padding: 10px 0 0;
             overflow: hidden;
             vertical-align: middle;
         }
@@ -25,6 +30,7 @@
             .item-description{
                 color: #ffffff;
                 display: inline-block;
+                font-size: 16px;
             }
 
             .item-icon-info{
@@ -36,7 +42,7 @@
             }
 
         .nav-submenu{
-            margin-left: 60px;
+            margin-left: 40px;
             list-style: none;
         }
             
@@ -51,9 +57,15 @@
                 .submenu-description{
                     color: #ffffff;
                     display: inline-block;
+                    font-size: 14px;
+                    margin: 0;
                 }
-
 
     .rodape-menu{
         font-family: "Roboto", sans-serif;
+        color: #ffffff;
     }
+
+@media screen and (max-width: 1200px){
+    
+}

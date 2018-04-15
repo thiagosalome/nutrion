@@ -1,11 +1,14 @@
 /* Menu */
 @import url('objects/menu.css');
 
-/* Menu */
+/* Header */
 @import url('objects/header.css');
 
 /* Tabela */
 @import url('objects/table.css'); 
+
+/* Form */
+@import url('objects/form.css'); 
 
 * {
     margin: 0;
@@ -13,22 +16,19 @@
 }
 
 .main {
-    height: -webkit-fill-available;
-    z-index: 0;
-    display:flex;
+    display: flex;
 }
 
 .dashboard{
     position: relative;
-    flex: 0 0 85%;
     background-color: #efefef;
+    width: calc(100% - 255px);
 }
      
-    .section-main{
+    /* .section-main{
         background-color: rgb(239,239,239);
     }
         .header-main{
             background-color: rgb(79,79,79);
             padding: 5px 64px;
         }
-  

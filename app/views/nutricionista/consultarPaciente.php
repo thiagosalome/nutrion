@@ -36,21 +36,17 @@
         <section class="dashboard">
             <header class="dashboard-header">
                 <div class="header-top">
-                    <div class="container">
-                        <div class="header-perfil">
-                            <p class="perfil-name">Thiago Gonçalves</p>
-                            <img class="perfil-arrow" src="" alt="" title="">
-                        </div>
-                        <div class="header-search">
-                            <img class="search-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_search.png" alt="" title="">
-                            <input class="search-input" type="text" name="search" id="">
-                        </div>
+                    <div class="header-perfil">
+                        <p class="perfil-name">Thiago Gonçalves</p>
+                        <img class="perfil-arrow" src="" alt="" title="">
+                    </div>
+                    <div class="header-search">
+                        <img class="search-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_search.png" alt="" title="">
+                        <input class="search-input" type="text" name="search" id="">
                     </div>
                 </div>
                 <div class="header-bottom">
-                    <div class="container">
-                        <h1 class="header-title">Consultar Pacientes</h1>
-                    </div>
+                    <h1 class="header-title">Consultar Pacientes</h1>
                 </div>
             </header>
             <div class="dashboard-statistics">
