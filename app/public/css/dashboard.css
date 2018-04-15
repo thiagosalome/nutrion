@@ -31,25 +31,4 @@
             background-color: rgb(79,79,79);
             padding: 5px 64px;
         }
-
-        .section-divs{
-            display: flex;
-            background-color:royalblue;
-        }
-            .icons-pacients1 {
-                display : inline-flex;
-            }
-            .icons-pacients2 {
-                display : inline-flex;
-            }
-            .icons-pacients3 {
-                display : inline-flex;
-            }
-.icons-pacients1 .icons-pacients2 .icons-pacients3{
-flex:2;
-}
-
-    .section-table{
-        flex:5;
-        background-color:whitesmoke;
-    }   
+  

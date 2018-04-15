@@ -56,7 +56,7 @@
             <div class="dashboard-statistics">
                 <div class="container">
                     <div class="statistics-item">
-                        <div class="statistics-item-image">
+                        <div class="statistics-item-image-blue">
                             <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                         </div>
                         <div class="statistics-item-description">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="statistics-item">
-                        <div class="statistics-item-image">
+                        <div class="statistics-item-image-agua">
                             <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                         </div>
                         <div class="statistics-item-description">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="statistics-item">
-                        <div class="statistics-item-image">
+                        <div class="statistics-item-image-green">
                             <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                         </div>
                         <div class="statistics-item-description">
@@ -89,11 +89,11 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h2>Manage <b>Employees</b></h2>
+                                <h2>Todos os <b>Pacientes</b></h2>
                             </div>
                             <div class="col-sm-6">
-                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar novo paciente</span></a>
+                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Apagar</span></a>						
                             </div>
                         </div>
                     </div>
@@ -106,11 +106,11 @@
                                         <label for="selectAll"></label>
                                     </span>
                                 </th>
-                                <th>Name</th>
+                                <th>Nome</th>
                                 <th>Email</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Actions</th>
+                                <th>Endereço</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -197,15 +197,15 @@
                         </tbody>
                     </table>
                     <div class="clearfix">
-                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                        <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
                         <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                            <li class="page-item disabled"><a href="#">Anterior</a></li>
                             <li class="page-item"><a href="#" class="page-link">1</a></li>
                             <li class="page-item"><a href="#" class="page-link">2</a></li>
                             <li class="page-item active"><a href="#" class="page-link">3</a></li>
                             <li class="page-item"><a href="#" class="page-link">4</a></li>
                             <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                            <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
                         </ul>
                     </div>
                 </div>

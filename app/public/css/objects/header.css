@@ -41,7 +41,7 @@
         }
 
 .header-bottom{
-    background-color: #414141;
+    background-color: #4f4f4f;
     padding: 20px 0 20px 80px;
 }
 
@@ -53,6 +53,7 @@
     }
 
 .dashboard-statistics{
+    display:flex;
     margin: 40px 0;
 }
 
@@ -61,10 +62,21 @@
     margin-right: 30px;
 }
 
-.statistics-item-image{
-    background-color: #009fe3;
-    padding: 10px;
+.statistics-item-image-blue {     
+    padding: 10px;      
+    background-color:rgb(0,159,227);
 }
+.statistics-item-image-agua  {
+   
+    padding: 10px;           
+    background-color:rgb(37,180,177);
+}
+.statistics-item-image-green  {
+  
+    padding: 10px;
+    background-color:rgb(63,175,108);
+}
+
 
 .statistics-item-description{
     background-color: #ffffff;
@@ -81,4 +93,19 @@
 
 .statistics-item-description p{
     margin: 0;
+}
+
+@media (min-width: 768px) and (max-width: 991px) 
+{
+
+}
+
+@media (min-width: 425px) and (max-width: 767px) 
+{
+
+}
+
+@media (max-width: 424px) 
+{
+
 }
