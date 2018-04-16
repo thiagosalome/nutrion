@@ -16,10 +16,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- link css -->
-
     <link rel="stylesheet" href="<?php echo HOME_URI; ?>app/public/css/dashboard.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
@@ -34,15 +35,20 @@
     <main class = "main">
         <?php include "objects/menu.php"; ?>
         <section class="dashboard">
-            <header class="dashboard-header">
+        <header class="dashboard-header">
                 <div class="header-top">
                     <div class="header-perfil">
-                        <p class="perfil-name">Thiago Gonçalves</p>
-                        <img class="perfil-arrow" src="" alt="" title="">
+                        <p class="perfil-name">John</p>
+                        <!-- <img class="perfil-arrow" src="" alt="" title=""> -->
                     </div>
                     <div class="header-search">
                         <img class="search-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_search.png" alt="" title="">
                         <input class="search-input" type="text" name="search" id="">
+                    </div>
+                    <div class="header-menu js-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
                 <div class="header-bottom">
@@ -50,37 +56,35 @@
                 </div>
             </header>
             <div class="dashboard-statistics">
-                <div class="container">
-                    <div class="statistics-item">
-                        <div class="statistics-item-image-blue">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
-                        </div>
-                        <div class="statistics-item-description">
-                            <span>192</span>
-                            <p>Pacientes</p>
-                        </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-blue">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                     </div>
-                    <div class="statistics-item">
-                        <div class="statistics-item-image-agua">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
-                        </div>
-                        <div class="statistics-item-description">
-                            <span>192</span>
-                            <p>Pacientes</p>
-                        </div>
+                    <div class="statistics-item-description">
+                        <span>192</span>
+                        <p>Pacientes</p>
                     </div>
-                    <div class="statistics-item">
-                        <div class="statistics-item-image-green">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
-                        </div>
-                        <div class="statistics-item-description">
-                            <span>192</span>
-                            <p>Pacientes</p>
-                        </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-agua">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>192</span>
+                        <p>Pacientes</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-green">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>192</span>
+                        <p>Pacientes</p>
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="dashboard-table">
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
@@ -299,5 +303,7 @@
             </div>          
         </section>       
     </main>
+    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
+    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

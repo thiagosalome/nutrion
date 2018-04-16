@@ -1,5 +1,6 @@
 config.require('messages'); // require messages file
 config.require('main'); // require main file
+config.require('dashboard'); // require main file
 
     // Inputs
     mainInputs.onChange();
@@ -14,3 +15,6 @@ config.require('main'); // require main file
 
     // Slider
     mainSlider.onClickSlider(500);
+
+    //Menu
+    menu.onClick();

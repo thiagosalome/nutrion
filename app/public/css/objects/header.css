@@ -5,7 +5,7 @@
 .header-top{
     overflow: hidden;
     background-color: #ffffff;
-    padding: 20px 0;
+    padding: 20px 30px;
 }
 
     .header-search{
@@ -42,9 +42,22 @@
 
         }
 
+    .header-menu{
+        float: left;
+        display: none;
+    }
+
+        .header-menu span{
+            height: 5px;
+            width: 30px;
+            margin-bottom: 5px;
+            background-color: #9d2f4c;
+            display: block;
+        }
+
 .header-bottom{
     background-color: #414141;
-    padding: 20px 0;
+    padding: 20px 30px;
 }
 
     .header-title{
@@ -54,60 +67,15 @@
         margin: 0;
     }
 
-.dashboard-statistics{
-    display:flex;
-    margin: 40px 0;
+@media screen and (max-width: 991px) {
+    .header-menu{
+        display: block;
+    }
 }
 
-.statistics-item{
-    display: inline-flex;
-    margin-right: 30px;
-}
-
-.statistics-item-image-blue {     
-    padding: 10px;      
-    background-color:rgb(0,159,227);
-}
-.statistics-item-image-agua  {
-   
-    padding: 10px;           
-    background-color:rgb(37,180,177);
-}
-.statistics-item-image-green  {
-  
-    padding: 10px;
-    background-color:rgb(63,175,108);
-}
-
-
-.statistics-item-description{
-    background-color: #ffffff;
-    font-family: ﻿"Roboto Light";
-    color: #414141;
-    text-align: center;
-    height: 60px;
-    width: 155px;
-}
-
-        .statistics-item-description span{
-            font-size: 25px;
-        }
-
-.statistics-item-description p{
-    margin: 0;
-}
-
-@media (min-width: 768px) and (max-width: 991px) 
-{
-
-}
-
-@media (min-width: 425px) and (max-width: 767px) 
-{
-
-}
-
-@media (max-width: 424px) 
-{
-
+@media screen and (max-width: 425px) {
+    .header-search{
+        margin-right: 0;
+        display: block;
+    }
 }

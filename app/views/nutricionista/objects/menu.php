@@ -1,4 +1,4 @@
-<aside class="aside">
+<aside class="aside js-aside">
     <header class="aside-header">
         <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/logo_menu.png" alt="" title="" class="header-logo">
     </header>

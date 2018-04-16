@@ -37,12 +37,17 @@
             <header class="dashboard-header">
                 <div class="header-top">
                     <div class="header-perfil">
-                        <p class="perfil-name">Thiago Gonçalves</p>
-                        <img class="perfil-arrow" src="" alt="" title="">
+                        <p class="perfil-name">John</p>
+                        <!-- <img class="perfil-arrow" src="" alt="" title=""> -->
                     </div>
                     <div class="header-search">
                         <img class="search-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_search.png" alt="" title="">
                         <input class="search-input" type="text" name="search" id="">
+                    </div>
+                    <div class="header-menu js-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
                 <div class="header-bottom">
@@ -51,7 +56,7 @@
             </header>
             <div class="dashboard-statistics">
                 <div class="statistics-item">
-                    <div class="statistics-item-image">
+                    <div class="statistics-item-image-blue">
                         <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
@@ -60,7 +65,7 @@
                     </div>
                 </div>
                 <div class="statistics-item">
-                    <div class="statistics-item-image">
+                    <div class="statistics-item-image-agua">
                         <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
@@ -69,7 +74,7 @@
                     </div>
                 </div>
                 <div class="statistics-item">
-                    <div class="statistics-item-image">
+                    <div class="statistics-item-image-green">
                         <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
@@ -80,7 +85,7 @@
             </div>
             <div class="dashboard-form">
                 <!-- <div class="container"> -->
-                    <form role="form" class="largewidth">
+                    <form role="form" class="largewidth" action="">
                         <h3 class="formheader">Adicionar Paciente</h3>
                             <div class="row">
                                 <div class="text-left col-sm-6 form-group has-feedback">
@@ -124,5 +129,7 @@
             </div>
         </section>       
     </main>
+    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
+    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>
