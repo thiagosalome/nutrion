@@ -20,9 +20,6 @@
 </head>
 <body>
     <main class="main">
-        <?php 
-            
-        ?>
         <header class="main-header">
             <img src="<?php echo HOME_URI; ?>app/public/images/logo.png" alt="" title="" class="header-logo">
         </header>

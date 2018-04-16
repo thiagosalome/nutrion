@@ -1,8 +1,12 @@
-/* Menu 
-@import url('https://nutrion.azurewebsites.net/app/public/css/objects/menu.css');
+/* Objects */
+@import url('objects/menu.css');
+@import url('objects/header.css');
+@import url('objects/statistics.css');
 
-/* Tabela 
-@import url('https://nutrion.azurewebsites.net/app/public/css/objects/table.css');*/
+
+/* Components */
+@import url('components/table.css'); 
+@import url('components/form.css'); 
 
 * {
     margin: 0;
@@ -10,98 +14,36 @@
 }
 
 .main {
-    height: 100vh;
-    z-index: 0;
-    display:flex;
-    flex-direction: row;
-    
+    display: flex;
 }
 
-.column-menu {
-    display:flex;
-    flex-direction: column;
-    min-width: 220px;
-    
-    justify-content: flex-start;
-}
-
-.column-page{
-    display:flex;
+.dashboard{
     position: relative;
-    flex-direction: column;
-    flex:3;
+    background-color: #efefef;
+    width: calc(100% - 255px);
+    padding-bottom: 40px;
 }
-
-    .aside-lateral{
-       color:white;
-       background: linear-gradient(to bottom, rgba(145, 32, 77, 1), rgba(228, 132, 74, 1));
-       color:white;
-    }
-
-        .header-aside {
-            align-items: center;
-            padding: 10px 20px;
-        }           
-
-        .nav-menu{
-            align-items: center;
-            padding: 70px 24px;
-            z-index: 1;
-        }
-
-        .icon-list{
-            display : inline-block;
-            }
-        .li-item{
-            display : inline-block;
-            font-size: 16px;
-        }
-
-       .icon-view{
-            display : inline-block;
-            margin-left: 0;
-            font-size: 16px;
-        }
-
-        .li-subitem{
-            display : inline-block;
-            font-size: 15px;
-            color:white;
-        }
-        .rodape-menu{
-            font-family: "Roboto", sans-serif;
-        }
      
-    .section-main{
-        background-color: rgb(239,239,239);
-    }
-        .header-main{
-            background-color: rgb(79,79,79);
-            padding: 5px 64px;
-        }
-        .title-page{
-            font-size: 25px;
-            color:white;
-        }
-
-        .section-divs{
-            display: flex;
-            background-color:royalblue;
-        }
-            .icons-pacients1 {
-                display : inline-flex;
-            }
-            .icons-pacients2 {
-                display : inline-flex;
-            }
-            .icons-pacients3 {
-                display : inline-flex;
-            }
-.icons-pacients1 .icons-pacients2 .icons-pacients3{
-flex:2;
+.dashboard-table, .dashboard-form, .dashboard-statistics{
+    padding: 0 30px;
 }
 
-    .section-table{
-        flex:5;
-        background-color:whitesmoke;
-    }   
+
+
+@media screen and (min-width: 1200px){
+    .dashboard-table{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .dashboard{
+        width: 100%;
+    }
+
+    .dashboard-table{
+        width: auto;
+    }
+}
+@media (min-width: 425px) and (max-width: 767px) {}
+@media (max-width: 424px) {}

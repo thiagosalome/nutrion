@@ -1,0 +1,81 @@
+.dashboard-header{
+    background-color: #cccccc;
+}
+
+.header-top{
+    overflow: hidden;
+    background-color: #ffffff;
+    padding: 20px 30px;
+}
+
+    .header-search{
+        margin-right: 30px;
+        border: 1px solid #9d2f4c;
+        border-radius: 10px;
+        float: right;
+        overflow: hidden;
+    }
+
+        .search-icon{
+            padding: 5px;
+            height: 22px;
+        }
+
+        .search-input{
+            border: none;
+            padding: 5px 10px 5px 0;
+            height: 22px;
+        }
+
+    .header-perfil{
+        float: right;
+    }
+
+        .perfil-name{
+            font-family: ﻿"Roboto Light";
+            font-size: 18px;
+            color: #9d2f4c;
+            margin: 0;
+        }
+
+        .perfil-arrow{
+
+        }
+
+    .header-menu{
+        float: left;
+        display: none;
+    }
+
+        .header-menu span{
+            height: 5px;
+            width: 30px;
+            margin-bottom: 5px;
+            background-color: #9d2f4c;
+            display: block;
+        }
+
+.header-bottom{
+    background-color: #414141;
+    padding: 20px 30px;
+}
+
+    .header-title{
+        color: #ffffff;
+        font-family: ﻿"Roboto Light";
+        font-size: 25px;
+        margin: 0;
+    }
+
+@media screen and (max-width: 991px) {
+    .header-menu{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .header-search{
+        margin-right: 0;
+        display: block;
+    }
+}

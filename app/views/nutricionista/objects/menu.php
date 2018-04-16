@@ -1,65 +1,79 @@
-<aside class = "aside-lateral">
-    <header class="header-aside">
+<aside class="aside js-aside">
+    <header class="aside-header">
         <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/logo_menu.png" alt="" title="" class="header-logo">
     </header>
-    <nav class="nav-menu">
+    <nav class="aside-nav">
         <ul>
             <li>
-                <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patient_icon.png" alt="" class="icon-list">
-                <p class="li-item">Pacientes</p>
-                <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
-                <ul>
+                <div class="nav-item">
+                    <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/patient_icon.png" alt="">
+                    <p class="item-description">Pacientes</p>
+                    <img class="item-icon-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="">
+                </div>
+                <ul class="nav-submenu">
                     <li>
-                        <a href="#" title="Item">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
-                            <p class="li-subitem">Consultar Pacientes</p>
+                        <a href="#" title="Consultar Pacientes">
+                            <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="Consultar Pacientes" title="Consultar Pacientes">
+                            <p class="submenu-description">Consultar Pacientes</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="Item">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
-                            <p class="li-subitem">Adicionar Paciente</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="" class="icon-list">
-                <p class="li-item">Alimentos</p>
-                <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
-                <ul>
-                    <li>
-                        <a href="#" title="Item">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
-                            <p class="li-subitem">Consultar Alimentos</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" title="Item">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
-                            <p class="li-subitem">Adicionar Alimentos</p>
+                        <a href="#" title="Adicionar Paciente">
+                            <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="Adicionar Paciente" title="Adicionar Paciente">
+                            <p class="submenu-description">Adicionar Paciente</p>
                         </a>
                     </li>
                 </ul>
             </li>
             <li>
-                <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/menu_icon.png" alt="" class="icon-list">
-                <p class="li-item">Dieta</p>
-                <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="" class="icon-seta">
-                <ul>
+                <div class="nav-item">
+                    <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="">
+                    <p class="item-description">Alimentos</p>
+                    <img class="item-icon-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="">
+                </div>
+                <ul class="nav-submenu">
                     <li>
-                        <a href="#" title="Item">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="" title="" class="icon-view">
-                            <p class="li-subitem">Consultar Dieta</p>
+                        <a href="#" title="Consultar Alimentos">
+                            <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="Consultar Alimentos" title="Consultar Alimentos">
+                            <p class="submenu-description">Consultar Alimentos</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="Item">
-                            <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="" title="" class="icon-add">
-                            <p class="li-subitem">Adicionar Dieta</p>
+                        <a href="#" title="Adicionar Alimento">
+                            <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="Adicionar Alimento" title="Adicionar Alimento">
+                            <p class="submenu-description">Adicionar Alimento</p>
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <div class="nav-item">
+                    <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="">
+                    <p class="item-description">Dietas</p>
+                    <img class="item-icon-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="">
+                </div>
+                <ul class="nav-submenu">
+                    <li>
+                        <a href="#" title="Consultar Dietas">
+                            <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="Consultar Dietas" title="Consultar Dietas">
+                            <p class="submenu-description">Consultar Dietas</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Adicionar Dieta">
+                            <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="Adicionar Dieta" title="Adicionar Dieta">
+                            <p class="submenu-description">Adicionar Dieta</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav-item">
+                    <a href="#" title="Relatórios">
+                        <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/report_icon.png" alt="Relatórios" title="Relatórios">
+                        <p class="item-description">Relatórios</p>
+                    </a>
+                </div>
             </li>
         </ul>
     </nav>
