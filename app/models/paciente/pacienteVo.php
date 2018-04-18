@@ -2,9 +2,11 @@
 
 class pacienteVo{
     private $id;
+    private $cpf;
     private $nome;
     private $sexo;
     private $telefone;
+    private $email;
     private $dataNasc;
 
      
@@ -20,7 +22,18 @@ class pacienteVo{
         return $this;
     }
 
+    public function getCPF()
+    {
+        return $this->cpf;
+    }
     
+    public function setCPF($cpf)
+    {
+        $this->cpf = $cpf;
+
+        return $this;
+    }
+
     public function getNome()
     {
         return $this->nome;
@@ -59,6 +72,20 @@ class pacienteVo{
         return $this;
     }
     
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
     public function getDataNasc()
     {
         return $this->dataNasc;
