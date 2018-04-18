@@ -47,7 +47,8 @@
             }
 
             .nav-item{
-                margin: 10px 20px;
+                margin: 0 20px;
+                padding: 10px 0;
                 overflow: hidden;
                 display: flex;
                 align-items: center;

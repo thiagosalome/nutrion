@@ -20,3 +20,4 @@ require('dashboard'); // require main file
     DashboardMenu.onClick();
     DashboardMenu.dropDown();
     DashboardMenu.verifyDropDown();
+    DashboardMenu.verifyWindow();

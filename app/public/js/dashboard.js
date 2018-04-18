@@ -28,5 +28,16 @@ var DashboardMenu = {
                 jQuery(this).addClass("active");
             } 
         });
+    },
+
+    "verifyWindow" : function(){
+        var main = jQuery(".main");
+        
+        if(main.height() < window.innerHeight){
+            main.css("height", "100vh");
+        }   
+        else{
+            main.css("height", "auto");
+        }
     }
 }
