@@ -12,13 +12,13 @@
                 </div>
                 <ul class="nav-submenu">
                     <li>
-                        <a href="<?php echo HOME_URI; ?>/nutricionista/paciente/consultar" title="Consultar Pacientes">
+                        <a href="<?php echo HOME_URI; ?>nutricionista/paciente/consultar" title="Consultar Pacientes">
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="Consultar Pacientes" title="Consultar Pacientes">
                             <p class="submenu-description">Consultar Pacientes</p>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo HOME_URI; ?>/nutricionista/paciente/adicionar" title="Adicionar Paciente">
+                        <a href="<?php echo HOME_URI; ?>nutricionista/paciente/adicionar" title="Adicionar Paciente">
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="Adicionar Paciente" title="Adicionar Paciente">
                             <p class="submenu-description">Adicionar Paciente</p>
                         </a>

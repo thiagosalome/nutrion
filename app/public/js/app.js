@@ -1,23 +1,24 @@
 require('messages'); // require messages file
 require('login'); // require main file
 require('dashboard'); // require main file
+var home_uri = getHomeUri();
 
-    // Inputs
+    // Login
     LoginInputs.onChange();
     LoginInputs.onFocus();
     LoginInputs.onBlur();
     LoginInputs.eachInput();
 
-    // Form
-    var home_uri = getHomeUri();
     LoginForm.onSubmit('.js-form-signin', home_uri + 'nutricionista/signIn');
     LoginForm.onSubmit('.js-form-signup', home_uri + 'nutricionista/signUp');
 
-    // Slider
     LoginSlider.onClickSlider(500);
 
-    //Menu
+    // Dashboard
     DashboardMenu.onClick();
     DashboardMenu.dropDown();
     DashboardMenu.verifyDropDown();
-    DashboardMenu.verifyWindow();
+
+    DashboardWindow.verifyWindow();
+
+    DashboardForm.onSubmit('.js-form-addPatient', home_uri + 'nutricionista/paciente/create');

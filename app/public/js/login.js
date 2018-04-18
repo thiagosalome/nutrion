@@ -21,7 +21,7 @@ var LoginForm = {
                         }
                         else if(result == "success_signin"){
                             var home_uri = config.getHomeUri();
-                            location = home_uri + "nutricionista/dashboard"
+                            location = home_uri + "nutricionista/paciente/consultar"
                         }
                         else{
                             LoginForm.showMessage(messages[result]);

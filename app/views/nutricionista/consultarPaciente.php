@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <main class = "main">
+    <main class = "main-dashboard">
         <?php include "objects/menu.php"; ?>
         <section class="dashboard">
         <header class="dashboard-header">

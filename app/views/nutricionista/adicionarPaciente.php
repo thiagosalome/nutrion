@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <main class = "main">
+    <main class = "main-dashboard">
         <?php include "objects/menu.php"; ?>
         <section class="dashboard">
             <header class="dashboard-header">
@@ -84,48 +84,48 @@
                 </div>
             </div>
             <div class="dashboard-form">
-                <!-- <div class="container"> -->
-                    <form role="form" class="largewidth" action="">
-                        <h3 class="formheader">Adicionar Paciente</h3>
-                            <div class="row">
-                                <div class="text-left col-sm-6 form-group has-feedback">
-                                    <input type="text" class="form-control input-default" name="Nome" placeholder="Nome">
-                                    <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
-                                </div>
-                                <div class="text-left col-sm-6 form-group has-feedback">
-                                    <input type="tel" class="form-control input-default" name="Telefone" placeholder="Telefone">
-                                    <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
-                                </div>
+                <form role="form" class="largewidth js-form-addPatient" action="">
+                    <h3 class="formheader">Adicionar Paciente</h3>
+                        <div class="row">
+                            <div class="text-left col-sm-6 form-group has-feedback">
+                                <input type="text" class="form-control input-default" name="Nome" placeholder="Nome">
+                                <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
                             </div>
-                            <div class="form-group has-feedback">
-                                <input type="email" class="form-control input-default" name="email" placeholder="Email">
-                                <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
+                            <div class="text-left col-sm-6 form-group has-feedback">
+                                <input type="tel" class="form-control input-default" name="Telefone" placeholder="Telefone">
+                                <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6 form-group">
-                                    <select name="sexo" class="form-control input-default">
-                                    <option value="">Sexo</option>
-                                    <option>Masculino</option>
-                                    <option>Feminino</option>
-                                    </select>
-                                    <i class="glyphicon glyphicon-chevron-down "></i> 
-                                </div>
-                                <div class="col-sm-6 form-group">
-                                    <input type="text" class="form-control input-default" name="nascimento" placeholder="Data de nascimento : DD/MM/YY">
-                                </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="email" class="form-control input-default" name="email" placeholder="Email">
+                            <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <select name="sexo" class="form-control input-default">
+                                <option value="">Sexo</option>
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                                </select>
+                                <i class="glyphicon glyphicon-chevron-down "></i> 
                             </div>
-                            <div class="form-group has-feedback">
-                                <input type="text" class="form-control input-default" name="cpf" placeholder="CPF">
-                                <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
+                            <div class="col-sm-6 form-group">
+                                <input type="text" class="form-control input-default" name="nascimento" placeholder="Data de nascimento : DD/MM/YY">
                             </div>
-                            <div class="form-group has-feedback">
-                                <input type="text" class="form-control input-default" name="endereco" placeholder="Endereço">
-                            </div>
-                            <div class="form-group text-center" style="margin-bottom: 0px;">
-                                <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
-                            </div>
-                    </form>
-                <!-- </div> -->
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control input-default" name="cpf" placeholder="CPF">
+                            <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control input-default" name="endereco" placeholder="Endereço">
+                        </div>
+                        <div class="form-group text-center" style="margin-bottom: 0px;">
+                            <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
+                        </div>
+                </form>
+                <p class='main-message js-message'></p>
+                <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
             </div>
         </section>       
     </main>
