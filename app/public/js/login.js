@@ -1,4 +1,4 @@
-var mainForm = {
+var LoginForm = {
     //Attributes
     'js_message' : jQuery(".js-message"),
     'js_load' : jQuery(".js-load"),
@@ -12,10 +12,10 @@ var mainForm = {
                 data : jQuery(this).serialize(),
                 type: "POST",
                 beforeSend : function(){
-                    mainForm.js_load.fadeIn('slow');
+                    LoginForm.js_load.fadeIn('slow');
                 },
                 success : function(result){
-                    mainForm.js_load.fadeOut('slow', function(){
+                    LoginForm.js_load.fadeOut('slow', function(){
                         if(result.indexOf("exception") != -1){
                             console.log(result);
                         }
@@ -24,9 +24,9 @@ var mainForm = {
                             location = home_uri + "nutricionista/dashboard"
                         }
                         else{
-                            mainForm.showMessage(messages[result]);
+                            LoginForm.showMessage(messages[result]);
                             if(result == "success_signup"){
-                                mainSlider.js_btn_slider_block.click();
+                                LoginSlider.js_btn_slider_block.click();
                             }
                         }
                     });
@@ -36,12 +36,12 @@ var mainForm = {
     },
     'showMessage' : function(msg){
         this.js_message.text(msg).fadeIn(300, function(){
-            setTimeout(function(){mainForm.js_message.fadeOut(300)}, 2000);
+            setTimeout(function(){LoginForm.js_message.fadeOut(300)}, 2000);
         });
     }
 }
 
-var mainInputs = {
+var LoginInputs = {
     //Attributes
     'js_input' : jQuery(".js-input-field"),
 
@@ -74,7 +74,7 @@ var mainInputs = {
     }
 }
 
-var mainSlider = {
+var LoginSlider = {
     //Attributes
     'js_btn_slider_block' : jQuery(".js-btn-slide-block"),
     'js_block_description' : jQuery(".js-block-description"),
@@ -86,54 +86,54 @@ var mainSlider = {
         if(window.innerWidth > 767){
             this.js_btn_slider_block.on("click", function(){
                 
-                if(mainSlider.js_block_description.data('position') == 'left'){
+                if(LoginSlider.js_block_description.data('position') == 'left'){
                     jQuery(this).text("Logar");
-                    mainSlider.js_block_description.data("position", "right");
+                    LoginSlider.js_block_description.data("position", "right");
                     
-                    mainSlider.js_block_description.animate({
+                    LoginSlider.js_block_description.animate({
                         right : '0',
                     }, speed, function(){
-                        mainSlider.js_form_cad.css("flex", "0 0 45%").children(".form-content, .form-title").fadeIn(speed);
-                        mainSlider.js_form_log.css("flex", "0 0 55%").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
-                        mainInputs.js_input.val("").blur();;
+                        LoginSlider.js_form_cad.css("flex", "0 0 45%").children(".form-content, .form-title").fadeIn(speed);
+                        LoginSlider.js_form_log.css("flex", "0 0 55%").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
+                        LoginInputs.js_input.val("").blur();;
                     });
             
-                    mainSlider.js_block_description.removeAttr("style");
+                    LoginSlider.js_block_description.removeAttr("style");
                 }
                 else{
                     jQuery(this).text("Cadastrar");
-                    mainSlider.js_block_description.data("position", "left");
+                    LoginSlider.js_block_description.data("position", "left");
                     
-                    mainSlider.js_block_description.animate({
+                    LoginSlider.js_block_description.animate({
                         left : '0',
                     }, speed, function(){
-                        mainSlider.js_form_cad.css("flex", "0 0 55%").children(".form-content, .form-title").fadeOut(speed);
-                        mainSlider.js_form_log.css("flex", "0 0 45%").children(".form-content, .form-title, .form-forgot").fadeIn(speed);
-                        mainInputs.js_input.val("").blur();
+                        LoginSlider.js_form_cad.css("flex", "0 0 55%").children(".form-content, .form-title").fadeOut(speed);
+                        LoginSlider.js_form_log.css("flex", "0 0 45%").children(".form-content, .form-title, .form-forgot").fadeIn(speed);
+                        LoginInputs.js_input.val("").blur();
                     });
             
-                   mainSlider.js_block_description.removeAttr("style");
+                   LoginSlider.js_block_description.removeAttr("style");
                 }
             });
         }
         else{
             this.js_btn_slider_block.on("click", function(){
-                if(mainSlider.js_block_description.data('position') == 'left'){
+                if(LoginSlider.js_block_description.data('position') == 'left'){
                     jQuery(this).text("Logar");
-                    mainSlider.js_block_description.data("position", "right");
+                    LoginSlider.js_block_description.data("position", "right");
 
-                    mainSlider.js_form_log.fadeOut('slow', function(){
-                        mainSlider.js_form_cad.fadeIn('slow');
-                        mainInputs.js_input.val("").blur();
+                    LoginSlider.js_form_log.fadeOut('slow', function(){
+                        LoginSlider.js_form_cad.fadeIn('slow');
+                        LoginInputs.js_input.val("").blur();
                     });
                 }
                 else{
                     jQuery(this).text("Cadastrar");
-                    mainSlider.js_block_description.data("position", "left");
+                    LoginSlider.js_block_description.data("position", "left");
 
-                    mainSlider.js_form_cad.fadeOut('slow', function(){
-                        mainSlider.js_form_log.fadeIn('slow');
-                        mainInputs.js_input.val("").blur();
+                    LoginSlider.js_form_cad.fadeOut('slow', function(){
+                        LoginSlider.js_form_log.fadeIn('slow');
+                        LoginInputs.js_input.val("").blur();
                     });
                 }
                 

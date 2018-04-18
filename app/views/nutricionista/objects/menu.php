@@ -4,29 +4,29 @@
     </header>
     <nav class="aside-nav">
         <ul>
-            <li>
-                <div class="nav-item">
+            <li class="nav-dropdown" data-type="paciente">
+                <div class="nav-item js-nav-item">
                     <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/patient_icon.png" alt="">
                     <p class="item-description">Pacientes</p>
                     <img class="item-icon-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="">
                 </div>
                 <ul class="nav-submenu">
                     <li>
-                        <a href="#" title="Consultar Pacientes">
+                        <a href="<?php echo HOME_URI; ?>/nutricionista/paciente/consultar" title="Consultar Pacientes">
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="Consultar Pacientes" title="Consultar Pacientes">
                             <p class="submenu-description">Consultar Pacientes</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="Adicionar Paciente">
+                        <a href="<?php echo HOME_URI; ?>/nutricionista/paciente/adicionar" title="Adicionar Paciente">
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="Adicionar Paciente" title="Adicionar Paciente">
                             <p class="submenu-description">Adicionar Paciente</p>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li>
-                <div class="nav-item">
+            <li class="nav-dropdown" data-type="alimento">
+                <div class="nav-item js-nav-item">
                     <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="">
                     <p class="item-description">Alimentos</p>
                     <img class="item-icon-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="">
@@ -46,9 +46,9 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <div class="nav-item">
-                    <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="">
+            <li class="nav-dropdown" data-type="dieta">
+                <div class="nav-item js-nav-item">
+                    <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/diets_icon.png" alt="">
                     <p class="item-description">Dietas</p>
                     <img class="item-icon-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/seta_icon.png" alt="">
                 </div>
