@@ -16,17 +16,15 @@ class pacienteController{
     public function create(){
         $pacienteModel = new pacienteModel();
         $pacienteVo = new pacienteVO();  
-        /*
-        $pacienteVo->setNome($_POST["nome"]);
-        $pacienteVo->setSexo($_POST["sexo"]);
-        $pacienteVo->setTelefone($_POST["telefone"]);
-        $pacienteVo->setDataNasc($_POST["datanasc"]);
-        */
         
-        $pacienteVo->setNome("nome");
-        $pacienteVo->setSexo("f");
-        $pacienteVo->setTelefone("31999999999");
-        $pacienteVo->setDataNasc("01/01/2001");
+        $pacienteVo->setNome($_POST["Nome"]);
+        $pacienteVo->setSexo($_POST["sexo"]);
+        $pacienteVo->setTelefone($_POST["Telefone"]);
+       
+        $data = explode("/",$_POST["nascimento"]);        
+        $pacienteVo->setDataNasc($data[2]."-".$data[1]."-".$data[0]." 00:00:00");
+        
+        
     
         $cadastrarModel = $pacienteModel->create($pacienteVo);
     }

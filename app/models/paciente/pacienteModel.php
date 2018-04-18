@@ -1,21 +1,17 @@
 <?php
-
 class pacienteModel{
 
-    public function create(){
+    public function create(pacienteVo $pacienteVo){
 
         $data = explode("/",$pacienteVo->getDataNasc());
-        $dia = $data[0];
-        $mes = $data[1];
-        $ano = $data[2];
-
+        
         if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
             return "empty";
         }   
         else if(!preg_match('#^\(\d{2}\) (9|)[6789]\d{3}-\d{4}$#', $pacienteVo->getTelefone())){
-            return "not_an_mobile_number";
+            return "not_an_mobile_number";//formato:(21) 98765-4321
         }
-        else if(!checkdate( $mes , $dia , $ano ) || $ano < 1900 || mktime( 0, 0, 0, $mes, $dia, $ano ) > time()){
+        else if(!checkdate( $data[1] , $data[0] , $data[2] ) || $data[2] < 1900 || mktime( 0, 0, 0, $data[1], $data[0], $data[2] ) > time()){
             return "invalid_date"; 
         }
         else{
