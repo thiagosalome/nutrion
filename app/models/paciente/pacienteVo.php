@@ -1,5 +1,4 @@
 <?php
-
 class pacienteVo{
     private $id;
     private $cpf;
@@ -8,7 +7,6 @@ class pacienteVo{
     private $telefone;
     private $email;
     private $dataNasc;
-
      
     public function getId()
     {
@@ -30,7 +28,6 @@ class pacienteVo{
     public function setCPF($cpf)
     {
         $this->cpf = $cpf;
-
         return $this;
     }
 
@@ -42,10 +39,8 @@ class pacienteVo{
     public function setNome($nome)
     {
         $this->nome = $nome;
-
         return $this;
     }
-
     
     public function getSexo()
     {
@@ -55,10 +50,8 @@ class pacienteVo{
     public function setSexo($sexo)
     {
         $this->sexo = $sexo;
-
         return $this;
     }
-
      
     public function getTelefone()
     {
@@ -68,21 +61,17 @@ class pacienteVo{
     public function setTelefone($telefone)
     {
         $this->telefone = $telefone;
-
         return $this;
     }
     
-
     public function getEmail()
     {
         return $this->email;
     }
-
     
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -90,14 +79,11 @@ class pacienteVo{
     {
         return $this->dataNasc;
     }
-
     
     public function setDataNasc($dataNasc)
     {
         $this->dataNasc = $dataNasc;
-
         return $this;
     }
 }
-
 ?>
