@@ -8,9 +8,9 @@ class pacienteModel{
         if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
             return "empty";
         }
-        else if(){
+        /*else if(){
             return "invalid_CPF";
-        }         
+        }      */   
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $pacienteVo->getNome())){
             return "invalid_name";
         }   

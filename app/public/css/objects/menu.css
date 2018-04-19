@@ -25,11 +25,16 @@
         .aside-nav li:hover{
             cursor: pointer;
         }
+        
+        .aside-nav a:hover{
+            text-decoration: none;
+        }
 
         .nav-dropdown{
             height: 45px;
             overflow: hidden;
             transition: 0.5s;
+            margin-bottom: 5px;
         }
 
             .nav-dropdown.active{
@@ -64,6 +69,7 @@
 
                 .item-icon-info{
                     margin-right: 17px;
+                    width: 25px;
                 }
 
                 .item-icon-arrow{

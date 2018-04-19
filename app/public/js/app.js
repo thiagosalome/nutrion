@@ -22,3 +22,5 @@ var home_uri = getHomeUri();
     DashboardWindow.verifyWindow();
 
     DashboardForm.onSubmit('.js-form-addPatient', home_uri + 'nutricionista/paciente/create');
+
+    DashboardHeader.toggleOptions();

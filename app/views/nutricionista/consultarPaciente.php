@@ -1,7 +1,7 @@
 <?php
     // session_start();
-    // if(isset($_SESSION["loggeduser"])){
-    //     $email = $_SESSION["loggeduser"];
+    // if(isset($_SESSION["email"])){
+    //     $email = $_SESSION["email"];
     // }
     // else{
     //     header("Location: /nutrion/");
@@ -35,15 +35,21 @@
     <main class = "main-dashboard">
         <?php include "objects/menu.php"; ?>
         <section class="dashboard">
-        <header class="dashboard-header">
+            <header class="dashboard-header">
                 <div class="header-top">
-                    <div class="header-perfil">
+                    <div class="header-perfil js-header-perfil">
                         <p class="perfil-name">John</p>
-                        <!-- <img class="perfil-arrow" src="" alt="" title=""> -->
+                        <img class="perfil-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_arrow.png" alt="" title="">
                     </div>
                     <div class="header-search">
                         <img class="search-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_search.png" alt="" title="">
                         <input class="search-input" type="text" name="search" id="">
+                    </div>
+                    <div class="header-options js-header-options">
+                        <ul>
+                            <li><a href="http://">Configurações</a></li>
+                            <li><a href="<?php echo HOME_URI ?>nutricionista/signOut">Sair</a></li>
+                        </ul>
                     </div>
                     <div class="header-menu js-menu">
                         <span></span>
@@ -52,13 +58,13 @@
                     </div>
                 </div>
                 <div class="header-bottom">
-                    <h1 class="header-title">Consultar Pacientes</h1>
+                    <h1 class="header-title">Adicionar Paciente</h1>
                 </div>
             </header>
             <div class="dashboard-statistics">
                 <div class="statistics-item">
                     <div class="statistics-item-image-blue">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patient_icon.png" alt="Pacientes" title="Pacientes" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
                         <span>192</span>
@@ -67,20 +73,20 @@
                 </div>
                 <div class="statistics-item">
                     <div class="statistics-item-image-agua">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="Alimentos" title="Alimentos" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>192</span>
-                        <p>Pacientes</p>
+                        <span>55</span>
+                        <p>Alimentos</p>
                     </div>
                 </div>
                 <div class="statistics-item">
                     <div class="statistics-item-image-green">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patients_icon.png" alt="" title="" class="person-blue">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/diets_icon.png" alt="Dietas" title="Dietas" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>192</span>
-                        <p>Pacientes</p>
+                        <span>32</span>
+                        <p>Dietas</p>
                     </div>
                 </div>
             </div>

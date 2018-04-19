@@ -9,6 +9,10 @@
         margin: 10px 30px 10px 0;
     }
 
+        .statistics-item img{
+            width: 40px;
+        }
+
     .statistics-item:last-child{
         margin-right: 0;
     }

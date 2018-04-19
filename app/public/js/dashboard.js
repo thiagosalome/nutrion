@@ -43,6 +43,19 @@ var DashboardWindow = {
     }
 }
 
+var DashboardHeader = {
+    //Attributes
+    "js_header_perfil" : jQuery(".js-header-perfil"),
+    "js_header_options" : jQuery(".js-header-options"),
+
+    //Functions
+    "toggleOptions" : function(){
+        this.js_header_perfil.on("click", function(){
+            DashboardHeader.js_header_options.fadeToggle(200);
+        });
+    }
+}
+
 var DashboardForm = {
     //Attributes
     'js_message' : jQuery(".js-message"),
