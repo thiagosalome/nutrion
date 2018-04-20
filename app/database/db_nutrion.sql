@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Mar-2018 às 00:36
--- Versão do servidor: 10.1.30-MariaDB
+-- Generation Time: 20-Abr-2018 às 18:57
+-- Versão do servidor: 5.7.21-log
 -- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,45 +25,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_alimento`
+-- Estrutura da tabela `tb_avaliacao`
 --
 
-CREATE TABLE `tb_alimento` (
+CREATE TABLE `tb_avaliacao` (
   `id` int(11) NOT NULL,
-  `nome` char(40) NOT NULL,
-  `descricao` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_infoFisicas` int(11) NOT NULL,
+  `dataAval` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_alimento`
+-- Extraindo dados da tabela `tb_avaliacao`
 --
 
-INSERT INTO `tb_alimento` (`id`, `nome`, `descricao`) VALUES
-(1, 'Batata', 'Tubérculo pertencente à família das Solanaceae'),
-(2, 'Maçã', 'Pseudofruto pomáceo da macieira Malus domestica, árvore da família Rosaceae');
+INSERT INTO `tb_avaliacao` (`id`, `id_infoFisicas`, `dataAval`) VALUES
+(1, 1, '2018-02-21'),
+(2, 2, '2018-01-01'),
+(3, 3, '2018-04-15'),
+(4, 4, '2018-04-20');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_infopaciente`
+-- Estrutura da tabela `tb_infofisicas`
 --
 
-CREATE TABLE `tb_infopaciente` (
+CREATE TABLE `tb_infofisicas` (
   `id` int(11) NOT NULL,
   `peso` float NOT NULL,
-  `altura` float NOT NULL,
+  `altura` int(11) NOT NULL,
   `imc` float NOT NULL,
-  `dataAvaliacao` date NOT NULL,
+  `cintura` int(11) NOT NULL,
+  `quadril` int(11) NOT NULL,
+  `icq` float NOT NULL,
+  `classificacaoIPAQ` char(25) NOT NULL,
   `id_paciente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_infopaciente`
+-- Extraindo dados da tabela `tb_infofisicas`
 --
 
-INSERT INTO `tb_infopaciente` (`id`, `peso`, `altura`, `imc`, `dataAvaliacao`, `id_paciente`) VALUES
-(1, 60.3, 1.6, 21.5, '2018-03-18', 1),
-(2, 65.8, 1.73, 24.5, '2018-03-17', 2);
+INSERT INTO `tb_infofisicas` (`id`, `peso`, `altura`, `imc`, `cintura`, `quadril`, `icq`, `classificacaoIPAQ`, `id_paciente`) VALUES
+(1, 75.3, 180, 24.5, 70, 70, 0.85, 'Sedentário', 1),
+(2, 65.8, 173, 21.5, 50, 50, 0.79, 'Ativo', 2),
+(3, 68, 180, 24, 68, 68, 0.83, 'Irregularmente Ativo', 3),
+(4, 66, 173, 22, 52, 52, 0.81, 'Muito Ativo', 2);
 
 -- --------------------------------------------------------
 
@@ -76,16 +83,17 @@ CREATE TABLE `tb_nutricionista` (
   `email` char(40) NOT NULL,
   `senha` char(10) NOT NULL,
   `nome` char(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tb_nutricionista`
 --
 
 INSERT INTO `tb_nutricionista` (`id`, `email`, `senha`, `nome`) VALUES
-(1, 'cjunqueira@nutrion.com', 'abcde', 'Carlos Junqueira'),
-(2, 'jtavares@nutrion.com', '12345', 'Juliana Tavares'),
-(3, 'teste@teste.com', 'teste', 'testeuser');
+(1, 'cjunqueira@nutrion.com', '12345', 'Carlos Junqueira'),
+(2, 'jtavares@nutrion.com', 'abcde', 'Juliana Tavares'),
+(3, 'admin@admin.com', 'admin', 'Administrador'),
+(4, 'teste@teste.com', 'teste', 'testeuser');
 
 -- --------------------------------------------------------
 
@@ -96,33 +104,37 @@ INSERT INTO `tb_nutricionista` (`id`, `email`, `senha`, `nome`) VALUES
 CREATE TABLE `tb_paciente` (
   `id` int(11) NOT NULL,
   `nome` char(40) NOT NULL,
+  `cpf` char(15) NOT NULL,
   `telefone` char(15) NOT NULL,
   `sexo` char(1) NOT NULL,
-  `dataNasc` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `dataNasc` date NOT NULL,
+  `id_nutricionista` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tb_paciente`
 --
 
-INSERT INTO `tb_paciente` (`id`, `nome`, `telefone`, `sexo`, `dataNasc`) VALUES
-(1, 'Everaldo Dias', '(31)99999-9999', 'M', '1996-04-30'),
-(2, 'Mariana Souza', '(31)3030-4444', 'F', '1976-03-28');
+INSERT INTO `tb_paciente` (`id`, `nome`, `cpf`, `telefone`, `sexo`, `dataNasc`, `id_nutricionista`) VALUES
+(1, 'Everaldo Dias', '999.999.999-99', '(31)99999-9999', 'M', '1996-04-30', 1),
+(2, 'Mariana Souza', '111.111.111-11', '(31)3030-4444', 'F', '1976-03-28', 2),
+(3, 'Carlos Miranda', '222.222.222-22', '(31)3343-2244', 'M', '1985-02-11', 3);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_alimento`
+-- Indexes for table `tb_avaliacao`
 --
-ALTER TABLE `tb_alimento`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `tb_avaliacao`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id_infoFisicas` (`id_infoFisicas`);
 
 --
--- Indexes for table `tb_infopaciente`
+-- Indexes for table `tb_infofisicas`
 --
-ALTER TABLE `tb_infopaciente`
+ALTER TABLE `tb_infofisicas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_id_paciente` (`id_paciente`);
 
@@ -137,45 +149,59 @@ ALTER TABLE `tb_nutricionista`
 -- Indexes for table `tb_paciente`
 --
 ALTER TABLE `tb_paciente`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cpf` (`cpf`),
+  ADD KEY `fk_id_nutricionista` (`id_nutricionista`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `tb_alimento`
+-- AUTO_INCREMENT for table `tb_avaliacao`
 --
-ALTER TABLE `tb_alimento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `tb_avaliacao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_infopaciente`
+-- AUTO_INCREMENT for table `tb_infofisicas`
 --
-ALTER TABLE `tb_infopaciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `tb_infofisicas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_nutricionista`
 --
 ALTER TABLE `tb_nutricionista`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_paciente`
 --
 ALTER TABLE `tb_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `tb_infopaciente`
+-- Limitadores para a tabela `tb_avaliacao`
 --
-ALTER TABLE `tb_infopaciente`
+ALTER TABLE `tb_avaliacao`
+  ADD CONSTRAINT `fk_id_infoFisicas` FOREIGN KEY (`id_infoFisicas`) REFERENCES `tb_infofisicas` (`id`);
+
+--
+-- Limitadores para a tabela `tb_infofisicas`
+--
+ALTER TABLE `tb_infofisicas`
   ADD CONSTRAINT `fk_id_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`);
+
+--
+-- Limitadores para a tabela `tb_paciente`
+--
+ALTER TABLE `tb_paciente`
+  ADD CONSTRAINT `fk_id_nutricionista` FOREIGN KEY (`id_nutricionista`) REFERENCES `tb_nutricionista` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
