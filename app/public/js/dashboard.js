@@ -1,5 +1,6 @@
 var DashboardMenu = {
     'js_menu' : jQuery(".js-menu"),
+    'js_item_menu' : jQuery(".js-item-menu"),
     'js_aside' : jQuery(".js-aside"),
     'js_nav_item' : jQuery(".js-nav-item"),
     
@@ -15,12 +16,11 @@ var DashboardMenu = {
         });
     },
     
-    "verifyDropDown" : function(){
+    "verifyItemActive" : function(){
         var url = window.location;
-        var navDropdown = jQuery(".nav-dropdown");
         var dataType;
-
-        navDropdown.each(function(){
+        
+        this.js_item_menu.each(function(){
             // this.getAttribute("data-type"));
             dataType = jQuery(this).data("type");
 

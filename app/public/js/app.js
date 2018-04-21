@@ -17,7 +17,7 @@ var home_uri = getHomeUri();
     // Dashboard
     DashboardMenu.onClick();
     DashboardMenu.dropDown();
-    DashboardMenu.verifyDropDown();
+    DashboardMenu.verifyItemActive();
 
     DashboardWindow.verifyWindow();
 
