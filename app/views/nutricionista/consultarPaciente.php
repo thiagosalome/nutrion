@@ -26,6 +26,7 @@
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- site title -->
     <title>Dashboard</title>
@@ -47,8 +48,9 @@
                     </div>
                     <div class="header-options js-header-options">
                         <ul>
-                            <li><a href="http://">Configurações</a></li>
-                            <li><a href="<?php echo HOME_URI ?>nutricionista/signOut">Sair</a></li>
+                            <li><button data-toggle="modal" data-target="#modal-update">Editar Conta</button></li>
+                            <li><button data-toggle="modal" data-target="#modal-delete">Deletar Conta</button></li>
+                            <li><a href="http://">Sair</a></li>
                         </ul>
                     </div>
                     <div class="header-menu js-menu">
@@ -309,6 +311,7 @@
             </div>          
         </section>       
     </main>
+    <?php include "objects/modal.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
