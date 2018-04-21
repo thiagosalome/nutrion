@@ -125,9 +125,6 @@
                         <input type="text" class="form-control input-default" name="cpf" placeholder="CPF">
                         <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
                     </div>
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control input-default" name="endereco" placeholder="Endereço">
-                    </div>
                     <div class="form-group text-center" style="margin-bottom: 0px;">
                         <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
                     </div>
