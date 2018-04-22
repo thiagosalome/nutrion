@@ -1,6 +1,7 @@
 <?php
 class pacienteVo{
     private $id;
+    private $idNutricionista; 
     private $cpf;
     private $nome;
     private $sexo;
@@ -16,6 +17,18 @@ class pacienteVo{
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getIdNutricionista()
+    {
+        return $this->idNutricionista;
+    }
+
+    public function setIdNutricionista($idNutricionista)
+    {
+        $this->idNutricionista = $idNutricionista;
 
         return $this;
     }

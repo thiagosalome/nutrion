@@ -1,7 +1,7 @@
 <?php
 
 class pacienteDAO{
-
+    /*
     public function search($query){
         require "app/bootstrap.php";
         
@@ -17,10 +17,31 @@ class pacienteDAO{
             return $e->getMessage();
         }
     }
+    */
 
+    /**
+     * Método para consulta de um paciente pelo cpf
+     *
+     * @param pacienteVO $paciente
+     */
+    public function getByCPF($cpf){
+        require "app/bootstrap.php";        
+        try{
+            $paciente = $entityManager->getRepository("Paciente")->findOneBy(array("cpf" => $cpf));            
+            return $paciente;
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+     /**
+     * Método de inserção do paciente
+     *
+     * @param pacienteVO $paciente
+     */
     public function insert(pacienteVo $pacienteVo){
-        require "app/bootstrap.php";
-        
+        require "app/bootstrap.php";        
         try{
             $paciente = new Paciente;
             $paciente->setCPF($pacienteVo->getCPF());
@@ -39,6 +60,11 @@ class pacienteDAO{
         }
     }
 
+    /**
+     * Método de ediçao do paciente
+     *
+     * @param pacienteVO $paciente
+     */
     public function update(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
         try{                        
@@ -66,6 +92,11 @@ class pacienteDAO{
 
     }
 
+    /**
+     * Método de exclusao do paciente
+     *
+     * @param pacienteVO $paciente
+     */
     public function delete(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
         try{
@@ -83,17 +114,6 @@ class pacienteDAO{
             return false;
         }    
 
-    }
-
-    public function getByCPF($cpf){
-        require "app/bootstrap.php";        
-        try{
-            $paciente = $entityManager->getRepository("Paciente")->findOneBy(array("cpf" => $cpf));            
-            return $paciente;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
-    }
+    }  
 }
 ?>

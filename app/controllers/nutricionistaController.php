@@ -5,6 +5,14 @@ require "app/models/nutricionista/nutricionistaModel.php";
 
 class nutricionistaController{  
 
+    public function getNutricionistaByEmail($email){
+        if($email != null){
+            $nutricionistaDao = new nutricionistaDAO();
+            $nutricionista  = $nutricionistaDao->getByEmail($email);            
+            return $nutricionista;
+        }
+    } 
+
     public function login(){
         include "app/views/nutricionista/login.php";
     }

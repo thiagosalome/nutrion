@@ -1,45 +1,50 @@
 <?php
 class pacienteModel{
-
+/*
     public function search($query){
         $pacienteDAO = new pacienteDAO();        
         $search = $pacienteDAO->search($query);
     }
+*/
 
+    /**
+     * Método para definir regras de negócio da criação do paciente
+     *
+     * @param pacienteVO $paciente
+     */ 
     public function create(pacienteVo $pacienteVo){
 
         $data = explode("-",$pacienteVo->getDataNasc());
         
         if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
-            return "Há campos vazios.";
+            return "Há campos vazios";
         }
         else if(strlen($pacienteVo->getCPF()) != 11 ||$pacienteVo->getCPF() == '00000000000' ){
             return "CPF inválido";
         } 
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $pacienteVo->getNome())){
-            return "O nome deve ter entre 2 e 40 caracteres.";
+            return "O nome deve ter entre 2 e 40 caracteres";
         }   
         else if(!preg_match('#^\(\d{2}\) (9|)[6789]\d{3}-\d{4}$#', $pacienteVo->getTelefone())){
-            return "O número de telefone está inválido";
+            return "O número de telefone é inválido";
         }         
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $pacienteVo->getEmail())){
-            return "O email digitado é inválido.";
+            return "O email digitado é inválido";
         }
         else if(!checkdate( $data[1] , $data[2] , $data[0] ) || $data[0] < 1900 || mktime( 0, 0, 0, $data[1], $data[2], $data[0] ) > time()){
-            return "A data digitada é inválida."; 
+            return "Data de nascimento inválida"; 
         }
         else{
             $pacienteDAO = new pacienteDAO();                       
             $paciente = $pacienteDAO->getByCPF($pacienteVo->getCPF());            
            
             if(is_object($paciente)){
-                return "O paciente já foi cadastrado antes.";
+                return "O paciente já foi cadastrado antes";
             }
             else if($paciente == null){
                 $cadastro = $pacienteDAO->insert($pacienteVo);
-
                 if($cadastro == true){
-                    return "success";
+                    return "Paciente criado com sucesso";
                 }
                 else{
                     return "exception " . $paciente;
@@ -51,6 +56,11 @@ class pacienteModel{
         }
     }
 
+    /**
+     * Método para definir regras de negócio da edição do paciente
+     *
+     * @param pacienteVO $paciente
+     */ 
     public function update($pacienteVo){
         $data = explode("-",$pacienteVo->getDataNasc());
         
@@ -74,24 +84,36 @@ class pacienteModel{
         }
         else{
             $pacienteDAO = new pacienteDAO();                       
-            $update = $pacienteDAO->update($pacienteVo);           
-            if($update != true){
-                return "failed";
+            $paciente = $pacienteDAO->getByCPF($pacienteVo->getCPF());            
+           
+            if(is_object($paciente)){
+                return "O paciente já cadastrado anteriormente";
             }
             else{
-                return "success";
+                $update = $pacienteDAO->update($pacienteVo);           
+                if($update != true){
+                    return "Paciente alterado com sucesso";
+                }
+                else{
+                    return "Erro ao editar o paciente" . " exception" ;
+                }
             }
         }
     }
 
+    /**
+     * Método para definir regras de negócio da exclusao do paciente
+     *
+     * @param pacienteVO $paciente
+     */ 
     public function delete($pacienteVo){
         $pacienteDAO = new pacienteDAO();        
         $delete = $pacienteDAO->delete($pacienteVo);
         if($delete){
-            return "success";
+            return "Paciente excluído com sucesso";
         }
         else{
-            return "failed";
+            return "Erro ao excluir o paciente". " exception";
         }
     }
 }

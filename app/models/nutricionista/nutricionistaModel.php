@@ -33,7 +33,7 @@ class nutricionistaModel{
                 }
             }
             else if($usuario == null){
-                return "Usuário inexistente.";
+                return "Usuário inexistente";
             }
             else{
                 return "exception " . $usuario;
@@ -106,7 +106,7 @@ class nutricionistaModel{
                 $update = $nutricionistaDao->update($nutricionista);
                 
                 if($update != true){
-                    return "Erro ao atualizar o usuário";
+                    return "Erro ao atualizar o usuário". " exception" ;
                 }
                 else{
                     return "Usuário atualizado com sucesso";
@@ -128,7 +128,7 @@ class nutricionistaModel{
             return "Usuário excluído com sucesso";
         }
         else{
-            return "Erro ao excluir o usuário";
+            return "Erro ao excluir o usuário". " exception" ;
         }
     }
 }
