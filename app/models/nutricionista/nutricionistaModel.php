@@ -142,5 +142,14 @@ class nutricionistaModel{
             }
         }   
     }
+
+    public function getByEmail($email){
+        if($email != null){
+            $nutricionistaDao = new nutricionistaDAO();
+            $nutricionista  = $nutricionistaDao->getByEmail($email);
+            
+            return $nutricionista;
+        }
+    }
 }
 ?>

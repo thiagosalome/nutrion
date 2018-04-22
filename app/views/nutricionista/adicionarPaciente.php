@@ -1,5 +1,12 @@
 <?php
-    // session_start();
+    session_start();
+    $email = $_SESSION["email"];
+
+    if(!isset($_SESSION["id_nutricionista"])){
+        $nutricionistaController = new nutricionistaController();
+        $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
+        $_SESSION["id_nutricionista"] = $nutricionista->getId();
+    }
     // if(isset($_SESSION["email"])){
     //     $email = $_SESSION["email"];
     // }
@@ -94,6 +101,7 @@
             <div class="dashboard-form">
                 <form role="form" class="largewidth js-form-addPatient" action="">
                     <h3 class="formheader">Adicionar Paciente</h3>
+                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">
                             <input type="text" class="form-control input-default" name="Nome" placeholder="Nome">
@@ -104,10 +112,10 @@
                             <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
                         </div>
                     </div>
-                    <div class="form-group has-feedback">
+                    <!-- <div class="form-group has-feedback">
                         <input type="email" class="form-control input-default" name="email" placeholder="Email">
                         <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <select name="sexo" class="form-control input-default">

@@ -1,5 +1,13 @@
 <?php
-    // session_start();
+    session_start();
+    $email = $_SESSION["email"];
+
+    if(!isset($_SESSION["id_nutricionista"])){
+        $nutricionistaController = new nutricionistaController();
+        $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
+        $_SESSION["id_nutricionista"] = $nutricionista->getId();
+    }
+    
     // if(isset($_SESSION["email"])){
     //     $email = $_SESSION["email"];
     // }

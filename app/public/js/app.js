@@ -1,4 +1,3 @@
-require('messages'); // require messages file
 require('login'); // require main file
 require('dashboard'); // require main file
 var home_uri = getHomeUri();

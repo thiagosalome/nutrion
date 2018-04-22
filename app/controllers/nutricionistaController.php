@@ -113,5 +113,14 @@ class nutricionistaController{
                 break;
         }
     }
+
+    public function getNutricionistaByEmail($email){
+        if($email != null){
+            $nutricionistaModel = new nutricionistaModel();
+            $nutricionista  = $nutricionistaModel->getByEmail($email);
+            
+            return $nutricionista;
+        }
+    }
 }
 ?>
