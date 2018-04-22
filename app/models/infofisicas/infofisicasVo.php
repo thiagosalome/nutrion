@@ -1,64 +1,25 @@
 <?php
 
-/**
- * @Entity
- * @Table(name="tb_infofisicas")
- * 
- */
-class InfoFisicas
-{
-    /**
-     * @Id
-     * @GeneratedValue(strategy="AUTO")
-     * @Column(type="integer", name="id")
-     */
-    protected $id;
-
-    /**
-     * @Column(type="float", name="peso")
-     */
-    protected $peso;
-
-    /**
-     * @Column(type="float", name="altura")
-     */
-    protected $altura;
-
-    /**
-     * @Column(type="integer", name="imc")
-     */
-    protected $imc;
-
-    /**
-     * @Column(type="float", name="cintura")
-     */
-    protected $cintura;
-
-    /**
-     * @Column(type="integer", name="quadril")
-     */
-    protected $quadril;
-
-    /**
-     * @Column(type="integer", name="icq")
-     */
-    protected $icq;
-
-    /**
-     * @Column(type="string", name="classificacaoIPAQ")
-     */
-    protected $classificacaoIPAQ;
-
-    /**
-     * @ManyToOne(targetEntity="Paciente")
-     * @JoinColumn(name="id_paciente", referencedColumnName="id")
-     */
-    protected $idPaciente;
-
+class infofisicasVo{
+    private $id;
+    private $peso;
+    private $altura;
+    private $imc;
+    private $cintura;
+    private $quadril;
+    private $icq;
+    private $classificacaoIPAQ;
+    private $idPaciente;
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getPeso()
@@ -153,6 +114,7 @@ class InfoFisicas
         $this->idPaciente = $idPaciente;
         return $this;
     }
+    
 }
 
 ?>
