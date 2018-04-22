@@ -5,10 +5,7 @@ require "app/models/nutricionista/nutricionistaModel.php";
 
 class nutricionistaController{  
 
-    public $emailUsuarioLogado;
-
     public function login(){
-        // Rota para view de login e cadastro
         include "app/views/nutricionista/login.php";
     }
 
@@ -48,79 +45,31 @@ class nutricionistaController{
         echo $cadastrarModel;
     }
 
-    public function delete(){
-        $nutricionistaModel = new nutricionistaModel();
-        //$nutricionistaVo = new nutricionistaVO();
-        
-        $deleteNutricionista = $nutricionistaModel->delete();
-
-        switch ($deleteNutricionista) {
-            case "success":
-                $_SESSION["msg"] = "Usuário excluído com sucesso";            
-                header("Location: /nutrion/system/nutricionista/login");
-                echo $_SESSION["msg"];
-                break;
-            case "failed":
-                $_SESSION["msg"] = "Erro ao excluir o usuário.";
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                echo $_SESSION["msg"];
-                break; 
-        }
-    }
-
     public function update(){
-        $novoNutricionista = new nutricionistaVo();
-        /* $nutricionista->setNome($_POST["nome"]);
-        $nutricionista->setEmail($_POST["email"]);
-        $nutricionista->setSenha($_POST["senha"]); */
-        session_start();
-        $novoNutricionista->setNome("nome");
-        $novoNutricionista->setEmail("email@email.com");
-        $novoNutricionista->setSenha("senha");
+        $nutricionistaVo = new nutricionistaVo();
+        
+        $nutricionistaVo->setId($_POST["id_nutricionista"]); 
+        $nutricionistaVo->setNome($_POST["nome"]);
+        $nutricionistaVo->setEmail($_POST["email"]);
+        $nutricionistaVo->setSenha($_POST["senha"]);              
 
-        $nutricionistaModel = new nutricionistaModel();
-        //$nutricionistaModel=$nutricionistaModel->update($novoNutricionista,$emailUsuarioLogado);
-        $nutricionistaModel=$nutricionistaModel->update($novoNutricionista);
-        switch ($nutricionistaModel) {
-            case "empty":
-                $_SESSION["msg"] = "Há campos vazios.";
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;
+        $nutricionistaModel = new nutricionistaModel();        
+        $nutricionistaModel=$nutricionistaModel->update($nutricionistaVo);
 
-            case "not_an_email":
-                $_SESSION["msg"] = "O email digitado é inválido.";
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;
+        echo $nutricionistaModel;        
+    } 
 
-            case "invalid_name":
-                $_SESSION["msg"] = "O nome deve ter entre 2 e 40 caracteres.";
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;
+    public function delete(){
+        $nutricionistaVo = new nutricionistaVO();
+        $nutricionistaVo->setId($_POST["id_nutricionista"]);  
 
-            case "already_registered":
-                $_SESSION["msg"] = "Email já cadastrado.";
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;
+        $nutricionistaModel = new nutricionistaModel();     
+        $delete = $nutricionistaModel->delete($nutricionistaVo);
 
-            case "failed":
-                $_SESSION["msg"] = "Erro ao atualizar o usuário.";
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;    
-
-            case "success":
-                $_SESSION["msg"] = "Usuário atualizado com sucesso";            
-                header("Location: /nutrion/system/nutricionista/dashboard");
-                break;
+        if($delete=="Usuário excluído com sucesso"){           
+            header("Location: " . HOME_URI);
         }
-    }
-
-    public function getNutricionistaByEmail($email){
-        if($email != null){
-            $nutricionistaModel = new nutricionistaModel();
-            $nutricionista  = $nutricionistaModel->getByEmail($email);
-            
-            return $nutricionista;
-        }
-    }
+        echo $delete;       
+    }      
 }
 ?>
