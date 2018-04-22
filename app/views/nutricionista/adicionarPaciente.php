@@ -112,10 +112,10 @@
                             <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
                         </div>
                     </div>
-                    <!-- <div class="form-group has-feedback">
+                    <div class="form-group has-feedback">
                         <input type="email" class="form-control input-default" name="email" placeholder="Email">
                         <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
-                    </div> -->
+                    </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <select name="sexo" class="form-control input-default">

@@ -18,6 +18,11 @@ class Paciente{
     protected $nome;
 
     /**
+     * @Column(type="string", name="cpf")
+     */
+    protected $cpf;
+
+    /**
      * @Column(type="string", name="telefone")
      */
     protected $telefone;
@@ -31,6 +36,17 @@ class Paciente{
      * @Column(type="date", name="dataNasc")
      */
     protected $dataNasc;
+
+    /**
+     * @Column(type="string", name="email")
+     */
+    protected $email;
+    
+    /**
+     * @ManyToOne(targetEntity="Nutricionista")
+     * @JoinColumn(name="id_nutricionista", referencedColumnName="id")
+     */
+    protected $idNutricionista;
 
     public function getId()
     {
@@ -81,6 +97,42 @@ class Paciente{
     public function setDataNasc($dataNasc)
     {
         $this->dataNasc = $dataNasc;
+
+        return $this;
+    }
+
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
+
+    public function setCpf($cpf)
+    {
+        $this->cpf = $cpf;
+
+        return $this;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getIdNutricionista()
+    {
+        return $this->idNutricionista;
+    }
+
+    public function setIdNutricionista($idNutricionista)
+    {
+        $this->idNutricionista = $idNutricionista;
 
         return $this;
     }
