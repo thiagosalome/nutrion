@@ -18,7 +18,11 @@ class pacienteController{
     
     public function adicionar(){
         include "app/views/nutricionista/adicionarPaciente.php";
-    }    
+    }   
+    
+    public function interna(){
+        include "app/views/nutricionista/internaPaciente.php";
+    } 
     
     public function create(){        
         $pacienteVo = new pacienteVO();     

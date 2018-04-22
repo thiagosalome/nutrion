@@ -29,13 +29,29 @@
             padding: 10px;
             background-color:rgb(63,175,108);
         }
+        .statistics-item-image-orange  {
+            padding: 10px;
+            background-color:#ffa03a;
+        }
+        .statistics-item-image-yellow  {
+            padding: 10px;
+            background-color:#f5cf4d;
+        }
+        .statistics-item-image-redLight  {
+            padding: 10px;
+            background-color:#dc4848;
+        }
+        .statistics-item-image-redDark  {
+            padding: 10px;
+            background-color:#9d2f4c;
+        }
 
         .statistics-item-description{
             background-color: #ffffff;
             font-family: ﻿"Roboto Light";
             color: #414141;
             text-align: center;
-            height: 60px;
+            /*height: 60px; retirei da interna, verificar se na consulta ficou bom*/
             width: 155px;
         }
 
