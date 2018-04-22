@@ -20,7 +20,7 @@ var LoginForm = {
                             console.log(result);
                         }
                         else if(result == "success_signin"){
-                            var home_uri = config.getHomeUri();
+                            var home_uri = getHomeUri();
                             location = home_uri + "nutricionista/paciente/consultar"
                         }
                         else{

@@ -15,7 +15,7 @@ class pacienteModel{
         }
         else if(strlen($pacienteVo->getCPF()) != 11 ||$pacienteVo->getCPF() == '00000000000' ){
             return "invalid_CPF";
-        }         
+        } 
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $pacienteVo->getNome())){
             return "invalid_name";
         }   
