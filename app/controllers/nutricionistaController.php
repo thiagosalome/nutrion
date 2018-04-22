@@ -15,7 +15,7 @@ class nutricionistaController{
     public function signOut(){
         session_start();
 
-        if(isset($_SESSION["email"])){
+        if(isset($_SESSION["email_nutricionista"])){
             session_destroy();
             header("Location: " . HOME_URI);
         }
@@ -31,7 +31,7 @@ class nutricionistaController{
         $logarModel = $nutricionistaModel->signIn($nutricionistaVo);
         if($logarModel == "success_signin"){
             session_start();
-            $_SESSION["email"] = $nutricionistaVo->getEmail();
+            $_SESSION["email_nutricionista"] = $nutricionistaVo->getEmail();
         }
         echo $logarModel;
     }
@@ -68,7 +68,7 @@ class nutricionistaController{
         }
     }
 
-    public function update(){                          
+    public function update(){
         $novoNutricionista = new nutricionistaVo();
         /* $nutricionista->setNome($_POST["nome"]);
         $nutricionista->setEmail($_POST["email"]);

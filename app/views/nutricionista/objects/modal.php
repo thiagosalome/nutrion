@@ -8,20 +8,23 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="text-left form-group has-feedback">
-                    <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
-                    <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
-                </div>
-                <div class="text-left form-group has-feedback">
-                    <input type="email" class="form-control input-default" name="email" placeholder="Email">
-                    <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
-                </div>
-                <div class="text-left form-group has-feedback">
-                    <input type="text" class="form-control input-default" name="senha" placeholder="Senha">
-                </div>
-                <div class="form-group text-center" style="margin-bottom: 0px;">
-                    <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Editar</button>
-                </div>
+                <form role="form" class="js-form-updateNutritionist" action="">
+                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
+                    <div class="text-left form-group has-feedback">
+                        <input type="text" class="form-control input-default" name="nome" placeholder="Nome" value="<?php echo $_SESSION['nome_nutricionista']; ?>">
+                        <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
+                    </div>
+                    <div class="text-left form-group has-feedback">
+                        <input type="email" class="form-control input-default" name="email" placeholder="Email" value="<?php echo $_SESSION['email_nutricionista']; ?>">
+                        <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
+                    </div>
+                    <div class="text-left form-group has-feedback">
+                        <input type="password" class="form-control input-default" name="senha" placeholder="Senha" value="<?php echo $_SESSION['senha_nutricionista']; ?>">
+                    </div>
+                    <div class="form-group text-center" style="margin-bottom: 0px;">
+                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Editar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -42,8 +45,11 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" style="background-color: #9d2f4c;" data-dismiss="modal">Deletar</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form role="form" class="js-form-deleteNutritionist" action="">
+                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
+                    <button type="submit" class="btn btn-primary" style="background-color: #9d2f4c;">Deletar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </form>
             </div>
         </div>
     </div>
