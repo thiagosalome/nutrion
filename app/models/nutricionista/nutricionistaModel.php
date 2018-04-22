@@ -38,15 +38,15 @@ class nutricionistaModel{
      * @return void
      */
     //public function update(nutricionistaVO $nutricionista,$emailUsuarioLogado){  
-        public function update(nutricionistaVO $nutricionista){                
+    public function update(nutricionistaVO $nutricionista){                
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
-            return "empty";
+            return "Há campos vazios.";
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
-            return "not_an_email";
+            return "O email digitado é inválido.";
         }
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionista->getNome())){
-            return "invalid_name"; 
+            return "O nome deve ter entre 2 e 40 caracteres."; 
         }
         else{
             $nutricionistaDao = new nutricionistaDAO();
@@ -80,10 +80,10 @@ class nutricionistaModel{
     public function signIn(nutricionistaVO $nutricionistaVo){
                
         if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
-            return "empty";
+            return "Há campos vazios.";
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return "not_an_email";
+            return "O email digitado é inválido.";
         }
         else{
             $nutricionistaDao = new nutricionistaDAO();                       
@@ -92,14 +92,14 @@ class nutricionistaModel{
             //Caso não encontrou o usuário
             if(is_object($user)){
                 if($nutricionistaVo->getSenha() != $user->getSenha()){
-                    return "login_failed";
+                    return "Usuário e/ou senha inválido.";
                 }
                 else{
                     return "success_signin";
                 }
             }
             else if($user == null){
-                return "unregistered";
+                return "Usuário inexistente.";
             }
             else{
                 return "exception " . $user;
@@ -111,13 +111,13 @@ class nutricionistaModel{
     public function signUp(nutricionistaVO $nutricionistaVo){
                
         if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome()))) {
-            return "empty";
+            return "Há campos vazios.";
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return "not_an_email";
+            return "O email digitado é inválido.";
         }
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionistaVo->getNome())){
-            return "invalid_name"; 
+            return "O nome deve ter entre 2 e 40 caracteres."; 
         }
         else{
             $nutricionistaDao = new nutricionistaDAO();                       
@@ -125,7 +125,7 @@ class nutricionistaModel{
             
             // Verifica se usuário já existe
             if(is_object($user)){
-                return "already_registered";
+                return "Email já cadastrado.";
             }
             else if($user == null){
                 $cadastro = $nutricionistaDao->insert($nutricionistaVo);

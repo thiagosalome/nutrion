@@ -23,11 +23,12 @@ var LoginForm = {
                             var home_uri = getHomeUri();
                             location = home_uri + "nutricionista/paciente/consultar"
                         }
+                        else if(result == "success_signup"){
+                            LoginForm.showMessage("Usuário cadastrado com sucesso.");
+                            LoginSlider.js_btn_slider_block.click();
+                        }
                         else{
-                            LoginForm.showMessage(messages[result]);
-                            if(result == "success_signup"){
-                                LoginSlider.js_btn_slider_block.click();
-                            }
+                            LoginForm.showMessage(result);
                         }
                     });
                 }
