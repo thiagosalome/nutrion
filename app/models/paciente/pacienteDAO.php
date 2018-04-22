@@ -7,8 +7,7 @@ class pacienteDAO{
         
         try{
             $paciente = $entityManager->getRepository("Paciente")->createQueryBilder('t')
-                ->where('t.Nome LIKE :query')
-                ->orWhere('t.CPF LIKE :query')
+                ->where('t.Nome LIKE :query')                
                 ->setParameter('query',$query)
                 ->getQuery()
                 ->getResult();         

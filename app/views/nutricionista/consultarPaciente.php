@@ -1,5 +1,13 @@
 <?php
-    // session_start();
+    session_start();
+    $email = $_SESSION["email"];
+
+    if(!isset($_SESSION["id_nutricionista"])){
+        $nutricionistaController = new nutricionistaController();
+        $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
+        $_SESSION["id_nutricionista"] = $nutricionista->getId();
+    }
+    
     // if(isset($_SESSION["email"])){
     //     $email = $_SESSION["email"];
     // }
@@ -18,14 +26,14 @@
     <!-- link css -->
     <link rel="stylesheet" href="<?php echo HOME_URI; ?>app/public/css/dashboard.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- site title -->
     <title>Dashboard</title>
@@ -47,8 +55,9 @@
                     </div>
                     <div class="header-options js-header-options">
                         <ul>
-                            <li><a href="http://">Configurações</a></li>
-                            <li><a href="<?php echo HOME_URI ?>nutricionista/signOut">Sair</a></li>
+                            <li><button data-toggle="modal" data-target="#modal-update">Editar Conta</button></li>
+                            <li><button data-toggle="modal" data-target="#modal-delete">Deletar Conta</button></li>
+                            <li><a href="http://">Sair</a></li>
                         </ul>
                     </div>
                     <div class="header-menu js-menu">
@@ -58,7 +67,7 @@
                     </div>
                 </div>
                 <div class="header-bottom">
-                    <h1 class="header-title">Adicionar Paciente</h1>
+                    <h1 class="header-title">Consultar Pacientes</h1>
                 </div>
             </header>
             <div class="dashboard-statistics">
@@ -97,109 +106,64 @@
                             <div class="col-sm-6">
                                 <h2>Todos os <b>Pacientes</b></h2>
                             </div>
-                            <div class="col-sm-6">
-                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar novo paciente</span></a>
-                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Apagar</span></a>						
-                            </div>
                         </div>
                     </div>
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="selectAll">
-                                        <label for="selectAll"></label>
-                                    </span>
-                                </th>
                                 <th>Nome</th>
                                 <th>Email</th>
-                                <th>Endereço</th>
                                 <th>Telefone</th>
+                                <th>Nascimento</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>Maria Santos</td>
+                                <td>mariasantos@gmail.com</td>
+                                <td>(31) 3264-9685</td>
+                                <td>15/06/1986</td>
                                 <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>
-                                <td>Thomas Hardy</td>
-                                <td>thomashardy@mail.com</td>
-                                <td>89 Chiaroscuro Rd, Portland, USA</td>
-                                <td>(171) 555-2222</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
                                 </td>
                             </tr>
                             <tr>
+                                <td>Maria Santos</td>
+                                <td>mariasantos@gmail.com</td>
+                                <td>(31) 3264-9685</td>
+                                <td>15/06/1986</td>
                                 <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                        <label for="checkbox2"></label>
-                                    </span>
-                                </td>
-                                <td>Dominique Perrier</td>
-                                <td>dominiqueperrier@mail.com</td>
-                                <td>Obere Str. 57, Berlin, Germany</td>
-                                <td>(313) 555-5735</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
                                 </td>
                             </tr>
                             <tr>
+                                <td>Maria Santos</td>
+                                <td>mariasantos@gmail.com</td>
+                                <td>(31) 3264-9685</td>
+                                <td>15/06/1986</td>
                                 <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                        <label for="checkbox3"></label>
-                                    </span>
-                                </td>
-                                <td>Maria Anders</td>
-                                <td>mariaanders@mail.com</td>
-                                <td>25, rue Lauriston, Paris, France</td>
-                                <td>(503) 555-9931</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
                                 </td>
                             </tr>
                             <tr>
+                                <td>Maria Santos</td>
+                                <td>mariasantos@gmail.com</td>
+                                <td>(31) 3264-9685</td>
+                                <td>15/06/1986</td>
                                 <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                        <label for="checkbox4"></label>
-                                    </span>
+                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
                                 </td>
-                                <td>Fran Wilson</td>
-                                <td>franwilson@mail.com</td>
-                                <td>C/ Araquil, 67, Madrid, Spain</td>
-                                <td>(204) 619-5731</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>					
+                            </tr>				
                             <tr>
+                                <td>Maria Santos</td>
+                                <td>mariasantos@gmail.com</td>
+                                <td>(31) 3264-9685</td>
+                                <td>15/06/1986</td>
                                 <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                        <label for="checkbox5"></label>
-                                    </span>
+                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
                                 </td>
-                                <td>Martin Blank</td>
-                                <td>martinblank@mail.com</td>
-                                <td>Via Monte Bianco 34, Turin, Italy</td>
-                                <td>(480) 631-2097</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr> 
+                            </tr>
                         </tbody>
                     </table>
                     <div class="clearfix">
@@ -251,64 +215,9 @@
                     </div>
                 </div>
             </div>
-            <!-- Edit Modal HTML -->
-            <div id="editEmployeeModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
-                            <div class="modal-header">						
-                                <h4 class="modal-title">Edit Employee</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">					
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <textarea class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control" required>
-                                </div>					
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-info" value="Save">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- Delete Modal HTML -->
-            <div id="deleteEmployeeModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
-                            <div class="modal-header">						
-                                <h4 class="modal-title">Delete Employee</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">					
-                                <p>Are you sure you want to delete these Records?</p>
-                                <p class="text-warning"><small>This action cannot be undone.</small></p>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-danger" value="Delete">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>          
         </section>       
     </main>
+    <?php include "objects/modal.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

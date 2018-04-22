@@ -1,0 +1,22 @@
+.dashboard-reports{
+    background-color: #ffffff;
+    padding: 20px 30px;
+}
+
+    .reports-title{
+        font-size: 18px;
+        margin: 0;
+        color: #9D2F4C;
+        font-family: "Roboto";
+    }
+
+        .reports-title span{
+            font-weight: bold;
+        }
+    
+    .reports-form{
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin-top: 20px;
+    }

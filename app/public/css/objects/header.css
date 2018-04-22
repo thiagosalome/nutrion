@@ -66,10 +66,12 @@
             text-align: right;
         }
 
-            .header-options ul a {
+            .header-options ul a, .header-options ul button {
                 color: #9D2F4C;
-                padding: 5px 0 0;
+                margin: 5px 0 0;
                 display: block;
+                border: none;
+                background-color: transparent;
             }
 
             .header-options ul a:hover{

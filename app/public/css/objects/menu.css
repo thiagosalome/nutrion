@@ -21,6 +21,10 @@
             list-style: none;
             position: relative;
         }
+
+        .aside-nav > ul > li:last-child.active{
+            background-color: rgba(0,0,0,0.2);
+        }
         
         .aside-nav li:hover{
             cursor: pointer;

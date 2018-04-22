@@ -2,10 +2,10 @@
 
 /**
  * @Entity
- * @Table(name="tb_infopaciente")
+ * @Table(name="tb_infofisicas")
  * 
  */
-class Nutricionista
+class InfoFisicas
 {
     /**
      * @Id

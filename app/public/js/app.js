@@ -1,4 +1,3 @@
-require('messages'); // require messages file
 require('login'); // require main file
 require('dashboard'); // require main file
 var home_uri = getHomeUri();
@@ -17,7 +16,7 @@ var home_uri = getHomeUri();
     // Dashboard
     DashboardMenu.onClick();
     DashboardMenu.dropDown();
-    DashboardMenu.verifyDropDown();
+    DashboardMenu.verifyItemActive();
 
     DashboardWindow.verifyWindow();
 

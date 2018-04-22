@@ -21,7 +21,7 @@ class Paciente{
      * @Column(type="string", name="nome")
      */
     protected $nome;
-
+    
     /**
      * @Column(type="string", name="telefone")
      */
@@ -41,6 +41,12 @@ class Paciente{
      * @Column(type="date", name="dataNasc")
      */
     protected $dataNasc;
+        
+    /**
+     * @ManyToOne(targetEntity="Nutricionista")
+     * @JoinColumn(name="id_nutricionista", referencedColumnName="id")
+     */
+    protected $idNutricionista;
 
     public function getId()
     {
@@ -115,6 +121,18 @@ class Paciente{
     public function setDataNasc($dataNasc)
     {
         $this->dataNasc = $dataNasc;
+
+        return $this;
+    }
+   
+    public function getIdNutricionista()
+    {
+        return $this->idNutricionista;
+    }
+
+    public function setIdNutricionista($idNutricionista)
+    {
+        $this->idNutricionista = $idNutricionista;
 
         return $this;
     }
