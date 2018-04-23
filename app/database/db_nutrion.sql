@@ -1,56 +1,57 @@
--- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: db_nutrion
--- ------------------------------------------------------
--- Server version	5.7.18-1
+-- Host: 127.0.0.1
+-- Generation Time: 23-Abr-2018 às 21:04
+-- Versão do servidor: 5.7.21-log
+-- PHP Version: 7.2.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `tb_avaliacao`
+-- Database: `db_nutrion`
 --
 
-DROP TABLE IF EXISTS `tb_avaliacao`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_avaliacao`
+--
+
 CREATE TABLE `tb_avaliacao` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_infoFisicas` int(11) NOT NULL,
-  `dataAval` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_id_infoFisicas` (`id_infoFisicas`),
-  CONSTRAINT `fk_id_infoFisicas` FOREIGN KEY (`id_infoFisicas`) REFERENCES `tb_infofisicas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `dataAval` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_avaliacao`
+-- Extraindo dados da tabela `tb_avaliacao`
 --
 
-LOCK TABLES `tb_avaliacao` WRITE;
-/*!40000 ALTER TABLE `tb_avaliacao` DISABLE KEYS */;
-INSERT INTO `tb_avaliacao` VALUES (1,1,'2018-02-21'),(2,2,'2018-01-01'),(3,3,'2018-04-15'),(4,4,'2018-04-20');
-/*!40000 ALTER TABLE `tb_avaliacao` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tb_avaliacao` (`id`, `id_infoFisicas`, `dataAval`) VALUES
+(1, 1, '2018-02-21'),
+(2, 2, '2018-01-01'),
+(3, 3, '2018-04-15'),
+(4, 4, '2018-04-20');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `tb_infofisicas`
+-- Estrutura da tabela `tb_infofisicas`
 --
 
-DROP TABLE IF EXISTS `tb_infofisicas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_infofisicas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `peso` float NOT NULL,
   `altura` int(11) NOT NULL,
   `imc` float NOT NULL,
@@ -58,94 +59,150 @@ CREATE TABLE `tb_infofisicas` (
   `quadril` int(11) NOT NULL,
   `icq` float NOT NULL,
   `classificacaoIPAQ` char(25) NOT NULL,
-  `id_paciente` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_id_paciente` (`id_paciente`),
-  CONSTRAINT `fk_id_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id_paciente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_infofisicas`
+-- Extraindo dados da tabela `tb_infofisicas`
 --
 
-LOCK TABLES `tb_infofisicas` WRITE;
-/*!40000 ALTER TABLE `tb_infofisicas` DISABLE KEYS */;
-INSERT INTO `tb_infofisicas` VALUES (1,75.3,180,24.5,70,70,0.85,'Sedentário',1),(2,65.8,173,21.5,50,50,0.79,'Ativo',2),(3,68,180,24,68,68,0.83,'Irregularmente Ativo',3),(4,66,173,22,52,52,0.81,'Muito Ativo',2);
-/*!40000 ALTER TABLE `tb_infofisicas` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tb_infofisicas` (`id`, `peso`, `altura`, `imc`, `cintura`, `quadril`, `icq`, `classificacaoIPAQ`, `id_paciente`) VALUES
+(1, 75.3, 180, 24.5, 70, 70, 0.85, 'Sedentário', 1),
+(2, 65.8, 173, 21.5, 50, 50, 0.79, 'Ativo', 2),
+(3, 68, 180, 24, 68, 68, 0.83, 'Irregularmente Ativo', 3),
+(4, 66, 173, 22, 52, 52, 0.81, 'Muito Ativo', 2);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `tb_nutricionista`
+-- Estrutura da tabela `tb_nutricionista`
 --
 
-DROP TABLE IF EXISTS `tb_nutricionista`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_nutricionista` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `email` char(40) NOT NULL,
   `senha` char(10) NOT NULL,
-  `nome` char(40) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `nome` char(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_nutricionista`
+-- Extraindo dados da tabela `tb_nutricionista`
 --
 
-LOCK TABLES `tb_nutricionista` WRITE;
-/*!40000 ALTER TABLE `tb_nutricionista` DISABLE KEYS */;
-INSERT INTO `tb_nutricionista` VALUES (1,'cjunqueira@nutrion.com','12345','Carlos Junqueira'),(2,'jtavares@nutrion.com','abcde','Juliana Tavares'),(3,'admin@admin.com','admin','Administrador'),(4,'teste@teste.com','teste','testeuser'),(5,'hugo@mailinator.com','Pa$$w0rd!','Hugo'),(6,'biru@mailinator.com','Pa$$w0rd!','Bieau');
-/*!40000 ALTER TABLE `tb_nutricionista` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tb_nutricionista` (`id`, `email`, `senha`, `nome`) VALUES
+(1, 'cjunqueira@nutrion.com', '12345', 'Carlos Junqueira'),
+(2, 'jtavares@nutrion.com', 'abcde', 'Juliana Tavares'),
+(3, 'admin@admin.com', 'admin', 'Administrador');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `tb_paciente`
+-- Estrutura da tabela `tb_paciente`
 --
 
-DROP TABLE IF EXISTS `tb_paciente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_paciente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nome` char(40) NOT NULL,
   `cpf` char(15) NOT NULL,
   `telefone` char(15) NOT NULL,
   `sexo` char(1) NOT NULL,
   `dataNasc` date NOT NULL,
-  `email` char(70) DEFAULT NULL,
-  `id_nutricionista` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `cpf` (`cpf`),
-  KEY `fk_id_nutricionista` (`id_nutricionista`),
-  CONSTRAINT `fk_id_nutricionista` FOREIGN KEY (`id_nutricionista`) REFERENCES `tb_nutricionista` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id_nutricionista` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_paciente`
+-- Extraindo dados da tabela `tb_paciente`
 --
 
-LOCK TABLES `tb_paciente` WRITE;
-/*!40000 ALTER TABLE `tb_paciente` DISABLE KEYS */;
-INSERT INTO `tb_paciente` VALUES (1,'Everaldo Dias','999.999.999-99','(31)99999-9999','M','1996-04-30',NULL,1),(2,'Mariana Souza','111.111.111-11','(31)3030-4444','F','1976-03-28',NULL,2),(3,'Carlos Miranda','222.222.222-22','(31)3343-2244','M','1985-02-11',NULL,3);
-/*!40000 ALTER TABLE `tb_paciente` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tb_paciente` (`id`, `nome`, `cpf`, `telefone`, `sexo`, `dataNasc`, `id_nutricionista`) VALUES
+(1, 'Everaldo Dias', '999.999.999-99', '(31)99999-9999', 'M', '1996-04-30', 1),
+(2, 'Mariana Souza', '111.111.111-11', '(31)3030-4444', 'F', '1976-03-28', 2),
+(3, 'Douglas Miranda', '222.222.222-22', '(31)3343-2244', 'M', '1985-02-11', 3);
 
 --
--- Dumping routines for database 'db_nutrion'
+-- Indexes for dumped tables
 --
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for table `tb_avaliacao`
+--
+ALTER TABLE `tb_avaliacao`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id_infoFisicas` (`id_infoFisicas`);
+
+--
+-- Indexes for table `tb_infofisicas`
+--
+ALTER TABLE `tb_infofisicas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id_paciente` (`id_paciente`);
+
+--
+-- Indexes for table `tb_nutricionista`
+--
+ALTER TABLE `tb_nutricionista`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `tb_paciente`
+--
+ALTER TABLE `tb_paciente`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cpf` (`cpf`),
+  ADD KEY `fk_id_nutricionista` (`id_nutricionista`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_avaliacao`
+--
+ALTER TABLE `tb_avaliacao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tb_infofisicas`
+--
+ALTER TABLE `tb_infofisicas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tb_nutricionista`
+--
+ALTER TABLE `tb_nutricionista`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tb_paciente`
+--
+ALTER TABLE `tb_paciente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `tb_avaliacao`
+--
+ALTER TABLE `tb_avaliacao`
+  ADD CONSTRAINT `fk_id_infoFisicas` FOREIGN KEY (`id_infoFisicas`) REFERENCES `tb_infofisicas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `tb_infofisicas`
+--
+ALTER TABLE `tb_infofisicas`
+  ADD CONSTRAINT `fk_id_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `tb_paciente`
+--
+ALTER TABLE `tb_paciente`
+  ADD CONSTRAINT `fk_id_nutricionista` FOREIGN KEY (`id_nutricionista`) REFERENCES `tb_nutricionista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-04-22 12:15:37

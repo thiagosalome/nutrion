@@ -3,7 +3,7 @@
 class infofisicasModel {
     
     public function create(infofisicasVo $infofisicasVo) {
-        if (empty($infofisicasVo->getPeso()) or empty($infofisicasVo->getAltura() or empty($infofisicasVo->getImc() or empty($infofisicasVo->getCintura() or empty$infofisicasVo->getQuadril() or empty$infofisicasVo->getIcq() or empty$infofisicasVo->getClassificacaoIPAQ() or empty$infofisicasVo->getIdPaciente())))))))) {
+        if (empty($infofisicasVo->getPeso()) or empty($infofisicasVo->getAltura() or empty($infofisicasVo->getImc() or empty($infofisicasVo->getCintura() or empty($infofisicasVo->getQuadril() or empty($infofisicasVo->getIcq() or empty($infofisicasVo->getClassificacaoIPAQ() or empty$infofisicasVo->getIdPaciente()))))))) {
             return "Há campos vazios";
         }
         else {
