@@ -101,9 +101,9 @@
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <select name="sexo" class="form-control input-default">
-                            <option value="">Sexo</option>
-                            <option>Masculino</option>
-                            <option>Feminino</option>
+                                <option value="">Sexo</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
                             </select>
                             <i class="glyphicon glyphicon-chevron-down "></i> 
                         </div>

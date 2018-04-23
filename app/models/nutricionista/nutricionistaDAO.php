@@ -73,14 +73,15 @@ class nutricionistaDAO{
             $delete = new Nutricionista;
             $delete = $entityManager->find('Nutricionista', $nutricionista->getId());
 
-            $delete->getPacientes()->removeElement($attr);
-            /*foreach ($delete->getPacientes() as $attr)
-            {
-                $entityManager->remove($attr);
-                $entityManager->flush();
-            }*/
             $entityManager->remove($delete);
+            foreach ($delete->getPacientes() as $patients)
+            {
+                $delete->getPacientes()->removeElement($patients);
+                $entityManager->remove($patients);
+            }
+
             $entityManager->flush();
+
             return true;
         }
         catch (Expection $e){

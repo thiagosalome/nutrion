@@ -44,12 +44,15 @@ class pacienteDAO{
         require "app/bootstrap.php";        
         try{
             $paciente = new Paciente;
-            $paciente->setCPF($pacienteVo->getCPF());
+            $nutricionista = $entityManager->find("Nutricionista", $pacienteVo->getIdNutricionista());
+
+            $paciente->setNutricionista($nutricionista);
             $paciente->setNome($pacienteVo->getNome());
-            $paciente->setSexo($pacienteVo->getSexo());
             $paciente->setTelefone($pacienteVo->getTelefone());
-            $paciente->setEmail($pacienteVo->getEmail());           
+            $paciente->setEmail($pacienteVo->getEmail());
+            $paciente->setSexo($pacienteVo->getSexo());
             $paciente->setDataNasc(new \DateTime($pacienteVo->getDataNasc()." 00:00:00"));
+            $paciente->setCPF($pacienteVo->getCPF());
                 
             $entityManager->persist($paciente);           
             $entityManager->flush();

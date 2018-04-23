@@ -19,13 +19,13 @@ class pacienteModel{
         if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
             return "Há campos vazios";
         }
-        else if(strlen($pacienteVo->getCPF()) != 11 ||$pacienteVo->getCPF() == '00000000000' ){
+        else if(!$this->validateCPF($pacienteVo->getCPF())){
             return "CPF inválido";
         } 
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $pacienteVo->getNome())){
             return "O nome deve ter entre 2 e 40 caracteres";
         }   
-        else if(!preg_match('#^\(\d{2}\) (9|)[6789]\d{3}-\d{4}$#', $pacienteVo->getTelefone())){
+        else if(!preg_match('/^\(?[0-9]{2}\)?\s?9?[0-9]{4}\-?[0-9]{4}$/', $pacienteVo->getTelefone())){
             return "O número de telefone é inválido";
         }         
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $pacienteVo->getEmail())){
@@ -67,13 +67,13 @@ class pacienteModel{
         if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
             return "Há campos vazios";
         }
-        else if(strlen($pacienteVo->getCPF()) != 11 ||$pacienteVo->getCPF() == '00000000000' ){
+        else if(!$this->validateCPF($pacienteVo->getCPF())){
             return "CPF inválido";
         }         
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $pacienteVo->getNome())){
             return "O nome deve ter entre 2 e 40 caracteres";
         }   
-        else if(!preg_match('#^\(\d{2}\) (9|)[6789]\d{3}-\d{4}$#', $pacienteVo->getTelefone())){
+        else if(!preg_match('/^\(?[0-9]{2}\)?\s?9?[0-9]{4}\-?[0-9]{4}$/', $pacienteVo->getTelefone())){
             return "O número de telefone está inválido";
         }         
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $pacienteVo->getEmail())){
@@ -115,6 +115,34 @@ class pacienteModel{
         else{
             return "Erro ao excluir o paciente". " exception";
         }
+    }
+
+    public function validateCPF($cpf) {
+ 
+        // Extrai somente os números
+        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+         
+        // Verifica se foi informado todos os digitos corretamente
+        if (strlen($cpf) != 11) {
+            return false;
+        }
+
+        // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
+        if (preg_match('/(\d)\1{10}/', $cpf)) {
+            return false;
+        }
+
+        // Faz o calculo para validar o CPF
+        for ($t = 9; $t < 11; $t++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
+                $d += $cpf{$c} * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($cpf{$c} != $d) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 ?>
