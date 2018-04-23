@@ -71,14 +71,13 @@ class nutricionistaDAO{
         require "app/bootstrap.php";
         try{                                       
             $delete = new Nutricionista;
-            $delete = $entityManager->find('Nutricionista', $nutricionista->getId());
 
             $entityManager->remove($delete);
-            foreach ($delete->getPacientes() as $patients)
+            /*foreach ($delete->getPacientes() as $patients)
             {
                 $delete->getPacientes()->removeElement($patients);
                 $entityManager->remove($patients);
-            }
+            }*/
 
             $entityManager->flush();
 
