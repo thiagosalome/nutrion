@@ -138,11 +138,6 @@ class InfoFisicas
         return $this;
     }
 
-    public function getimc()
-    {
-        return $this->imc;
-    }
-
     public function getIdPaciente()
     {
         return $this->idPaciente;
