@@ -58,7 +58,7 @@ class nutricionistaDAO{
             return true;
         }
         catch (Expection $e){
-            return false;
+            return $e->getMessage();
         }   
     } 
     
@@ -71,13 +71,20 @@ class nutricionistaDAO{
         require "app/bootstrap.php";
         try{                                       
             $delete = new Nutricionista;
-            $delete = $entityManager->find('Nutricionista',$nutricionista->getId());
-            $entityManager->remove($delete); 
+            $delete = $entityManager->find('Nutricionista', $nutricionista->getId());
+
+            $delete->getPacientes()->removeElement($attr);
+            /*foreach ($delete->getPacientes() as $attr)
+            {
+                $entityManager->remove($attr);
+                $entityManager->flush();
+            }*/
+            $entityManager->remove($delete);
             $entityManager->flush();
             return true;
         }
         catch (Expection $e){
-            return false;
+            return $e->getMessage();
         }        
     }  
 }

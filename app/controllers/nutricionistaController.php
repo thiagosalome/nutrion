@@ -74,7 +74,7 @@ class nutricionistaController{
         $nutricionistaModel = new nutricionistaModel();     
         $delete = $nutricionistaModel->delete($nutricionistaVo);
 
-        if($delete=="Usuário excluído com sucesso"){           
+        if($delete=="success_delete"){           
             header("Location: " . HOME_URI);
         }
         echo $delete;       

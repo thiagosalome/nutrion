@@ -43,10 +43,10 @@ class Paciente{
     protected $dataNasc;
         
     /**
-     * @ManyToOne(targetEntity="Nutricionista")
+     * @ManyToOne(targetEntity="Nutricionista", inversedBy="pacientes")
      * @JoinColumn(name="id_nutricionista", referencedColumnName="id")
      */
-    protected $idNutricionista;
+    protected $nutricionista;
 
     public function getId()
     {
@@ -125,14 +125,14 @@ class Paciente{
         return $this;
     }
    
-    public function getIdNutricionista()
+    public function getNutricionista()
     {
-        return $this->idNutricionista;
+        return $this->nutricionista;
     }
 
-    public function setIdNutricionista($idNutricionista)
+    public function setNutricionista($nutricionista)
     {
-        $this->idNutricionista = $idNutricionista;
+        $this->nutricionista = $nutricionista;
 
         return $this;
     }

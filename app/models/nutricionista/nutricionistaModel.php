@@ -1,5 +1,6 @@
 <?php
 class nutricionistaModel{
+
     public function getByEmail($email){
         if($email != null){
             $nutricionistaDao = new nutricionistaDAO();
@@ -57,8 +58,9 @@ class nutricionistaModel{
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionistaVo->getNome())){
             return "O nome deve ter entre 2 e 40 caracteres."; 
         }
-        else{                                   
-            $usuario = getByEmail($nutricionistaVo->getEmail());            
+        else{      
+            $nutricionistaDao = new nutricionistaDAO();                                
+            $usuario = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
             
             // Verifica se usuário já existe
             if(is_object($usuario)){
@@ -97,21 +99,22 @@ class nutricionistaModel{
         }
         else{
             //verificando se novo email já está no BD:
-            $novoEmailEmUso = getByEmail($nutricionista->getEmail());
+            $nutricionistaDao = new nutricionistaDAO(); 
+            $novoEmailEmUso = $nutricionistaDao->getByEmail($nutricionista->getEmail());
 
-            if($novoEmailEmUso != null){
+           /* if($novoEmailEmUso != null){
                 return "Email inserido já está sendo utilizado";
             }            
-            else{          
-                $update = $nutricionistaDao->update($nutricionista);
-                
-                if($update != true){
-                    return "Erro ao atualizar o usuário". " exception" ;
-                }
-                else{
-                    return "Usuário atualizado com sucesso";
-                }
-            }            
+            else{   */       
+            
+            $update = $nutricionistaDao->update($nutricionista);
+            if($update == true){
+                return "success_update";
+            }
+            else{
+                return "exception " . $usuario;
+            }
+            // }            
         }
     } 
 
@@ -125,10 +128,10 @@ class nutricionistaModel{
         $delete = $nutricionistaDao->delete($nutricionista);
 
         if($delete){
-            return "Usuário excluído com sucesso";
+            return "success_delete";
         }
         else{
-            return "Erro ao excluir o usuário". " exception" ;
+            return "exception " . $delete;
         }
     }
 }

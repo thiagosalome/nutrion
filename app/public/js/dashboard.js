@@ -78,7 +78,7 @@ var DashboardForm = {
                             console.log(result);
                         }
                         else{
-                            DashboardForm.showMessage(messages[result]);
+                            DashboardForm.showMessage(result);
                         }
                     });
                 }
