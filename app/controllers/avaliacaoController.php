@@ -13,12 +13,6 @@ class avaliacaoController{
         include "app/views/nutricionista/adicionarAvaliacao.php";
     }
 
-    public function search(){
-        $query = $_POST[""];
-        $avaliacaoModel = new avaliacaoModel();
-        $search = $avaliacaoModel->search($query);
-    }
-
     public function create(){
         $avaliacaoModel = new avaliacaoModel();
         $avaliacaoVo = new avaliacaoVo();  

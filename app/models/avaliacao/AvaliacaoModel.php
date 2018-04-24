@@ -1,13 +1,6 @@
 <?php
 class avaliacaoModel
 {
-
-    public function search($query)
-    {
-        $avaliacaoDAO = new avaliacaoDAO();        
-        $search = $avaliacaoDAO->search($query);
-    }
-
     public function create(avaliacaoVo $avaliacaoVo)
     {
 
