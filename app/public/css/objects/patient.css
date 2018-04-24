@@ -9,6 +9,21 @@
         margin-right: 30px;
     }
 
+    .patient-header-perfil{
+        width: 90px;
+        height: 90px;
+        background-color: #9D2F4C;
+        border-radius: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+        .patient-header-perfil img{
+            max-width: 90%;
+        }
+
     .patient-header-title{
         font-size: 20px;
         color: #575757;

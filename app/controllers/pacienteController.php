@@ -80,5 +80,11 @@ class pacienteController{
         $pacientes = $pacienteModel->getAllPatients($idNutricionista);
         return $pacientes;
     }
+
+    public function getPatientById($idPaciente){
+        $pacienteModel = new pacienteModel();
+        $paciente = $pacienteModel->getPatientById($idPaciente);
+        return $paciente;
+    }
 }    
 ?>

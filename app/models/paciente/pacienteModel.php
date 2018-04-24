@@ -150,5 +150,11 @@ class pacienteModel{
         $pacientes = $pacienteDAO->getAllPatients($idNutricionista);
         return $pacientes;
     }
+
+    public function getPatientById($idPaciente){
+        $pacienteDAO = new pacienteDAO();
+        $paciente = $pacienteDAO->getPatientById($idPaciente);
+        return $paciente;
+    }
 }
 ?>

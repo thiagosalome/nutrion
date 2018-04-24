@@ -53,6 +53,17 @@ class pacienteDAO{
         }
     }
 
+    public function getPatientById($idPaciente){
+        require "app/bootstrap.php";
+        try{
+            $paciente = $entityManager->find("Paciente", $idPaciente);
+            return $paciente;
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
+
      /**
      * Método de inserção do paciente
      *

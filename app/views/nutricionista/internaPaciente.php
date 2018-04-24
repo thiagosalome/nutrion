@@ -12,6 +12,11 @@
             $_SESSION["id_nutricionista"] = $nutricionista->getId();
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
         }
+        if(isset($_GET["id"])){
+            $pacienteId = $_GET["id"];
+            $pacienteController = new pacienteController();
+            $paciente = $pacienteController->getPatientById($pacienteId);
+        }
     }
     else{
         header("Location: " . HOME_URI);
@@ -52,30 +57,30 @@
                 </div>
             </header>
             <div class="dashboard-patient-header">
-                <div class="patient-header-item">
-                    <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil.png" alt="" title="" class="header-logo">
+                <div class="patient-header-item patient-header-perfil">
+                    <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil-<?php if($paciente->getSexo() == "F"){ echo "feminino"; }else{ echo "masculino"; } ?>.png" alt="" title="" class="header-logo">
                 </div>
                 <div class="patient-header-item">   
-                    <h1 class="patient-header-title">MARIA SANTOS</h1>
-                    <p><span class="red-label">Email: </span>emaildopaciente@gmail.com</p>
+                    <h1 class="patient-header-title"><?= $paciente->getNome(); ?></h1>
+                    <p><span class="red-label">Email: </span><?= $paciente->getEmail(); ?></p>
                 </div>
                 <div class="patient-header-item">
-                    <p><span class="red-label">Sexo: </span>Feminino</p>   
-                    <p><span class="red-label">Nascimento: </span>11/11/1111</p>
-                    </div>
+                    <p><span class="red-label">Sexo: </span><?php if($paciente->getSexo() == "F"){ echo "Feminino"; }else{ echo "Masculino"; } ?></p>   
+                    <p><span class="red-label">Nascimento: </span><?php $data = explode(" ", $paciente->getDataNasc()->date); echo $data[0]; ?></p>
+                </div>
                 <div class="patient-header-item">
-                    <p><span class="red-label">Telefone: </span>(11) 1111-1111</p>
-                    <p><span class="red-label">CPF: </span>111.111.111-11</p>
+                    <p><span class="red-label">Telefone: </span><?= $paciente->getTelefone(); ?></p>
+                    <p><span class="red-label">CPF: </span><?= $paciente->getCPF(); ?></p>
                 </div>
             </div>
             <div class="dashboard-patient-tab menu-tabs">
                 <ul>
-                    <li class="patient-tab-item active js-patient-tab" data-tab="dados-fisicos">Dados Físicos</li>
-                    <li class="patient-tab-item js-patient-tab" data-tab="adicionar-fisico">Adicionar Físico</li>
+                    <li class="patient-tab-item js-patient-tab" data-tab="dados-fisicos">Dados Físicos</li>
+                    <li class="patient-tab-item js-patient-tab active" data-tab="adicionar-fisico">Adicionar Físico</li>
                     <li class="patient-tab-item js-patient-tab" data-tab="historico">Histórico</li>
                 </ul>
             </div>
-            <div class="dashboard-statistics dashboard-patient-content js-patient-content active" data-content="dados-fisicos">
+            <div class="dashboard-statistics dashboard-patient-content js-patient-content" data-content="dados-fisicos">
                 <div class="statistics-item">
                     <div class="statistics-item-image-blue">
                         <img src="<?php echo HOME_URI; ?>app/public/images/paciente/altura_icon.png" alt="Altura" title="Altura" class="person-blue">
@@ -140,7 +145,7 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-form dashboard-patient-content js-patient-content" data-content="adicionar-fisico">
+            <div class="dashboard-form dashboard-patient-content js-patient-content active" data-content="adicionar-fisico">
                 <form role="form" class=" largewidth largeww js-form-addPatient" action="">
                     <h3 class="formheader form-intern">Adicionar Físico</h3>
                     <div class="row">
