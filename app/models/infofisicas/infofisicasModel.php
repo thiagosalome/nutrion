@@ -15,7 +15,7 @@ class infofisicasModel {
             //    return "O paciente já foi cadastrado antes";
             //}
             
-            $cadastro = $infofisicasDAO->insert($infofisicasVo);
+            $cadastro = $infofisicasDAO->create($infofisicasVo);
             if($cadastro == true){
                 return "Informações físicas do paciente criadas com sucesso";
             }
@@ -23,14 +23,6 @@ class infofisicasModel {
                 //return "exception " . $paciente;  MENSAGEM PARA RETORNAR O ERRO
             }
         }
-    }
-
-    public function update() {
-
-    }
-
-    public function delete() {
-        
     }
 }
 
