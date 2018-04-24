@@ -74,5 +74,11 @@ class pacienteController{
                 break; 
         }
     }
+
+    public function getAllPatients($idNutricionista){
+        $pacienteModel = new pacienteModel();
+        $pacientes = $pacienteModel->getAllPatients($idNutricionista);
+        return $pacientes;
+    }
 }    
 ?>

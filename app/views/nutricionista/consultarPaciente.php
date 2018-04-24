@@ -95,70 +95,43 @@
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
-                                <th>Nascimento</th>
+                                <th>CPF</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>mariasantos@gmail.com</td>
-                                <td>(31) 3264-9685</td>
-                                <td>15/06/1986</td>
-                                <td>
-                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>mariasantos@gmail.com</td>
-                                <td>(31) 3264-9685</td>
-                                <td>15/06/1986</td>
-                                <td>
-                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>mariasantos@gmail.com</td>
-                                <td>(31) 3264-9685</td>
-                                <td>15/06/1986</td>
-                                <td>
-                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>mariasantos@gmail.com</td>
-                                <td>(31) 3264-9685</td>
-                                <td>15/06/1986</td>
-                                <td>
-                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>				
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>mariasantos@gmail.com</td>
-                                <td>(31) 3264-9685</td>
-                                <td>15/06/1986</td>
-                                <td>
-                                    <a href="#" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
+                            <?php
+                                $pacienteController = new pacienteController();
+                                $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);
+
+                                foreach ($pacientes as $item) {
+                                ?>
+                                    <tr>
+                                        <td><?= $item->getNome();?></td>
+                                        <td><?= $item->getEmail(); ?></td>
+                                        <td><?= $item->getTelefone(); ?></td>
+                                        <td><?= $item->getCPF(); ?></td>
+                                        <td>
+                                            <a href="<?php echo HOME_URI ?>nutricionista/paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                            ?>
                         </tbody>
                     </table>
-                    <div class="clearfix">
+                    <!-- <div class="clearfix">
                         <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
                         <ul class="pagination">
                             <li class="page-item disabled"><a href="#">Anterior</a></li>
-                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
                             <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
                             <li class="page-item"><a href="#" class="page-link">4</a></li>
                             <li class="page-item"><a href="#" class="page-link">5</a></li>
                             <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">

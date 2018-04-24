@@ -35,6 +35,24 @@ class pacienteDAO{
         }
     }
 
+    /**
+     * Retorna um array com todos os pacientes
+     *
+     * @param [type] $idNutricionista
+     * @return void
+     */
+    public function getAllPatients($idNutricionista){
+        require "app/bootstrap.php";
+        try{
+            $nutricionista = $entityManager->find("Nutricionista", $idNutricionista);
+            $pacientes = $nutricionista->getPacientes();
+            return $pacientes;
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
+
      /**
      * Método de inserção do paciente
      *

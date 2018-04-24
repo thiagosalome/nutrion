@@ -44,7 +44,7 @@ class pacienteModel{
             else if($paciente == null){
                 $cadastro = $pacienteDAO->insert($pacienteVo);
                 if($cadastro == true){
-                    return "Paciente criado com sucesso";
+                    return "success_create_patient";
                 }
                 else{
                     return "exception " . $paciente;
@@ -143,6 +143,12 @@ class pacienteModel{
             }
         }
         return true;
+    }
+
+    public function getAllPatients($idNutricionista){
+        $pacienteDAO = new pacienteDAO();
+        $pacientes = $pacienteDAO->getAllPatients($idNutricionista);
+        return $pacientes;
     }
 }
 ?>

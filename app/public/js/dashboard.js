@@ -85,6 +85,10 @@ var DashboardForm = {
                             var home_uri = getHomeUri();
                             location = home_uri + "nutricionista/paciente/consultar";
                         }
+                        else if(result == "success_create_patient"){
+                            var home_uri = getHomeUri();
+                            location = home_uri + "nutricionista/paciente/consultar";
+                        }
                         else{
                             DashboardForm.showMessage(result);
                         }
