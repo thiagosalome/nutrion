@@ -42,13 +42,13 @@ class pacienteController{
 
     public function update(){       
         $pacienteVo = new pacienteVO();        
+        $pacienteVo->setId($_POST["id_paciente"]);             
         $pacienteVo->setCPF($_POST["cpf"]);             
-        $pacienteVo->setNome($_POST["Nome"]);
+        $pacienteVo->setNome($_POST["nome"]);
         $pacienteVo->setSexo($_POST["sexo"]);
-        $pacienteVo->setTelefone($_POST["Telefone"]);
+        $pacienteVo->setTelefone($_POST["telefone"]);
         $pacienteVo->setEmail($_POST["email"]);       
-        $data = explode("/",$_POST["nascimento"]);        
-        $pacienteVo->setDataNasc($data[2]."-".$data[1]."-".$data[0]);
+        $pacienteVo->setDataNasc($_POST["nascimento"]);
         
         $pacienteModel = new pacienteModel();
         $update = $pacienteModel->update($pacienteVo);
@@ -57,22 +57,13 @@ class pacienteController{
     }
 
     public function delete(){
-        $pacienteModel = new pacienteModel();                
+        $pacienteVo = new pacienteVO();
+        $pacienteVo->setId($_POST["id_paciente"]);  
+
+        $pacienteModel = new pacienteModel();     
         $delete = $pacienteModel->delete($pacienteVo);
 
         echo $delete;
-        switch ($delete) {
-            case "success":
-                $_SESSION["msg"] = "Paciente excluído com sucesso";            
-                header("Location: ");
-                echo $_SESSION["msg"];
-                break;
-            case "failed":
-                $_SESSION["msg"] = "Erro ao excluir o paciente";
-                header("Location: ");
-                echo $_SESSION["msg"];
-                break; 
-        }
     }
 
     public function getAllPatients($idNutricionista){

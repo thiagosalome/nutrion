@@ -86,18 +86,20 @@ class pacienteModel{
             $pacienteDAO = new pacienteDAO();                       
             $paciente = $pacienteDAO->getByCPF($pacienteVo->getCPF());            
            
-            if(is_object($paciente)){
+            /*if(is_object($paciente)){
                 return "O paciente já cadastrado anteriormente";
             }
-            else{
+            else{*/
+
                 $update = $pacienteDAO->update($pacienteVo);           
-                if($update != true){
-                    return "Paciente alterado com sucesso";
+                if($update == true){
+                    return "success_update_patient";
                 }
                 else{
-                    return "Erro ao editar o paciente" . " exception" ;
+                    return "exception " . $update ;
                 }
-            }
+
+            // }
         }
     }
 
@@ -109,11 +111,12 @@ class pacienteModel{
     public function delete($pacienteVo){
         $pacienteDAO = new pacienteDAO();        
         $delete = $pacienteDAO->delete($pacienteVo);
+
         if($delete){
-            return "Paciente excluído com sucesso";
+            return "success_delete_patient";
         }
         else{
-            return "Erro ao excluir o paciente". " exception";
+            return "exception " . $delete;
         }
     }
 

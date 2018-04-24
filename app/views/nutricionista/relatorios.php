@@ -72,7 +72,7 @@
             </div>
         </section>       
     </main>
-    <?php include "objects/modal.php" ?>
+    <?php include "objects/modal-nutricionista.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

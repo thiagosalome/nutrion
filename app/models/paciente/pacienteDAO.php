@@ -100,19 +100,15 @@ class pacienteDAO{
     public function update(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
         try{                        
-            $pacienteDAO = new pacienteDAO;
-            $pacienteByCPF = new pacienteVo();
-            $pacienteByCPF = $pacienteDAO->getByCPF($pacienteVo);
-
             $update = new Paciente;
-            $update = $entityManager->find('Paciente',$pacienteByCPF->getId());
+            $update = $entityManager->find('Paciente', $pacienteVo->getId());
 
-            $update->setCPF($pacienteVo->getCPF());
             $update->setNome($pacienteVo->getNome());
-            $update->setSexo($pacienteVo->getSexo());
             $update->setTelefone($pacienteVo->getTelefone());
-            $update->setEmail($pacienteVo->getEmail());           
+            $update->setEmail($pacienteVo->getEmail());
+            $update->setSexo($pacienteVo->getSexo());
             $update->setDataNasc(new \DateTime($pacienteVo->getDataNasc()." 00:00:00"));
+            $update->setCPF($pacienteVo->getCPF());
 
             $entityManager->persist($update); 
             $entityManager->flush();
@@ -132,12 +128,7 @@ class pacienteDAO{
     public function delete(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
         try{
-            $pacienteDAO = new pacienteDAO(); 
-            $pacienteByCPF = new pacienteVo();
-            $pacienteByCPF = $pacienteDAO->getByCPF($pacienteVo);
-                  
-            $delete = new Paciente;
-            $delete = $entityManager->find('Paciente',$pacienteByCPF->getId());
+            $delete = $entityManager->find('Paciente', $pacienteVo->getId());
             $entityManager->remove($delete); 
             $entityManager->flush();
             return true;

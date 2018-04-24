@@ -113,7 +113,6 @@
                     </div>
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control input-default" name="cpf" placeholder="CPF">
-                        <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
                     </div>
                     <div class="form-group text-center" style="margin-bottom: 0px;">
                         <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
@@ -124,7 +123,7 @@
             </div>
         </section>       
     </main>
-    <?php include "objects/modal.php" ?>
+    <?php include "objects/modal-nutricionista.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

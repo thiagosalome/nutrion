@@ -37,6 +37,7 @@
     
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -66,11 +67,15 @@
                 </div>
                 <div class="patient-header-item">
                     <p><span class="red-label">Sexo: </span><?php if($paciente->getSexo() == "F"){ echo "Feminino"; }else{ echo "Masculino"; } ?></p>   
-                    <p><span class="red-label">Nascimento: </span><?php $data = explode(" ", $paciente->getDataNasc()->date); echo $data[0]; ?></p>
+                    <p><span class="red-label">Nascimento: </span><?= date_format($paciente->getDataNasc(), 'd/m/Y'); ?></p>
                 </div>
                 <div class="patient-header-item">
                     <p><span class="red-label">Telefone: </span><?= $paciente->getTelefone(); ?></p>
                     <p><span class="red-label">CPF: </span><?= $paciente->getCPF(); ?></p>
+                </div>
+                <div class="patient-header-item">
+                    <div class="patient-header-icon" data-toggle="modal" data-target="#modal-update-patient"><i class="material-icons" data-toggle="tooltip" title="Edit">mode_edit</i></div>
+                    <div class="patient-header-icon" data-toggle="modal" data-target="#modal-delete-patient"><i class="material-icons" data-toggle="tooltip" title="Delete">delete</i></div>
                 </div>
             </div>
             <div class="dashboard-patient-tab menu-tabs">
@@ -280,8 +285,8 @@
             
         </section>       
     </main>
-
-    <?php include "objects/modal.php" ?>
+    <?php include "objects/modal-nutricionista.php" ?>
+    <?php include "objects/modal-paciente.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

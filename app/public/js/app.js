@@ -20,9 +20,12 @@ var home_uri = getHomeUri();
 
     DashboardWindow.verifyWindow();
 
-    DashboardForm.onSubmit('.js-form-addPatient', home_uri + 'nutricionista/paciente/create');
     DashboardForm.onSubmit('.js-form-deleteNutritionist', home_uri + 'nutricionista/delete');
     DashboardForm.onSubmit('.js-form-updateNutritionist', home_uri + 'nutricionista/update');
+    
+    DashboardForm.onSubmit('.js-form-addPatient', home_uri + 'nutricionista/paciente/create');
+    DashboardForm.onSubmit('.js-form-deletePatient', home_uri + 'nutricionista/paciente/delete');
+    DashboardForm.onSubmit('.js-form-updatePatient', home_uri + 'nutricionista/paciente/update');
 
     DashboardHeader.toggleOptions();
 

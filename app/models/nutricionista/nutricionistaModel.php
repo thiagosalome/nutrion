@@ -120,7 +120,7 @@ class nutricionistaModel{
                 return "success_update";
             }
             else{
-                return "exception " . $usuario;
+                return "exception " . $update;
             }
             // }            
         }

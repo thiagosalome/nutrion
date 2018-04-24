@@ -24,6 +24,22 @@
             max-width: 90%;
         }
 
+    .patient-header-icon{
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        border: 1px solid #9D2F4C;
+        display: flex;
+        color: #9D2F4C;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .patient-header-icon:hover{
+        cursor: pointer;
+    }
+
     .patient-header-title{
         font-size: 20px;
         color: #575757;
