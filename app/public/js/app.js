@@ -30,3 +30,11 @@ var home_uri = getHomeUri();
     DashboardHeader.toggleOptions();
 
     DashboardTab.changeTab();
+
+
+    jQuery(".js-report-generate").on("submit", function(e){
+        e.preventDefault();
+        jQuery(".js-load-report").fadeIn(300, function(){
+            setTimeout(function(){jQuery(".js-load-report").fadeOut(300, function(){jQuery(".js-table-patient").css("display", "block");})}, 2000);
+        });
+    });
