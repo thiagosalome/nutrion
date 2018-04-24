@@ -5,14 +5,14 @@ class infofisicasDAO {
         require "app/bootstrap.php"; 
         try{
             $infofisicas = new InfoFisicas;
-            $infofisicas->setPeso($nfofisicasVo->getPeso());
-            $infofisicas->setAltura($nfofisicasVo->getAltura());
-            $infofisicas->setImc($nfofisicasVo->getImc());
-            $infofisicas->setCintura($nfofisicasVo->getCintura());
-            $infofisicas->setQuadril($nfofisicasVo->getQuadril());
-            $infofisicas->setIcq($nfofisicasVo->getIcq());
-            $infofisicas->setClassificacaoIPAQ($nfofisicasVo->getClassificacaoIPAQ());
-            $infofisicas->setIdPaciente($nfofisicasVo->getIdPaciente());        
+            $infofisicas->setPeso($infofisicasVo->getPeso());
+            $infofisicas->setAltura($infofisicasVo->getAltura());
+            $infofisicas->setImc($infofisicasVo->getImc());
+            $infofisicas->setCintura($infofisicasVo->getCintura());
+            $infofisicas->setQuadril($infofisicasVo->getQuadril());
+            $infofisicas->setIcq($infofisicasVo->getIcq());
+            $infofisicas->setClassificacaoIPAQ($infofisicasVo->getClassificacaoIPAQ());
+            $infofisicas->setIdPaciente($infofisicasVo->getIdPaciente());        
                 
             $entityManager->persist($infofisicas);           
             $entityManager->flush();
@@ -23,13 +23,6 @@ class infofisicasDAO {
         }
     }
 
-    public function update(infofisicasVo $infofisicasVo) {
-
-    }
-
-    public function delete() {
-
-    }
 
     public function getByIdPaciente($idPaciente) {
         require "app/bootstrap.php";        
