@@ -7,7 +7,15 @@ class nutricionistaModel{
             $nutricionista  = $nutricionistaDao->getByEmail($email);            
             return $nutricionista;
         }
-    }    
+    }
+    
+    public function getById($id){
+        if($id != null){
+            $nutricionistaDao = new nutricionistaDAO();
+            $nutricionista  = $nutricionistaDao->getById($id);            
+            return $nutricionista;
+        }
+    }
        
     /**
      * Método para definir regras de negócio do login do nutricionista

@@ -28,12 +28,11 @@ class pacienteController{
         $pacienteVo = new pacienteVO();     
         $pacienteVo->setIdNutricionista($_POST["id_nutricionista"]);   
         $pacienteVo->setCPF($_POST["cpf"]);//remover os pontos              
-        $pacienteVo->setNome($_POST["Nome"]);
+        $pacienteVo->setNome($_POST["nome"]);
         $pacienteVo->setSexo($_POST["sexo"]);
-        $pacienteVo->setTelefone($_POST["Telefone"]);//formato:(21) 98765-4321
+        $pacienteVo->setTelefone($_POST["telefone"]);//formato:(21) 98765-4321
         $pacienteVo->setEmail($_POST["email"]);       
-        $data = explode("/",$_POST["nascimento"]);        
-        $pacienteVo->setDataNasc($data[2]."-".$data[1]."-".$data[0]);
+        $pacienteVo->setDataNasc($_POST["nascimento"]);
         
         $pacienteModel = new pacienteModel();
         $cadastrar = $pacienteModel->create($pacienteVo);

@@ -77,6 +77,14 @@ var DashboardForm = {
                         if(result.indexOf("exception") != -1){
                             console.log(result);
                         }
+                        else if(result == "success_delete"){
+                            var home_uri = getHomeUri();
+                            location = home_uri;
+                        }
+                        else if(result == "success_update"){
+                            var home_uri = getHomeUri();
+                            location = home_uri + "nutricionista/paciente/consultar";
+                        }
                         else{
                             DashboardForm.showMessage(result);
                         }

@@ -86,11 +86,11 @@
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="Nome" placeholder="Nome">
+                            <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
                             <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
                         </div>
                         <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="tel" class="form-control input-default" name="Telefone" placeholder="Telefone">
+                            <input type="tel" class="form-control input-default" name="telefone" placeholder="Telefone">
                             <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                             <i class="glyphicon glyphicon-chevron-down "></i> 
                         </div>
                         <div class="col-sm-6 form-group">
-                            <input type="text" class="form-control input-default" name="nascimento" placeholder="Data de nascimento : DD/MM/YY">
+                            <input type="date" class="form-control input-default" name="nascimento" placeholder="Data de nascimento : DD/MM/YY">
                         </div>
                     </div>
                     <div class="form-group has-feedback">

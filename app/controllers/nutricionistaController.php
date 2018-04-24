@@ -5,14 +5,6 @@ require "app/models/nutricionista/nutricionistaModel.php";
 
 class nutricionistaController{  
 
-    public function getNutricionistaByEmail($email){
-        if($email != null){
-            $nutricionistaDao = new nutricionistaDAO();
-            $nutricionista  = $nutricionistaDao->getByEmail($email);            
-            return $nutricionista;
-        }
-    } 
-
     public function login(){
         include "app/views/nutricionista/login.php";
     }
@@ -23,6 +15,14 @@ class nutricionistaController{
         if(isset($_SESSION["email_nutricionista"])){
             session_destroy();
             header("Location: " . HOME_URI);
+        }
+    }
+
+    public function getNutricionistaByEmail($email){
+        if($email != null){
+            $nutricionistaModel = new nutricionistaModel();
+            $nutricionista  = $nutricionistaModel->getByEmail($email);            
+            return $nutricionista;
         }
     }
 
@@ -62,9 +62,16 @@ class nutricionistaController{
         $nutricionistaVo->setSenha($_POST["senha"]);              
 
         $nutricionistaModel = new nutricionistaModel();        
-        $nutricionistaModel=$nutricionistaModel->update($nutricionistaVo);
+        $atualizarModel = $nutricionistaModel->update($nutricionistaVo);
 
-        echo $nutricionistaModel;        
+        if($atualizarModel == "success_update"){
+            $nutricionista  = $nutricionistaModel->getById($_POST["id_nutricionista"]);   
+            session_start();
+            $_SESSION["email_nutricionista"] = $nutricionista->getEmail();
+            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
+            $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();      
+        }
+        echo $atualizarModel;      
     } 
 
     public function delete(){
@@ -74,10 +81,13 @@ class nutricionistaController{
         $nutricionistaModel = new nutricionistaModel();     
         $delete = $nutricionistaModel->delete($nutricionistaVo);
 
-        if($delete=="success_delete"){           
-            header("Location: " . HOME_URI);
+        if($delete=="success_delete"){
+            session_start();
+            if(isset($_SESSION["email_nutricionista"])){
+                session_destroy();
+            }        
         }
-        echo $delete;       
+        echo $delete;
     }      
 }
 ?>

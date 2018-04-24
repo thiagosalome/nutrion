@@ -18,6 +18,22 @@ class nutricionistaDAO{
     }
 
     /**
+     * Método para consulta de um nutricionista pelo id
+     *
+     * @param nutricionistaVO $nutricionista
+     */
+    public function getById($id){
+        require "app/bootstrap.php";        
+        try{
+            $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("id" => $id));            
+            return $nutricionista;
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * Método de inserção do usuário
      *
      * @param nutricionistaVO $nutricionista
@@ -70,15 +86,8 @@ class nutricionistaDAO{
     public function delete(nutricionistaVO $nutricionista){
         require "app/bootstrap.php";
         try{                                       
-            $delete = new Nutricionista;
-
+            $delete = $entityManager->find('Nutricionista',$nutricionista->getId());
             $entityManager->remove($delete);
-            /*foreach ($delete->getPacientes() as $patients)
-            {
-                $delete->getPacientes()->removeElement($patients);
-                $entityManager->remove($patients);
-            }*/
-
             $entityManager->flush();
 
             return true;
