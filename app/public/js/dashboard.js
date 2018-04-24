@@ -99,3 +99,23 @@ var DashboardForm = {
         });
     }
 }
+
+var DashboardTab = {
+    "js_patient_tab" : jQuery(".js-patient-tab"),
+    "js_patient_content" : jQuery(".js-patient-content"),
+
+    "changeTab" : function(){
+        this.js_patient_tab.on("click", function(){
+            DashboardTab.js_patient_tab.removeClass("active"); // Remove o active de todas as tabs
+            jQuery(this).addClass("active"); // Adiciona o active na tab atual
+            
+            var tab = jQuery(this).data("tab"); //Seleciona o data-tab do item atual
+            var content = jQuery(".js-patient-content[data-content='" + tab + "']"); //Seleciona o elemento com data-content referente
+
+            DashboardTab.js_patient_content.removeClass("active"); // Remove o active de todos os content
+            content.addClass("active"); // Adiciona o active no content referent
+            DashboardWindow.verifyWindow(); //Verifica novamente a altura da window
+
+        });
+    }
+}

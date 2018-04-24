@@ -51,61 +51,122 @@
                     <h1 class="header-title">Paciente</h1>
                 </div>
             </header>
-            <div class="dashboard-reports header-reports">
-                <!-- aqui ficará o usuário, com dados principais, tipo um header -->
-                <div class="col-sm-2">
+            <div class="dashboard-patient-header">
+                <div class="patient-header-item">
                     <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil.png" alt="" title="" class="header-logo">
                 </div>
-                 <div class="col-sm-4">   
-                    <h1 class="reports-title">MARIA SANTOS</h1>
-                    <p><span class="red-label">Paciente: </span>emaildopaciente@gmail.com</p>
+                <div class="patient-header-item">   
+                    <h1 class="patient-header-title">MARIA SANTOS</h1>
+                    <p><span class="red-label">Email: </span>emaildopaciente@gmail.com</p>
                 </div>
-
-                <div class="col-sm-3">
+                <div class="patient-header-item">
                     <p><span class="red-label">Sexo: </span>Feminino</p>   
                     <p><span class="red-label">Nascimento: </span>11/11/1111</p>
                     </div>
-                <div class="col-sm-3">
+                <div class="patient-header-item">
                     <p><span class="red-label">Telefone: </span>(11) 1111-1111</p>
                     <p><span class="red-label">CPF: </span>111.111.111-11</p>
                 </div>
             </div>
-
-            <div class="menu-tabs">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#">DADOS FÍSICOS</a></li>
-                    <li><a href="#">ADICIONAR FÍSICO</a></li>
-                    <li><a href="#">HISTÓRICO</a></li>
+            <div class="dashboard-patient-tab menu-tabs">
+                <ul>
+                    <li class="patient-tab-item active js-patient-tab" data-tab="dados-fisicos">Dados Físicos</li>
+                    <li class="patient-tab-item js-patient-tab" data-tab="adicionar-fisico">Adicionar Físico</li>
+                    <li class="patient-tab-item js-patient-tab" data-tab="historico">Histórico</li>
                 </ul>
             </div>
-
-            <div class="dashboard-form">
+            <div class="dashboard-statistics dashboard-patient-content js-patient-content active" data-content="dados-fisicos">
+                <div class="statistics-item">
+                    <div class="statistics-item-image-blue">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/altura_icon.png" alt="Altura" title="Altura" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>1,75 m</span>
+                        <p>Altura</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-agua">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/peso_icon.png" alt="Peso" title="Peso" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>70 kg</span>
+                        <p>Peso</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-green">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/imc_icon.png" alt="Imc" title="Imc" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>22,9</span>
+                        <p>IMC</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-orange">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/cintura_icon.png" alt="Cintura" title="Cintura" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>75 cm</span>
+                        <p>Cintura</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-yellow">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/quadril_icon.png" alt="Quadril" title="Quadril" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>70 cm</span>
+                        <p>Quadril</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-redLight">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/icq_icon.png" alt="Icq" title="Icq" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>22,9</span>
+                        <p>ICQ</p>
+                    </div>
+                </div>
+                <div class="statistics-item">
+                    <div class="statistics-item-image-redDark">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/ipaq_icon.png" alt="Ipaq" title="Ipaq" class="person-blue">
+                    </div>
+                    <div class="statistics-item-description">
+                        <span>IPAQ</span>
+                        <p>Muito Ativo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-form dashboard-patient-content js-patient-content" data-content="adicionar-fisico">
                 <form role="form" class=" largewidth largeww js-form-addPatient" action="">
                     <h3 class="formheader form-intern">Adicionar Físico</h3>
                     <div class="row">
-                        <div class="text-left  col-sm-3 col-intern form-group">
+                        <div class="text-left  col-sm-4 col-intern form-group">
                             <input type="text" class="form-control input-default" name="altura" placeholder="Altura">
                         </div>
-                        <div class="text-left col-sm-3 col-intern form-group ">
+                        <div class="text-left col-sm-4 col-intern form-group ">
                             <input type="text" class="form-control input-default" name="peso" placeholder="Peso">
                         </div>
-                        <div class="text-left col-sm-3 col-intern form-group ">
+                        <div class="text-left col-sm-4 col-intern form-group ">
                             <input type="text" class="form-control input-default" name="imc" placeholder="IMC">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="text-left col-sm-3 col-intern form-group ">
+                        <div class="text-left col-sm-4 col-intern form-group ">
                             <input type="text" class="form-control input-default" name="cintura" placeholder="Cintura">
                         </div>
-                        <div class="text-left col-sm-3 col-intern form-group ">
+                        <div class="text-left col-sm-4 col-intern form-group ">
                             <input type="text" class="form-control input-default" name="quadro" placeholder="Quadro">
                         </div>
-                        <div class="text-left col-sm-3 col-intern form-group ">
+                        <div class="text-left col-sm-4 col-intern form-group ">
                             <input type="text" class="form-control input-default" name="icq" placeholder="ICQ">
                         </div>
                     </div>
                     <div class="row">                    
-                        <div class=" text-left col-sm-9 form-group  ">
+                        <div class=" text-left col-sm-12 form-group  ">
                             <input type="text" class="form-control input-default" name="ipaq" placeholder="IPAQ">
                         </div>
                     </div>
@@ -116,7 +177,7 @@
                 <p class='main-message js-message'></p>
                 <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
             </div>
-            <div class="dashboard-table">
+            <div class="dashboard-table dashboard-patient-content js-patient-content" data-content="historico">
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
@@ -211,71 +272,7 @@
                     </div>
                 </div>
             </div>
-            <div class="fisico-dados dashboard-statistics">
-                <div class="statistics-item">
-                    <div class="statistics-item-image-blue">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/altura_icon.png" alt="Altura" title="Altura" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>175</span>
-                        <p>Altura</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-agua">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/peso_icon.png" alt="Peso" title="Peso" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>70 kg</span>
-                        <p>Peso</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-green">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/imc_icon.png" alt="Imc" title="Imc" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>22,9</span>
-                        <p>IMC</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-orange">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/cintura_icon.png" alt="Cintura" title="Cintura" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>75 cm</span>
-                        <p>Cintura</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-yellow">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/quadril_icon.png" alt="Quadril" title="Quadril" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>70 cm</span>
-                        <p>Quadril</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-redLight">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/icq_icon.png" alt="Icq" title="Icq" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>22,9</span>
-                        <p>ICQ</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-redDark">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/ipaq_icon.png" alt="Ipaq" title="Ipaq" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>IPAQ</span>
-                        <p>Muito Ativo</p>
-                    </div>
-                </div>
-            </div>
+            
         </section>       
     </main>
 

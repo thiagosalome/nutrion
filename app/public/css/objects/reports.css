@@ -2,14 +2,6 @@
     background-color: #ffffff;
     padding: 20px 30px;
 }
-    .red-label{
-        color:#9d2f4c;
-    }
-
-    .header-reports{
-        display:flex;
-        flex-wrap: wrap;
-    }
 
     .reports-title{
         font-size: 18px;

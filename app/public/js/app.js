@@ -25,3 +25,5 @@ var home_uri = getHomeUri();
     DashboardForm.onSubmit('.js-form-updateNutritionist', home_uri + 'nutricionista/update');
 
     DashboardHeader.toggleOptions();
+
+    DashboardTab.changeTab();
