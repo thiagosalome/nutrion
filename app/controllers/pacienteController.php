@@ -23,6 +23,11 @@ class pacienteController{
     public function interna(){
         include "app/views/nutricionista/internaPaciente.php";
     } 
+
+    //função temporária para acesso da pagina consultar alimentos
+    public function alimentos(){
+        include "app/views/nutricionista/consultarAlimento.php";
+    }
     
     public function create(){        
         $pacienteVo = new pacienteVO();     
