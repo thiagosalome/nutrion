@@ -43,12 +43,12 @@
 
 <body>
     <main class = "main-dashboard">
-        <?php include "objects/menu.php"; ?>
+        <?php include __DIR__ . "/../objects/menu.php"; ?>
         <section class="dashboard">
             <header class="dashboard-header">
-                <?php include "objects/header-top.php"; ?>
+                <?php include __DIR__ . "/../objects/header-top.php"; ?>
                 <div class="header-bottom">
-                    <h1 class="header-title">Consultar Alimentos</h1>
+                    <h1 class="header-title">Consultar Pacientes</h1>
                 </div>
             </header>
             <div class="dashboard-statistics">
@@ -85,7 +85,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h2>Todos os <b>Alimentos</b></h2>
+                                <h2>Todos os <b>Pacientes</b></h2>
                             </div>
                         </div>
                     </div>
@@ -93,58 +93,32 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Medida</th>
-                                <th>Proteina Animal</th>
-                                <th>Proteina Vegetal</th>
-                                <th>Carboidratos</th>
-                                <th>Ação</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>CPF</th>
+                                <th>Ações</th>
                             </tr>
-                        </thead>                        
+                        </thead>
                         <tbody>
-                            <tr>
-                                <td>Arroz</td>
-                                <td>g</td>
-                                <td> </td>
-                                <td>0,03</td>
-                                <td>0,28</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ovo cozido</td>
-                                <td>Un.</td>
-                                <td>6,40</td>
-                                <td> </td>
-                                <td>0,56</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sardinha</td>
-                                <td>lata</td>
-                                <td>27,50</td>
-                                <td> </td>
-                                <td> </td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tomate</td>
-                                <td>g</td>
-                                <td> </td>
-                                <td>0,02</td>
-                                <td>0,15</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            
-                           
-                        </tbody>
+                            <?php
+                                $pacienteController = new pacienteController();
+                                $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);
 
+                                foreach ($pacientes as $item) {
+                                ?>
+                                    <tr>
+                                        <td><?= $item->getNome();?></td>
+                                        <td><?= $item->getEmail(); ?></td>
+                                        <td><?= $item->getTelefone(); ?></td>
+                                        <td><?= $item->getCPF(); ?></td>
+                                        <td>
+                                            <a href="<?php echo HOME_URI ?>nutricionista/paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                            ?>
+                        </tbody>
                     </table>
                     <!-- <div class="clearfix">
                         <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
@@ -163,7 +137,7 @@
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
         </section>       
     </main>
-    <?php include "objects/modal-nutricionista.php" ?>
+    <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

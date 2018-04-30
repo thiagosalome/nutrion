@@ -44,10 +44,10 @@
 
 <body>
     <main class = "main-dashboard">
-        <?php include "objects/menu.php"; ?>
+        <?php include __DIR__ . "/../objects/menu.php"; ?>
         <section class="dashboard">
             <header class="dashboard-header">
-                <?php include "objects/header-top.php"; ?>
+                <?php include __DIR__ . "/../objects/header-top.php"; ?>
                 <div class="header-bottom">
                     <h1 class="header-title">Relatórios</h1>
                 </div>
@@ -116,7 +116,7 @@
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load-report" title="Carregando..." alt="Carregando...">
         </section>       
     </main>
-    <?php include "objects/modal-nutricionista.php" ?>
+    <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

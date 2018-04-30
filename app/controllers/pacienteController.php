@@ -13,22 +13,17 @@ class pacienteController{
     }*/
 
     public function consultar(){
-        include "app/views/nutricionista/consultarPaciente.php";
+        include "app/views/paciente/consultarPaciente.php";
     }
     
     public function adicionar(){
-        include "app/views/nutricionista/adicionarPaciente.php";
+        include "app/views/paciente/adicionarPaciente.php";
     }   
     
     public function interna(){
-        include "app/views/nutricionista/internaPaciente.php";
+        include "app/views/paciente/internaPaciente.php";
     } 
 
-    //função temporária para acesso da pagina consultar alimentos
-    public function alimentos(){
-        include "app/views/nutricionista/consultarAlimento.php";
-    }
-    
     public function create(){        
         $pacienteVo = new pacienteVO();     
         $pacienteVo->setIdNutricionista($_POST["id_nutricionista"]);   

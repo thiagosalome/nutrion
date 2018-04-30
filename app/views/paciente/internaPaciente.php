@@ -49,10 +49,10 @@
 
 <body>
     <main class = "main-dashboard">
-        <?php include "objects/menu.php"; ?>
+        <?php include __DIR__ . "/../objects/menu.php"; ?>
         <section class="dashboard">
             <header class="dashboard-header">
-                <?php include "objects/header-top.php"; ?>
+                <?php include __DIR__ . "/../objects/header-top.php"; ?>
                 <div class="header-bottom">
                     <h1 class="header-title">Paciente</h1>
                 </div>
@@ -285,8 +285,8 @@
             
         </section>       
     </main>
-    <?php include "objects/modal-nutricionista.php" ?>
-    <?php include "objects/modal-paciente.php" ?>
+    <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
+    <?php include __DIR__ . "/../objects/modal-paciente.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
