@@ -3,7 +3,9 @@ class alimentoVo{
     private $id;
     private $nome;
     private $proteina; 
-    private $carboidrato;      
+    private $carboidrato;
+    private $gordura;
+    private $calorias;      
      
     public function getId()
     {
@@ -49,6 +51,28 @@ class alimentoVo{
     {
         $this->carboidrato = $carboidrato;
         return $this;
-    }      
+    }    
+
+    public function getgordura()
+    {
+        return $this->gordura;
+    }
+    
+    public function setgordura($gordura)
+    {
+        $this->gordura = $gordura;
+        return $this;
+    }  
+
+    public function getcalorias()
+    {
+        return $this->calorias;
+    }
+    
+    public function setcalorias($calorias)
+    {
+        $this->calorias = $calorias;
+        return $this;
+    }
 }
 ?>
