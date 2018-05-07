@@ -24,10 +24,10 @@
             <img src="<?php echo HOME_URI; ?>app/public/images/logo.png" alt="" title="" class="header-logo">
         </header>
         <div class="main-block">
-            <div class="block-description js-block-description" data-position="left">
+            <div class="block-description js-description" data-position="left">
                 <img src="<?php echo HOME_URI; ?>app/public/images/logo_mini.png" alt="" class="description-logo">
                 <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
-                <button name="description-button" class="description-button js-btn-slide-block">Cadastrar</button>
+                <button name="description-button" class="description-button js-btn-slider">Cadastrar</button>
             </div>
             <div class="block-form block-form-log js-form-log">
                 <h1 class="form-title">Login</h1>

@@ -1,4 +1,4 @@
-/*var LoginForm = {
+var LoginForm = {
     //Attributes
     'js_message' : jQuery(".js-message"),
     'js_load' : jQuery(".js-load"),
@@ -40,9 +40,9 @@
             setTimeout(function(){LoginForm.js_message.fadeOut(300)}, 2000);
         });
     }
-}*/
+}
 
-/*
+
 var LoginInputs = {
     //Attributes
     'js_input' : jQuery(".js-input-field"),
@@ -74,12 +74,12 @@ var LoginInputs = {
             }
         });
     }
-}*/
-/*
+}
+
 var LoginSlider = {
     //Attributes
-    'js_btn_slider_block' : jQuery(".js-btn-slide-block"),
-    'js_block_description' : jQuery(".js-block-description"),
+    'js_btn_slider_block' : jQuery(".js-btn-slider"),
+    'js_block_description' : jQuery(".js-description"),
     'js_form_cad' : jQuery(".js-form-cad"),
     'js_form_log' : jQuery(".js-form-log"),
 
@@ -142,4 +142,4 @@ var LoginSlider = {
             });
         }
     }
-}*/
+}

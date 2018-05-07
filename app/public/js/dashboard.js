@@ -1,4 +1,4 @@
-/*var DashboardMenu = {
+var DashboardMenu = {
     'js_menu' : jQuery(".js-menu"),
     'js_item_menu' : jQuery(".js-item-menu"),
     'js_aside' : jQuery(".js-aside"),
@@ -29,7 +29,7 @@
             } 
         });
     }
-}*/
+}
 
 var DashboardWindow = {
     "verifyWindow" : function(){
@@ -55,7 +55,7 @@ var DashboardHeader = {
         });
     }
 }
-/*
+
 var DashboardForm = {
     //Attributes
     'js_message' : jQuery(".js-message"),
@@ -105,7 +105,7 @@ var DashboardForm = {
             setTimeout(function(){DashboardForm.js_message.fadeOut(300)}, 2000);
         });
     }
-}*/
+}
 
 var DashboardTab = {
     "js_patient_tab" : jQuery(".js-patient-tab"),
