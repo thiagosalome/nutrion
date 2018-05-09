@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addPatient" action="">
+                <form role="form" class="largewidth js-form-addPatient" action="<?php echo HOME_URI; ?>nutricionista/paciente/create">
                     <h3 class="formheader">Adicionar Paciente</h3>
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
@@ -124,7 +124,6 @@
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

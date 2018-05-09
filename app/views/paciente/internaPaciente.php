@@ -287,7 +287,6 @@
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
     <?php include __DIR__ . "/../objects/modal-paciente.php" ?>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ app.tab = (function(){
     var js_patient_tab = jQuery(".js-patient-tab");
     var js_patient_content = jQuery(".js-patient-content");
 
-    function exetute(){
+    function execute(){
         js_patient_tab.on("click", function(){
             js_patient_tab.removeClass("active"); // Remove o active de todas as tabs
             jQuery(this).addClass("active"); // Adiciona o active na tab atual
@@ -17,5 +17,9 @@ app.tab = (function(){
             app.dashboard.verify(); //Verifica novamente a altura da dashboard
 
         });
+    }
+
+    return {
+        execute : execute
     }
 }());

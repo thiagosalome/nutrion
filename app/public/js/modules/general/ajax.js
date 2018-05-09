@@ -4,8 +4,8 @@ app.ajax = (function(){
     function GET(e){
         e.preventDefault();
         jQuery.ajax({
-            url : url,
-            data : jQuery(this).serialize(),
+            url : e.currentTarget.action,
+            data : jQuery(e.currentTarget).serialize(),
             type: "GET",
             success : function(result){
                 
@@ -17,7 +17,7 @@ app.ajax = (function(){
         e.preventDefault();
         jQuery.ajax({
             url : e.currentTarget.action,
-            data : jQuery(this).serialize(),
+            data : jQuery(e.currentTarget).serialize(),
             type: "POST",
             beforeSend : function(){
                 app.message.load.fadeIn("slow");
@@ -35,6 +35,21 @@ app.ajax = (function(){
                         app.message.show("Usuário cadastrado com sucesso.");
                         app.slider.getBtnSlider().click();
                     }
+                    else if(result == "success_delete"){
+                        var home_uri = getHomeUri();
+                        location = home_uri;
+                    }
+                    else if(result == "success_update"){
+                        var home_uri = getHomeUri();
+                        location = home_uri + "nutricionista/paciente/consultar";
+                    }
+                    else if(result == "success_create_patient" || result == "success_delete_patient"){
+                        var home_uri = getHomeUri();
+                        location = home_uri + "nutricionista/paciente/consultar";
+                    }
+                    else if(result == "success_update_patient"){
+                        location.reload();
+                    }
                     else{
                         app.message.show(result);
                     }
@@ -46,8 +61,8 @@ app.ajax = (function(){
     function DELETE(e){
         e.preventDefault();
         jQuery.ajax({
-            url : url,
-            data : jQuery(this).serialize(),
+            url : e.currentTarget.action,
+            data : jQuery(e.currentTarget).serialize(),
             type: "DELETE",
             beforeSend : function(){
                 LoginForm.js_load.fadeIn('slow');
@@ -61,8 +76,8 @@ app.ajax = (function(){
     function PUT(e){
         e.preventDefault();
         jQuery.ajax({
-            url : url,
-            data : jQuery(this).serialize(),
+            url : e.currentTarget.action,
+            data : jQuery(e.currentTarget).serialize(),
             type: "PUT",
             beforeSend : function(){
                 LoginForm.js_load.fadeIn('slow');
