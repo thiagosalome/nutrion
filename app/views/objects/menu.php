@@ -33,14 +33,13 @@
                 </div>
                 <ul class="nav-submenu">
                     <li>
-                        <a href="#" title="Consultar Alimentos">
-                            <a href="<?php echo HOME_URI; ?>nutricionista/alimentos/consultar" title="Consultar Alimentos"> 
+                        <a href="<?php echo HOME_URI; ?>nutricionista/alimentos/consultar" title="Consultar Alimentos"> 
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="Consultar Alimentos" title="Consultar Alimentos">
                             <p class="submenu-description">Consultar Alimentos</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="Adicionar Alimento">
+                        <a href="<?php echo HOME_URI; ?>nutricionista/alimentos/adicionar" title="Adicionar Alimentos"> 
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="Adicionar Alimento" title="Adicionar Alimento">
                             <p class="submenu-description">Adicionar Alimento</p>
                         </a>

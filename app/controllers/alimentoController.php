@@ -9,6 +9,10 @@ class alimentoController{
         include "app/views/alimentos/consultarAlimento.php";
     }
 
+    public function adicionar(){
+        include "app/views/alimentos/adicionarAlimento.php";
+    }  
+
     public function create(){
 
     }
