@@ -12,32 +12,11 @@ app.slider = (function(){
             js_btn_slider.on("click", function(){
                 if(js_description.data('position') == 'left'){
                     jQuery(this).text("Logar");
-                    js_description.data("position", "right");
-                    
-                    js_description.animate({
-                        right : '0',
-                    }, speed, function(){
-                        js_form_cad.css("flex", "0 0 45%").children(".form-content, .form-title").fadeIn(speed);
-                        js_form_log.css("flex", "0 0 55%").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
-                        // LoginInputs.js_input.val("").blur();
-                        app.inputs.val("").blur();
-                    });
-            
-                    js_description.removeAttr("style");
+                    move("right", speed);
                 }
                 else{
                     jQuery(this).text("Cadastrar");
-                    js_description.data("position", "left");
-                    
-                    js_description.animate({
-                        left : '0',
-                    }, speed, function(){
-                        js_form_cad.css("flex", "0 0 55%").children(".form-content, .form-title").fadeOut(speed);
-                        js_form_log.css("flex", "0 0 45%").children(".form-content, .form-title, .form-forgot").fadeIn(speed);
-                        app.inputs.val("").blur();
-                    });
-            
-                   js_description.removeAttr("style");
+                    move("left", speed);
                 }
             });
         }
@@ -45,46 +24,51 @@ app.slider = (function(){
             js_btn_slider.on("click", function(){
                 if(js_description.data('position') == 'left'){
                     jQuery(this).text("Logar");
-                    js_description.data("position", "right");
-
-                    js_form_log.fadeOut('slow', function(){
-                        js_form_cad.fadeIn('slow');
-                        // LoginInputs.js_input.val("").blur();
-                        app.inputs.val("").blur();
-                    });
+                    moveMobile("right", js_form_log, js_form_cad);
                 }
                 else{
                     jQuery(this).text("Cadastrar");
-                    js_description.data("position", "left");
-
-                    js_form_cad.fadeOut('slow', function(){
-                        js_form_log.fadeIn('slow');
-                        // LoginInputs.js_input.val("").blur();
-                        app.inputs.val("").blur();
-                    });
+                    moveMobile("right", js_form_cad, js_form_log);
                 }
-                
             });
         }
     };
 
-    function slider(textButtom, direction, speed){
-        jQuery(this).text(textButtom);
+    function move(direction, speed){
         js_description.data("position", direction);
-        
-        js_description.animate({
-            direction : '0',
-        }, speed, function(){
-            js_form_cad.css("flex", "0 0 45%").children(".form-content, .form-title").fadeIn(speed);
-            js_form_log.css("flex", "0 0 55%").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
-            // LoginInputs.js_input.val("").blur();
-            app.inputs.val("").blur();
+        var style = direction == "right" ? {right : "0"} : {left : "0"};
+
+        js_description.animate(style, speed, function(){
+            if(direction == "right"){
+                js_form_cad.toggleClass("flex-bigger flex-smaller").children(".form-content, .form-title").fadeIn(speed);
+                js_form_log.toggleClass("flex-bigger flex-smaller").children(".form-content, .form-title, .form-forgot").fadeOut(speed);
+            }
+            else{
+                js_form_cad.toggleClass("flex-bigger flex-smaller").children(".form-content, .form-title").fadeOut(speed);
+                js_form_log.toggleClass("flex-bigger flex-smaller").children(".form-content, .form-title, .form-forgot").fadeIn(speed);
+            }
+
+            app.inputs.getInputs().val("").blur();
         });
 
         js_description.removeAttr("style");
+    };
+
+    function moveMobile(direction, selectorOut, selectorIn){
+        js_description.data("position", direction);
+
+        selectorOut.fadeOut('slow', function(){
+            selectorIn.fadeIn('slow');
+            app.inputs.getInputs().val("").blur();
+        });
+    };
+
+    function getBtnSlider(){
+        return js_btn_slider;
     }
 
     return {
-        execute : init
+        execute : init,
+        getBtnSlider : getBtnSlider
     }
 }());

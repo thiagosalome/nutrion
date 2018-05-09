@@ -49,7 +49,12 @@ app.loadModules = (function(jQuery){
     function load(){
         if(jQuery(".js-input-field").length > 0){
             require("inputs");
+            require("ajax");
+            require("message");
+
             app.inputs.init();
+            jQuery(document).on("submit", ".js-form-signup", function(e){app.ajax.post(e)});
+            jQuery(document).on("submit", ".js-form-signin", function(e){app.ajax.post(e)});
         }
         if(jQuery(".js-btn-slider").length > 0){
             require("slider");
@@ -74,4 +79,5 @@ app.loadModules = (function(jQuery){
     }
 }(jQuery));
 
-app.loadModules.init();*/
+app.loadModules.init();
+*/
