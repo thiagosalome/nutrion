@@ -53,7 +53,8 @@ app.loadModules = (function(jQuery){
     }
 
     return {
-        init : load
+        init : load,
+        getHomeUri : getHomeUri
     }
 }(jQuery));
 

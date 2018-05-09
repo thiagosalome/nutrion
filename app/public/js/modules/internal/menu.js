@@ -15,14 +15,14 @@ app.menu = (function(){
             jQuery(this).closest(".nav-dropdown").toggleClass("active");
         });
 
-        js_item_menu.each(function(){
+        /*js_item_menu.each(function(){
             // this.getAttribute("data-type"));
             var dataType = jQuery(this).data("type");
     
             if(window.location.href.indexOf(dataType) != -1){
                 jQuery(this).addClass("active");
             } 
-        });
+        });*/
     }
 
     return {
