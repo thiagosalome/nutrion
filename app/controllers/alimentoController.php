@@ -1,7 +1,7 @@
 <?php
-require "app/models/alimentos/alimentoDAO.php";
-require "app/models/alimentos/alimentoVo.php";
-require "app/models/alimentos/alimentoModel.php";
+require "app/models/alimento/alimentoDAO.php";
+require "app/models/alimento/alimentoVo.php";
+require "app/models/alimento/alimentoModel.php";
 
 class alimentoController{
 
