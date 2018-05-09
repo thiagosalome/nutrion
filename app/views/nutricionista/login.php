@@ -29,9 +29,9 @@
                 <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" class="description-button js-btn-slider">Cadastrar</button>
             </div>
-            <div class="block-form block-form-log js-form-log">
+            <div class="block-form block-form-log js-form-log flex-smaller">
                 <h1 class="form-title">Login</h1>
-                <form method="POST" class="form-content js-form-signin">
+                <form action="nutricionista/signIn" class="form-content js-form-signin">
                     <span class="form-field">
                         <label for="emaillog">Email</label>
                         <input class="js-input-field" type="email" name="email" id="emaillog" required><br>
@@ -44,7 +44,7 @@
                 </form>
                 <a href="" class="form-forgot">Esqueceu a senha?</a>
             </div>
-            <div class="block-form block-form-cad js-form-cad">
+            <div class="block-form block-form-cad js-form-cad flex-bigger">
                 <h1 class="form-title">Cadastro</h1>
                 <form method="POST" class="form-content js-form-signup">
                     <span class="form-field">

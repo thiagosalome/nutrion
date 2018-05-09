@@ -27,8 +27,12 @@ app.inputs = (function(){
         });
     }
 
+    function getInputs(){
+        return js_input;
+    }
+
     return {
         init : execute,
-        inputs : js_input
+        getInputs : getInputs
     }
 }());
