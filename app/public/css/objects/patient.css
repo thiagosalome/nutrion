@@ -1,0 +1,98 @@
+.dashboard-patient-header{
+    background-color: #ffffff;
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+    .patient-header-item{
+        margin-right: 30px;
+    }
+
+    .patient-header-perfil{
+        width: 90px;
+        height: 90px;
+        background-color: #9D2F4C;
+        border-radius: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+        .patient-header-perfil img{
+            max-width: 90%;
+        }
+
+    .patient-header-icon{
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        border: 1px solid #9D2F4C;
+        display: flex;
+        color: #9D2F4C;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .patient-header-icon:hover{
+        cursor: pointer;
+    }
+
+    .patient-header-title{
+        font-size: 20px;
+        color: #575757;
+        font-family: "Roboto";
+        font-weight: 700;
+        margin: 0 0 14px;
+        text-transform: uppercase;
+    }
+
+.dashboard-patient-tab{
+    background-color: #ffffff;
+    padding: 40px 30px 0;
+}
+
+    .dashboard-patient-tab ul{
+        display: flex;
+        margin-bottom: 35px;
+    }
+
+        .patient-tab-item{
+            list-style: none;
+            margin-right: 25px;
+            color: #575757;
+            font-family: "Roboto";
+            font-weight: 700;
+            text-transform: uppercase;
+            padding-bottom: 10px;
+            display: block;
+        }
+        
+        .patient-tab-item{
+            cursor: pointer;
+        }
+
+        .patient-tab-item.active{
+            border-bottom: 4px solid #9D2F4C;
+            color: #9D2F4C;
+        }
+
+.dashboard-patient-content{
+    display: none;
+    margin: 30px 0;
+}
+
+.dashboard-patient-content.active{
+    display: block;
+}
+
+.red-label{
+        color:#9d2f4c;
+    } 
+
+    .header-reports{
+        display:flex;
+        flex-wrap: wrap;
+    }

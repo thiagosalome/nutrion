@@ -27,19 +27,76 @@
             height: 22px;
         }
 
+    .header-options{
+        background-color: #ffffff;
+        z-index: 100;
+        right: 25px;
+        top: 55px;
+        position: absolute;
+        padding: 10px 15px;
+        border-radius: 5px 0 5px 5px;
+        border: 1px solid #cccccc;
+        display: none;
+    }
+
+        .header-options::before, .header-options::after{
+            height: 0;
+            width: 0;
+            content: "";
+            display: block;
+            position: absolute;
+            right: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
+        .header-options::before{
+            border-bottom: 10px solid #cccccc;
+            top: -11px;
+        }
+
+        .header-options::after{
+            border-bottom: 10px solid #ffffff;
+            top: -10px;
+        }
+
+        .header-options ul{
+            margin: 0;
+            list-style: none;
+            text-align: right;
+        }
+
+            .header-options ul a, .header-options ul button {
+                color: #9D2F4C;
+                margin: 5px 0 0;
+                display: block;
+                border: none;
+                background-color: transparent;
+            }
+
+            .header-options ul a:hover{
+                text-decoration: none;
+            }
+
     .header-perfil{
         float: right;
+        display: flex;
+        align-items: center;
+    }
+
+    .header-perfil:hover{
+        cursor: pointer;
     }
 
         .perfil-name{
-            font-family: ﻿"Roboto Light";
+            font-family: "Roboto Light";
             font-size: 18px;
             color: #9d2f4c;
             margin: 0;
         }
 
         .perfil-arrow{
-
+            margin-left: 20px;
         }
 
     .header-menu{

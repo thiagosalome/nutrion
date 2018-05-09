@@ -10,6 +10,13 @@
 	color:white !important;
 	text-align:center;
 }
+
+.form-intern{
+	font-size: 18px;
+	text-align: left;
+}
+
+
 .btn-default {				/*customized buttons eg: send, register, done.... present in each form*/
 	width:100%;
 	border-radius: 2px !important;
@@ -152,6 +159,11 @@ input:focus + .glyphicon, textarea:focus + .glyphicon, select:focus + .glyphicon
 	-moz-box-sizing: border-box;		/*moz used for mozilla firefox*/
 	box-sizing: border-box;
 }
+
+.largeww{
+	max-width: 450px;
+}
+
 
 /*Login-1 FORM*/
 .social-icon {		/*social icons on login-1 page*/

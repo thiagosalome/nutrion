@@ -29,6 +29,10 @@ class Nutricionista
      */
     protected $nome;
 
+    /**
+     * @OneToMany(targetEntity="Paciente", mappedBy="nutricionista", orphanRemoval=true, cascade={"persist", "remove"})
+     */
+    protected $pacientes; //OBS: mappedBy pega o nome da variável de referência a nutricionista dentro da classe paciente
 
     /**
      * Get the value of id
@@ -94,6 +98,26 @@ class Nutricionista
     public function setNome($nome)
     {
         $this->nome = $nome;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pacientes
+     */ 
+    public function getPacientes()
+    {
+        return $this->pacientes;
+    }
+
+    /**
+     * Set the value of pacientes
+     *
+     * @return  self
+     */ 
+    public function setPacientes($pacientes)
+    {
+        $this->pacientes = $pacientes;
 
         return $this;
     }

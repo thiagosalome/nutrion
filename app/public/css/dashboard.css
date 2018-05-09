@@ -2,6 +2,8 @@
 @import url('objects/menu.css');
 @import url('objects/header.css');
 @import url('objects/statistics.css');
+@import url('objects/reports.css');
+@import url('objects/patient.css');
 
 
 /* Components */
@@ -13,7 +15,7 @@
     padding: 0;
 }
 
-.main {
+.main-dashboard {
     display: flex;
 }
 
@@ -28,11 +30,34 @@
     padding: 0 30px;
 }
 
+.main-message {
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 12px;
+    color: #ffffff;
+    display: none;
+    font-family: "Roboto", sans-serif;
+    left: 50%;
+    padding: 10px 50px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, calc(-50% + 34px + 179px + 50px));
+}
+
+.main-load {
+    width: 30px;
+    top: 50%;
+    transform: translate(-50%, calc(-50% + 34px + 179px + 50px));
+    left: 50%;
+    position: absolute;
+    display: none;
+}
+
 
 
 @media screen and (min-width: 1200px){
     .dashboard-table{
-        width: 80%;
+        width: 1000px;
     }
 }
 

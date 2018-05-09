@@ -5,36 +5,77 @@ require "app/models/paciente/pacienteModel.php";
 
 class pacienteController{ 
 
+    /*
+    public function search(){
+        $query = $_POST[""];
+        $pacienteModel = new pacienteModel();
+        $search = $pacienteModel->search($query);
+    }*/
+
     public function consultar(){
-        include "app/views/nutricionista/consultarPaciente.php";
+        include "app/views/paciente/consultarPaciente.php";
     }
     
     public function adicionar(){
-        include "app/views/nutricionista/adicionarPaciente.php";
+        include "app/views/paciente/adicionarPaciente.php";
+    }   
+    
+    public function interna(){
+        include "app/views/paciente/internaPaciente.php";
+    } 
+
+    public function create(){        
+        $pacienteVo = new pacienteVO();     
+        $pacienteVo->setIdNutricionista($_POST["id_nutricionista"]);   
+        $pacienteVo->setCPF($_POST["cpf"]);//remover os pontos              
+        $pacienteVo->setNome($_POST["nome"]);
+        $pacienteVo->setSexo($_POST["sexo"]);
+        $pacienteVo->setTelefone($_POST["telefone"]);//formato:(21) 98765-4321
+        $pacienteVo->setEmail($_POST["email"]);       
+        $pacienteVo->setDataNasc($_POST["nascimento"]);
+        
+        $pacienteModel = new pacienteModel();
+        $cadastrar = $pacienteModel->create($pacienteVo);
+
+        echo $cadastrar;       
     }
 
-    public function create(){
-        $pacienteModel = new pacienteModel();
-        $pacienteVo = new pacienteVO();  
-        /*
+    public function update(){       
+        $pacienteVo = new pacienteVO();        
+        $pacienteVo->setId($_POST["id_paciente"]);             
+        $pacienteVo->setCPF($_POST["cpf"]);             
         $pacienteVo->setNome($_POST["nome"]);
         $pacienteVo->setSexo($_POST["sexo"]);
         $pacienteVo->setTelefone($_POST["telefone"]);
-        $pacienteVo->setDataNasc($_POST["datanasc"]);
-        */
+        $pacienteVo->setEmail($_POST["email"]);       
+        $pacienteVo->setDataNasc($_POST["nascimento"]);
         
-        $pacienteVo->setNome("nome");
-        $pacienteVo->setSexo("f");
-        $pacienteVo->setTelefone("31999999999");
-        $pacienteVo->setDataNasc("01/01/2001");
-    
-        $cadastrarModel = $pacienteModel->create($pacienteVo);
-    }
+        $pacienteModel = new pacienteModel();
+        $update = $pacienteModel->update($pacienteVo);
 
-    public function update(){
+        echo $update;    
     }
 
     public function delete(){
+        $pacienteVo = new pacienteVO();
+        $pacienteVo->setId($_POST["id_paciente"]);  
+
+        $pacienteModel = new pacienteModel();     
+        $delete = $pacienteModel->delete($pacienteVo);
+
+        echo $delete;
+    }
+
+    public function getAllPatients($idNutricionista){
+        $pacienteModel = new pacienteModel();
+        $pacientes = $pacienteModel->getAllPatients($idNutricionista);
+        return $pacientes;
+    }
+
+    public function getPatientById($idPaciente){
+        $pacienteModel = new pacienteModel();
+        $paciente = $pacienteModel->getPatientById($idPaciente);
+        return $paciente;
     }
 }    
 ?>

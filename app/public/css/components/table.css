@@ -46,7 +46,7 @@ table.table tr th, table.table tr td {
     vertical-align: middle;
 }
 table.table tr th:first-child {
-    width: 60px;
+    /* width: 60px; */
 }
 table.table tr th:last-child {
     width: 100px;
@@ -75,7 +75,7 @@ table.table td a {
     outline: none !important;
 }
 table.table td a:hover {
-    color: #2196F3;
+    color: #9d2f4c;
 }
 table.table td a.edit {
     color: #FFC107;
@@ -111,10 +111,12 @@ table.table .avatar {
     color: #666;
 }	
 .pagination li.active a, .pagination li.active a.page-link {
-    background: #03A9F4;
+    background: #9d2f4c;
+    border: none;
 }
 .pagination li.active a:hover {        
-    background: #0397d6;
+    background: #9d2f4c;
+    border: none;
 }
 .pagination li.disabled i {
     color: #ccc;
