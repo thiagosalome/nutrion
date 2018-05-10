@@ -1,14 +1,30 @@
 <?php
 class alimentoDAO{
   
-    public function getBy(){
+    public function getByNome($nome){
+        /*  PRECISA TESTAR
         require "app/bootstrap.php";        
         try{
-                       
+            $alimento = $entityManager->getRepository("Alimento")->findOneBy(array("nome" => $nome));            
+            return $alimento;          
         }
         catch(Exception $e){
             return $e->getMessage();
         }
+        */
+    }
+
+    public function getAll(){
+        /*  PRECISA TESTAR
+        require "app/bootstrap.php";        
+        try{
+            $alimento = $entityManager->getRepository("Alimento")->findAll());            
+            return $alimento;          
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+        */
     }
     
     public function insert(alimentoVo $alimento){
