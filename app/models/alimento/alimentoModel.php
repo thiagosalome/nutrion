@@ -1,7 +1,17 @@
 <?php
 class alimentoModel{
 
-    public function create(alimentoVo $alimento){
+    public function create(alimentoVo $alimento)
+    {
+        $alimentoDAO = new alimentoDAO();  
+        $insert = $alimentoDAO->insert($alimentoVo);
+
+        if($insert){
+            return "success_insert_food";
+        }
+        else{
+            return "exception " . $insert;
+        }
         
     }
 

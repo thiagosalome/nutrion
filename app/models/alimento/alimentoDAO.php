@@ -30,7 +30,17 @@ class alimentoDAO{
     public function insert(alimentoVo $alimento){
         require "app/bootstrap.php"; 
         try{
-            
+            $insert = new Alimento;
+            $insert = $entityManager->find('Alimento', $alimentoVo->getId());
+
+            $insert->setNome($alimentoVo->getNome());
+            $insert->setCaloria($alimentoVo->getCaloria());
+            $insert->setProteina($alimentoVo->getProteina());
+            $insert->setCarboidrato($alimentoVo->getCarboidrato());
+            $insert->setGordura($alimentoVo->getGordura());
+
+            $entityManager->persist($insert); 
+            $entityManager->flush();
             return true;
         }
         catch (Expection $e){
