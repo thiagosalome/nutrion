@@ -5,6 +5,7 @@
         $email = $_SESSION["email_nutricionista"];
 
         if(!isset($_SESSION["id_nutricionista"])){
+            require("app/controllers/nutricionistaController.php");
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
@@ -56,7 +57,7 @@
                 <h2 class="reports-title">
                     Gerar <span>Relatórios</span>
                 </h2>
-                <form role="form" method="POST" class="largewidth reports-form js-report-generate" action="<?php echo HOME_URI ?>nutricionista/relatorio/gerar">
+                <form role="form" method="POST" class="largewidth reports-form js-report-generate" action="<?php echo HOME_URI ?>relatorio/gerar">
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <select name="relatorio" class="form-control input-default">

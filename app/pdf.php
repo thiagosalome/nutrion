@@ -1,22 +1,3 @@
-<?php
-    session_start();
-
-    if(isset($_SESSION["email_nutricionista"])){
-        $email = $_SESSION["email_nutricionista"];
-
-        if(!isset($_SESSION["id_nutricionista"])){
-            $nutricionistaController = new nutricionistaController();
-            $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
-            
-            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
-            $_SESSION["id_nutricionista"] = $nutricionista->getId();
-            $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
-        }
-    }
-    else{
-        header("Location: " . HOME_URI);
-    }
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -61,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                
                 </tbody>
             </table>
         </div>

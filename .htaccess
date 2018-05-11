@@ -1,8 +1,12 @@
 RewriteEngine On
 
 RewriteRule ^/?$ index.php?Controller=nutricionista&Action=login
-RewriteRule ^([a-zA-Z0-9]+)/?$ index.php?Controller=$1&Action=login
+
+RewriteRule ^nutricionista/?$ index.php?Controller=nutricionista&Action=login
+RewriteRule ^paciente/?$ index.php?Controller=paciente&Action=consultar
+RewriteRule ^alimento/?$ index.php?Controller=alimento&Action=consultar
+RewriteRule ^dieta/?$ index.php?Controller=dieta&Action=consultar
+RewriteRule ^relatorio/?$ index.php?Controller=relatorio&Action=tipo
+
 RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)$ index.php?Controller=$1&Action=$2
-# RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)/([a-zA-z0-9]+)$ index.php?Controller=$1&Action=$2&id=$3
-RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)/([a-zA-z0-9]+)$ index.php?Controller=$1&ControllerDashboard=$2&ActionDashboard=$3
-RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)/([a-zA-z0-9]+)/([0-9]+)$ index.php?Controller=$1&ControllerDashboard=$2&ActionDashboard=$3&id=$4
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)/([a-zA-z0-9]+)$ index.php?Controller=$1&Action=$2&id=$3

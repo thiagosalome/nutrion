@@ -29,7 +29,7 @@ app.ajax = (function(){
                     }
                     else if(result == "success_signin"){
                         var home_uri = app.loadModules.getHomeUri();
-                        location = home_uri + "nutricionista/paciente/consultar"
+                        location = home_uri + "paciente/consultar"
                     }
                     else if(result == "success_signup"){
                         app.message.show("Usuário cadastrado com sucesso.");
@@ -41,11 +41,11 @@ app.ajax = (function(){
                     }
                     else if(result == "success_update"){
                         var home_uri = app.loadModules.getHomeUri();
-                        location = home_uri + "nutricionista/paciente/consultar";
+                        location = home_uri + "paciente/consultar";
                     }
                     else if(result == "success_create_patient" || result == "success_delete_patient"){
                         var home_uri = app.loadModules.getHomeUri();
-                        location = home_uri + "nutricionista/paciente/consultar";
+                        location = home_uri + "paciente/consultar";
                     }
                     else if(result == "success_update_patient"){
                         location.reload();

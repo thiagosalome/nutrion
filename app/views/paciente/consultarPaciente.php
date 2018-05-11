@@ -5,11 +5,12 @@
         $email = $_SESSION["email_nutricionista"];
 
         if(!isset($_SESSION["id_nutricionista"])){
+            require("app/controllers/nutricionistaController.php");
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
-            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
             $_SESSION["id_nutricionista"] = $nutricionista->getId();
+            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
         }
     }
@@ -112,7 +113,7 @@
                                         <td><?= $item->getTelefone(); ?></td>
                                         <td><?= $item->getCPF(); ?></td>
                                         <td>
-                                            <a href="<?php echo HOME_URI ?>nutricionista/paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                            <a href="<?php echo HOME_URI ?>paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
                                         </td>
                                     </tr>
                                 <?php
