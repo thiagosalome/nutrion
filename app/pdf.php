@@ -1,3 +1,26 @@
+<?php
+    if(isset($_SESSION["report"])){
+        $report = $_SESSION["report"];
+    
+        switch ($report) {
+            case 'pacientes':
+                require("app/controllers/pacienteController.php");
+                $pacienteController = new pacienteController();
+                $items = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);    
+                break;
+    
+            case 'alimentos':
+                require("app/controllers/alimentoController.php");
+                $alimentoController = new alimentoController();
+                $items = $alimentoController->getAllPatients($_SESSION["id_nutricionista"]);    
+    
+                break;
+            case 'dietas':
+                # code...
+                break;
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,20 +38,20 @@
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <!-- site title -->
-    <title>PDF</title>
+    <title><?= $_SESSION["report"]; ?></title>
 </head>
 <body>
+    <header>
+        <p><strong>Nutricionista: </strong> <?= $_SESSION["nome_nutricionista"] ?></p>
+    </header>
+    <hr>
     <div class="dashboard-table js-table-patient">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Pacientes</h2>
+                        <h3>Pacientes</h3>
                     </div>
                 </div>
             </div>
@@ -42,7 +65,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                
+                    <?php
+                        foreach ($items as $item) {
+                        ?>
+                            <tr>
+                                <td><?= $item->getNome();?></td>
+                                <td><?= $item->getEmail(); ?></td>
+                                <td><?= $item->getTelefone(); ?></td>
+                                <td><?= $item->getCPF(); ?></td>
+                            </tr>
+                        <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>

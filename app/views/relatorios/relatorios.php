@@ -61,13 +61,13 @@
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <select name="relatorio" class="form-control input-default">
-                                <option value="paciente">Pacientes</option>
-                                <option value="dietas">Dietas</option>
+                                <option value="pacientes">Pacientes</option>
                                 <option value="alimentos">Alimentos</option>
+                                <option value="dietas">Dietas</option>
                             </select>
                             <i class="glyphicon glyphicon-chevron-down "></i> 
                         </div>
-                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Gerar</button>
+                        <button class="btn btn-default col-md-3" style="float:inherit" name="generate_report" type="submit">Gerar</button>
                     </div>
                 </form>
             </div>
