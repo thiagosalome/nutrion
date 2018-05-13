@@ -189,7 +189,7 @@
                 <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
             </div>
             <div class="dashboard-table dashboard-patient-content js-patient-content" data-content="historico">
-                <div class="table-wrapper">
+                <div class="table-wrapper table-responsive">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover ">
                         <thead>
                             <tr>
                                 <th>Nome</th>

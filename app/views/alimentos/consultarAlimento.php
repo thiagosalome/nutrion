@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="dashboard-table">
-                <div class="table-wrapper">
+                <div class="table-wrapper table-responsive">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
@@ -98,7 +98,12 @@
                                 <th>Proteina Animal</th>
                                 <th>Proteina Vegetal</th>
                                 <th>Carboidratos</th>
-                                <th>Ação</th>
+                                <th class="th-dir">Ação</th>
+                                    <style type="text/css">
+                                        .th-dir{
+                                            text-align: center;
+                                        }
+                                    </style>
                             </tr>
                         </thead>                        
                         <tbody>
@@ -109,7 +114,8 @@
                                 <td>0,03</td>
                                 <td>0,28</td>
                                 <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
                                 </td>
                             </tr>
                             <tr>
@@ -119,7 +125,8 @@
                                 <td> </td>
                                 <td>0,56</td>
                                 <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
                                 </td>
                             </tr>
                             <tr>
@@ -129,7 +136,8 @@
                                 <td> </td>
                                 <td> </td>
                                 <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
                                 </td>
                             </tr>
                             <tr>
@@ -139,7 +147,8 @@
                                 <td>0,02</td>
                                 <td>0,15</td>
                                 <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
+                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
                                 </td>
                             </tr>
                             

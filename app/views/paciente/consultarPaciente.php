@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="dashboard-table">
-                <div class="table-wrapper">
+                <div class="table-wrapper table-responsive">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
@@ -113,7 +113,7 @@
                                         <td><?= $item->getTelefone(); ?></td>
                                         <td><?= $item->getCPF(); ?></td>
                                         <td>
-                                            <a href="<?php echo HOME_URI ?>paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
+                                            <a href="<?php echo HOME_URI ?>paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="Visualizar">visibility</i></a>
                                         </td>
                                     </tr>
                                 <?php

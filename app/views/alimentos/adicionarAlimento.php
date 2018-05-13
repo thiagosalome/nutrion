@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addPatient" action="">
+                <form role="form" class="largewidth js-form-addAliment" action="">
                     <h3 class="formheader">Adicionar Alimento</h3>
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
