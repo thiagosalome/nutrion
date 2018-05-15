@@ -2,6 +2,8 @@
 class alimentoVo{
     private $id;
     private $nome;
+    private $medida; 
+    private $tipoproteina; 
     private $proteina; 
     private $carboidrato;
     private $gordura;
@@ -72,6 +74,31 @@ class alimentoVo{
     public function setCaloria($caloria)
     {
         $this->caloria = $caloria;
+        return $this;
+    }
+
+    public function getTipoproteina()
+    {
+        return $this->tipoproteina;
+    }
+
+    public function setTipoproteina($tipoproteina)
+    {
+        $this->tipoproteina = $tipoproteina;
+
+        return $this;
+    }
+
+
+    public function getMedida()
+    {
+        return $this->medida;
+    }
+
+    public function setMedida($medida)
+    {
+        $this->medida = $medida;
+
         return $this;
     }
 }

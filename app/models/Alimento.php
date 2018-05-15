@@ -20,6 +20,16 @@ class Alimento
     protected $nome;
 
     /**
+     * @Column(type="string", name="medida") 
+     */
+    protected $medida;
+
+    /**
+     * @Column(type="string", name="tipoProteina")
+     */
+    protected $tipoproteina;
+
+    /**
      * @Column(type="float", name="caloria")
      */
     protected $caloria;
@@ -146,6 +156,46 @@ class Alimento
 
         return $this;
     }    
+
+    /**
+     * Get the value of medida
+     */ 
+    public function getMedida()
+    {
+        return $this->medida;
+    }
+
+    /**
+     * Set the value of medida
+     *
+     * @return  self
+     */ 
+    public function setMedida($medida)
+    {
+        $this->medida = $medida;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tipoproteina
+     */ 
+    public function getTipoproteina()
+    {
+        return $this->tipoproteina;
+    }
+
+    /**
+     * Set the value of tipoproteina
+     *
+     * @return  self
+     */ 
+    public function setTipoproteina($tipoproteina)
+    {
+        $this->tipoproteina = $tipoproteina;
+
+        return $this;
+    }
 }
 
 ?>

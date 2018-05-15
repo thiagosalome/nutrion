@@ -34,6 +34,7 @@ app.loadModules = (function(jQuery){
             jQuery(document).on("submit", ".js-form-addPatient", function(e){app.ajax.post(e)});
             jQuery(document).on("submit", ".js-form-deletePatient", function(e){app.ajax.post(e)});
             jQuery(document).on("submit", ".js-form-updatePatient", function(e){app.ajax.post(e)});
+            jQuery(document).on("submit", ".js-form-addAliment", function(e){app.ajax.post(e)});
         }
         
     }

@@ -50,6 +50,10 @@ app.ajax = (function(){
                     else if(result == "success_update_patient"){
                         location.reload();
                     }
+                    else if(result == "success_create_aliment" || result == "success_delete_aliment"){
+                        var home_uri = app.loadModules.getHomeUri();
+                        location = home_uri + "alimento/consultar";
+                    }
                     else{
                         app.message.show(result);
                     }

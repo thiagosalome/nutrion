@@ -1,16 +1,21 @@
 <?php
 class alimentoModel{
 
-    public function create(alimentoVo $alimento)
+    public function create(alimentoVo $alimentoVo)
     {
-        $alimentoDAO = new alimentoDAO();  
-        $insert = $alimentoDAO->insert($alimentoVo);
-
-        if($insert){
-            return "success_insert_food";
+        if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
+            return "Há campos vazios";
         }
         else{
-            return "exception " . $insert;
+            $alimentoDAO = new alimentoDAO();  
+            $insert = $alimentoDAO->insert($alimentoVo);
+
+            if($insert){
+                return "success_create_aliment";
+            }
+            else{
+                return "exception " . $insert;
+            }
         }
         
     }
@@ -47,6 +52,12 @@ class alimentoModel{
             return "exception " . $delete;
         }
     */
+    }
+
+    public function getAllAliments(){
+        $alimentoDAO = new alimentoDAO();
+        $alimentos = $alimentoDAO->getAllAliments();
+        return $alimentos;
     }
 }
 ?>

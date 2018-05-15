@@ -104,19 +104,28 @@
                             </tr>
                         </thead>                        
                         <tbody>
-                            <tr>
-                                <td>Arroz</td>
-                                <td>g</td>
-                                <td>Vegetal</td>
-                                <td>0,03</td>
-                                <td>0,28</td>
-                                <td>0,28</td>
-                                <td>0,28</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
-                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
-                                </td>
-                            </tr>
+                            <?php
+                                $alimentoController = new alimentoController();
+                                $alimentos = $alimentoController->getAllAliments();
+
+                                foreach ($alimentos as $item) {
+                                ?>
+                                    <tr>
+                                        <td><?= $item->getNome();?></td>
+                                        <td><?= $item->getMedida();?></td>
+                                        <td><?= $item->getTipoproteina(); ?></td>
+                                        <td><?= $item->getProteina(); ?></td>
+                                        <td><?= $item->getCarboidrato(); ?></td>
+                                        <td><?= $item->getGordura(); ?></td>
+                                        <td><?= $item->getCaloria(); ?></td>
+                                        <td>
+                                            <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
+                                            <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                            ?>
                         </tbody>
                     </table>
                     <!-- <div class="clearfix">

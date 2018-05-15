@@ -14,26 +14,25 @@ class alimentoDAO{
         */
     }
 
-    public function getAll(){
-        /*  PRECISA TESTAR
-        require "app/bootstrap.php";        
+    public function getAllAliments(){
+        require "app/bootstrap.php";
         try{
-            $alimento = $entityManager->getRepository("Alimento")->findAll());            
-            return $alimento;          
+            $alimento = $entityManager->getRepository("Alimento")->findAll();
+            return $alimento;
         }
         catch(Exception $e){
             return $e->getMessage();
         }
-        */
     }
     
-    public function insert(alimentoVo $alimento){
+    public function insert(alimentoVo $alimentoVo){
         require "app/bootstrap.php"; 
         try{
             $insert = new Alimento;
-            $insert = $entityManager->find('Alimento', $alimentoVo->getId());
 
             $insert->setNome($alimentoVo->getNome());
+            $insert->setMedida($alimentoVo->getMedida());
+            $insert->setTipoproteina($alimentoVo->getTipoproteina());
             $insert->setCaloria($alimentoVo->getCaloria());
             $insert->setProteina($alimentoVo->getProteina());
             $insert->setCarboidrato($alimentoVo->getCarboidrato());

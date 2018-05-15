@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addAliment" action="">
+                <form role="form" class="largewidth js-form-addAliment" action="<?php echo HOME_URI ?>alimento/create">
                     <h3 class="formheader">Adicionar Alimento</h3>
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
@@ -97,24 +97,24 @@
                         <div class="col-sm-6 form-group">
                             <select name="tipo_proteina" class="form-control input-default">
                                 <option value="">Tipo de Proteína</option>
-                                <option value="M">Vegetal</option>
-                                <option value="F">Animal</option>
+                                <option value="Vegetal">Vegetal</option>
+                                <option value="Animal">Animal</option>
                             </select>
                             <i class="glyphicon glyphicon-chevron-down "></i>
                         </div>
                         <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="proteina" placeholder="Proteína">
+                            <input type="number" step="0.001" class="form-control input-default" name="proteina" placeholder="Proteína">
                         </div>
                     </div>
                     <div class="row">
                     <div class="text-left col-sm-4 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="carboidrato" placeholder="Carboidratos">
+                            <input type="number" step="0.001" class="form-control input-default" name="carboidrato" placeholder="Carboidratos">
                         </div>
                         <div class="text-left col-sm-4 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="gordura" placeholder="Gorduras">
+                            <input type="number" step="0.001" class="form-control input-default" name="gordura" placeholder="Gorduras">
                         </div>
                         <div class="text-left col-sm-4 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="calorias" placeholder="Calorias">
+                            <input type="number" step="0.001" class="form-control input-default" name="caloria" placeholder="Calorias">
                         </div>
                     </div>
                     <div class="form-group text-center" style="margin-bottom: 0px;">

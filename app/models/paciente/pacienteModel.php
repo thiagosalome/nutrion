@@ -16,7 +16,7 @@ class pacienteModel{
 
         $data = explode("-",$pacienteVo->getDataNasc());
         
-        if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
+        if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo()) or empty($pacienteVo->getTelefone()) or empty($pacienteVo->getDataNasc())) {
             return "Há campos vazios";
         }
         else if(!$this->validateCPF($pacienteVo->getCPF())){
