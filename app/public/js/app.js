@@ -35,8 +35,40 @@ app.loadModules = (function(jQuery){
             jQuery(document).on("submit", ".js-form-deletePatient", function(e){app.ajax.post(e)});
             jQuery(document).on("submit", ".js-form-updatePatient", function(e){app.ajax.post(e)});
             jQuery(document).on("submit", ".js-form-addAliment", function(e){app.ajax.post(e)});
+            jQuery(document).on("submit", ".js-form-updateAliment", function(e){app.ajax.post(e)});
+            jQuery(document).on("submit", ".js-form-deleteAliment", function(e){app.ajax.post(e)});
+
+            jQuery(document).on("click", ".js-aliment-click-update", function(e){
+                setDataTableForm(e);
+            });
+            
+            jQuery(document).on("click", ".js-aliment-click-delete", function(e){
+                setIdTableInput(e);
+            });
         }
-        
+    }
+
+    function setIdTableInput(e){
+        var value = jQuery(e.currentTarget).data("id");
+        var data = jQuery(e.currentTarget).closest("td").data("item");
+
+        jQuery(".js-form-deleteAliment").find("input[name='" + data + "']").val(value);
+    }
+
+    function setDataTableForm(e){
+        var js_parent = jQuery(e.currentTarget).closest("tr");
+        js_parent.children().each(function(index){
+            var data = jQuery(this).data("item");
+
+            if(data == "id_alimento"){
+                var value = jQuery(this).children("a").data("id");
+                jQuery(".js-form-updateAliment").find("input[name='" + data + "']").val(value);
+            }
+            else{
+                var value = jQuery(this).text();
+                jQuery(".js-form-updateAliment").find("input[name='" + data + "'], select[name='" + data + "']").val(value);
+            }
+        });
     }
 
     function require(module){

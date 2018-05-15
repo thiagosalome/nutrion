@@ -135,6 +135,7 @@
                     </div> -->
                 </div>
             </div>
+            <p class='main-message js-message'></p>
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
         </section>       
     </main>

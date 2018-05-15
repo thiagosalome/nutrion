@@ -111,16 +111,16 @@
                                 foreach ($alimentos as $item) {
                                 ?>
                                     <tr>
-                                        <td><?= $item->getNome();?></td>
-                                        <td><?= $item->getMedida();?></td>
-                                        <td><?= $item->getTipoproteina(); ?></td>
-                                        <td><?= $item->getProteina(); ?></td>
-                                        <td><?= $item->getCarboidrato(); ?></td>
-                                        <td><?= $item->getGordura(); ?></td>
-                                        <td><?= $item->getCaloria(); ?></td>
-                                        <td>
-                                            <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
-                                            <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
+                                        <td data-item="nome"><?= $item->getNome();?></td>
+                                        <td data-item="medida"><?= $item->getMedida();?></td>
+                                        <td data-item="tipo_proteina"><?= $item->getTipoproteina(); ?></td>
+                                        <td data-item="proteina"><?= $item->getProteina(); ?></td>
+                                        <td data-item="carboidrato"><?= $item->getCarboidrato(); ?></td>
+                                        <td data-item="gordura"><?= $item->getGordura(); ?></td>
+                                        <td data-item="caloria"><?= $item->getCaloria(); ?></td>
+                                        <td data-item="id_alimento">
+                                            <a href="" data-id="<?= $item->getId(); ?>" class="js-aliment-click-update" data-toggle="modal" data-target="#modal-update-aliment"><i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
+                                            <a href="" data-id="<?= $item->getId(); ?>" class="js-aliment-click-delete" data-toggle="modal" data-target="#modal-delete-aliment"><i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -142,10 +142,12 @@
                     </div> -->
                 </div>
             </div>
+            <p class='main-message js-message'></p>
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
+    <?php include __DIR__ . "/../objects/modal-alimento.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

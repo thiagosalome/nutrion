@@ -15,7 +15,6 @@ class alimentoController{
 
     public function create(){
         $alimentoVo = new alimentoVo();
-        $alimentoVo->setId($_POST["id_nutricionista"]);  
         $alimentoVo->setNome($_POST["nome"]);
         $alimentoVo->setMedida($_POST["medida"]);
         $alimentoVo->setTipoproteina($_POST["tipo_proteina"]);
@@ -31,10 +30,11 @@ class alimentoController{
     }
 
     public function update(){
-    /*  PRECISA TESTAR  
         $alimentoVo = new alimentoVo();
-        $alimentoVo->setId($_POST["id"]);  
+        $alimentoVo->setId($_POST["id_alimento"]);
         $alimentoVo->setNome($_POST["nome"]);
+        $alimentoVo->setMedida($_POST["medida"]);
+        $alimentoVo->setTipoproteina($_POST["tipo_proteina"]);
         $alimentoVo->setProteina($_POST["proteina"]);
         $alimentoVo->setCarboidrato($_POST["carboidrato"]);
         $alimentoVo->setCaloria($_POST["caloria"]);
@@ -44,19 +44,16 @@ class alimentoController{
         $update = $alimentoModel->update($alimentoVo);
 
         echo $update;
-    */
     }
 
     public function delete(){
-    /*  PRECISA TESTAR    
         $alimentoVo = new alimentoVO();
-        $alimentoVo->setId($_POST["id"]);  
+        $alimentoVo->setId($_POST["id_alimento"]);  
 
         $alimentoModel = new alimentoModel();     
         $delete = $alimentoModel->delete($alimentoVo);
 
         echo $delete;
-    */
     }
 
     public function getAllAliments(){

@@ -63,7 +63,6 @@ class nutricionistaDAO{
     public function update(nutricionistaVO $nutricionista){                
         require "app/bootstrap.php";
         try{
-            $update = new Nutricionista;
             $update = $entityManager->find('Nutricionista',$nutricionista->getId());
 
             $update->setNome($nutricionista->getNome()); 

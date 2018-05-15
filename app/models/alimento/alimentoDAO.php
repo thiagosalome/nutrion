@@ -48,13 +48,13 @@ class alimentoDAO{
     }       
 
     public function update(alimentoVo $alimentoVo){                
-    /*  PRECISA TESTAR  
         require "app/bootstrap.php";
         try{
-            $update = new Alimento;
             $update = $entityManager->find('Alimento', $alimentoVo->getId());
 
             $update->setNome($alimentoVo->getNome());
+            $update->setMedida($alimentoVo->getMedida());
+            $update->setTipoproteina($alimentoVo->getTipoproteina());
             $update->setCaloria($alimentoVo->getCaloria());
             $update->setProteina($alimentoVo->getProteina());
             $update->setCarboidrato($alimentoVo->getCarboidrato());
@@ -67,11 +67,9 @@ class alimentoDAO{
         catch (Expection $e){
             return $e->getMessage();
         }
-    */   
     } 
     
     public function delete(alimentoVo $alimentoVo){
-    /*  PRECISA TESTAR    
         require "app/bootstrap.php";
         try{                                       
             $delete = $entityManager->find('Alimento', $alimentoVo->getId());
@@ -83,7 +81,6 @@ class alimentoDAO{
         catch (Expection $e){
             return $e->getMessage();
         }
-    */     
     }  
 }
 ?>

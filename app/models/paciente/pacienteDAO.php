@@ -100,7 +100,6 @@ class pacienteDAO{
     public function update(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
         try{                        
-            $update = new Paciente;
             $update = $entityManager->find('Paciente', $pacienteVo->getId());
 
             $update->setNome($pacienteVo->getNome());

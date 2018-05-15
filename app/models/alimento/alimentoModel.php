@@ -21,37 +21,32 @@ class alimentoModel{
     }
 
     public function update(alimentoVo $alimentoVo){
-    /*  PRECISA TESTAR     
-        if (empty($alimentoVo->getNome()) or empty($alimentoVo->getProteina() or empty($alimentoVo->getCarboidrato() or empty($alimentoVo->getGordura() or empty($alimentoVo->getCaloria()))))) {
+        if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
             return "Há campos vazios";
         }
         else{
             $alimentoDAO = new alimentoDAO();                       
-            //$alimento = $alimentoDAO->getByNome($alimentoVo->getNome());            
-            
             $update = $alimentoDAO->update($alimentoVo);           
+            
             if($update == true){
-                return "success_update_food";
+                return "success_update_aliment";
             }
             else{
                 return "exception " . $update ;
             }
         }
-    */
     }
 
     public function delete(alimentoVo $alimentoVo){
-    /*  PRECISA TESTAR    
         $alimentoDAO = new alimentoDAO();        
         $delete = $alimentoDAO->delete($alimentoVo);
 
         if($delete){
-            return "success_delete_patient";
+            return "success_delete_aliment";
         }
         else{
             return "exception " . $delete;
         }
-    */
     }
 
     public function getAllAliments(){
