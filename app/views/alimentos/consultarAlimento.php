@@ -95,66 +95,29 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Medida</th>
-                                <th>Proteina Animal</th>
-                                <th>Proteina Vegetal</th>
+                                <th>Tipo de Proteína</th>
+                                <th>Proteína</th>
                                 <th>Carboidratos</th>
-                                <th class="th-dir">Ação</th>
-                                    <style type="text/css">
-                                        .th-dir{
-                                            text-align: center;
-                                        }
-                                    </style>
+                                <th>Gorduras</th>
+                                <th>Calorias</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>                        
                         <tbody>
                             <tr>
                                 <td>Arroz</td>
                                 <td>g</td>
-                                <td> </td>
+                                <td>Vegetal</td>
                                 <td>0,03</td>
+                                <td>0,28</td>
+                                <td>0,28</td>
                                 <td>0,28</td>
                                 <td>
                                     <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
                                     <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Ovo cozido</td>
-                                <td>Un.</td>
-                                <td>6,40</td>
-                                <td> </td>
-                                <td>0,56</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
-                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sardinha</td>
-                                <td>lata</td>
-                                <td>27,50</td>
-                                <td> </td>
-                                <td> </td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
-                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tomate</td>
-                                <td>g</td>
-                                <td> </td>
-                                <td>0,02</td>
-                                <td>0,15</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
-                                    <i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
-                                </td>
-                            </tr>
-                            
-                           
                         </tbody>
-
                     </table>
                     <!-- <div class="clearfix">
                         <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>

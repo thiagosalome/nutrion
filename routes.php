@@ -21,7 +21,7 @@ class Routes{
             
             if(isset($_GET["Action"])){
                 $this->action = $_GET["Action"];
-                eval("\$controller->" . $this->action . " ();");
+                eval("\$controller->" . $this->action . "();");
             }
                 
         }

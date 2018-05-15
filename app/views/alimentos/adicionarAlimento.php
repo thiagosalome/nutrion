@@ -87,21 +87,33 @@
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">
-                            <label for="alimentCarac">Proteina</label>
-                            <input type="text" class="form-control input-default" name="proteina" placeholder="Proteína">
+                            <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
                         </div>
                         <div class="text-left col-sm-6 form-group has-feedback">
-                            <label for="alimentCarac">Carboidrato</label>
-                            <input type="text" class="form-control input-default" name="carboidrato" placeholder="Carboidrato">
+                            <input type="text" class="form-control input-default" name="medida" placeholder="Medida">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="text-left col-sm-6 form-group has-feedback">
-                            <label for="alimentCarac">Gorduras</label>
-                            <input type="text" class="form-control input-default" name="gordura" placeholder="Gorduras">
+                        <div class="col-sm-6 form-group">
+                            <select name="tipo_proteina" class="form-control input-default">
+                                <option value="">Tipo de Proteína</option>
+                                <option value="M">Vegetal</option>
+                                <option value="F">Animal</option>
+                            </select>
+                            <i class="glyphicon glyphicon-chevron-down "></i>
                         </div>
                         <div class="text-left col-sm-6 form-group has-feedback">
-                            <label for="alimentCarac">Calorias</label>
+                            <input type="text" class="form-control input-default" name="proteina" placeholder="Proteína">
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="text-left col-sm-4 form-group has-feedback">
+                            <input type="text" class="form-control input-default" name="carboidrato" placeholder="Carboidratos">
+                        </div>
+                        <div class="text-left col-sm-4 form-group has-feedback">
+                            <input type="text" class="form-control input-default" name="gordura" placeholder="Gorduras">
+                        </div>
+                        <div class="text-left col-sm-4 form-group has-feedback">
                             <input type="text" class="form-control input-default" name="calorias" placeholder="Calorias">
                         </div>
                     </div>
