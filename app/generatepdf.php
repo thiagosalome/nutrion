@@ -7,7 +7,9 @@ use Dompdf\Dompdf;
 
 if(isset($_POST["relatorio"])){
     session_start();
-    $_SESSION["report"] = $_POST["relatorio"];
+    $report = $_POST["relatorio"];
+    $reportTitle = strtoupper($report{0}) . substr($report, 1);
+    $reportFileName = $reportTitle . ".pdf";
 
     //Lendo arquivo html correspondente
     ob_start();
@@ -27,7 +29,7 @@ if(isset($_POST["relatorio"])){
     $dompdf->render();
 
     //Enviando o pdf para o browser
-    $dompdf->stream();
+    $dompdf->stream($reportFileName);
 }
 
 ?>

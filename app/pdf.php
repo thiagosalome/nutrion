@@ -1,18 +1,17 @@
 <?php
-    if(isset($_SESSION["report"])){
-        $report = $_SESSION["report"];
-    
+    if(isset($report)){
+
         switch ($report) {
             case 'pacientes':
                 require("app/controllers/pacienteController.php");
                 $pacienteController = new pacienteController();
-                $items = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);    
+                $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);    
                 break;
     
             case 'alimentos':
                 require("app/controllers/alimentoController.php");
                 $alimentoController = new alimentoController();
-                $items = $alimentoController->getAllPatients($_SESSION["id_nutricionista"]);    
+                $alimentos = $alimentoController->getAllAliments();    
     
                 break;
             case 'dietas':
@@ -39,7 +38,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
     <!-- site title -->
-    <title><?= $_SESSION["report"]; ?></title>
+    <title><?= $reportTitle ?></title>
 </head>
 <body>
     <header>
@@ -51,11 +50,14 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Pacientes</h3>
+                        <h3><?= $reportTitle ?></h3>
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
+            <table class="table table-hover">
+            <?php
+                if($pacientes != null){
+            ?>
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -66,7 +68,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($items as $item) {
+                        foreach ($pacientes as $item) {
                         ?>
                             <tr>
                                 <td><?= $item->getNome();?></td>
@@ -78,6 +80,41 @@
                         }
                     ?>
                 </tbody>
+            <?php 
+                }
+                else if($alimentos != null){
+            ?>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Medida</th>
+                        <th>Tipo de Proteína</th>
+                        <th>Proteína</th>
+                        <th>Carboidratos</th>
+                        <th>Gorduras</th>
+                        <th>Calorias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($alimentos as $item) {
+                        ?>
+                            <tr>
+                                <td><?= $item->getNome();?></td>
+                                <td><?= $item->getMedida(); ?></td>
+                                <td><?= $item->getTipoproteina(); ?></td>
+                                <td><?= $item->getProteina(); ?></td>
+                                <td><?= $item->getCarboidrato(); ?></td>
+                                <td><?= $item->getGordura(); ?></td>
+                                <td><?= $item->getCaloria(); ?></td>
+                            </tr>
+                        <?php
+                        }
+                    ?>
+                </tbody>
+            <?php
+                }
+            ?>
             </table>
         </div>
     </div>
