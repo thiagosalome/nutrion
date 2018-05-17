@@ -5,13 +5,13 @@ require "app/models/alimento/alimentoModel.php";
 
 class alimentoController{
 
-    public function consultar(){
+    /*public function consultar(){
         include "app/views/alimentos/consultarAlimento.php";
     }
 
     public function adicionar(){
         include "app/views/alimentos/adicionarAlimento.php";
-    }  
+    }*/
 
     public function create(){
         $alimentoVo = new alimentoVo();

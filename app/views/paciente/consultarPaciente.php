@@ -76,6 +76,7 @@
                         </thead>
                         <tbody>
                             <?php
+                                require "app/controllers/pacienteController.php";
                                 $pacienteController = new pacienteController();
                                 $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);
 

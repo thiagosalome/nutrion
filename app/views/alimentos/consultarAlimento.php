@@ -79,6 +79,7 @@
                         </thead>                        
                         <tbody>
                             <?php
+                                require "app/controllers/alimentoController.php";
                                 $alimentoController = new alimentoController();
                                 $alimentos = $alimentoController->getAllAliments();
 

@@ -5,7 +5,7 @@ require "app/models/nutricionista/nutricionistaModel.php";
 
 class nutricionistaController{  
 
-    public function login(){
+    /*public function login(){
         include "app/views/nutricionista/login.php";
     }
 
@@ -16,7 +16,7 @@ class nutricionistaController{
             session_destroy();
             header("Location: " . HOME_URI);
         }
-    }
+    }*/
 
     public function getNutricionistaByEmail($email){
         if($email != null){

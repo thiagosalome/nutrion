@@ -69,7 +69,7 @@
             </li>
             <li class="js-item-menu <?php if(strpos($_SERVER['REQUEST_URI'], "relatorio")){echo "active";} ?>" data-type="relatorios">
                 <div class="nav-item">
-                    <a href="<?php echo HOME_URI?>relatorio/tipo" title="Relatórios">
+                    <a href="<?php echo HOME_URI?>relatorio/" title="Relatórios">
                         <img class="item-icon-info" src="<?php echo HOME_URI; ?>app/public/images/dashboard/report_icon.png" alt="Relatórios" title="Relatórios">
                         <p class="item-description">Relatórios</p>
                     </a>

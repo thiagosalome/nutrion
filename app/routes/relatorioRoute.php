@@ -1,6 +1,6 @@
 <?php
 
-class relatorioController{
+class relatorioRoute{
     
     public function consultar(){
         // Rota para view de login e cadastro
