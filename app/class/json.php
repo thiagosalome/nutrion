@@ -3,7 +3,8 @@
 class json{
 
     public static function generate($status, $status_code, $message, $data){
-        echo json_encode(
+        header('Content-Type: application/json; charset=utf-8');
+        return json_encode(
             array(
                 'status' => $status,
                 'status_code' => $status_code,

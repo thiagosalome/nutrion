@@ -85,7 +85,9 @@ class pacienteDAO{
                 
             $entityManager->persist($paciente);           
             $entityManager->flush();
-            return true;
+
+            // return true;
+            return $paciente;
         }
         catch (Expection $e){
             return $e->getMessage();
@@ -111,7 +113,9 @@ class pacienteDAO{
 
             $entityManager->persist($update); 
             $entityManager->flush();
-            return true;
+
+            // return true;
+            return $update;
         }
         catch (Expection $e){
             return false;

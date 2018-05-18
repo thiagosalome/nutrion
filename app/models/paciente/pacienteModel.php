@@ -17,38 +17,41 @@ class pacienteModel{
         $data = explode("-",$pacienteVo->getDataNasc());
         
         if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo()) or empty($pacienteVo->getTelefone()) or empty($pacienteVo->getDataNasc())) {
-            return "Há campos vazios";
+            return json::generate("Conflito", "409", "Há campos vazios", null);
         }
         else if(!$this->validateCPF($pacienteVo->getCPF())){
-            return "CPF inválido";
+            return json::generate("Conflito", "409", "CPF inválido", null);
         } 
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $pacienteVo->getNome())){
-            return "O nome deve ter entre 2 e 40 caracteres";
+            return json::generate("Conflito", "409", "O nome deve ter entre 2 e 40 caracteres", null);
         }   
         else if(!preg_match('/^\(?[0-9]{2}\)?\s?9?[0-9]{4}\-?[0-9]{4}$/', $pacienteVo->getTelefone())){
-            return "O número de telefone é inválido";
+            return json::generate("Conflito", "409", "O número de telefone é inválido", null);
         }         
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $pacienteVo->getEmail())){
-            return "O email digitado é inválido";
+            return json::generate("Conflito", "409", "O email digitado é inválido", null);
         }
         else if(!checkdate( $data[1] , $data[2] , $data[0] ) || $data[0] < 1900 || mktime( 0, 0, 0, $data[1], $data[2], $data[0] ) > time()){
-            return "Data de nascimento inválida"; 
+            return json::generate("Conflito", "409", "Data de nascimento inválida", null);
         }
         else{
             $pacienteDAO = new pacienteDAO();                       
             $paciente = $pacienteDAO->getByCPF($pacienteVo->getCPF());            
            
             if(is_object($paciente)){
-                return "O paciente já foi cadastrado antes";
+                return json::generate("Conflito", "409", "O paciente já foi cadastrado antes", null);
             }
             else if($paciente == null){
                 $cadastro = $pacienteDAO->insert($pacienteVo);
-                if($cadastro == true){
+                $cadastro_array = (array) $cadastro;
+                return json::generate("OK", "200", "Paciente cadastrado com successo", $cadastro_array);
+
+                /*if($cadastro == true){
                     return "success_create_patient";
                 }
                 else{
                     return "exception " . $paciente;
-                }
+                }*/
             }
             else{
                 return "exception " . $paciente;
@@ -65,22 +68,22 @@ class pacienteModel{
         $data = explode("-",$pacienteVo->getDataNasc());
         
         if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
-            return "Há campos vazios";
+            return json::generate("Conflito", "409", "Há campos vazios", null);
         }
         else if(!$this->validateCPF($pacienteVo->getCPF())){
-            return "CPF inválido";
+            return json::generate("Conflito", "409", "CPF inválido", null);
         }         
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $pacienteVo->getNome())){
-            return "O nome deve ter entre 2 e 40 caracteres";
+            return json::generate("Conflito", "409", "O nome deve ter entre 2 e 40 caracteres", null);
         }   
         else if(!preg_match('/^\(?[0-9]{2}\)?\s?9?[0-9]{4}\-?[0-9]{4}$/', $pacienteVo->getTelefone())){
-            return "O número de telefone está inválido";
+            return json::generate("Conflito", "409", "O número de telefone é inválido", null);
         }         
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $pacienteVo->getEmail())){
-            return "O email digitado é inválido";
+            return json::generate("Conflito", "409", "O email digitado é inválido", null);
         }
         else if(!checkdate( $data[1] , $data[2] , $data[0] ) || $data[0] < 1900 || mktime( 0, 0, 0, $data[1], $data[2], $data[0] ) > time()){
-            return "A data digitada é inválida"; 
+            return json::generate("Conflito", "409", "Data de nascimento inválida", null);
         }
         else{
             $pacienteDAO = new pacienteDAO();                       
@@ -92,12 +95,8 @@ class pacienteModel{
             else{*/
 
                 $update = $pacienteDAO->update($pacienteVo);           
-                if($update == true){
-                    return "success_update_patient";
-                }
-                else{
-                    return "exception " . $update ;
-                }
+                $update_array = (array) $update;
+                return json::generate("OK", "200", "Paciente alterado com successo", $update_array);
 
             // }
         }
@@ -113,10 +112,13 @@ class pacienteModel{
         $delete = $pacienteDAO->delete($pacienteVo);
 
         if($delete){
-            return "success_delete_patient";
+            // return "success_delete_patient";
+            return json::generate("OK", "200", "Paciente deletado com successo", null);
         }
         else{
-            return "exception " . $delete;
+            // return "exception " . $delete;
+            $exception = "Exceção : " . $delete;
+            return json::generate("Erro", "400", $exception, null);
         }
     }
 

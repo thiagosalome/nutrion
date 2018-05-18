@@ -2,6 +2,7 @@
 require "app/models/paciente/pacienteDAO.php";
 require "app/models/paciente/pacienteVo.php";
 require "app/models/paciente/pacienteModel.php";
+require "app/class/json.php";
 
 class pacienteController{ 
 
@@ -12,7 +13,7 @@ class pacienteController{
         $search = $pacienteModel->search($query);
     }*/
 
-    public function consultar(){
+    /*public function consultar(){
         include "app/views/paciente/consultarPaciente.php";
     }
     
@@ -22,7 +23,7 @@ class pacienteController{
     
     public function interna(){
         include "app/views/paciente/internaPaciente.php";
-    }
+    }*/
 
     public function create(){        
         $pacienteVo = new pacienteVO();     
@@ -40,15 +41,15 @@ class pacienteController{
         echo $cadastrar;       
     }
 
-    public function update(){       
+    public function update($_PUT){       
         $pacienteVo = new pacienteVO();        
-        $pacienteVo->setId($_POST["id_paciente"]);             
-        $pacienteVo->setCPF($_POST["cpf"]);             
-        $pacienteVo->setNome($_POST["nome"]);
-        $pacienteVo->setSexo($_POST["sexo"]);
-        $pacienteVo->setTelefone($_POST["telefone"]);
-        $pacienteVo->setEmail($_POST["email"]);       
-        $pacienteVo->setDataNasc($_POST["nascimento"]);
+        $pacienteVo->setId($_PUT["id_paciente"]);             
+        $pacienteVo->setCPF($_PUT["cpf"]);             
+        $pacienteVo->setNome($_PUT["nome"]);
+        $pacienteVo->setSexo($_PUT["sexo"]);
+        $pacienteVo->setTelefone($_PUT["telefone"]);
+        $pacienteVo->setEmail($_PUT["email"]);       
+        $pacienteVo->setDataNasc($_PUT["nascimento"]);
         
         $pacienteModel = new pacienteModel();
         $update = $pacienteModel->update($pacienteVo);
@@ -56,9 +57,9 @@ class pacienteController{
         echo $update;    
     }
 
-    public function delete(){
+    public function delete($_DELETE){
         $pacienteVo = new pacienteVO();
-        $pacienteVo->setId($_POST["id_paciente"]);  
+        $pacienteVo->setId($_DELETE["id_paciente"]);  
 
         $pacienteModel = new pacienteModel();     
         $delete = $pacienteModel->delete($pacienteVo);
@@ -66,7 +67,7 @@ class pacienteController{
         echo $delete;
     }
 
-    public function getAllPatients($idNutricionista){
+    public function getAll($idNutricionista){
         $pacienteModel = new pacienteModel();
         $pacientes = $pacienteModel->getAllPatients($idNutricionista);
         return $pacientes;
