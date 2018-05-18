@@ -15,6 +15,7 @@
         }
         if(isset($_GET["id"])){
             $pacienteId = $_GET["id"];
+            require "app/controllers/pacienteController.php";
             $pacienteController = new pacienteController();
             $paciente = $pacienteController->getPatientById($pacienteId);
         }

@@ -23,6 +23,37 @@ class Routes{
                 eval("\$route->" . $this->action . "();");
             }
         }
+        else if(isset($_GET["Controller"])){
+            $method = $_SERVER['REQUEST_METHOD'];   // Identifica a requisição
+            $controller = $_GET["Controller"];    // Identifica os parâmetros
+            //Deve-se pegar os parâmetros da url
+
+            include "app/controllers/" . $controller . "Controller.php";
+            $class = $controller. "Controller";
+            eval("\$controller = new $class();");
+
+            switch($method){
+                case "GET":
+                $controller->getAll();
+                
+                break;
+            
+                case "POST":
+                $controller->create();
+            
+                break;
+            
+                case "PUT":
+                $controller->update();
+            
+                break;
+                
+                case "DELETE":
+                $controller->delete();
+            
+                break;
+            }
+        }
     }
 }
 

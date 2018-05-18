@@ -56,7 +56,7 @@
                 <?php include __DIR__ . "/../objects/statistics.php"; ?>
             </div>
             <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addPatient" action="<?php echo HOME_URI; ?>paciente/create">
+                <form role="form" class="largewidth js-form-addPatient" action="<?php echo HOME_URI; ?>out/paciente">
                     <h3 class="formheader">Adicionar Paciente</h3>
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
