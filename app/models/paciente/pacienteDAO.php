@@ -41,27 +41,17 @@ class pacienteDAO{
      * @param [type] $idNutricionista
      * @return void
      */
-    public function getAllPatients($idNutricionista){
+    public function getAll($idNutricionista){
         require "app/bootstrap.php";
-        try{
-            $nutricionista = $entityManager->find("Nutricionista", $idNutricionista);
-            $pacientes = $nutricionista->getPacientes();
-            return $pacientes;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+        $nutricionista = $entityManager->find("Nutricionista", $idNutricionista);
+        $pacientes = $nutricionista->getPacientes();
+        return $pacientes;
     }
 
-    public function getPatientById($idPaciente){
+    public function getById($idPaciente){
         require "app/bootstrap.php";
-        try{
-            $paciente = $entityManager->find("Paciente", $idPaciente);
-            return $paciente;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+        $paciente = $entityManager->find("Paciente", $idPaciente);
+        return $paciente;
     }
 
      /**
@@ -71,27 +61,21 @@ class pacienteDAO{
      */
     public function insert(pacienteVo $pacienteVo){
         require "app/bootstrap.php";        
-        try{
-            $paciente = new Paciente;
-            $nutricionista = $entityManager->find("Nutricionista", $pacienteVo->getIdNutricionista());
+        $paciente = new Paciente;
+        $nutricionista = $entityManager->find("Nutricionista", $pacienteVo->getIdNutricionista());
 
-            $paciente->setNutricionista($nutricionista);
-            $paciente->setNome($pacienteVo->getNome());
-            $paciente->setTelefone($pacienteVo->getTelefone());
-            $paciente->setEmail($pacienteVo->getEmail());
-            $paciente->setSexo($pacienteVo->getSexo());
-            $paciente->setDataNasc(new \DateTime($pacienteVo->getDataNasc()." 00:00:00"));
-            $paciente->setCPF($pacienteVo->getCPF());
-                
-            $entityManager->persist($paciente);           
-            $entityManager->flush();
+        $paciente->setNutricionista($nutricionista);
+        $paciente->setNome($pacienteVo->getNome());
+        $paciente->setTelefone($pacienteVo->getTelefone());
+        $paciente->setEmail($pacienteVo->getEmail());
+        $paciente->setSexo($pacienteVo->getSexo());
+        $paciente->setDataNasc(new \DateTime($pacienteVo->getDataNasc()." 00:00:00"));
+        $paciente->setCPF($pacienteVo->getCPF());
+            
+        $entityManager->persist($paciente);           
+        $entityManager->flush();
 
-            // return true;
-            return $paciente;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }
+        return $paciente;
     }
 
     /**
@@ -101,26 +85,19 @@ class pacienteDAO{
      */
     public function update(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
-        try{                        
-            $update = $entityManager->find('Paciente', $pacienteVo->getId());
+        $update = $entityManager->find('Paciente', $pacienteVo->getId());
 
-            $update->setNome($pacienteVo->getNome());
-            $update->setTelefone($pacienteVo->getTelefone());
-            $update->setEmail($pacienteVo->getEmail());
-            $update->setSexo($pacienteVo->getSexo());
-            $update->setDataNasc(new \DateTime($pacienteVo->getDataNasc()." 00:00:00"));
-            $update->setCPF($pacienteVo->getCPF());
+        $update->setNome($pacienteVo->getNome());
+        $update->setTelefone($pacienteVo->getTelefone());
+        $update->setEmail($pacienteVo->getEmail());
+        $update->setSexo($pacienteVo->getSexo());
+        $update->setDataNasc(new \DateTime($pacienteVo->getDataNasc()." 00:00:00"));
+        $update->setCPF($pacienteVo->getCPF());
 
-            $entityManager->persist($update); 
-            $entityManager->flush();
+        $entityManager->persist($update); 
+        $entityManager->flush();
 
-            // return true;
-            return $update;
-        }
-        catch (Expection $e){
-            return false;
-        } 
-
+        return $update;
     }
 
     /**
@@ -130,16 +107,12 @@ class pacienteDAO{
      */
     public function delete(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
-        try{
-            $delete = $entityManager->find('Paciente', $pacienteVo->getId());
-            $entityManager->remove($delete); 
-            $entityManager->flush();
-            return true;
-        }
-        catch (Expection $e){
-            return false;
-        }    
+        $delete = $entityManager->find('Paciente', $pacienteVo->getId());
+        
+        $entityManager->remove($delete); 
+        $entityManager->flush();
+        return true;
+    }
 
-    }  
 }
 ?>

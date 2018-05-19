@@ -26,19 +26,6 @@ class Routes{
         else if(isset($_GET["Controller"])){
             $method = $_SERVER['REQUEST_METHOD'];   // Identifica a requisição
             $controller = $_GET["Controller"];    // Identifica os parâmetros
-            $uri = $_SERVER['REQUEST_URI'];
-            $url = explode("?", $uri);
-            $querys = explode("&" ,$url[1]);
-            $params = array();
-            
-            for($i = 0; $i < count($querys); $i++) { 
-                $param = explode("=", $querys[$i]);
-                $index = $param[0];
-                $value = $param[1];
-                $params[$index] = $value;
-            }
-
-            //Deve-se pegar os parâmetros da url
 
             include "app/controllers/" . $controller . "Controller.php";
             $class = $controller. "Controller";
@@ -46,25 +33,30 @@ class Routes{
 
             switch($method){
                 case "GET":
-                $controller->getAll($params);
-                
+                    $uri = $_SERVER['REQUEST_URI'];
+                    $url = explode("?", $uri);
+                    $query = explode("=", $url[1]);
+                    $index = $query[0];
+                    $value = $query[1];
+                    
+                    $params_array = array();
+                    $params_array[$index] = $value;
+
+                    $controller->get($params_array);
                 break;
             
                 case "POST":
-                $controller->create();
-            
+                    $controller->create();
                 break;
             
                 case "PUT":
-                parse_str(file_get_contents('php://input'), $_PUT);
-                $controller->update($_PUT);
-            
+                    parse_str(file_get_contents('php://input'), $_PUT);
+                    $controller->update($_PUT);
                 break;
                 
                 case "DELETE":
-                parse_str(file_get_contents('php://input'), $_DELETE);
-                $controller->delete($_DELETE);
-            
+                    parse_str(file_get_contents('php://input'), $_DELETE);
+                    $controller->delete($_DELETE);
                 break;
             }
         }
