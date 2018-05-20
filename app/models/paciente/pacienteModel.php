@@ -46,7 +46,7 @@ class pacienteModel{
                 
                 if(is_object($insert)){
                     $insert_array = (array) $insert;
-                    return json::generate("OK", "200", "Paciente cadastrado com successo", $insert_array);
+                    return json::generate("OK", "200", "Paciente cadastrado com sucesso", $insert_array);
                 }
             }
         }
@@ -83,7 +83,7 @@ class pacienteModel{
             
             $update = $pacienteDAO->update($pacienteVo);           
             $update_array = (array) $update;
-            return json::generate("OK", "200", "Paciente alterado com successo", $update_array);
+            return json::generate("OK", "200", "Paciente alterado com sucesso", $update_array);
         }
     }
 
@@ -95,7 +95,7 @@ class pacienteModel{
     public function delete($pacienteVo){
         $pacienteDAO = new pacienteDAO();        
         $delete = $pacienteDAO->delete($pacienteVo);
-        return json::generate("OK", "200", "Paciente deletado com successo", null);
+        return json::generate("OK", "200", "Paciente deletado com sucesso", null);
     }
 
     public function getAll($idNutricionista){

@@ -26,7 +26,7 @@
         <div class="main-block">
             <div class="block-description js-description" data-position="left">
                 <img src="<?php echo HOME_URI; ?>app/public/images/logo_mini.png" alt="" class="description-logo">
-                <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
+                <p class="description-project">Nutrion é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" class="description-button js-btn-slider">Cadastrar</button>
             </div>
             <div class="block-form block-form-log js-form-log flex-smaller">
@@ -46,7 +46,7 @@
             </div>
             <div class="block-form block-form-cad js-form-cad flex-bigger">
                 <h1 class="form-title">Cadastro</h1>
-                <form action="<?php echo HOME_URI; ?>nutricionista/signUp" method="POST" class="form-content js-form-signup">
+                <form action="<?php echo HOME_URI; ?>API/nutricionista/" method="POST" class="form-content js-form-signup">
                     <span class="form-field">
                         <label for"nomecad">Nome</label>
                         <input class="js-input-field" type="text" name="nome" id="nomecad" pattern="[a-zA-Z\s]{2,40}" title="Digite um nome válido, com no máximo 40 caracteres" required>

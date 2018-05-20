@@ -8,13 +8,8 @@ class nutricionistaDAO{
      */
     public function getByEmail($email){
         require "app/bootstrap.php";        
-        try{
-            $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email));            
-            return $nutricionista;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+        $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email));            
+        return $nutricionista;
     }
 
     /**

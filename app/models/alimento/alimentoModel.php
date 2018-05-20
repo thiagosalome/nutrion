@@ -3,7 +3,7 @@ class alimentoModel{
 
     public function create(alimentoVo $alimentoVo)
     {
-        if (empty($alimentoVo->getId()) or empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
+        if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
             return json::generate("Conflito", "409", "É necessário passar todos os dados do alimento", null);
         }
         else{
@@ -12,7 +12,7 @@ class alimentoModel{
 
             if(is_object($insert)){
                 $insert_array = (array) $insert;
-                return json::generate("OK", "200", "Alimento cadastrado com successo", $insert_array);
+                return json::generate("OK", "200", "Alimento cadastrado com sucesso", $insert_array);
             }
         }
     }
@@ -27,7 +27,7 @@ class alimentoModel{
             
             if(is_object($update)){
                 $update_array = (array) $update;
-                return json::generate("OK", "200", "Alimento alterado com successo", $update_array);
+                return json::generate("OK", "200", "Alimento alterado com sucesso", $update_array);
             }
         }
     }
@@ -35,7 +35,7 @@ class alimentoModel{
     public function delete(alimentoVo $alimentoVo){
         $alimentoDAO = new alimentoDAO();        
         $delete = $alimentoDAO->delete($alimentoVo);
-        return json::generate("OK", "200", "Alimento deletado com successo", null);
+        return json::generate("OK", "200", "Alimento deletado com sucesso", null);
     }
 
     public function getAll(){

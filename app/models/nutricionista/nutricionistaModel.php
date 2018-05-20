@@ -44,10 +44,10 @@ class nutricionistaModel{
      */ 
     public function signIn(nutricionistaVO $nutricionistaVo){               
         if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
-            return "Há campos vazios.";
+            return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return "O email digitado é inválido.";
+            return json::generate("Conflito", "409", "O email digitado é inválido", null);
         }
         else{
             $nutricionistaDao = new nutricionistaDAO();                       
@@ -55,18 +55,15 @@ class nutricionistaModel{
 
             if(is_object($usuario)){
                 if($nutricionistaVo->getSenha() != $usuario->getSenha()){
-                    return "Usuário e/ou senha inválido.";
+                    return json::generate("Conflito", "409", "Usuário e/ou senha inválido.", null);
                 }
                 else{
-                    return "success_signin";
+                    return json::generate("Conflito", "409", "Usuário logado com sucesso.", null);
                 }
             }
             else if($usuario == null){
-                return "Usuário inexistente";
+                return json::generate("Conflito", "409", "Usuário inexistente", null);
             }
-            else{
-                return "exception " . $usuario;
-            }            
         }   
     }
 
@@ -99,7 +96,7 @@ class nutricionistaModel{
 
                 if(is_object($insert)){
                     $insert_array = (array) $insert;
-                    return json::generate("OK", "200", "Nutricionista cadastrado com successo", $insert_array);
+                    return json::generate("OK", "200", "Nutricionista cadastrado com sucesso", $insert_array);
                 }
             }
         }   
@@ -125,7 +122,7 @@ class nutricionistaModel{
             
             $update = $nutricionistaDao->update($nutricionista);
             $update_array = (array) $update;
-            return json::generate("OK", "200", "Nutricionista alterado com successo", $update_array);
+            return json::generate("OK", "200", "Nutricionista alterado com sucesso", $update_array);
         }
     } 
 
@@ -137,7 +134,7 @@ class nutricionistaModel{
     public function delete(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO();       
         $delete = $nutricionistaDao->delete($nutricionista);
-        return json::generate("OK", "200", "Nutricionista deletado com successo", null);
+        return json::generate("OK", "200", "Nutricionista deletado com sucesso", null);
     }
 }
 ?>

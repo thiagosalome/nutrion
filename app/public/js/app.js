@@ -13,8 +13,27 @@ app.loadModules = (function(jQuery){
             app.inputs.init();
             app.slider.execute();
 
-            jQuery(document).on("submit", ".js-form-signup", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-signin", function(e){app.ajax.post(e)});
+            /* Nutricionista */
+            jQuery(document).on("submit", ".js-form-signup", function(e){
+                app.ajax.post(e, function(response){
+                    app.message.show(response.message);
+                    if(response.message.indexOf("sucesso") != -1){
+                        var btn = app.slider.getBtnSlider();
+                        btn.click();
+                    }
+                });
+            });
+            
+            jQuery(document).on("submit", ".js-form-signin", function(e){
+                app.ajax.post(e, function(response){
+                    app.message.show(response.message);
+                    if(response.message.indexOf("sucesso") != -1){
+                        location = app.loadModules.getHomeUri() + "/paciente/consultar"
+                    }
+                });
+            });
+
+            // jQuery(document).on("submit", ".js-form-signin", function(e){app.ajax.post(e)});
         }
         if(jQuery(".main-dashboard").length > 0){
             require("general/ajax");
@@ -23,12 +42,12 @@ app.loadModules = (function(jQuery){
             require("internal/tab");
             require("internal/tooltip");
             require("internal/dashboard");
-
+            
             app.menu.init();
             app.tab.execute();
             app.tooltip.toggle();
+            app.dashboard.verify();
             
-
             jQuery(document).on("submit", ".js-form-deleteNutritionist", function(e){
                 app.ajax.delete(e, function(response){
                     app.message.show(response.message);
@@ -45,12 +64,18 @@ app.loadModules = (function(jQuery){
             jQuery(document).on("submit", ".js-form-addPatient", function(e){
                 app.ajax.post(e, function(response){
                     app.message.show(response.message);
+                    if(response.message.indexOf("sucesso") != -1){
+                        location = app.loadModules.getHomeUri() + "/paciente/consultar"
+                    }
                 });
             });
 
             jQuery(document).on("submit", ".js-form-deletePatient", function(e){
                 app.ajax.delete(e, function(response){
                     app.message.show(response.message);
+                    if(response.message.indexOf("sucesso") != -1){
+                        location = app.loadModules.getHomeUri() + "/paciente/consultar"
+                    }
                 });
             });
 
@@ -76,6 +101,7 @@ app.loadModules = (function(jQuery){
                             "</tr>";
                     js_table_patient.append(row);
                 }
+                app.dashboard.verify();
             });
             
             
@@ -83,18 +109,27 @@ app.loadModules = (function(jQuery){
             jQuery(document).on("submit", ".js-form-addAliment", function(e){
                 app.ajax.post(e, function(response){
                     app.message.show(response.message);
+                    if(response.message.indexOf("sucesso") != -1){
+                        location = app.loadModules.getHomeUri() + "/alimento/consultar"
+                    }
                 });
             });
 
             jQuery(document).on("submit", ".js-form-deleteAliment", function(e){
                 app.ajax.delete(e, function(response){
                     app.message.show(response.message);
+                    if(response.message.indexOf("sucesso") != -1){
+                        location.reload();
+                    }
                 });
             });
 
             jQuery(document).on("submit", ".js-form-updateAliment", function(e){
                 app.ajax.put(e, function(response){
                     app.message.show(response.message);
+                    if(response.message.indexOf("sucesso") != -1){
+                        location.reload();
+                    }
                 });
             });
 
@@ -117,6 +152,7 @@ app.loadModules = (function(jQuery){
                             "</tr>";
                     js_table_aliment.append(row);
                 }
+                app.dashboard.verify();
             });
             
             jQuery(document).on("click", ".js-aliment-click-update", function(e){
@@ -126,8 +162,6 @@ app.loadModules = (function(jQuery){
             jQuery(document).on("click", ".js-aliment-click-delete", function(e){
                 setIdTableInput(e);
             });
-
-            app.dashboard.verify();
         }
     }
 

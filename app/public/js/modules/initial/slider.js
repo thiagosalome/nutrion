@@ -69,6 +69,6 @@ app.slider = (function(){
 
     return {
         execute : init,
-        getBtnSlider : getBtnSlider
+        getBtnSlider : getBtnSlider,
     }
 }());

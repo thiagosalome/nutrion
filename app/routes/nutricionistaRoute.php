@@ -2,6 +2,7 @@
 require "app/models/nutricionista/nutricionistaDAO.php";
 require "app/models/nutricionista/nutricionistaVo.php";
 require "app/models/nutricionista/nutricionistaModel.php";
+require "app/class/json.php";
 
 class nutricionistaRoute{  
 
@@ -19,18 +20,23 @@ class nutricionistaRoute{
     }
 
     public function signIn(){
-        $nutricionistaModel = new nutricionistaModel();
         $nutricionistaVo = new nutricionistaVO();  
         
-        $nutricionistaVo->setEmail($_POST["email"]);
-        $nutricionistaVo->setSenha($_POST["senha"]);
-        
-        $logarModel = $nutricionistaModel->signIn($nutricionistaVo);
-        if($logarModel == "success_signin"){
-            session_start();
-            $_SESSION["email_nutricionista"] = $nutricionistaVo->getEmail();
+        try{
+            $nutricionistaModel = new nutricionistaModel();
+            $nutricionistaVo->setEmail($_POST["email"]);
+            $nutricionistaVo->setSenha($_POST["senha"]);
+            
+            $logarModel = $nutricionistaModel->signIn($nutricionistaVo);
+            // if($logarModel == "success_signin"){
+                session_start();
+                $_SESSION["email_nutricionista"] = $nutricionistaVo->getEmail();
+            // }
+            echo $logarModel;
         }
-        echo $logarModel;
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }
     }
 }
 
