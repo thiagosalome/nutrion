@@ -46,7 +46,7 @@ class pacienteModel{
                 
                 if(is_object($insert)){
                     $insert_array = (array) $insert;
-                    return json::generate("OK", "200", "Paciente cadastrado com successo", $cadastro_array);
+                    return json::generate("OK", "200", "Paciente cadastrado com successo", $insert_array);
                 }
             }
         }

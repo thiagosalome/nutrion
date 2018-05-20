@@ -74,7 +74,6 @@ class pacienteDAO{
             
         $entityManager->persist($paciente);           
         $entityManager->flush();
-
         return $paciente;
     }
 
@@ -108,7 +107,6 @@ class pacienteDAO{
     public function delete(pacienteVo $pacienteVo){
         require "app/bootstrap.php";
         $delete = $entityManager->find('Paciente', $pacienteVo->getId());
-        
         $entityManager->remove($delete); 
         $entityManager->flush();
         return true;

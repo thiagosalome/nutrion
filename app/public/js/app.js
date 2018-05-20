@@ -29,14 +29,25 @@ app.loadModules = (function(jQuery){
             app.tooltip.toggle();
             app.dashboard.verify();
 
-            jQuery(document).on("submit", ".js-form-deleteNutritionist", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-updateNutritionist", function(e){app.ajax.post(e)});
+            /*jQuery(document).on("submit", ".js-form-deleteNutritionist", function(e){
+                app.ajax.delete(e, function(response){
+
+                });
+            });*/
+
+            jQuery(".js-form-deleteNutritionist").on("submit", app.ajax.delete(e, function(response){
+                debugger;
+                var a = "teste";
+                var b = response;
+            }));
+            
+            jQuery(document).on("submit", ".js-form-updateNutritionist", function(e){app.ajax.put(e)});
             jQuery(document).on("submit", ".js-form-addPatient", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-deletePatient", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-updatePatient", function(e){app.ajax.post(e)});
+            jQuery(document).on("submit", ".js-form-deletePatient", function(e){app.ajax.delete(e)});
+            jQuery(document).on("submit", ".js-form-updatePatient", function(e){app.ajax.put(e)});
             jQuery(document).on("submit", ".js-form-addAliment", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-updateAliment", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-deleteAliment", function(e){app.ajax.post(e)});
+            jQuery(document).on("submit", ".js-form-updateAliment", function(e){app.ajax.put(e)});
+            jQuery(document).on("submit", ".js-form-deleteAliment", function(e){app.ajax.delete(e)});
 
             jQuery(document).on("click", ".js-aliment-click-update", function(e){
                 setDataTableForm(e);

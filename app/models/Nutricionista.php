@@ -12,27 +12,27 @@ class Nutricionista
      * @GeneratedValue(strategy="AUTO")
      * @Column(type="integer", name="id")
      */
-    protected $id;
+    public $id;
 
     /**
      * @Column(type="string", name="email")
      */
-    protected $email;
+    public $email;
 
     /**
      * @Column(type="string", name="senha")
      */
-    protected $senha;
+    public $senha;
 
     /**
      * @Column(type="string", name="nome")
      */
-    protected $nome;
+    public $nome;
 
     /**
      * @OneToMany(targetEntity="Paciente", mappedBy="nutricionista", orphanRemoval=true, cascade={"persist", "remove"})
      */
-    protected $pacientes; //OBS: mappedBy pega o nome da variável de referência a nutricionista dentro da classe paciente
+    public $pacientes; //OBS: mappedBy pega o nome da variável de referência a nutricionista dentro da classe paciente
 
     /**
      * Get the value of id

@@ -2,6 +2,7 @@
 require "app/models/nutricionista/nutricionistaDAO.php";
 require "app/models/nutricionista/nutricionistaVo.php";
 require "app/models/nutricionista/nutricionistaModel.php";
+require "app/class/json.php";
 
 class nutricionistaController{  
 
@@ -41,53 +42,88 @@ class nutricionistaController{
         echo $logarModel;
     }
 
-    public function signUp(){
-        $nutricionistaModel = new nutricionistaModel();
+    public function create(){
         $nutricionistaVo = new nutricionistaVO();  
         
-        $nutricionistaVo->setNome($_POST["nome"]);
-        $nutricionistaVo->setEmail($_POST["email"]);
-        $nutricionistaVo->setSenha($_POST["senha"]);
-        
-        $cadastrarModel = $nutricionistaModel->signUp($nutricionistaVo);
-        echo $cadastrarModel;
+        try{
+            $nutricionistaVo->setNome($_POST["nome"]);
+            $nutricionistaVo->setEmail($_POST["email"]);
+            $nutricionistaVo->setSenha($_POST["senha"]);
+            
+            $nutricionistaModel = new nutricionistaModel();
+            $cadastrar = $nutricionistaModel->create($nutricionistaVo);
+            echo $cadastrar;
+        }
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }
     }
 
-    public function update(){
+    public function update($_PUT){
         $nutricionistaVo = new nutricionistaVo();
         
-        $nutricionistaVo->setId($_POST["id_nutricionista"]); 
-        $nutricionistaVo->setNome($_POST["nome"]);
-        $nutricionistaVo->setEmail($_POST["email"]);
-        $nutricionistaVo->setSenha($_POST["senha"]);              
+        try{
+            $nutricionistaVo->setId($_PUT["id_nutricionista"]); 
+            $nutricionistaVo->setNome($_PUT["nome"]);
+            $nutricionistaVo->setEmail($_PUT["email"]);
+            $nutricionistaVo->setSenha($_PUT["senha"]);              
+    
+            $nutricionistaModel = new nutricionistaModel();        
+            $update = $nutricionistaModel->update($nutricionistaVo);
+    
+            /*if($update == "success_update"){
+                $nutricionista  = $nutricionistaModel->getById($_POST["id_nutricionista"]);   
+                session_start();
+                $_SESSION["email_nutricionista"] = $nutricionista->getEmail();
+                $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
+                $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();      
+            }*/
 
-        $nutricionistaModel = new nutricionistaModel();        
-        $atualizarModel = $nutricionistaModel->update($nutricionistaVo);
-
-        if($atualizarModel == "success_update"){
-            $nutricionista  = $nutricionistaModel->getById($_POST["id_nutricionista"]);   
-            session_start();
-            $_SESSION["email_nutricionista"] = $nutricionista->getEmail();
-            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
-            $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();      
+            echo $update;      
         }
-        echo $atualizarModel;      
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }
     } 
 
-    public function delete(){
+    public function delete($_DELETE){
         $nutricionistaVo = new nutricionistaVO();
-        $nutricionistaVo->setId($_POST["id_nutricionista"]);  
-
-        $nutricionistaModel = new nutricionistaModel();     
-        $delete = $nutricionistaModel->delete($nutricionistaVo);
-
-        if($delete=="success_delete"){
-            session_start();
-            if(isset($_SESSION["email_nutricionista"])){
-                session_destroy();
-            }        
+        
+        try{
+            $nutricionistaVo->setId($_DELETE["id_nutricionista"]);  
+    
+            $nutricionistaModel = new nutricionistaModel();     
+            $delete = $nutricionistaModel->delete($nutricionistaVo);
+    
+            /*if($delete=="success_delete"){
+                session_start();
+                if(isset($_SESSION["email_nutricionista"])){
+                    session_destroy();
+                }        
+            }*/
+            echo $delete;
         }
-        echo $delete;
-    }      
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }
+    }
+
+    public function get($params){
+        try{
+            $nutricionistaModel = new nutricionistaModel();
+            
+            if(isset($params["id"])){
+                $nutricionista = $nutricionistaModel->getById($params["id"]);
+                echo $nutricionista;
+            }
+            else{
+                $nutricionistas = $nutricionistaModel->getAll();
+                echo $nutricionistas;
+            }
+        }
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }
+    }
 }
 ?>

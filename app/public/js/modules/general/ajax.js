@@ -62,7 +62,7 @@ app.ajax = (function(){
         });
     };
 
-    function DELETE(e){
+    function DELETE(e, callback){
         e.preventDefault();
         jQuery.ajax({
             url : e.currentTarget.action,
@@ -71,9 +71,7 @@ app.ajax = (function(){
             beforeSend : function(){
                 LoginForm.js_load.fadeIn('slow');
             },
-            success : function(result){
-                
-            }
+            success : callback(response)
         });
     };
 
