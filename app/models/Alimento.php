@@ -12,43 +12,43 @@ class Alimento
      * @GeneratedValue(strategy="AUTO")
      * @Column(type="integer", name="id")
      */
-    protected $id;
+    public $id;
 
     /**
      * @Column(type="string", name="nome")
      */
-    protected $nome;
+    public $nome;
 
     /**
      * @Column(type="string", name="medida") 
      */
-    protected $medida;
+    public $medida;
 
     /**
      * @Column(type="string", name="tipoProteina")
      */
-    protected $tipoproteina;
+    public $tipoproteina;
 
     /**
      * @Column(type="float", name="caloria")
      */
-    protected $caloria;
+    public $caloria;
 
     
     /**
      * @Column(type="float", name="proteina")
      */
-    protected $proteina;
+    public $proteina;
 
     /**
      * @Column(type="float", name="carboidrato")
      */
-    protected $carboidrato;
+    public $carboidrato;
 
     /**
      * @Column(type="float", name="gordura")
      */
-    protected $gordura;
+    public $gordura;
 
     /**
      * Get the value of id

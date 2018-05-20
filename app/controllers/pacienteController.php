@@ -14,18 +14,6 @@ class pacienteController{
         $search = $pacienteModel->search($query);
     }*/
 
-    /*public function consultar(){
-        include "app/views/paciente/consultarPaciente.php";
-    }
-    
-    public function adicionar(){
-        include "app/views/paciente/adicionarPaciente.php";
-    }  
-    
-    public function interna(){
-        include "app/views/paciente/internaPaciente.php";
-    }*/
-
     public function create(){        
         $pacienteVo = new pacienteVO();     
         
@@ -67,7 +55,7 @@ class pacienteController{
         }
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
-        } 
+        }
     }
 
     public function delete($_DELETE){

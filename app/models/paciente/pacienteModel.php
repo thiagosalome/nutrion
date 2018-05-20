@@ -36,17 +36,16 @@ class pacienteModel{
         }
         else{
             $pacienteDAO = new pacienteDAO();                       
-            
             $paciente = $pacienteDAO->getByCPF($pacienteVo->getCPF());            
             
             if(is_object($paciente)){
                 return json::generate("Conflito", "409", "O paciente já foi cadastrado antes", null);
             }
             else if($paciente == null){
-                $cadastro = $pacienteDAO->insert($pacienteVo);
+                $insert = $pacienteDAO->insert($pacienteVo);
                 
-                if(is_object($cadastro)){
-                    $cadastro_array = (array) $cadastro;
+                if(is_object($insert)){
+                    $insert_array = (array) $insert;
                     return json::generate("OK", "200", "Paciente cadastrado com successo", $cadastro_array);
                 }
             }
