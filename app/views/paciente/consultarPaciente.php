@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="js-table-patient table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -75,25 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                require "app/controllers/pacienteController.php";
-                                $pacienteController = new pacienteController();
-                                $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);
-
-                                foreach ($pacientes as $item) {
-                                ?>
-                                    <tr>
-                                        <td><?= $item->getNome();?></td>
-                                        <td><?= $item->getEmail(); ?></td>
-                                        <td><?= $item->getTelefone(); ?></td>
-                                        <td><?= $item->getCPF(); ?></td>
-                                        <td>
-                                            <a href="<?php echo HOME_URI ?>paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="Visualizar">visibility</i></a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                            ?>
+                           
                         </tbody>
                     </table>
                     <!-- <div class="clearfix">

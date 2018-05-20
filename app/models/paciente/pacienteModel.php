@@ -108,6 +108,7 @@ class pacienteModel{
             $paciente["id"] = $pacientes[$i]->getId();
             $paciente["cpf"] = $pacientes[$i]->getCpf();
             $paciente["nome"] = $pacientes[$i]->getNome();
+            $paciente["email"] = $pacientes[$i]->getEmail();
             $paciente["telefone"] = $pacientes[$i]->getTelefone();
             $paciente["sexo"] = $pacientes[$i]->getSexo();
             $paciente["dataNasc"] = $pacientes[$i]->getDataNasc();

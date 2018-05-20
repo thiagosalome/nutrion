@@ -56,7 +56,7 @@
                 <?php include __DIR__ . "/../objects/statistics.php"; ?>
             </div>
             <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addAliment" action="<?php echo HOME_URI ?>alimento/create">
+                <form role="form" class="largewidth js-form-addAliment" action="<?php echo HOME_URI ?>API/alimento">
                     <h3 class="formheader">Adicionar Alimento</h3>
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">

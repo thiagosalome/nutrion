@@ -5,13 +5,14 @@
             case 'pacientes':
                 require("app/controllers/pacienteController.php");
                 $pacienteController = new pacienteController();
-                $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);    
+                $params["id_nutricionista"] = $_SESSION["id_nutricionista"];
+                $pacientes = $pacienteController->get($params);    
                 break;
     
             case 'alimentos':
                 require("app/controllers/alimentoController.php");
                 $alimentoController = new alimentoController();
-                $alimentos = $alimentoController->getAllAliments();    
+                $alimentos = $alimentoController->get();    
     
                 break;
             case 'dietas':

@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="js-table-aliment table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -78,29 +78,7 @@
                             </tr>
                         </thead>                        
                         <tbody>
-                            <?php
-                                require "app/controllers/alimentoController.php";
-                                $alimentoController = new alimentoController();
-                                $alimentos = $alimentoController->getAllAliments();
-
-                                foreach ($alimentos as $item) {
-                                ?>
-                                    <tr>
-                                        <td data-item="nome"><?= $item->getNome();?></td>
-                                        <td data-item="medida"><?= $item->getMedida();?></td>
-                                        <td data-item="tipo_proteina"><?= $item->getTipoproteina(); ?></td>
-                                        <td data-item="proteina"><?= $item->getProteina(); ?></td>
-                                        <td data-item="carboidrato"><?= $item->getCarboidrato(); ?></td>
-                                        <td data-item="gordura"><?= $item->getGordura(); ?></td>
-                                        <td data-item="caloria"><?= $item->getCaloria(); ?></td>
-                                        <td data-item="id_alimento">
-                                            <a href="" data-id="<?= $item->getId(); ?>" class="js-aliment-click-update" data-toggle="modal" data-target="#modal-update-aliment"><i class="material-icons" data-toggle="tooltip" title="Editar">mode_edit</i></a>
-                                            <a href="" data-id="<?= $item->getId(); ?>" class="js-aliment-click-delete" data-toggle="modal" data-target="#modal-delete-aliment"><i class="material-icons" data-toggle="tooltip" title="Apagar">delete</i></a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                            ?>
+                            
                         </tbody>
                     </table>
                     <!-- <div class="clearfix">

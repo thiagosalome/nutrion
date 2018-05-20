@@ -1,6 +1,7 @@
 <div class="header-top">
     <div class="header-perfil js-header-perfil">
-        <p class="perfil-name"><?php echo $_SESSION["nome_nutricionista"] ?></p>
+        <i hidden class="js-idnutricionista"><?= $_SESSION["id_nutricionista"] ?></i>
+        <p class="perfil-name"><?= $_SESSION["nome_nutricionista"] ?></p>
         <img class="perfil-arrow" src="<?php echo HOME_URI; ?>app/public/images/dashboard/icon_arrow.png" alt="" title="">
     </div>
     <div class="header-search">

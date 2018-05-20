@@ -27,28 +27,98 @@ app.loadModules = (function(jQuery){
             app.menu.init();
             app.tab.execute();
             app.tooltip.toggle();
-            app.dashboard.verify();
-
-            /*jQuery(document).on("submit", ".js-form-deleteNutritionist", function(e){
-                app.ajax.delete(e, function(response){
-
-                });
-            });*/
-
-            jQuery(".js-form-deleteNutritionist").on("submit", app.ajax.delete(e, function(response){
-                debugger;
-                var a = "teste";
-                var b = response;
-            }));
             
-            jQuery(document).on("submit", ".js-form-updateNutritionist", function(e){app.ajax.put(e)});
-            jQuery(document).on("submit", ".js-form-addPatient", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-deletePatient", function(e){app.ajax.delete(e)});
-            jQuery(document).on("submit", ".js-form-updatePatient", function(e){app.ajax.put(e)});
-            jQuery(document).on("submit", ".js-form-addAliment", function(e){app.ajax.post(e)});
-            jQuery(document).on("submit", ".js-form-updateAliment", function(e){app.ajax.put(e)});
-            jQuery(document).on("submit", ".js-form-deleteAliment", function(e){app.ajax.delete(e)});
 
+            jQuery(document).on("submit", ".js-form-deleteNutritionist", function(e){
+                app.ajax.delete(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+
+            jQuery(document).on("submit", ".js-form-updateNutritionist", function(e){
+                app.ajax.put(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+            
+            /* Pacientes */
+            jQuery(document).on("submit", ".js-form-addPatient", function(e){
+                app.ajax.post(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+
+            jQuery(document).on("submit", ".js-form-deletePatient", function(e){
+                app.ajax.delete(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+
+            jQuery(document).on("submit", ".js-form-updatePatient", function(e){
+                app.ajax.put(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+
+            var id_nutricionista = jQuery(".js-idnutricionista").text();
+            var url_paciente = app.loadModules.getHomeUri() + "API/paciente/?id_nutricionista=" + id_nutricionista;
+            app.ajax.get(url_paciente, function(response){
+                var js_table_patient = jQuery(".js-table-patient tbody");
+                for (var i = 0; i < response.result.length; i++) {
+                    var row = "<tr>" +
+                                "<td>" + response.result[i].nome + "</td>" + 
+                                "<td>" + response.result[i].email + "</td>" + 
+                                "<td>" + response.result[i].telefone + "</td>" + 
+                                "<td>" + response.result[i].cpf + "</td>" + 
+                                "<td>" +
+                                    "<a href='" + app.loadModules.getHomeUri() + "paciente/interna/" + response.result[i].id + "' class='view'><i class='material-icons' data-toggle='tooltip' title='Visualizar'>visibility</i></a>"
+                                "</td>" +
+                            "</tr>";
+                    js_table_patient.append(row);
+                }
+            });
+            
+            
+            /* Alimentos */
+            jQuery(document).on("submit", ".js-form-addAliment", function(e){
+                app.ajax.post(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+
+            jQuery(document).on("submit", ".js-form-deleteAliment", function(e){
+                app.ajax.delete(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+
+            jQuery(document).on("submit", ".js-form-updateAliment", function(e){
+                app.ajax.put(e, function(response){
+                    app.message.show(response.message);
+                });
+            });
+
+            var url_alimento = app.loadModules.getHomeUri() + "API/alimento/";
+            app.ajax.get(url_alimento, function(response){
+                var js_table_aliment = jQuery(".js-table-aliment tbody");
+                for (var i = 0; i < response.result.length; i++) {
+                    var row = "<tr>" +
+                                "<td data-item='nome'>" + response.result[i].nome + "</td>" +
+                                "<td data-item='medida'>" + response.result[i].medida + "</td>" + 
+                                "<td data-item='tipo_proteina'>" + response.result[i].tipoproteina + "</td>" +
+                                "<td data-item='proteina'>" + response.result[i].proteina + "</td>" +
+                                "<td data-item='carboidrato'>" + response.result[i].carboidrato + "</td>" +
+                                "<td data-item='gordura'>" + response.result[i].gordura + "</td>" +
+                                "<td data-item='caloria'>" + response.result[i].caloria + "</td>" +
+                                "<td data-item='id_alimento'>" +
+                                    "<a href='' data-id='" + response.result[i].id + "' class='js-aliment-click-update' data-toggle='modal' data-target='#modal-update-aliment'><i class='material-icons' data-toggle='tooltip' title='Editar'>mode_edit</i></a>" +
+                                    "<a href='' data-id='" + response.result[i].id + "' class='js-aliment-click-delete' data-toggle='modal' data-target='#modal-delete-aliment'><i class='material-icons' data-toggle='tooltip' title='Apagar'>delete</i></a>" +
+                                "</td>" +
+                            "</tr>";
+                    js_table_aliment.append(row);
+                }
+            });
+            
             jQuery(document).on("click", ".js-aliment-click-update", function(e){
                 setDataTableForm(e);
             });
@@ -56,6 +126,8 @@ app.loadModules = (function(jQuery){
             jQuery(document).on("click", ".js-aliment-click-delete", function(e){
                 setIdTableInput(e);
             });
+
+            app.dashboard.verify();
         }
     }
 
