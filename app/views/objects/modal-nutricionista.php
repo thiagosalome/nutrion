@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form role="form" class="js-form-updateNutritionist" action="">
+                <form role="form" class="js-form-updateNutritionist" action="<?php echo HOME_URI; ?>API/nutricionista">
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="text-left form-group has-feedback">
                         <input type="text" class="form-control input-default" name="nome" placeholder="Nome" value="<?php echo $_SESSION['nome_nutricionista']; ?>">
@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <form role="form" class="js-form-deleteNutritionist" action="">
+                <form role="form" class="js-form-deleteNutritionist" action="<?php echo HOME_URI; ?>API/nutricionista/">
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <button type="submit" class="btn btn-primary" style="background-color: #9d2f4c;">Deletar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

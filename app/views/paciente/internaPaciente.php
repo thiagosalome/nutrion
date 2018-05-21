@@ -5,6 +5,7 @@
         $email = $_SESSION["email_nutricionista"];
 
         if(!isset($_SESSION["id_nutricionista"])){
+            require("app/controllers/nutricionistaController.php"); 
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
@@ -13,9 +14,10 @@
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
         }
         if(isset($_GET["id"])){
-            $pacienteId = $_GET["id"];
+            require "app/controllers/pacienteController.php";
             $pacienteController = new pacienteController();
-            $paciente = $pacienteController->getPatientById($pacienteId);
+            $params["id"] = $_GET["id"];
+            $paciente = $pacienteController->get($params);
         }
     }
     else{
@@ -188,7 +190,7 @@
                 <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
             </div>
             <div class="dashboard-table dashboard-patient-content js-patient-content" data-content="historico">
-                <div class="table-wrapper">
+                <div class="table-wrapper table-responsive">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
@@ -196,7 +198,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover ">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -287,7 +289,6 @@
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
     <?php include __DIR__ . "/../objects/modal-paciente.php" ?>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

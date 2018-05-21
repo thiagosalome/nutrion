@@ -16,6 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tb_alimento`
+--
+
+DROP TABLE IF EXISTS `tb_alimento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_alimento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` char(40) NOT NULL,
+  `medida` varchar(50) NOT NULL,
+  `tipoProteina` varchar(50) NOT NULL,
+  `proteina` float NOT NULL,
+  `carboidrato` float NOT NULL,
+  `gordura` float NOT NULL,
+  `caloria` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_alimento`
+--
+
+LOCK TABLES `tb_alimento` WRITE;
+/*!40000 ALTER TABLE `tb_alimento` DISABLE KEYS */;
+INSERT INTO `tb_alimento` VALUES (1,'batata','','',4,20,0,24),(2,'ervilha','','',3,3,0,6),(3,'peixe','','',20,20,8,50),(4,'frango','','',25,10,4,39);
+/*!40000 ALTER TABLE `tb_alimento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_avaliacao`
 --
 
@@ -29,7 +59,7 @@ CREATE TABLE `tb_avaliacao` (
   PRIMARY KEY (`id`),
   KEY `fk_id_infoFisicas` (`id_infoFisicas`),
   CONSTRAINT `fk_id_infoFisicas` FOREIGN KEY (`id_infoFisicas`) REFERENCES `tb_infofisicas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +92,7 @@ CREATE TABLE `tb_infofisicas` (
   PRIMARY KEY (`id`),
   KEY `fk_id_paciente` (`id_paciente`),
   CONSTRAINT `fk_id_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +128,7 @@ CREATE TABLE `tb_nutricionista` (
 
 LOCK TABLES `tb_nutricionista` WRITE;
 /*!40000 ALTER TABLE `tb_nutricionista` DISABLE KEYS */;
-INSERT INTO `tb_nutricionista` VALUES (1,'cjunqueira@nutrion.com','12345','Carlos Junqueira'),(2,'jtavares@nutrion.com','abcde','Juliana Tavares'),(3,'admin@admin.com','admin','Administrador');
+INSERT INTO `tb_nutricionista` VALUES (1,'cjunqueira@nutrion.com','12345','Carlos Junqueira'),(2,'jtavares@nutrion.com','abcde','Juliana Tavares'),(3,'admin@admin.com','admin','Administrador'),(4,'teste@teste.com','teste','testeuser');
 /*!40000 ALTER TABLE `tb_nutricionista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,11 +142,11 @@ DROP TABLE IF EXISTS `tb_paciente`;
 CREATE TABLE `tb_paciente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` char(40) NOT NULL,
-  `cpf` char(15) NOT NULL,
   `telefone` char(15) NOT NULL,
   `sexo` char(1) NOT NULL,
+  `cpf` char(15) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `dataNasc` date NOT NULL,
-  `email` char(70) DEFAULT NULL,
   `id_nutricionista` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cpf` (`cpf`),
@@ -131,7 +161,7 @@ CREATE TABLE `tb_paciente` (
 
 LOCK TABLES `tb_paciente` WRITE;
 /*!40000 ALTER TABLE `tb_paciente` DISABLE KEYS */;
-INSERT INTO `tb_paciente` VALUES (1,'Everaldo Dias','999.999.999-99','(31)99999-9999','M','1996-04-30',NULL,1),(2,'Mariana Souza','111.111.111-11','(31)3030-4444','F','1976-03-28',NULL,2),(3,'Douglas Miranda','222.222.222-22','(31)3343-2244','M','1985-02-11',NULL,3);
+INSERT INTO `tb_paciente` VALUES (1,'Everaldo Dias','(31)99999-9999','M','999.999.999-99',NULL,'1996-04-30',1),(2,'Mariana Souza','(31)3030-4444','F','111.111.111-11',NULL,'1976-03-28',2),(3,'Douglas Miranda','(31)3343-2244','M','222.222.222-22',NULL,'1985-02-11',3),(4,'Tek','(31)99659-9999','F','850.224.880-43','tekuxuzeze@mailinator.com','2013-03-16',1);
 /*!40000 ALTER TABLE `tb_paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,4 +178,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-23 17:26:22
+-- Dump completed on 2018-05-15  0:28:46

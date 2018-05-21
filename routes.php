@@ -4,40 +4,60 @@
  * Gerencia as models, views e controllers
  */
 class Routes{
-    private $controller; // Receberá o valor do controlador
+    private $route; // Receberá o valor do controlador
     private $action; // Receberá a ação do controlador
-    private $controller_dashboard; // Receberá o valor do controlador
-    private $action_dashboard; // Receberá o valor do controlador
     private $params; // Receberá um array dos parâmetros
     private $not_found = "404.php"; // Caminho da página não encontrada
 
     public function __construct () {
-
-        if(isset($_GET["Controller"])){
-            $this->controller = $_GET["Controller"];
-            
-            if($this->controller == "nutricionista"){
-                include "app/controllers/" . $this->controller . "Controller.php";
+        if(isset($_GET["Route"])){
+            $this->route = $_GET["Route"];
         
-                $class = $this->controller. "Controller";
-                eval("\$controller = new $class();");
+            include "app/routes/" . $this->route . "Route.php";
+    
+            $class = $this->route . "Route";
+            eval("\$route = new $class();");
+            
+            if(isset($_GET["Action"])){
+                $this->action = $_GET["Action"];
+                eval("\$route->" . $this->action . "();");
+            }
+        }
+        else if(isset($_GET["Controller"])){
+            $method = $_SERVER['REQUEST_METHOD'];   // Identifica a requisição
+            $controller = $_GET["Controller"];    // Identifica os parâmetros
+
+            include "app/controllers/" . $controller . "Controller.php";
+            $class = $controller. "Controller";
+            eval("\$controller = new $class();");
+
+            switch($method){
+                case "GET":
+                    $uri = $_SERVER['REQUEST_URI'];
+                    $url = explode("?", $uri);
+                    $query = explode("=", $url[1]);
+                    $index = $query[0];
+                    $value = $query[1];
+                    
+                    $params_array = array();
+                    $params_array[$index] = $value;
+
+                    $controller->get($params_array);
+                break;
+            
+                case "POST":
+                    $controller->create();
+                break;
+            
+                case "PUT":
+                    parse_str(file_get_contents('php://input'), $_PUT);
+                    $controller->update($_PUT);
+                break;
                 
-                if(isset($_GET["Action"])){
-                    $this->action = $_GET["Action"];
-                    eval("\$controller->" . $this->action . " ();");
-                }
-                else if(isset($_GET["ControllerDashboard"])){
-                    $this->controller_dashboard = $_GET["ControllerDashboard"];
-                    include "app/controllers/" . $this->controller_dashboard . "Controller.php";
-                    
-                    $class_dashboard = $this->controller_dashboard . "Controller";
-                    eval("\$controller_dashboard = new $class_dashboard();");
-                    
-                    if(isset($_GET["ActionDashboard"])){
-                        $this->action_dashboard = $_GET["ActionDashboard"];
-                        eval("\$controller_dashboard->" . $this->action_dashboard . " ();");
-                    }
-                }
+                case "DELETE":
+                    parse_str(file_get_contents('php://input'), $_DELETE);
+                    $controller->delete($_DELETE);
+                break;
             }
         }
     }

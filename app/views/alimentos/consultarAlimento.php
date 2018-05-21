@@ -5,6 +5,7 @@
         $email = $_SESSION["email_nutricionista"];
 
         if(!isset($_SESSION["id_nutricionista"])){
+            require("app/controllers/nutricionistaController.php");
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
@@ -52,36 +53,10 @@
                 </div>
             </header>
             <div class="dashboard-statistics">
-                <div class="statistics-item">
-                    <div class="statistics-item-image-blue">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patient_icon.png" alt="Pacientes" title="Pacientes" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>192</span>
-                        <p>Pacientes</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-agua">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="Alimentos" title="Alimentos" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>55</span>
-                        <p>Alimentos</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-green">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/diets_icon.png" alt="Dietas" title="Dietas" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>32</span>
-                        <p>Dietas</p>
-                    </div>
-                </div>
+                <?php include __DIR__ . "/../objects/statistics.php"; ?>
             </div>
             <div class="dashboard-table">
-                <div class="table-wrapper">
+                <div class="table-wrapper table-responsive">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
@@ -89,62 +64,22 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="js-table-aliment table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>Medida</th>
-                                <th>Proteina Animal</th>
-                                <th>Proteina Vegetal</th>
+                                <th>Tipo de Proteína</th>
+                                <th>Proteína</th>
                                 <th>Carboidratos</th>
+                                <th>Gorduras</th>
+                                <th>Calorias</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>                        
                         <tbody>
-                            <tr>
-                                <td>Arroz</td>
-                                <td>g</td>
-                                <td> </td>
-                                <td>0,03</td>
-                                <td>0,28</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ovo cozido</td>
-                                <td>Un.</td>
-                                <td>6,40</td>
-                                <td> </td>
-                                <td>0,56</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sardinha</td>
-                                <td>lata</td>
-                                <td>27,50</td>
-                                <td> </td>
-                                <td> </td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tomate</td>
-                                <td>g</td>
-                                <td> </td>
-                                <td>0,02</td>
-                                <td>0,15</td>
-                                <td>
-                                    <i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                </td>
-                            </tr>
                             
-                           
                         </tbody>
-
                     </table>
                     <!-- <div class="clearfix">
                         <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
@@ -160,11 +95,12 @@
                     </div> -->
                 </div>
             </div>
+            <p class='main-message js-message'></p>
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
+    <?php include __DIR__ . "/../objects/modal-alimento.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

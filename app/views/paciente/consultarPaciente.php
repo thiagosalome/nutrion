@@ -5,11 +5,12 @@
         $email = $_SESSION["email_nutricionista"];
 
         if(!isset($_SESSION["id_nutricionista"])){
+            require("app/controllers/nutricionistaController.php");
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
-            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
             $_SESSION["id_nutricionista"] = $nutricionista->getId();
+            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
         }
     }
@@ -52,36 +53,10 @@
                 </div>
             </header>
             <div class="dashboard-statistics">
-                <div class="statistics-item">
-                    <div class="statistics-item-image-blue">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patient_icon.png" alt="Pacientes" title="Pacientes" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>192</span>
-                        <p>Pacientes</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-agua">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="Alimentos" title="Alimentos" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>55</span>
-                        <p>Alimentos</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-green">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/diets_icon.png" alt="Dietas" title="Dietas" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>32</span>
-                        <p>Dietas</p>
-                    </div>
-                </div>
+                <?php include __DIR__ . "/../objects/statistics.php"; ?>
             </div>
             <div class="dashboard-table">
-                <div class="table-wrapper">
+                <div class="table-wrapper table-responsive">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
@@ -89,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="js-table-patient table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -100,24 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                $pacienteController = new pacienteController();
-                                $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);
-
-                                foreach ($pacientes as $item) {
-                                ?>
-                                    <tr>
-                                        <td><?= $item->getNome();?></td>
-                                        <td><?= $item->getEmail(); ?></td>
-                                        <td><?= $item->getTelefone(); ?></td>
-                                        <td><?= $item->getCPF(); ?></td>
-                                        <td>
-                                            <a href="<?php echo HOME_URI ?>nutricionista/paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                            ?>
+                           
                         </tbody>
                     </table>
                     <!-- <div class="clearfix">
@@ -134,11 +92,11 @@
                     </div> -->
                 </div>
             </div>
+            <p class='main-message js-message'></p>
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

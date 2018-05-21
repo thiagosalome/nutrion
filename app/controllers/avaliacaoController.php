@@ -5,13 +5,13 @@ require "app/models/avaliacao/avaliacaoModel.php";
 
 class avaliacaoController{ 
 
-    public function consultar(){
+    /*public function consultar(){
         include "app/views/avaliacao/consultarAvaliacao.php";
     }
     
     public function adicionar(){
         include "app/views/nutricionista/adicionarAvaliacao.php";
-    }
+    }*/
 
     public function create(){
         $avaliacaoModel = new avaliacaoModel();

@@ -8,13 +8,8 @@ class nutricionistaDAO{
      */
     public function getByEmail($email){
         require "app/bootstrap.php";        
-        try{
-            $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email));            
-            return $nutricionista;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+        $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("email" => $email));            
+        return $nutricionista;
     }
 
     /**
@@ -24,13 +19,14 @@ class nutricionistaDAO{
      */
     public function getById($id){
         require "app/bootstrap.php";        
-        try{
-            $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("id" => $id));            
-            return $nutricionista;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+        $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("id" => $id));            
+        return $nutricionista;
+    }
+
+    public function getAll(){
+        require "app/bootstrap.php";
+        $nutricionista = $entityManager->getRepository("Nutricionista")->findAll();
+        return $nutricionista;
     }
 
     /**
@@ -40,19 +36,14 @@ class nutricionistaDAO{
      */
     public function insert(nutricionistaVo $nutricionistaVo){
         require "app/bootstrap.php"; 
-        try{
-            $nutricionista = new Nutricionista;
-            $nutricionista->setNome($nutricionistaVo->getNome());
-            $nutricionista->setEmail($nutricionistaVo->getEmail());
-            $nutricionista->setSenha($nutricionistaVo->getSenha());
-                
-            $entityManager->persist($nutricionista);    
-            $entityManager->flush();
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }
+        $nutricionista = new Nutricionista;
+        $nutricionista->setNome($nutricionistaVo->getNome());
+        $nutricionista->setEmail($nutricionistaVo->getEmail());
+        $nutricionista->setSenha($nutricionistaVo->getSenha());
+            
+        $entityManager->persist($nutricionista);    
+        $entityManager->flush();
+        return $nutricionista;
     }       
 
     /**
@@ -62,20 +53,14 @@ class nutricionistaDAO{
      */    
     public function update(nutricionistaVO $nutricionista){                
         require "app/bootstrap.php";
-        try{
-            $update = new Nutricionista;
-            $update = $entityManager->find('Nutricionista',$nutricionista->getId());
+        $update = $entityManager->find('Nutricionista',$nutricionista->getId());
 
-            $update->setNome($nutricionista->getNome()); 
-            $update->setEmail($nutricionista->getEmail());
-            $update->setSenha($nutricionista->getSenha());  
-            $entityManager->persist($update); 
-            $entityManager->flush();
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }   
+        $update->setNome($nutricionista->getNome()); 
+        $update->setEmail($nutricionista->getEmail());
+        $update->setSenha($nutricionista->getSenha());  
+        $entityManager->persist($update); 
+        $entityManager->flush();
+        return $update;
     } 
     
     /**
@@ -85,16 +70,11 @@ class nutricionistaDAO{
      */
     public function delete(nutricionistaVO $nutricionista){
         require "app/bootstrap.php";
-        try{                                       
-            $delete = $entityManager->find('Nutricionista',$nutricionista->getId());
-            $entityManager->remove($delete);
-            $entityManager->flush();
+        $delete = $entityManager->find('Nutricionista',$nutricionista->getId());
+        $entityManager->remove($delete);
+        $entityManager->flush();
 
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }        
+        return true;
     }  
 }
 ?>

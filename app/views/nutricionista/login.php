@@ -26,12 +26,12 @@
         <div class="main-block">
             <div class="block-description js-description" data-position="left">
                 <img src="<?php echo HOME_URI; ?>app/public/images/logo_mini.png" alt="" class="description-logo">
-                <p class="description-project">NutriOn é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
+                <p class="description-project">Nutrion é um sistema que busca ajudar os nutricionistas a gerenciarem a alimentação dos seus pacientes</p>
                 <button name="description-button" class="description-button js-btn-slider">Cadastrar</button>
             </div>
-            <div class="block-form block-form-log js-form-log">
+            <div class="block-form block-form-log js-form-log flex-smaller">
                 <h1 class="form-title">Login</h1>
-                <form method="POST" class="form-content js-form-signin">
+                <form action="<?php echo HOME_URI; ?>nutricionista/signIn" class="form-content js-form-signin">
                     <span class="form-field">
                         <label for="emaillog">Email</label>
                         <input class="js-input-field" type="email" name="email" id="emaillog" required><br>
@@ -44,9 +44,9 @@
                 </form>
                 <a href="" class="form-forgot">Esqueceu a senha?</a>
             </div>
-            <div class="block-form block-form-cad js-form-cad">
+            <div class="block-form block-form-cad js-form-cad flex-bigger">
                 <h1 class="form-title">Cadastro</h1>
-                <form method="POST" class="form-content js-form-signup">
+                <form action="<?php echo HOME_URI; ?>API/nutricionista/" method="POST" class="form-content js-form-signup">
                     <span class="form-field">
                         <label for"nomecad">Nome</label>
                         <input class="js-input-field" type="text" name="nome" id="nomecad" pattern="[a-zA-Z\s]{2,40}" title="Digite um nome válido, com no máximo 40 caracteres" required>
@@ -66,7 +66,6 @@
         <p class='main-message js-message'></p>
         <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
     </main>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

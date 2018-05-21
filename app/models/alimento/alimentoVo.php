@@ -2,10 +2,12 @@
 class alimentoVo{
     private $id;
     private $nome;
+    private $medida; 
+    private $tipoproteina; 
     private $proteina; 
     private $carboidrato;
     private $gordura;
-    private $calorias;      
+    private $caloria;      
      
     public function getId()
     {
@@ -42,36 +44,61 @@ class alimentoVo{
         return $this;
     }
 
-    public function getcarboidrato()
+    public function getCarboidrato()
     {
         return $this->carboidrato;
     }
     
-    public function setcarboidrato($carboidrato)
+    public function setCarboidrato($carboidrato)
     {
         $this->carboidrato = $carboidrato;
         return $this;
     }    
 
-    public function getgordura()
+    public function getGordura()
     {
         return $this->gordura;
     }
     
-    public function setgordura($gordura)
+    public function setGordura($gordura)
     {
         $this->gordura = $gordura;
         return $this;
     }  
 
-    public function getcalorias()
+    public function getCaloria()
     {
-        return $this->calorias;
+        return $this->caloria;
     }
     
-    public function setcalorias($calorias)
+    public function setCaloria($caloria)
     {
-        $this->calorias = $calorias;
+        $this->caloria = $caloria;
+        return $this;
+    }
+
+    public function getTipoproteina()
+    {
+        return $this->tipoproteina;
+    }
+
+    public function setTipoproteina($tipoproteina)
+    {
+        $this->tipoproteina = $tipoproteina;
+
+        return $this;
+    }
+
+
+    public function getMedida()
+    {
+        return $this->medida;
+    }
+
+    public function setMedida($medida)
+    {
+        $this->medida = $medida;
+
         return $this;
     }
 }

@@ -10,43 +10,43 @@ class Paciente{
      * @GeneratedValue(strategy="AUTO")
      * @Column(type="integer", name="id")
      */
-    protected $id;
+    public $id;
 
     /**
      * @Column(type="string", name="cpf")
      */
-    protected $cpf;
+    public $cpf;
 
     /**
      * @Column(type="string", name="nome")
      */
-    protected $nome;
+    public $nome;
     
     /**
      * @Column(type="string", name="telefone")
      */
-    protected $telefone;
+    public $telefone;
 
     /**
      * @Column(type="string", name="sexo")
      */
-    protected $sexo;
+    public $sexo;
 
     /**
      * @Column(type="string", name="email")
      */
-    protected $email;
+    public $email;
 
     /**
      * @Column(type="date", name="dataNasc")
      */
-    protected $dataNasc;
+    public $dataNasc;
         
     /**
      * @ManyToOne(targetEntity="Nutricionista", inversedBy="pacientes")
      * @JoinColumn(name="id_nutricionista", referencedColumnName="id")
      */
-    protected $nutricionista;
+    public $nutricionista;
 
     public function getId()
     {

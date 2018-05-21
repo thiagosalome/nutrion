@@ -5,6 +5,7 @@
         $email = $_SESSION["email_nutricionista"];
 
         if(!isset($_SESSION["id_nutricionista"])){
+            require("app/controllers/nutricionistaController.php");
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
@@ -52,36 +53,10 @@
                 </div>
             </header>
             <div class="dashboard-statistics">
-                <div class="statistics-item">
-                    <div class="statistics-item-image-blue">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/patient_icon.png" alt="Pacientes" title="Pacientes" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>192</span>
-                        <p>Pacientes</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-agua">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/aliments_icon.png" alt="Alimentos" title="Alimentos" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>55</span>
-                        <p>Alimentos</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-green">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/dashboard/diets_icon.png" alt="Dietas" title="Dietas" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>32</span>
-                        <p>Dietas</p>
-                    </div>
-                </div>
+                <?php include __DIR__ . "/../objects/statistics.php"; ?>
             </div>
             <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addPatient" action="">
+                <form role="form" class="largewidth js-form-addPatient" action="<?php echo HOME_URI; ?>API/paciente">
                     <h3 class="formheader">Adicionar Paciente</h3>
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
@@ -124,7 +99,6 @@
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

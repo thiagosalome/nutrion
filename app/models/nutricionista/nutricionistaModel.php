@@ -9,11 +9,31 @@ class nutricionistaModel{
         }
     }
     
+    public function getAll(){
+        $nutricionistaDAO = new nutricionistaDAO();
+        $nutricionistas = $nutricionistaDAO->getAll();
+        $nutricionistas_array = array();
+        $nutricionista = array();
+        
+        for($i = 0; $i < count($nutricionistas); $i++){
+            $nutricionista["id"] = $nutricionistas[$i]->getId();
+            $nutricionista["nome"] = $nutricionistas[$i]->getNome();
+            $nutricionista["email"] = $nutricionistas[$i]->getEmail();
+
+            $nutricionistas_array[$i] = $nutricionista;
+        }
+        return json::generate("OK", "200", "Nutricionistas encontrados", $nutricionistas_array);
+    }
+
     public function getById($id){
-        if($id != null){
-            $nutricionistaDao = new nutricionistaDAO();
-            $nutricionista  = $nutricionistaDao->getById($id);            
-            return $nutricionista;
+        $nutricionistaDAO = new nutricionistaDAO();
+        $nutricionista = $nutricionistaDAO->getById($id);
+        if($nutricionista != null){
+            $nutricionista_array = (array) $nutricionista;
+            return json::generate("OK", "200", "Nutricionista encontrado", $nutricionista_array);
+        }
+        else{
+            return json::generate("OK", "200", "Nutricionista não encontrado", $nutricionista);
         }
     }
        
@@ -24,10 +44,10 @@ class nutricionistaModel{
      */ 
     public function signIn(nutricionistaVO $nutricionistaVo){               
         if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
-            return "Há campos vazios.";
+            return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return "O email digitado é inválido.";
+            return json::generate("Conflito", "409", "O email digitado é inválido", null);
         }
         else{
             $nutricionistaDao = new nutricionistaDAO();                       
@@ -35,18 +55,15 @@ class nutricionistaModel{
 
             if(is_object($usuario)){
                 if($nutricionistaVo->getSenha() != $usuario->getSenha()){
-                    return "Usuário e/ou senha inválido.";
+                    return json::generate("Conflito", "409", "Usuário e/ou senha inválido.", null);
                 }
                 else{
-                    return "success_signin";
+                    return json::generate("Conflito", "409", "Usuário logado com sucesso.", null);
                 }
             }
             else if($usuario == null){
-                return "Usuário inexistente";
+                return json::generate("Conflito", "409", "Usuário inexistente", null);
             }
-            else{
-                return "exception " . $usuario;
-            }            
         }   
     }
 
@@ -55,37 +72,32 @@ class nutricionistaModel{
      *
      * @param nutricionistaVO $nutricionista
      */   
-    public function signUp(nutricionistaVO $nutricionistaVo){
+    public function create(nutricionistaVO $nutricionistaVo){
                
         if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome()))) {
-            return "Há campos vazios.";
+            return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return "O email digitado é inválido.";
+            return json::generate("Conflito", "409", "O email digitado é inválido", null);
         }
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionistaVo->getNome())){
-            return "O nome deve ter entre 2 e 40 caracteres."; 
+            return json::generate("Conflito", "409", "O nome deve ter entre 2 e 40 caracteres.", null);
         }
         else{      
             $nutricionistaDao = new nutricionistaDAO();                                
-            $usuario = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
+            $nutricionista = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
             
             // Verifica se usuário já existe
-            if(is_object($usuario)){
-                return "Email já cadastrado.";
+            if(is_object($nutricionista)){
+                return json::generate("Conflito", "409", "O nutricionista já foi cadastrado antes", null);
             }
-            else if($usuario == null){
-                $cadastro = $nutricionistaDao->insert($nutricionistaVo);
+            else if($nutricionista == null){
+                $insert = $nutricionistaDao->insert($nutricionistaVo);
 
-                if($cadastro == true){
-                    return "success_signup";
+                if(is_object($insert)){
+                    $insert_array = (array) $insert;
+                    return json::generate("OK", "200", "Nutricionista cadastrado com sucesso", $insert_array);
                 }
-                else{
-                    return "exception " . $usuario;
-                }
-            }
-            else{
-                return "exception " . $usuario;
             }
         }   
     }
@@ -97,32 +109,20 @@ class nutricionistaModel{
      */   
     public function update(nutricionistaVO $nutricionista){                
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
-            return "Há campos vazios";
+            return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionista->getEmail())){
-            return "O email digitado é inválido";
+            return json::generate("Conflito", "409", "O email digitado é inválido", null);
         }
         else if(!preg_match("/^[a-zA-Z\s]{2,40}+$/", $nutricionista->getNome())){
-            return "O nome deve ter entre 2 e 40 caracteres"; 
+            return json::generate("Conflito", "409", "O nome deve ter entre 2 e 40 caracteres.", null);
         }
         else{
-            //verificando se novo email já está no BD:
             $nutricionistaDao = new nutricionistaDAO(); 
-            $novoEmailEmUso = $nutricionistaDao->getByEmail($nutricionista->getEmail());
-
-           /* if($novoEmailEmUso != null){
-                return "Email inserido já está sendo utilizado";
-            }            
-            else{   */       
             
             $update = $nutricionistaDao->update($nutricionista);
-            if($update == true){
-                return "success_update";
-            }
-            else{
-                return "exception " . $update;
-            }
-            // }            
+            $update_array = (array) $update;
+            return json::generate("OK", "200", "Nutricionista alterado com sucesso", $update_array);
         }
     } 
 
@@ -134,13 +134,7 @@ class nutricionistaModel{
     public function delete(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO();       
         $delete = $nutricionistaDao->delete($nutricionista);
-
-        if($delete){
-            return "success_delete";
-        }
-        else{
-            return "exception " . $delete;
-        }
+        return json::generate("OK", "200", "Nutricionista deletado com sucesso", null);
     }
 }
 ?>

@@ -104,10 +104,17 @@
             box-sizing: border-box;
         }
 
+        .flex-bigger{
+            flex: 0 0 55%;
+        }
+
+        .flex-smaller{
+            flex: 0 0 45%;
+        }
+
         .block-form-cad{
             padding: 27px 49px;
             order: 0;
-            flex: 0 0 55%;
         }
 
             .block-form-cad .form-title, .block-form-cad .form-content{
@@ -117,7 +124,6 @@
         .block-form-log{
             padding: 58px 49px;
             order: 1;
-            flex: 0 0 45%;
         }
 
             .form-title{

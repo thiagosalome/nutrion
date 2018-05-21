@@ -1,48 +1,74 @@
 <?php
 class alimentoDAO{
   
-    public function getBy(){
+    public function getByNome($nome){
+        /*  PRECISA TESTAR
         require "app/bootstrap.php";        
         try{
-                       
+            $alimento = $entityManager->getRepository("Alimento")->findOneBy(array("nome" => $nome));            
+            return $alimento;          
         }
         catch(Exception $e){
             return $e->getMessage();
         }
+        */
+    }
+
+    public function getAll(){
+        require "app/bootstrap.php";
+        $alimento = $entityManager->getRepository("Alimento")->findAll();
+        return $alimento;
+    }
+
+    public function getById($idAlimento){
+        require "app/bootstrap.php";
+        $alimento = $entityManager->find("Alimento", $idAlimento);
+        return $alimento;
     }
     
-    public function insert(alimentoVo $alimento){
+    public function insert(alimentoVo $alimentoVo){
         require "app/bootstrap.php"; 
-        try{
-            
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }
+        $insert = new Alimento;
+
+        $insert->setNome($alimentoVo->getNome());
+        $insert->setMedida($alimentoVo->getMedida());
+        $insert->setTipoproteina($alimentoVo->getTipoproteina());
+        $insert->setCaloria($alimentoVo->getCaloria());
+        $insert->setProteina($alimentoVo->getProteina());
+        $insert->setCarboidrato($alimentoVo->getCarboidrato());
+        $insert->setGordura($alimentoVo->getGordura());
+
+        $entityManager->persist($insert); 
+        $entityManager->flush();
+        
+        return $insert;
     }       
 
-    public function update(alimentoVo $alimento){                
+    public function update(alimentoVo $alimentoVo){                
         require "app/bootstrap.php";
-        try{
-            
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }   
+        $update = $entityManager->find('Alimento', $alimentoVo->getId());
+
+        $update->setNome($alimentoVo->getNome());
+        $update->setMedida($alimentoVo->getMedida());
+        $update->setTipoproteina($alimentoVo->getTipoproteina());
+        $update->setCaloria($alimentoVo->getCaloria());
+        $update->setProteina($alimentoVo->getProteina());
+        $update->setCarboidrato($alimentoVo->getCarboidrato());
+        $update->setGordura($alimentoVo->getGordura());
+
+        $entityManager->persist($update); 
+        $entityManager->flush();
+        
+        return $update;
     } 
     
-    public function delete(alimentoVo $alimento){
+    public function delete(alimentoVo $alimentoVo){
         require "app/bootstrap.php";
-        try{                                       
-            
-
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }        
+        
+        $delete = $entityManager->find('Alimento', $alimentoVo->getId());
+        $entityManager->remove($delete); 
+        $entityManager->flush();
+        return true;
     }  
 }
 ?>

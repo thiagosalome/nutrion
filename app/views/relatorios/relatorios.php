@@ -5,6 +5,7 @@
         $email = $_SESSION["email_nutricionista"];
 
         if(!isset($_SESSION["id_nutricionista"])){
+            require("app/controllers/nutricionistaController.php");
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
@@ -56,68 +57,24 @@
                 <h2 class="reports-title">
                     Gerar <span>Relatórios</span>
                 </h2>
-                <form role="form" class="largewidth reports-form js-report-generate" action="">
+                <form role="form" method="POST" class="largewidth reports-form js-report-generate" action="<?php echo HOME_URI ?>relatorio/gerar">
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <select name="relatorio" class="form-control input-default">
-                                <option value="paciente">Pacientes</option>
-                                <option value="dietas">Dietas</option>
+                                <option value="pacientes">Pacientes</option>
                                 <option value="alimentos">Alimentos</option>
+                                <option value="dietas">Dietas</option>
                             </select>
                             <i class="glyphicon glyphicon-chevron-down "></i> 
                         </div>
-                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Gerar</button>
+                        <button class="btn btn-default col-md-3" style="float:inherit" name="generate_report" type="submit">Gerar</button>
                     </div>
                 </form>
-            </div>
-            <div class="dashboard-table js-table-patient" style="display: none;">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Pacientes</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Telefone</th>
-                                <th>CPF</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                require "app/controllers/pacienteController.php";
-                                $pacienteController = new pacienteController();
-                                $pacientes = $pacienteController->getAllPatients($_SESSION["id_nutricionista"]);
-
-                                foreach ($pacientes as $item) {
-                                ?>
-                                    <tr>
-                                        <td><?= $item->getNome();?></td>
-                                        <td><?= $item->getEmail(); ?></td>
-                                        <td><?= $item->getTelefone(); ?></td>
-                                        <td><?= $item->getCPF(); ?></td>
-                                        <td>
-                                            <a href="<?php echo HOME_URI ?>nutricionista/paciente/interna/<?= $item->getId(); ?>" class="view"><i class="material-icons" data-toggle="tooltip" title="View">visibility</i></a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
             </div>
             <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load-report" title="Carregando..." alt="Carregando...">
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
-    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/config.js"></script>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>
