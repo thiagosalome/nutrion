@@ -32,7 +32,7 @@ class alimentoController{
         $alimentoVo = new alimentoVo();
 
         try{
-            $alimentoVo->setId($_PUT["id_alimento"]);
+            $alimentoVo->setId($_GET["id"]);
             $alimentoVo->setNome($_PUT["nome"]);
             $alimentoVo->setMedida($_PUT["medida"]);
             $alimentoVo->setTipoproteina($_PUT["tipo_proteina"]);
@@ -55,7 +55,7 @@ class alimentoController{
         $alimentoVo = new alimentoVO();
 
         try{
-            $alimentoVo->setId($_DELETE["id_alimento"]);  
+            $alimentoVo->setId($_GET["id"]);  
 
             $alimentoModel = new alimentoModel();     
             $delete = $alimentoModel->delete($alimentoVo);

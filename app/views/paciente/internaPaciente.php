@@ -13,12 +13,12 @@
             $_SESSION["id_nutricionista"] = $nutricionista->getId();
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
         }
-        if(isset($_GET["id"])){
+        /*if(isset($_GET["id"])){
             require "app/controllers/pacienteController.php";
             $pacienteController = new pacienteController();
             $params["id"] = $_GET["id"];
             $paciente = $pacienteController->get($params);
-        }
+        }*/
     }
     else{
         header("Location: " . HOME_URI);
@@ -61,7 +61,9 @@
             </header>
             <div class="dashboard-patient-header">
                 <div class="patient-header-item patient-header-perfil">
-                    <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil-<?php if($paciente->getSexo() == "F"){ echo "feminino"; }else{ echo "masculino"; } ?>.png" alt="" title="" class="header-logo">
+                    <input type="hidden" class="id-patient" value="<?= $_GET["id"] ?>">
+                    <!-- <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil-<?php if($paciente->getSexo() == "F"){ echo "feminino"; }else{ echo "masculino"; } ?>.png" alt="" title="" class="header-logo"> -->
+                    <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil-masculino.png" alt="" title="" class="header-logo">
                 </div>
                 <div class="patient-header-item">   
                     <h1 class="patient-header-title"><?= $paciente->getNome(); ?></h1>

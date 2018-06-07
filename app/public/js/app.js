@@ -48,6 +48,7 @@ app.loadModules = (function(jQuery){
             app.tooltip.toggle();
             app.dashboard.verify();
             
+            /* Nutricionista */
             jQuery(document).on("submit", ".js-form-deleteNutritionist", function(e){
                 app.ajax.delete(e, function(response){
                     app.message.show(response.message);
@@ -86,8 +87,8 @@ app.loadModules = (function(jQuery){
             });
 
             var id_nutricionista = jQuery(".js-idnutricionista").text();
-            var url_paciente = app.loadModules.getHomeUri() + "API/paciente/?id_nutricionista=" + id_nutricionista;
-            app.ajax.get(url_paciente, function(response){
+            var url_pacientes = app.loadModules.getHomeUri() + "API/paciente/?id_nutricionista=" + id_nutricionista;
+            app.ajax.get(url_pacientes, function(response){
                 var js_table_patient = jQuery(".js-table-patient tbody");
                 for (var i = 0; i < response.result.length; i++) {
                     var row = "<tr>" +
@@ -104,6 +105,12 @@ app.loadModules = (function(jQuery){
                 app.dashboard.verify();
             });
             
+            if(jQuery(".id-patient").length > 0){
+                var id_pacient = jQuery(".id-patient");
+                var url_paciente = app.loadModules.getHomeUri() + "API/paciente"
+                // app.ajax
+            }
+
             
             /* Alimentos */
             jQuery(document).on("submit", ".js-form-addAliment", function(e){
@@ -145,7 +152,7 @@ app.loadModules = (function(jQuery){
                                 "<td data-item='carboidrato'>" + response.result[i].carboidrato + "</td>" +
                                 "<td data-item='gordura'>" + response.result[i].gordura + "</td>" +
                                 "<td data-item='caloria'>" + response.result[i].caloria + "</td>" +
-                                "<td data-item='id_alimento'>" +
+                                "<td data-item='id'>" +
                                     "<a href='' data-id='" + response.result[i].id + "' class='js-aliment-click-update' data-toggle='modal' data-target='#modal-update-aliment'><i class='material-icons' data-toggle='tooltip' title='Editar'>mode_edit</i></a>" +
                                     "<a href='' data-id='" + response.result[i].id + "' class='js-aliment-click-delete' data-toggle='modal' data-target='#modal-delete-aliment'><i class='material-icons' data-toggle='tooltip' title='Apagar'>delete</i></a>" +
                                 "</td>" +
@@ -169,17 +176,22 @@ app.loadModules = (function(jQuery){
         var value = jQuery(e.currentTarget).data("id");
         var data = jQuery(e.currentTarget).closest("td").data("item");
 
-        jQuery(".js-form-deleteAliment").find("input[name='" + data + "']").val(value);
+        var action = jQuery(".js-form-deleteAliment").attr("action");
+        var newAction = action + value;
+        jQuery(".js-form-deleteAliment").attr("action", newAction);
+        // jQuery(".js-form-deleteAliment").find("input[name='" + data + "']").val(value);
     }
 
     function setDataTableForm(e){
         var js_parent = jQuery(e.currentTarget).closest("tr");
         js_parent.children().each(function(index){
             var data = jQuery(this).data("item");
-
-            if(data == "id_alimento"){
+            
+            if(data == "id"){
                 var value = jQuery(this).children("a").data("id");
-                jQuery(".js-form-updateAliment").find("input[name='" + data + "']").val(value);
+                var action = jQuery(".js-form-updateAliment").attr("action");
+                var newAction = action + value;
+                jQuery(".js-form-updateAliment").attr("action", newAction);
             }
             else{
                 var value = jQuery(this).text();

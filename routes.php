@@ -33,16 +33,21 @@ class Routes{
 
             switch($method){
                 case "GET":
-                    $uri = $_SERVER['REQUEST_URI'];
-                    $url = explode("?", $uri);
-                    $query = explode("=", $url[1]);
-                    $index = $query[0];
-                    $value = $query[1];
-                    
-                    $params_array = array();
-                    $params_array[$index] = $value;
+                    if(isset($_GET["id"])){
+                        $controller->get($_GET);
+                    }
+                    else{
+                        $uri = $_SERVER['REQUEST_URI'];
+                        $url = explode("?", $uri);
+                        $query = explode("=", $url[1]);
+                        $index = $query[0];
+                        $value = $query[1];
+                        
+                        $params_array = array();
+                        $params_array[$index] = $value;
 
-                    $controller->get($params_array);
+                        $controller->get($params_array);
+                    }
                 break;
             
                 case "POST":

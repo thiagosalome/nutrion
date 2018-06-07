@@ -8,16 +8,8 @@ define( 'ABSPATH', dirname( __FILE__ ) );
 
 // Pega o host
 $host = $_SERVER["HTTP_HOST"];
-if($host == "localhost" || $host == "127.0.0.1"){
-    define('HOME_URI', '/nutrion/'); // URL da home
-    define( 'HOSTNAME', 'localhost'); // Nome do host da base de dados
-    define( 'DB_NAME', 'db_nutrion'); // Nome do DB
-    define( 'DB_USER', 'root'); // Usuário do DB
-    define( 'DB_PASSWORD', ''); // Senha do DB
-}
-else{
-    define('HOME_URI', 'https://nutrion.azurewebsites.net/'); // URL da home
-
+if(strpos($host, "nutrion.azurewebsites")){
+    // URL da home
     foreach ($_SERVER as $key => $value) { 
         if (strpos($key, "MYSQLCONNSTR_") !== 0) { 
             continue; 
@@ -28,11 +20,19 @@ else{
         $username = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value); 
         $password = preg_replace("/^.*Password=(.+?)$/", "\\1", $value); 
     }
-
+    
+    define('HOME_URI', 'https://nutrion.azurewebsites.net/'); 
     define('HOSTNAME', $servername); // Nome do host da base de dados
     define('DB_NAME', $dbname); // Nome do DB
     define('DB_USER', $username); // Usuário do DB
     define('DB_PASSWORD', $password); // Senha do DB
+}
+else{
+    define('HOME_URI', '/nutrion/'); // URL da home
+    define( 'HOSTNAME', 'localhost'); // Nome do host da base de dados
+    define( 'DB_NAME', 'db_nutrion'); // Nome do DB
+    define( 'DB_USER', 'root'); // Usuário do DB
+    define( 'DB_PASSWORD', ''); // Senha do DB
 }
  
 // Charset da conexão PDO

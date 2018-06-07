@@ -9,7 +9,6 @@
             </div>
             <div class="modal-body">
                 <form role="form" class="js-form-updateAliment" action="<?php echo HOME_URI; ?>API/alimento/">
-                    <input type="hidden" name="id_alimento" value="">
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">
                             <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
@@ -67,7 +66,6 @@
             </div>
             <div class="modal-footer">
                 <form role="form" class="js-form-deleteAliment" action="<?php echo HOME_URI; ?>API/alimento/">
-                    <input type="hidden" name="id_alimento" value="">
                     <button type="submit" class="btn btn-primary" style="background-color: #9d2f4c;">Deletar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </form>

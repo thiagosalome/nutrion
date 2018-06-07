@@ -16,8 +16,11 @@ class pacienteModel{
 
         $data = explode("-",$pacienteVo->getDataNasc());
         
-        if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo()) or empty($pacienteVo->getTelefone()) or empty($pacienteVo->getDataNasc())) {
-            return json::generate("Conflito", "409", "É necessário passar todos os dados do paciente", null);
+        if(empty($pacienteVo->getIdNutricionista())){
+            return json::generate("Conflito", "409", "É necessário passar id do nutricionista (id_nutricionista) referente a esse paciente pelo corpo da requisição.", null);
+        }
+        else if (empty($pacienteVo->getNome()) or empty($pacienteVo->getEmail()) or empty($pacienteVo->getTelefone()) or empty($pacienteVo->getCPF()) or empty($pacienteVo->getSexo())  or empty($pacienteVo->getDataNasc())) {
+            return json::generate("Conflito", "409", "É necessário passar todos os dados do paciente no corpo.", null);
         }
         else if(!cpf::validate($pacienteVo->getCPF())){
             return json::generate("Conflito", "409", "CPF inválido", null);
@@ -57,11 +60,14 @@ class pacienteModel{
      *
      * @param pacienteVO $paciente
      */ 
-    public function update($pacienteVo){
+    public function update(pacienteVo $pacienteVo){
         $data = explode("-",$pacienteVo->getDataNasc());
         
-        if (empty($pacienteVo->getNome()) or empty($pacienteVo->getSexo() or empty($pacienteVo->getTelefone() or empty($pacienteVo->getDataNasc())))) {
-            return json::generate("Conflito", "409", "É necessário passar todos os dados do paciente", null);
+        if(empty($pacienteVo->getId())){
+            return json::generate("Conflito", "409", "É necessário passar id do paciente por parâmetro.", null);
+        }
+        else if (empty($pacienteVo->getNome()) or empty($pacienteVo->getEmail()) or empty($pacienteVo->getTelefone()) or empty($pacienteVo->getCPF()) or empty($pacienteVo->getSexo())  or empty($pacienteVo->getDataNasc())) {
+            return json::generate("Conflito", "409", "É necessário passar todos os dados do paciente no corpo.", null);
         }
         else if(!cpf::validate($pacienteVo->getCPF())){
             return json::generate("Conflito", "409", "CPF inválido", null);
@@ -80,10 +86,16 @@ class pacienteModel{
         }
         else{
             $pacienteDAO = new pacienteDAO();                       
-            
-            $update = $pacienteDAO->update($pacienteVo);           
-            $update_array = (array) $update;
-            return json::generate("OK", "200", "Paciente alterado com sucesso", $update_array);
+            $paciente = $pacienteDAO->getById($pacienteVo->getId()); 
+
+            if(is_object($paciente)){
+                $update = $pacienteDAO->update($pacienteVo);           
+                $update_array = (array) $update;
+                return json::generate("OK", "200", "Paciente alterado com sucesso", $update_array);
+            }
+            else{
+                return json::generate("Conflito", "409", "Não é possível alterar um paciente inexistente.", null);
+            }
         }
     }
 
@@ -92,10 +104,23 @@ class pacienteModel{
      *
      * @param pacienteVO $paciente
      */ 
-    public function delete($pacienteVo){
-        $pacienteDAO = new pacienteDAO();        
-        $delete = $pacienteDAO->delete($pacienteVo);
-        return json::generate("OK", "200", "Paciente deletado com sucesso", null);
+    public function delete(pacienteVo $pacienteVo){
+        if(empty($pacienteVo->getId())){
+            return json::generate("Conflito", "409", "É necessário passar id do paciente por parâmetro.", null);
+        }
+        else{
+            $pacienteDAO = new pacienteDAO();
+            $paciente = $pacienteDAO->getById($pacienteVo->getId()); 
+
+            if(is_object($paciente)){
+                $delete = $pacienteDAO->delete($pacienteVo);
+                return json::generate("OK", "200", "Paciente deletado com sucesso", null);
+            }
+            else{
+                return json::generate("Conflito", "409", "Não é possível deletar um paciente inexistente.", null);
+            }
+
+        }
     }
 
     public function getAll($idNutricionista){
@@ -106,10 +131,10 @@ class pacienteModel{
         
         for($i = 0; $i < count($pacientes); $i++){
             $paciente["id"] = $pacientes[$i]->getId();
-            $paciente["cpf"] = $pacientes[$i]->getCpf();
             $paciente["nome"] = $pacientes[$i]->getNome();
             $paciente["email"] = $pacientes[$i]->getEmail();
             $paciente["telefone"] = $pacientes[$i]->getTelefone();
+            $paciente["cpf"] = $pacientes[$i]->getCpf();
             $paciente["sexo"] = $pacientes[$i]->getSexo();
             $paciente["dataNasc"] = $pacientes[$i]->getDataNasc();
 
