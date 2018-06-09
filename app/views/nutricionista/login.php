@@ -63,8 +63,10 @@
                 </form>
             </div>
         </div>
-        <p class='main-message js-message'></p>
-        <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
+        <div class="response">
+            <p class='response-message js-message'></p>
+            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+        </div>
     </main>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

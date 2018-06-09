@@ -60,6 +60,10 @@
                 </form>
             </div>
         </div>
+        <div class="response">
+            <p class='response-message js-message'></p>
+            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+        </div>
     </div>
 </div>
 <div class="modal fade" id="modal-delete-patient" tabindex="-1" role="dialog" aria-labelledby="modal-delete" aria-hidden="true">
@@ -84,6 +88,10 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </form>
             </div>
+        </div>
+        <div class="response">
+            <p class='response-message js-message'></p>
+            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 var app = app || {};
-app.dashboard = (function(){
+app.screen = (function(){
     var mainDashboard = jQuery(".main-dashboard");
 
     function verify(){

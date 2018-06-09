@@ -76,15 +76,16 @@ class nutricionistaController{
             $nutricionistaModel = new nutricionistaModel();        
             $update = $nutricionistaModel->update($nutricionistaVo);
     
-            /*if($update == "success_update"){
-                $nutricionista  = $nutricionistaModel->getById($_POST["id_nutricionista"]);   
+            if(strpos($update, "sucesso")){
+                $nutricionistaDAO = new NutricionistaDAO();
+                $nutricionista  = $nutricionistaDAO->getById($_PUT["id_nutricionista"]);   
                 session_start();
                 $_SESSION["email_nutricionista"] = $nutricionista->getEmail();
                 $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
                 $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();      
-            }*/
+            }
 
-            echo $update;      
+            echo $update;
         }
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
