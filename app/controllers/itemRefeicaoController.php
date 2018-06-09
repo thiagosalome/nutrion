@@ -5,7 +5,7 @@ require "app/models/itemRefeicao/itemRefeicaoModel.php";
 class itemRefeicao{
     public function create(){
         $itemRefeicaoModel = new itemRefeicaoModel;
-        $itemRefeicaoVo = new $itemRefeicaoVo;
+        $itemRefeicaoVo = new itemRefeicaoVo;
 
         $itemRefeicaoVo->setAlimento($_POST["alimento"]);
         $itemRefeicaoVo->setQuantidade($_POST["quantidade"]);
@@ -15,7 +15,7 @@ class itemRefeicao{
     }
     public function update(){
         $itemRefeicaoModel = new itemRefeicaoModel;
-        $itemRefeicaoVo = new $itemRefeicaoVo;
+        $itemRefeicaoVo = new itemRefeicaoVo;
 
         $itemRefeicaoVo->setId($_POST["id"]);
         $itemRefeicaoVo->setAlimento($_POST["alimento"]);
@@ -25,9 +25,15 @@ class itemRefeicao{
         echo $update;
     }
     public function delete(){
+        $itemRefeicaoModel = new itemRefeicaoModel;
+        $itemRefeicaoVo = new itemRefeicaoVo;
+        
+        $itemRefeicaoVo->getId($_POST["id"]);
+        $delete = $itemRefeicaoModel->delete($itemRefeicaoVo);
 
+        echo $delete;
     }
-    public function getAll(){
+    public function get(){
 
     }
 }
