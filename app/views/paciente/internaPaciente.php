@@ -159,29 +159,36 @@
                     <h3 class="formheader form-intern">Adicionar Físico</h3>
                     <div class="row">
                         <div class="text-left  col-sm-4 col-intern form-group">
-                            <input type="text" class="form-control input-default" name="altura" placeholder="Altura">
+                            <input type="text" class="form-control input-default js-altura" name="altura" placeholder="Altura">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="peso" placeholder="Peso">
+                            <input type="text" class="form-control input-default js-peso" name="peso" placeholder="Peso">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="imc" placeholder="IMC">
+                            <input type="text" class="form-control input-default js-imc" name="imc" placeholder="IMC">
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="cintura" placeholder="Cintura">
+                            <input type="text" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="quadro" placeholder="Quadro">
+                            <input type="text" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="icq" placeholder="ICQ">
+                            <input type="text" class="form-control input-default js-icq" name="icq" placeholder="ICQ">
                         </div>
                     </div>
                     <div class="row">                    
                         <div class=" text-left col-sm-12 form-group  ">
-                            <input type="text" class="form-control input-default" name="ipaq" placeholder="IPAQ">
+                            <select name="tipo_ipaq" class="form-control input-default">
+                                <option value="">Classificação IPAQ</option>
+                                <option value="Sedentário">Sedentário</option>
+                                <option value="Irregularmente Ativo">Irregularmente Ativo</option>
+                                <option value="Ativo">Irregularmente Ativo</option>
+                                <option value="Muito Ativo">Irregularmente Ativo</option>
+                            </select>
+                            <i class="glyphicon glyphicon-chevron-down "></i>
                         </div>
                     </div>
                     <div class="form-group text-center" style="margin-bottom: 0px;">
@@ -294,5 +301,6 @@
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
     <?php include __DIR__ . "/../objects/modal-paciente.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
+    <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/entities/imc.js"></script>
 </body>
 </html>
