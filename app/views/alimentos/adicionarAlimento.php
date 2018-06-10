@@ -49,7 +49,7 @@
             <header class="dashboard-header">
                 <?php include __DIR__ . "/../objects/header-top.php"; ?>
                 <div class="header-bottom">
-                    <h1 class="header-title">Adicionar Paciente</h1>
+                    <h1 class="header-title">Adicionar Alimento</h1>
                 </div>
             </header>
             <div class="dashboard-statistics">
