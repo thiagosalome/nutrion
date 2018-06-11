@@ -26,7 +26,6 @@ app.loadModules = (function(jQuery){
             app.menu.init();
             app.tooltip.toggle();
             app.nutricionista.init();
-            app.screen.verify();
             
             if(location.href.indexOf("paciente") != -1){
                 require("elements/tab");
@@ -38,6 +37,7 @@ app.loadModules = (function(jQuery){
                 require("entities/alimentos");
                 app.alimentos.init();
             }
+            app.screen.verify();
         }
     };
 

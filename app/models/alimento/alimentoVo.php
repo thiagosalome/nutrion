@@ -1,6 +1,7 @@
 <?php
 class alimentoVo{
     private $id;
+    private $idNutricionista; 
     private $nome;
     private $medida; 
     private $tipoproteina; 
@@ -17,6 +18,18 @@ class alimentoVo{
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function getIdNutricionista()
+    {
+        return $this->idNutricionista;
+    }
+
+    public function setIdNutricionista($idNutricionista)
+    {
+        $this->idNutricionista = $idNutricionista;
 
         return $this;
     }

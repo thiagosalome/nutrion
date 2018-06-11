@@ -51,6 +51,12 @@ class Alimento
     public $gordura;
 
     /**
+     * @ManyToOne(targetEntity="Nutricionista", inversedBy="alimentos")
+     * @JoinColumn(name="id_nutricionista", referencedColumnName="id")
+     */
+    public $nutricionista;
+
+    /**
      * Get the value of id
      */ 
     public function getId()
@@ -193,6 +199,18 @@ class Alimento
     public function setTipoproteina($tipoproteina)
     {
         $this->tipoproteina = $tipoproteina;
+
+        return $this;
+    }
+
+    public function getNutricionista()
+    {
+        return $this->nutricionista;
+    }
+
+    public function setNutricionista($nutricionista)
+    {
+        $this->nutricionista = $nutricionista;
 
         return $this;
     }

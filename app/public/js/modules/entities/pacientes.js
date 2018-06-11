@@ -47,7 +47,7 @@ app.pacientes = (function(){
                             "</tr>";
                     js_table_patient.append(row);
                 }
-                app.screen.verify();
+                // app.screen.verify();
             });
         }
     }

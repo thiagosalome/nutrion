@@ -58,6 +58,7 @@
             <div class="dashboard-form">
                 <form role="form" class="largewidth js-form-addAliment" action="<?php echo HOME_URI ?>API/alimento">
                     <h3 class="formheader">Adicionar Alimento</h3>
+                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">
                             <input type="text" class="form-control input-default" name="nome" placeholder="Nome">

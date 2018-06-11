@@ -10,6 +10,7 @@ class alimentoController{
         $alimentoVo = new alimentoVo();
 
         try{
+            $alimentoVo->setIdNutricionista($_POST["id_nutricionista"]);   
             $alimentoVo->setNome($_POST["nome"]);
             $alimentoVo->setMedida($_POST["medida"]);
             $alimentoVo->setTipoproteina($_POST["tipo_proteina"]);
@@ -75,9 +76,12 @@ class alimentoController{
                 $alimento = $alimentoModel->getById($params["id"]);
                 echo $alimento;
             }
-            else{
-                $alimentos = $alimentoModel->getAll();
+            else if(isset($params["id_nutricionista"])){
+                $alimentos = $alimentoModel->getAll($params["id_nutricionista"]);
                 echo $alimentos;
+            }
+            else{
+                echo json::generate("Conflito", "409", "Necessário passar o id do alimento para receber um alimento específico ou id_nutricionista para receber todos os alimentos referentes a ele", null);
             }
         }
         catch(Exception $e){

@@ -14,10 +14,11 @@ class alimentoDAO{
         */
     }
 
-    public function getAll(){
+    public function getAll($idNutricionista){
         require "app/bootstrap.php";
-        $alimento = $entityManager->getRepository("Alimento")->findAll();
-        return $alimento;
+        $nutricionista = $entityManager->find("Nutricionista", $idNutricionista);
+        $alimentos = $nutricionista->getAlimentos();
+        return $alimentos;
     }
 
     public function getById($idAlimento){
@@ -29,7 +30,9 @@ class alimentoDAO{
     public function insert(alimentoVo $alimentoVo){
         require "app/bootstrap.php"; 
         $insert = new Alimento;
+        $nutricionista = $entityManager->find("Nutricionista", $alimentoVo->getIdNutricionista());
 
+        $insert->setNutricionista($nutricionista);
         $insert->setNome($alimentoVo->getNome());
         $insert->setMedida($alimentoVo->getMedida());
         $insert->setTipoproteina($alimentoVo->getTipoproteina());

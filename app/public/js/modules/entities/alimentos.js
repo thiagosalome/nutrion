@@ -54,7 +54,7 @@ app.alimentos = (function(){
                             "</tr>";
                     js_table_aliment.append(row);
                 }
-                app.screen.verify();
+                // app.screen.verify();
             });
         }
         

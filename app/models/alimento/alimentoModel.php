@@ -3,7 +3,10 @@ class alimentoModel{
 
     public function create(alimentoVo $alimentoVo)
     {
-        if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
+        if(empty($alimentoVo->getIdNutricionista())){
+            return json::generate("Conflito", "409", "É necessário passar id do nutricionista (id_nutricionista) referente a esse paciente pelo corpo da requisição.", null);
+        }
+        else if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
             return json::generate("Conflito", "409", "É necessário passar todos os dados do alimento", null);
         }
         else{
@@ -57,9 +60,9 @@ class alimentoModel{
         }
     }
 
-    public function getAll(){
+    public function getAll($idNutricionista){
         $alimentoDAO = new alimentoDAO();
-        $alimentos = $alimentoDAO->getAll();
+        $alimentos = $alimentoDAO->getAll($idNutricionista);
         $alimentos_array = array();
         $alimento = array();
         

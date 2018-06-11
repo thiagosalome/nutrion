@@ -14,7 +14,7 @@ app.tab = (function(){
 
             patientContent.removeClass("active"); // Remove o active de todos os content
             content.addClass("active"); // Adiciona o active no content referent
-            app.dashboard.verify(); //Verifica novamente a altura da dashboard
+            app.screen.verify(); //Verifica novamente a altura da dashboard
 
         });
     }
