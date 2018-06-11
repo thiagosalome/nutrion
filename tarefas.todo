@@ -5,10 +5,12 @@ alt+c=cancelled
 Thiago:
     ✔ Separar as diferentes requisições de pacientes, alimentos e dietas em módulos @done (2018-6-9 14:08:38)
     ✔ Consertar parte de Alimentos @done (2018-6-11 10:00:21)
-    ☐ Consertar página interna de pacientes
+    ✔ Consertar página interna de pacientes @done (2018-6-11 11:06:35)
+    ☐ Consertar delete e update de pacientes
+    ☐ Consertar respostas de mensagens
     ☐ Consertar geração de relatórios
     ☐ Alterar itens da Index
-        ☐ Consertar Load
+        ✔ Consertar Load @done (2018-6-11 11:06:33)
         ☐ Alterar layout da Index
         ☐ Integrar oAuth
             ☐ Verificar o trabalho feito com o Rommel

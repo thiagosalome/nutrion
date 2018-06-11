@@ -209,28 +209,32 @@
                 font-weight: lighter;
             }
     
-    .main-message{
-        background-color: rgba(0,0,0,0.7);
-        border-radius: 12px;
-        color: #ffffff;
-        display: none;
-        font-family: "Roboto", sans-serif;
-        left: 50%;
-        padding: 10px 50px;
-        position: absolute;
+    .response{
         text-align: center;
-        top: 50%;
-        transform: translate(-50%, calc(-50% + 34px + 179px + 50px));
-    }
-
-    .main-load{
-        width: 30px;
-        top: 50%;
-        transform: translate(-50%, calc(-50% + 34px + 179px + 50px));
-        left: 50%;
         position: absolute;
-        display: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 34px + 179px + 50px));
     }
+    
+        .response-message {
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 12px;
+            color: #ffffff;
+            display: none;
+            font-family: "Roboto", sans-serif;
+            padding: 10px 50px;
+            position: relative;
+            text-align: center;
+            margin-top: 30px;
+        }
+    
+        .response-load {
+            width: 30px;
+            margin-top: 30px;
+            position: relative;
+            display: none;
+        }
 
 @media (min-width: 768px) and (max-width: 991px) 
 {

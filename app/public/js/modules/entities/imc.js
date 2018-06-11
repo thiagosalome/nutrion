@@ -1,10 +1,10 @@
 // Definindo o objeto global da aplicação
-//var app = app || {};
-//app.imc = (function(){
-    var altura = document.querySelector("js-altura");
-    var peso = document.querySelector("js-peso");
-    var cintura = document.querySelector("js-cintura");
-    var quadril = document.querySelector("js-quadril");
+var app = app || {};
+app.imc = (function(){
+    var altura = document.querySelector(".js-altura");
+    var peso = document.querySelector(".js-peso");
+    var cintura = document.querySelector(".js-cintura");
+    var quadril = document.querySelector(".js-quadril");
 
     peso.onBlur = function(){
         var valAltura = altura.value;
@@ -29,5 +29,5 @@
         //divide a cintura em cm pelo quadril em cm
         return (_cintura/_quadril);
     }
-
+}());
     

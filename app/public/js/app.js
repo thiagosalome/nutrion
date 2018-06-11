@@ -30,6 +30,7 @@ app.loadModules = (function(jQuery){
             if(location.href.indexOf("paciente") != -1){
                 require("elements/tab");
                 require("entities/pacientes");
+                require("entities/imc");
                 app.tab.execute();
                 app.pacientes.init();
             }
