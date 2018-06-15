@@ -26,8 +26,10 @@ app.pacientes = (function(){
     
         updatePatient.on("submit", function(e){
             app.ajax.put(e, function(response){
-                debugger;
                 app.message.show(response.message);
+                if(response.message.indexOf("sucesso") != -1){
+                    location.reload();
+                }
             });
         });
     
