@@ -154,33 +154,34 @@
                 </div>
             </div>
             <div class="dashboard-form dashboard-patient-content js-patient-content active" data-content="adicionar-fisico">
-                <form role="form" class=" largewidth largeww js-form-addPatient" action="">
+                <form role="form" class="largewidth largeww js-form-addInfoFisicas" action="<?php echo HOME_URI; ?>API/infofisicas/">
+                    <input type="hidden" name="id_paciente" value="<?= $paciente->getId(); ?>">
                     <h3 class="formheader form-intern">Adicionar Físico</h3>
                     <div class="row">
                         <div class="text-left  col-sm-4 col-intern form-group">
-                            <input type="text" class="form-control input-default js-altura" name="altura" placeholder="Altura">
+                            <input type="number" step="0.001" class="form-control input-default js-altura" name="altura" placeholder="Altura">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default js-peso" name="peso" placeholder="Peso">
+                            <input type="number" step="0.001" class="form-control input-default js-peso" name="peso" placeholder="Peso">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default js-imc" name="imc" placeholder="IMC">
+                            <input type="number" step="0.001" class="form-control input-default js-imc" name="imc" placeholder="IMC">
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura">
+                            <input type="number" step="0.001" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril">
+                            <input type="number" step="0.001" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default js-icq" name="icq" placeholder="ICQ">
+                            <input type="number" step="0.001" class="form-control input-default js-icq" name="icq" placeholder="ICQ">
                         </div>
                     </div>
                     <div class="row">                    
                         <div class=" text-left col-sm-12 form-group  ">
-                            <select name="tipo_ipaq" class="form-control input-default">
+                            <select name="classificacaoIPAQ" class="form-control input-default">
                                 <option value="">Classificação IPAQ</option>
                                 <option value="Sedentário">Sedentário</option>
                                 <option value="Irregularmente Ativo">Irregularmente Ativo</option>

@@ -3,36 +3,36 @@
 class infofisicasDAO {
     public function create(infofisicasVo $infofisicasVo) {
         require "app/bootstrap.php"; 
-        try{
-            $infofisicas = new InfoFisicas;
-            $infofisicas->setPeso($infofisicasVo->getPeso());
-            $infofisicas->setAltura($infofisicasVo->getAltura());
-            $infofisicas->setImc($infofisicasVo->getImc());
-            $infofisicas->setCintura($infofisicasVo->getCintura());
-            $infofisicas->setQuadril($infofisicasVo->getQuadril());
-            $infofisicas->setIcq($infofisicasVo->getIcq());
-            $infofisicas->setClassificacaoIPAQ($infofisicasVo->getClassificacaoIPAQ());
-            $infofisicas->setIdPaciente($infofisicasVo->getIdPaciente());        
-                
-            $entityManager->persist($infofisicas);           
-            $entityManager->flush();
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }
+        $insert = new InfoFisicas;
+        $paciente = $entityManager->find("Paciente", $infofisicasVo->getIdPaciente());
+
+        $insert->setPaciente($paciente); 
+        $insert->setPeso($infofisicasVo->getPeso());
+        $insert->setAltura($infofisicasVo->getAltura());
+        $insert->setImc($infofisicasVo->getImc());
+        $insert->setCintura($infofisicasVo->getCintura());
+        $insert->setQuadril($infofisicasVo->getQuadril());
+        $insert->setIcq($infofisicasVo->getIcq());
+        $insert->setClassificacaoIPAQ($infofisicasVo->getClassificacaoIPAQ());
+            
+        $entityManager->persist($insert);           
+        $entityManager->flush();
+        
+        return $insert;
     }
 
 
-    public function getByIdPaciente($idPaciente) {
-        require "app/bootstrap.php";        
-        try{
-            $infofisica = $entityManager->getRepository("InfoFisicas")->findBy(array("id_paciente" => $idPaciente));            
-            return $infofisica;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+    public function getAll($idPaciente) {
+        require "app/bootstrap.php";
+        $paciente = $entityManager->find("Paciente", $idPaciente);
+        $infofisicas = $paciente->getInfoFisicas();       
+        return $infofisicas;
+    }
+
+    public function getById($idInfoFisica){
+        require "app/bootstrap.php";
+        $infoFisica = $entityManager->find("InfoFisicas", $idInfoFisica);
+        return $infoFisica;
     }
 }
 

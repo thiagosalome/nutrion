@@ -16,8 +16,8 @@ class alimentoController{
             $alimentoVo->setTipoproteina($_POST["tipo_proteina"]);
             $alimentoVo->setProteina($_POST["proteina"]);
             $alimentoVo->setCarboidrato($_POST["carboidrato"]);
-            $alimentoVo->setCaloria($_POST["caloria"]);
             $alimentoVo->setGordura($_POST["gordura"]);
+            $alimentoVo->setCaloria($_POST["caloria"]);
 
             $alimentoModel = new alimentoModel();
             $create = $alimentoModel->create($alimentoVo);

@@ -1,21 +1,29 @@
 var app = app || {};
 
-app.alimentos = (function(){
-    var addAliment = jQuery(".js-form-addAliment");
-    var deleteAliment = jQuery(".js-form-deleteAliment");
-    var updateAliment = jQuery(".js-form-updateAliment");
+app.infoFisicas = (function(){
+    var addInfoFisicas = jQuery(".js-form-addInfoFisicas");
+    var deleteInfoFisicas = jQuery(".js-form-deleteInfoFisicas");
+    var updateInfoFisicas = jQuery(".js-form-updateInfoFisicas");
+
+    var altura = jQuery(".js-altura");
+    var peso = jQuery(".js-peso");
+    var cintura = jQuery(".js-cintura");
+    var quadril = jQuery(".js-quadril");
+    var imc = jQuery(".js-imc");
+    var icq = jQuery(".js-icq");
 
     function init(){
-        addAliment.on("submit", function(e){
+        addInfoFisicas.on("submit", function(e){
             app.ajax.post(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){
-                    location = app.loadModules.getHomeUri() + "/alimento/consultar"
+                    location.reload();
                 }
             });
         });
     
-        deleteAliment.on("submit", function(e){
+        /*
+        deleteInfoFisicas.on("submit", function(e){
             app.ajax.delete(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){
@@ -24,7 +32,7 @@ app.alimentos = (function(){
             });
         });
     
-        updateAliment.on("submit", function(e){
+        updateInfoFisicas.on("submit", function(e){
             app.ajax.put(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){
@@ -56,44 +64,30 @@ app.alimentos = (function(){
                 }
                 // app.screen.verify();
             });
-        }
+        }*/
         
-        jQuery(document).on("click", ".js-aliment-click-update", function(e){
-            // setDataTableForm(e);
-            setDataForm(e);
+        peso.on("blur", function(){
+            var valAltura = altura.val();
+            var valPeso = peso.val();
+            var result = calculaIMC(valAltura, valPeso);
+            imc.val(result); //falta verificar se vai aparecer
         });
         
-        jQuery(document).on("click", ".js-aliment-click-delete", function(e){
-            // setIdTableInput(e);
-            setDataForm(e);
+        quadril.on("blur", function(){
+            var valCintura = cintura.val();
+            var valQuadril = quadril.val();
+            var result = calculaICQ(valCintura, valQuadril);
+            icq.val(result); //falta verificar se vai aparecer
         });
+
     }
 
+    function calculaIMC(altura, peso){
+        return (peso / (altura * altura));        
+    }
 
-    function setDataForm(e){
-        if(e.currentTarget.className.indexOf("update") != -1){
-            var tr = jQuery(e.currentTarget).closest("tr");
-            var param = "";
-            var value = "";
-            tr.children().each(function(index){
-                param = jQuery(this).data("item");
-                
-                // value = param == "id_alimento" ? jQuery(this).children("a").data("id") : jQuery(this).text();
-                if(param == "id_alimento"){
-                    value = jQuery(this).children("a").data("id");
-                    updateAliment.attr("action", app.loadModules.getHomeUri() + "API/alimento/" + value);
-                }
-                else{
-                    value = jQuery(this).text();
-                    updateAliment.find("input[name='" + param + "'], select[name='" + param + "']").val(value);
-                }
-            });
-        }
-        else if(e.currentTarget.className.indexOf("delete") != -1){
-            var value = jQuery(e.currentTarget).data("id");
-            var param = jQuery(e.currentTarget).closest("td").data("item");
-            deleteAliment.attr("action", app.loadModules.getHomeUri() + "API/alimento/" + value);
-        }
+    function calculaICQ(cintura, quadril){
+        return (cintura / quadril);
     }
 
     return {

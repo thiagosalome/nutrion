@@ -30,9 +30,10 @@ app.loadModules = (function(jQuery){
             if(location.href.indexOf("paciente") != -1){
                 require("elements/tab");
                 require("entities/pacientes");
-                require("entities/imc");
+                require("entities/infofisicas");
                 app.tab.execute();
                 app.pacientes.init();
+                app.infoFisicas.init();
             }
             else if(location.href.indexOf("alimento") != -1){
                 require("entities/alimentos");
