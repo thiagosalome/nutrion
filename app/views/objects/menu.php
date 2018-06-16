@@ -54,13 +54,13 @@
                 </div>
                 <ul class="nav-submenu">
                     <li>
-                        <a href="#" title="Consultar Dietas">
+                        <a href="<?php echo HOME_URI; ?>dieta/consultar" title="Consultar Dietas">
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/view_icon.png" alt="Consultar Dietas" title="Consultar Dietas">
                             <p class="submenu-description">Consultar Dietas</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="Adicionar Dieta">
+                        <a href="<?php echo HOME_URI; ?>dieta/adicionar" title="Adicionar Dieta">
                             <img class="submenu-icon" src="<?php echo HOME_URI; ?>app/public/images/dashboard/add_icon.png" alt="Adicionar Dieta" title="Adicionar Dieta">
                             <p class="submenu-description">Adicionar Dieta</p>
                         </a>
