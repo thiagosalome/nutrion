@@ -11,7 +11,7 @@ class itemRefeicaoDAO{
                 
             $entityManager->persist($itemRefeicao);           
             $entityManager->flush();
-            return true;
+            return $itemRefeicao;
         }
         catch (Expection $e){
             return $e->getMessage();
@@ -34,10 +34,10 @@ class itemRefeicaoDAO{
 
             $entityManager->persist($update); 
             $entityManager->flush();
-            return true;
+            return $itemRefeicao;
         }
         catch (Expection $e){
-            return false;
+            return $e->getMessage();
         } 
     }
     public function delete(itemRefeicaoVo $itemRefeicaoVo){
@@ -54,11 +54,13 @@ class itemRefeicaoDAO{
             return true;
         }
         catch (Expection $e){
-            return false;
+            return $e->getMessage();
         }    
     }
     public function getAll(){
-        
+        require "app/bootstrap.php";
+        $itemRefeicao = $entityManager->getRepository("ItemRefeicao")->findAll();
+        return $itemRefeicao;
     }
 }
 ?>
