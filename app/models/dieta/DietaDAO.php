@@ -11,7 +11,7 @@ class DietaDAO{
                 
             $entityManager->persist($dieta);           
             $entityManager->flush();
-            return true;
+            return $dieta;
         }
         catch (Expection $e){
             return $e->getMessage();
@@ -34,7 +34,7 @@ class DietaDAO{
             return true;
         }
         catch (Expection $e){
-            return false;
+            return $e->getMessage();
         }  
     }
     public function getAll(){

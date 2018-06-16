@@ -10,7 +10,7 @@ class itemRefeicaoModel{
         else{
             $itemRefeicaoDAO = new  itemRefeicaoDAO;
             $create = $itemRefeicaoDAO->insert($itemRefeicaoVo);
-            if(is_object($insert)){
+            if(is_object($create)){
                 $insert_array = (array) $insert;
                 return json::generate("OK", "200", "Item refeição cadastrado com sucesso", $insert_array);
             }
@@ -26,7 +26,7 @@ class itemRefeicaoModel{
         else{
             $itemRefeicao = new itemRefeicao();                       
             $update = $itemRefeicao->update($itemRefeicaoVo);            
-            if(is_object($itemRefeicao)){
+            if(is_object($update)){
                 $update = $itemRefeicaoDAO->update($itemRefeicaoVo);           
                 $update_array = (array) $update;
                 return json::generate("OK", "200", "Item refeição alterado com sucesso", $update_array);
@@ -37,9 +37,8 @@ class itemRefeicaoModel{
         }
     }
     public function delete(itemRefeicaoVo $itemRefeicaoVo){
-        $itemRefeicaoDAO = new itemRefeicaoDAO();        
-        $delete = $itemRefeicaoDAO->delete($itemRefeicaoVo);
-        if(is_object($itemRefeicao)){
+        $itemRefeicaoDAO = new itemRefeicaoDAO();            
+        if(is_object($delete)){
             $delete = $itemRefeicaoDAO->delete($itemRefeicaoVo);
             return json::generate("OK", "200", "Item refeição deletado com sucesso", null);
         }
