@@ -12,48 +12,48 @@ class InfoFisicas
      * @GeneratedValue(strategy="AUTO")
      * @Column(type="integer", name="id")
      */
-    protected $id;
+    public $id;
 
     /**
      * @Column(type="float", name="peso")
      */
-    protected $peso;
+    public $peso;
 
     /**
      * @Column(type="float", name="altura")
      */
-    protected $altura;
+    public $altura;
 
     /**
      * @Column(type="integer", name="imc")
      */
-    protected $imc;
+    public $imc;
 
     /**
      * @Column(type="float", name="cintura")
      */
-    protected $cintura;
+    public $cintura;
 
     /**
      * @Column(type="integer", name="quadril")
      */
-    protected $quadril;
+    public $quadril;
 
     /**
      * @Column(type="integer", name="icq")
      */
-    protected $icq;
+    public $icq;
 
     /**
      * @Column(type="string", name="classificacaoIPAQ")
      */
-    protected $classificacaoIPAQ;
+    public $classificacaoIPAQ;
 
     /**
-     * @ManyToOne(targetEntity="Paciente")
+     * @ManyToOne(targetEntity="Paciente",  inversedBy="infoFisicas")
      * @JoinColumn(name="id_paciente", referencedColumnName="id")
      */
-    protected $idPaciente;
+    public $paciente;
 
 
     public function getId()
@@ -138,14 +138,14 @@ class InfoFisicas
         return $this;
     }
 
-    public function getIdPaciente()
+    public function getPaciente()
     {
-        return $this->idPaciente;
+        return $this->paciente;
     }
 
-    public function setIdPaciente($idPaciente)
+    public function setPaciente($paciente)
     {
-        $this->idPaciente = $idPaciente;
+        $this->paciente = $paciente;
         return $this;
     }
 }

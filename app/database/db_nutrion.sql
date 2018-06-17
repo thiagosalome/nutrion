@@ -25,14 +25,17 @@ DROP TABLE IF EXISTS `tb_alimento`;
 CREATE TABLE `tb_alimento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` char(40) NOT NULL,
-  `medida` varchar(50) NOT NULL,
-  `tipoProteina` varchar(50) NOT NULL,
+  `medida` char(40) NOT NULL,
+  `tipoProteina` char(15) NOT NULL,
   `proteina` float NOT NULL,
+  `caloria` float NOT NULL,
   `carboidrato` float NOT NULL,
   `gordura` float NOT NULL,
-  `caloria` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `id_nutricionista` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_nutricionistaXalimento` (`id_nutricionista`),
+  CONSTRAINT `fk_nutricionistaXalimento` FOREIGN KEY (`id_nutricionista`) REFERENCES `tb_nutricionista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +44,7 @@ CREATE TABLE `tb_alimento` (
 
 LOCK TABLES `tb_alimento` WRITE;
 /*!40000 ALTER TABLE `tb_alimento` DISABLE KEYS */;
-INSERT INTO `tb_alimento` VALUES (1,'batata','','',4,20,0,24),(2,'ervilha','','',3,3,0,6),(3,'peixe','','',20,20,8,50),(4,'frango','','',25,10,4,39);
+INSERT INTO `tb_alimento` VALUES (7,'Arroz','g','Vegetal',68,93,29,52,1);
 /*!40000 ALTER TABLE `tb_alimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,8 +60,8 @@ CREATE TABLE `tb_avaliacao` (
   `id_infoFisicas` int(11) NOT NULL,
   `dataAval` date NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_id_infoFisicas` (`id_infoFisicas`),
-  CONSTRAINT `fk_id_infoFisicas` FOREIGN KEY (`id_infoFisicas`) REFERENCES `tb_infofisicas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fk_infofisicasXavaliacao` (`id_infoFisicas`),
+  CONSTRAINT `fk_infofisicasXavaliacao` FOREIGN KEY (`id_infoFisicas`) REFERENCES `tb_infofisicas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -70,6 +73,33 @@ LOCK TABLES `tb_avaliacao` WRITE;
 /*!40000 ALTER TABLE `tb_avaliacao` DISABLE KEYS */;
 INSERT INTO `tb_avaliacao` VALUES (1,1,'2018-02-21'),(2,2,'2018-01-01'),(3,3,'2018-04-15'),(4,4,'2018-04-20');
 /*!40000 ALTER TABLE `tb_avaliacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_dieta`
+--
+
+DROP TABLE IF EXISTS `tb_dieta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_dieta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_paciente` int(11) NOT NULL,
+  `dataDieta` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_pacienteXdieta` (`id_paciente`),
+  CONSTRAINT `fk_pacienteXdieta` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_dieta`
+--
+
+LOCK TABLES `tb_dieta` WRITE;
+/*!40000 ALTER TABLE `tb_dieta` DISABLE KEYS */;
+INSERT INTO `tb_dieta` VALUES (1,1,'2018-06-10'),(2,2,'2018-06-08');
+/*!40000 ALTER TABLE `tb_dieta` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -90,9 +120,9 @@ CREATE TABLE `tb_infofisicas` (
   `classificacaoIPAQ` char(25) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_id_paciente` (`id_paciente`),
-  CONSTRAINT `fk_id_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  KEY `fk_pacienteXinfofisicas` (`id_paciente`),
+  CONSTRAINT `fk_pacienteXinfofisicas` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,8 +131,33 @@ CREATE TABLE `tb_infofisicas` (
 
 LOCK TABLES `tb_infofisicas` WRITE;
 /*!40000 ALTER TABLE `tb_infofisicas` DISABLE KEYS */;
-INSERT INTO `tb_infofisicas` VALUES (1,75.3,180,24.5,70,70,0.85,'Sedentário',1),(2,65.8,173,21.5,50,50,0.79,'Ativo',2),(3,68,180,24,68,68,0.83,'Irregularmente Ativo',3),(4,66,173,22,52,52,0.81,'Muito Ativo',2);
+INSERT INTO `tb_infofisicas` VALUES (1,75.3,180,24.5,70,70,0.85,'Sedentário',1),(2,65.8,173,21.5,50,50,0.79,'Ativo',2),(3,68,180,24,68,68,0.83,'Irregularmente Ativo',3),(4,66,173,22,52,52,0.81,'Muito Ativo',2),(5,5,5,0.2,16,20,5,'Irregularmente Ativo',1),(6,37,86,61,88,71,55,'Irregularmente Ativo',1),(7,65,88,60,37,2,57,'Irregularmente Ativo',1);
 /*!40000 ALTER TABLE `tb_infofisicas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_itemrefeicao`
+--
+
+DROP TABLE IF EXISTS `tb_itemrefeicao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_itemrefeicao` (
+  `id_refeicao` int(11) NOT NULL,
+  `id_alimento` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  PRIMARY KEY (`id_refeicao`,`id_alimento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_itemrefeicao`
+--
+
+LOCK TABLES `tb_itemrefeicao` WRITE;
+/*!40000 ALTER TABLE `tb_itemrefeicao` DISABLE KEYS */;
+INSERT INTO `tb_itemrefeicao` VALUES (1,2,4),(2,2,1),(2,4,1),(3,3,1);
+/*!40000 ALTER TABLE `tb_itemrefeicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -115,11 +170,12 @@ DROP TABLE IF EXISTS `tb_nutricionista`;
 CREATE TABLE `tb_nutricionista` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` char(40) NOT NULL,
-  `senha` char(10) NOT NULL,
+  `senha` char(255) NOT NULL,
   `nome` char(40) NOT NULL,
+  `conta` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +184,7 @@ CREATE TABLE `tb_nutricionista` (
 
 LOCK TABLES `tb_nutricionista` WRITE;
 /*!40000 ALTER TABLE `tb_nutricionista` DISABLE KEYS */;
-INSERT INTO `tb_nutricionista` VALUES (1,'cjunqueira@nutrion.com','12345','Carlos Junqueira'),(2,'jtavares@nutrion.com','abcde','Juliana Tavares'),(3,'admin@admin.com','admin','Administrador'),(4,'teste@teste.com','teste','testeuser');
+INSERT INTO `tb_nutricionista` VALUES (1,'admin@admin.com','admin','Administrador',''),(2,'cjunqueira@nutrion.com','12345','Carlos Junqueira',''),(3,'jtavares@nutrion.com','abcde','Juliana Tavares',''),(4,'teste@teste.com','teste','testeuser',''),(7,'tesyfekuzu@mailinator.net','12345','Tesy','nutrion'),(11,'guilhermesalome1@gmail.com','','guilherme goncalves','google'),(12,'thiagosalome@gmail.com','','Thiago Salome','google'),(13,'out@teste.com','35asdas','Teste','nutrion'),(14,'hysynumic@mailinator.net','$2y$10$QwZrQJEsm813mTUPRCB/1ewzVmmOcPU1KnuK6kpfjOToyvt0tCmVO','Hy','nutrion'),(15,'dipyr@mailinator.com','$2y$10$/B5Dr6CgA41P1t7QD2pbxO/4RL6JsE3N6Ag7l2nDSipsX2JRS3r3a','Di','nutrion'),(16,'sumel@mailinator.net','$2y$10$Q9ZkJj2GW5u4x6SjTytnTeBjWfrNjm7hBQ0mUecdbDp9615odNWk2','Sumel','nutrion');
 /*!40000 ALTER TABLE `tb_nutricionista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,14 +201,14 @@ CREATE TABLE `tb_paciente` (
   `telefone` char(15) NOT NULL,
   `sexo` char(1) NOT NULL,
   `cpf` char(15) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `email` char(40) DEFAULT NULL,
   `dataNasc` date NOT NULL,
   `id_nutricionista` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cpf` (`cpf`),
-  KEY `fk_id_nutricionista` (`id_nutricionista`),
-  CONSTRAINT `fk_id_nutricionista` FOREIGN KEY (`id_nutricionista`) REFERENCES `tb_nutricionista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  KEY `fk_nutricionistaXpaciente` (`id_nutricionista`),
+  CONSTRAINT `fk_nutricionistaXpaciente` FOREIGN KEY (`id_nutricionista`) REFERENCES `tb_nutricionista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,8 +217,36 @@ CREATE TABLE `tb_paciente` (
 
 LOCK TABLES `tb_paciente` WRITE;
 /*!40000 ALTER TABLE `tb_paciente` DISABLE KEYS */;
-INSERT INTO `tb_paciente` VALUES (1,'Everaldo Dias','(31)99999-9999','M','999.999.999-99',NULL,'1996-04-30',1),(2,'Mariana Souza','(31)3030-4444','F','111.111.111-11',NULL,'1976-03-28',2),(3,'Douglas Miranda','(31)3343-2244','M','222.222.222-22',NULL,'1985-02-11',3),(4,'Tek','(31)99659-9999','F','850.224.880-43','tekuxuzeze@mailinator.com','2013-03-16',1);
+INSERT INTO `tb_paciente` VALUES (1,'Everaldo Dias Silva','(31)99999-9999','M','11544238673','everaldo@gmail.com','1996-04-30',1),(2,'Mariana Souza','(31)3030-4444','F','111.111.111-11','mariana@gmail.com','1976-03-28',1),(3,'Douglas Miranda','(31)3343-2244','M','222.222.222-22','douglas@gmail.com','1985-02-11',1);
 /*!40000 ALTER TABLE `tb_paciente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_refeicao`
+--
+
+DROP TABLE IF EXISTS `tb_refeicao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_refeicao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` char(40) NOT NULL,
+  `horario` char(5) NOT NULL,
+  `id_dieta` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_dietaXrefeicao` (`id_dieta`),
+  CONSTRAINT `fk_dietaXrefeicao` FOREIGN KEY (`id_dieta`) REFERENCES `tb_dieta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_refeicao`
+--
+
+LOCK TABLES `tb_refeicao` WRITE;
+/*!40000 ALTER TABLE `tb_refeicao` DISABLE KEYS */;
+INSERT INTO `tb_refeicao` VALUES (1,'café da manhã','09h00',1),(2,'almoço','12h00',1),(3,'janta','19h00',2);
+/*!40000 ALTER TABLE `tb_refeicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -178,4 +262,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-15  0:28:46
+-- Dump completed on 2018-06-17 16:49:18

@@ -71,8 +71,7 @@
                     </div>
                 </form>
             </div>
-            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load-report" title="Carregando..." alt="Carregando...">
-        </section>       
+        </section>
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>

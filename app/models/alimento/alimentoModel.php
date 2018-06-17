@@ -3,7 +3,10 @@ class alimentoModel{
 
     public function create(alimentoVo $alimentoVo)
     {
-        if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
+        if(empty($alimentoVo->getIdNutricionista())){
+            return json::generate("Conflito", "409", "É necessário passar id do nutricionista (id_nutricionista) referente a esse paciente pelo corpo da requisição.", null);
+        }
+        else if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
             return json::generate("Conflito", "409", "É necessário passar todos os dados do alimento", null);
         }
         else{
@@ -18,29 +21,48 @@ class alimentoModel{
     }
 
     public function update(alimentoVo $alimentoVo){
-        if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
+        if(empty($alimentoVo->getId())){
+            return json::generate("Conflito", "409", "É necessário passar id do alimento por parâmetro.", null);
+        }
+        else if (empty($alimentoVo->getNome()) or empty($alimentoVo->getMedida()) or empty($alimentoVo->getTipoproteina()) or empty($alimentoVo->getProteina()) or empty($alimentoVo->getCarboidrato()) or empty($alimentoVo->getGordura()) or empty($alimentoVo->getCaloria())) {
             return json::generate("Conflito", "409", "É necessário passar todos os dados do alimento", null);
         }
         else{
             $alimentoDAO = new alimentoDAO();                       
-            $update = $alimentoDAO->update($alimentoVo);           
-            
-            if(is_object($update)){
+            $alimento = $alimentoDAO->getById($alimentoVo->getId());  
+
+            if(is_object($alimento)){
+                $update = $alimentoDAO->update($alimentoVo);           
                 $update_array = (array) $update;
                 return json::generate("OK", "200", "Alimento alterado com sucesso", $update_array);
+            }
+            else{
+                return json::generate("Conflito", "409", "Não é possível alterar um alimento inexistente.", null);
             }
         }
     }
 
     public function delete(alimentoVo $alimentoVo){
-        $alimentoDAO = new alimentoDAO();        
-        $delete = $alimentoDAO->delete($alimentoVo);
-        return json::generate("OK", "200", "Alimento deletado com sucesso", null);
+        if(empty($alimentoVo->getId())){
+            return json::generate("Conflito", "409", "É necessário passar id do alimento por parâmetro.", null);
+        }
+        else{
+            $alimentoDAO = new alimentoDAO();
+            $alimento = $alimentoDAO->getById($alimentoVo->getId());  
+
+            if(is_object($alimento)){
+                $delete = $alimentoDAO->delete($alimentoVo);
+                return json::generate("OK", "200", "Alimento deletado com sucesso", null);
+            }
+            else{
+                return json::generate("Conflito", "409", "Não é possível deletar um alimento inexistente.", null);
+            }
+        }
     }
 
-    public function getAll(){
+    public function getAll($idNutricionista){
         $alimentoDAO = new alimentoDAO();
-        $alimentos = $alimentoDAO->getAll();
+        $alimentos = $alimentoDAO->getAll($idNutricionista);
         $alimentos_array = array();
         $alimento = array();
         

@@ -14,10 +14,10 @@
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
         }
         if(isset($_GET["id"])){
-            require "app/controllers/pacienteController.php";
-            $pacienteController = new pacienteController();
+            require "app/models/paciente/pacienteDAO.php";
+            $pacienteDAO = new pacienteDAO();
             $params["id"] = $_GET["id"];
-            $paciente = $pacienteController->get($params);
+            $paciente = $pacienteDAO->getById($params);
         }
     }
     else{
@@ -61,6 +61,7 @@
             </header>
             <div class="dashboard-patient-header">
                 <div class="patient-header-item patient-header-perfil">
+                    <input type="hidden" class="id-patient" value="<?= $_GET["id"] ?>">
                     <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil-<?php if($paciente->getSexo() == "F"){ echo "feminino"; }else{ echo "masculino"; } ?>.png" alt="" title="" class="header-logo">
                 </div>
                 <div class="patient-header-item">   
@@ -153,41 +154,51 @@
                 </div>
             </div>
             <div class="dashboard-form dashboard-patient-content js-patient-content active" data-content="adicionar-fisico">
-                <form role="form" class=" largewidth largeww js-form-addPatient" action="">
+                <form role="form" class="largewidth largeww js-form-addInfoFisicas" action="<?php echo HOME_URI; ?>API/infofisicas/">
+                    <input type="hidden" name="id_paciente" value="<?= $paciente->getId(); ?>">
                     <h3 class="formheader form-intern">Adicionar Físico</h3>
                     <div class="row">
                         <div class="text-left  col-sm-4 col-intern form-group">
-                            <input type="text" class="form-control input-default" name="altura" placeholder="Altura">
+                            <input type="number" step="0.001" class="form-control input-default js-altura" name="altura" placeholder="Altura">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="peso" placeholder="Peso">
+                            <input type="number" step="0.001" class="form-control input-default js-peso" name="peso" placeholder="Peso">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="imc" placeholder="IMC">
+                            <input type="number" step="0.001" class="form-control input-default js-imc" name="imc" placeholder="IMC">
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="cintura" placeholder="Cintura">
+                            <input type="number" step="0.001" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="quadro" placeholder="Quadro">
+                            <input type="number" step="0.001" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="text" class="form-control input-default" name="icq" placeholder="ICQ">
+                            <input type="number" step="0.001" class="form-control input-default js-icq" name="icq" placeholder="ICQ">
                         </div>
                     </div>
                     <div class="row">                    
                         <div class=" text-left col-sm-12 form-group  ">
-                            <input type="text" class="form-control input-default" name="ipaq" placeholder="IPAQ">
+                            <select name="classificacaoIPAQ" class="form-control input-default">
+                                <option value="">Classificação IPAQ</option>
+                                <option value="Sedentário">Sedentário</option>
+                                <option value="Irregularmente Ativo">Irregularmente Ativo</option>
+                                <option value="Ativo">Irregularmente Ativo</option>
+                                <option value="Muito Ativo">Irregularmente Ativo</option>
+                            </select>
+                            <i class="glyphicon glyphicon-chevron-down "></i>
                         </div>
                     </div>
                     <div class="form-group text-center" style="margin-bottom: 0px;">
                         <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
                     </div>
                 </form>
-                <p class='main-message js-message'></p>
-                <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
+                <div class="response">
+                    <p class='response-message js-message'></p>
+                    <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+                </div>
             </div>
             <div class="dashboard-table dashboard-patient-content js-patient-content" data-content="historico">
                 <div class="table-wrapper table-responsive">

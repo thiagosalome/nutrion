@@ -19,19 +19,19 @@
 
         .statistics-item-image-blue {     
             padding: 10px;      
-            background-color:rgb(0,159,227);
+            background-color:#009fe3;
             display: flex;
             align-items: center;
         }
         .statistics-item-image-agua  {
             padding: 10px;           
-            background-color:rgb(37,180,177);
+            background-color:#25b4b1;
             display: flex;
             align-items: center;
         }
         .statistics-item-image-green  {
             padding: 10px;
-            background-color:rgb(63,175,108);
+            background-color:#3faf6c;
             display: flex;
             align-items: center;
         }

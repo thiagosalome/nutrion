@@ -48,6 +48,17 @@ class Paciente{
      */
     public $nutricionista;
 
+    /**
+     * @OneToMany(targetEntity="InfoFisicas", mappedBy="paciente", orphanRemoval=true, cascade={"persist", "remove"})
+     */
+    public $infoFisicas;
+
+    /**
+     * @OneToMany(targetEntity="Dieta", mappedBy="paciente", orphanRemoval=true, cascade={"persist", "remove"})
+     */
+    public $dietas; 
+
+
     public function getId()
     {
         return $this->id;
@@ -133,6 +144,38 @@ class Paciente{
     public function setNutricionista($nutricionista)
     {
         $this->nutricionista = $nutricionista;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of infoFisicas
+     */ 
+    public function getInfoFisicas()
+    {
+        return $this->infoFisicas;
+    }
+
+    /**
+     * Set the value of infoFisicas
+     *
+     * @return  self
+     */ 
+    public function setInfoFisicas($infoFisicas)
+    {
+        $this->infoFisicas = $infoFisicas;
+
+        return $this;
+    }
+
+    public function getDietas()
+    {
+        return $this->dietas;
+    }
+
+    public function setDietas($dietas)
+    {
+        $this->dietas = $dietas;
 
         return $this;
     }

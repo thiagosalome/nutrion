@@ -10,13 +10,14 @@ class alimentoController{
         $alimentoVo = new alimentoVo();
 
         try{
+            $alimentoVo->setIdNutricionista($_POST["id_nutricionista"]);   
             $alimentoVo->setNome($_POST["nome"]);
             $alimentoVo->setMedida($_POST["medida"]);
             $alimentoVo->setTipoproteina($_POST["tipo_proteina"]);
             $alimentoVo->setProteina($_POST["proteina"]);
             $alimentoVo->setCarboidrato($_POST["carboidrato"]);
-            $alimentoVo->setCaloria($_POST["caloria"]);
             $alimentoVo->setGordura($_POST["gordura"]);
+            $alimentoVo->setCaloria($_POST["caloria"]);
 
             $alimentoModel = new alimentoModel();
             $create = $alimentoModel->create($alimentoVo);
@@ -32,7 +33,7 @@ class alimentoController{
         $alimentoVo = new alimentoVo();
 
         try{
-            $alimentoVo->setId($_PUT["id_alimento"]);
+            $alimentoVo->setId($_GET["id"]);
             $alimentoVo->setNome($_PUT["nome"]);
             $alimentoVo->setMedida($_PUT["medida"]);
             $alimentoVo->setTipoproteina($_PUT["tipo_proteina"]);
@@ -55,7 +56,7 @@ class alimentoController{
         $alimentoVo = new alimentoVO();
 
         try{
-            $alimentoVo->setId($_DELETE["id_alimento"]);  
+            $alimentoVo->setId($_GET["id"]);  
 
             $alimentoModel = new alimentoModel();     
             $delete = $alimentoModel->delete($alimentoVo);
@@ -75,9 +76,12 @@ class alimentoController{
                 $alimento = $alimentoModel->getById($params["id"]);
                 echo $alimento;
             }
-            else{
-                $alimentos = $alimentoModel->getAll();
+            else if(isset($params["id_nutricionista"])){
+                $alimentos = $alimentoModel->getAll($params["id_nutricionista"]);
                 echo $alimentos;
+            }
+            else{
+                echo json::generate("Conflito", "409", "Necessário passar o id do alimento para receber um alimento específico ou id_nutricionista para receber todos os alimentos referentes a ele", null);
             }
         }
         catch(Exception $e){

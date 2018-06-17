@@ -27,7 +27,7 @@ class nutricionistaController{
         }
     }
 
-    public function signIn(){
+    /*public function signIn(){
         $nutricionistaVo = new nutricionistaVO();  
         
         try{
@@ -45,7 +45,7 @@ class nutricionistaController{
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
         }
-    }
+    }*/
 
     public function create(){
         $nutricionistaVo = new nutricionistaVO();  
@@ -53,7 +53,10 @@ class nutricionistaController{
         try{
             $nutricionistaVo->setNome($_POST["nome"]);
             $nutricionistaVo->setEmail($_POST["email"]);
+            // $nutricionistaVo->setSenha(password_hash($_POST["senha"], PASSWORD_DEFAULT));
+            // $nutricionistaVo->setSenha(password_hash($_POST["senha"], PASSWORD_BCRYPT));
             $nutricionistaVo->setSenha($_POST["senha"]);
+            $nutricionistaVo->setConta("nutrion");
             
             $nutricionistaModel = new nutricionistaModel();
             $cadastrar = $nutricionistaModel->create($nutricionistaVo);
@@ -74,17 +77,18 @@ class nutricionistaController{
             $nutricionistaVo->setSenha($_PUT["senha"]);              
     
             $nutricionistaModel = new nutricionistaModel();        
-            $update = $nutricionistaModel->update($nutricionistaVo);
+            $update = json_decode($nutricionistaModel->update($nutricionistaVo));
     
-            /*if($update == "success_update"){
-                $nutricionista  = $nutricionistaModel->getById($_POST["id_nutricionista"]);   
+            if(strpos($update->message, "sucesso") !== false){
+                $nutricionistaDAO = new NutricionistaDAO();
+                $nutricionista  = $nutricionistaDAO->getById($_PUT["id_nutricionista"]);   
                 session_start();
                 $_SESSION["email_nutricionista"] = $nutricionista->getEmail();
                 $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
                 $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();      
-            }*/
+            }
 
-            echo $update;      
+            echo json_encode($update);
         }
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
@@ -98,15 +102,15 @@ class nutricionistaController{
             $nutricionistaVo->setId($_DELETE["id_nutricionista"]);  
     
             $nutricionistaModel = new nutricionistaModel();     
-            $delete = $nutricionistaModel->delete($nutricionistaVo);
+            $delete = json_decode($nutricionistaModel->delete($nutricionistaVo));
     
-            /*if($delete=="success_delete"){
+            if(strpos($delete->message, "sucesso") !== false){
                 session_start();
                 if(isset($_SESSION["email_nutricionista"])){
                     session_destroy();
                 }        
-            }*/
-            echo $delete;
+            }
+            echo json_encode($delete);
         }
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);

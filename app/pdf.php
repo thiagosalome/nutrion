@@ -3,17 +3,17 @@
 
         switch ($report) {
             case 'pacientes':
-                require("app/controllers/pacienteController.php");
-                $pacienteController = new pacienteController();
-                $params["id_nutricionista"] = $_SESSION["id_nutricionista"];
-                $pacientes = $pacienteController->get($params);    
+                require("app/models/paciente/pacienteDAO.php");
+                $pacienteDAO = new pacienteDAO();
+                $id_nutricionista = $_SESSION["id_nutricionista"];
+                $pacientes = $pacienteDAO->getAll($id_nutricionista);    
                 break;
     
             case 'alimentos':
-                require("app/controllers/alimentoController.php");
-                $alimentoController = new alimentoController();
-                $alimentos = $alimentoController->get();    
-    
+                require("app/models/alimento/alimentoDAO.php");
+                $alimentoDAO = new alimentoDAO();
+                $id_nutricionista = $_SESSION["id_nutricionista"];
+                $alimentos = $alimentoDAO->getAll($id_nutricionista);    
                 break;
             case 'dietas':
                 # code...

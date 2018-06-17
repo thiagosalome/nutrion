@@ -49,7 +49,7 @@
             <header class="dashboard-header">
                 <?php include __DIR__ . "/../objects/header-top.php"; ?>
                 <div class="header-bottom">
-                    <h1 class="header-title">Adicionar Paciente</h1>
+                    <h1 class="header-title">Adicionar Alimento</h1>
                 </div>
             </header>
             <div class="dashboard-statistics">
@@ -58,6 +58,7 @@
             <div class="dashboard-form">
                 <form role="form" class="largewidth js-form-addAliment" action="<?php echo HOME_URI ?>API/alimento">
                     <h3 class="formheader">Adicionar Alimento</h3>
+                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">
                             <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
@@ -94,8 +95,10 @@
                         <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
                     </div>
                 </form>
-                <p class='main-message js-message'></p>
-                <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
+                <div class="response">
+                    <p class='response-message js-message'></p>
+                    <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+                </div>
             </div>
         </section>       
     </main>

@@ -43,6 +43,7 @@
                     <input type="submit" value="login" name="login">
                 </form>
                 <a href="" class="form-forgot">Esqueceu a senha?</a>
+                <a href="<?php echo HOME_URI; ?>nutricionista/signIn?api=google" class="form-google">Login com Google</a>
             </div>
             <div class="block-form block-form-cad js-form-cad flex-bigger">
                 <h1 class="form-title">Cadastro</h1>
@@ -63,8 +64,10 @@
                 </form>
             </div>
         </div>
-        <p class='main-message js-message'></p>
-        <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
+        <div class="response">
+            <p class='response-message js-message'></p>
+            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+        </div>
     </main>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>

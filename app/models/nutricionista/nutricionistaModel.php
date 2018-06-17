@@ -42,29 +42,48 @@ class nutricionistaModel{
      *
      * @param nutricionistaVO $nutricionista
      */ 
-    public function signIn(nutricionistaVO $nutricionistaVo){               
-        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
-            return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
-        }   
-        else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
-            return json::generate("Conflito", "409", "O email digitado é inválido", null);
-        }
-        else{
-            $nutricionistaDao = new nutricionistaDAO();                       
-            $usuario = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());           
+    public function signIn(nutricionistaVO $nutricionistaVo){
 
-            if(is_object($usuario)){
-                if($nutricionistaVo->getSenha() != $usuario->getSenha()){
-                    return json::generate("Conflito", "409", "Usuário e/ou senha inválido.", null);
-                }
-                else{
-                    return json::generate("Conflito", "409", "Usuário logado com sucesso.", null);
-                }
+        if($nutricionistaVo->getConta() == "google"){
+            $nutricionistaDao = new nutricionistaDAO();                                
+            $nutricionista = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());            
+            
+            // Se o usuário não existe
+            if(!is_object($nutricionista)){
+                $nutricionistaDao->insert($nutricionistaVo); // Realiza o cadastro
             }
-            else if($usuario == null){
-                return json::generate("Conflito", "409", "Usuário inexistente", null);
+            return json::generate("OK", "200", "Usuário logado com sucesso.", null);
+        }
+        else if($nutricionistaVo->getConta() == "nutrion"){
+            /*if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha())) {
+                return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
+            }  */ 
+            if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){
+                return json::generate("Conflito", "409", "O email digitado é inválido", null);
             }
-        }   
+            else{
+                $nutricionistaDao = new nutricionistaDAO();                       
+                $usuario = $nutricionistaDao->getByEmail($nutricionistaVo->getEmail());           
+    
+                if(is_object($usuario)){
+                    // Caso seja uma conta do tipo google
+                    if($usuario->getConta() == "google"){
+                        return json::generate("Conflito", "409", "Já existe uma conta Google vinculada a esse email.", null);
+                    }
+                    // else if(password_hash($nutricionistaVo->getSenha(), PASSWORD_DEFAULT) != $usuario->getSenha()){
+                    // else if(!password_verify ($nutricionistaVo->getSenha(), $usuario->getSenha())){
+                    else if($nutricionistaVo->getSenha() != $usuario->getSenha()){
+                        return json::generate("Conflito", "409", "Usuário e/ou senha inválido.", null);
+                    }
+                    else{
+                        return json::generate("OK", "200", "Usuário logado com sucesso.", null);
+                    }
+                }
+                else if($usuario == null){
+                    return json::generate("Conflito", "409", "Usuário inexistente", null);
+                }
+            }   
+        }
     }
 
     /**
@@ -74,7 +93,7 @@ class nutricionistaModel{
      */   
     public function create(nutricionistaVO $nutricionistaVo){
                
-        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome()))) {
+        if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome())) or empty($nutricionistaVo->getConta())) {
             return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
         }   
         else if(!preg_match("/^[a-z0-9\\.\\-\\_]+@[a-z0-9\\.\\-\\_]*[a-z0-9\\.\\-\\_]+\\.[a-z]{2,4}$/", $nutricionistaVo->getEmail())){

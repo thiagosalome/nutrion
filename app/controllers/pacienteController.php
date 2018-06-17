@@ -40,12 +40,12 @@ class pacienteController{
         $pacienteVo = new pacienteVO(); 
         
         try{
-            $pacienteVo->setId($_PUT["id_paciente"]);             
-            $pacienteVo->setCPF($_PUT["cpf"]);             
+            $pacienteVo->setId($_GET["id"]);             
             $pacienteVo->setNome($_PUT["nome"]);
-            $pacienteVo->setSexo($_PUT["sexo"]);
-            $pacienteVo->setTelefone($_PUT["telefone"]);
             $pacienteVo->setEmail($_PUT["email"]);       
+            $pacienteVo->setTelefone($_PUT["telefone"]);
+            $pacienteVo->setCPF($_PUT["cpf"]);             
+            $pacienteVo->setSexo($_PUT["sexo"]);
             $pacienteVo->setDataNasc($_PUT["nascimento"]);
             
             $pacienteModel = new pacienteModel();
@@ -62,7 +62,7 @@ class pacienteController{
         $pacienteVo = new pacienteVO();
         
         try{
-            $pacienteVo->setId($_DELETE["id_paciente"]);  
+            $pacienteVo->setId($_GET["id"]);  
     
             $pacienteModel = new pacienteModel();     
             $delete = $pacienteModel->delete($pacienteVo);

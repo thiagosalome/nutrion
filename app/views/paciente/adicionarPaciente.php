@@ -93,8 +93,10 @@
                         <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
                     </div>
                 </form>
-                <p class='main-message js-message'></p>
-                <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="main-load js-load" title="Carregando..." alt="Carregando...">
+                <div class="response">
+                    <p class='response-message js-message'></p>
+                    <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+                </div>
             </div>
         </section>       
     </main>

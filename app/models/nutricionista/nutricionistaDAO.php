@@ -40,6 +40,7 @@ class nutricionistaDAO{
         $nutricionista->setNome($nutricionistaVo->getNome());
         $nutricionista->setEmail($nutricionistaVo->getEmail());
         $nutricionista->setSenha($nutricionistaVo->getSenha());
+        $nutricionista->setConta($nutricionistaVo->getConta());
             
         $entityManager->persist($nutricionista);    
         $entityManager->flush();

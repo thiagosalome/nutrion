@@ -9,7 +9,6 @@
             </div>
             <div class="modal-body">
                 <form role="form" class="js-form-updateAliment" action="<?php echo HOME_URI; ?>API/alimento/">
-                    <input type="hidden" name="id_alimento" value="">
                     <div class="row">
                         <div class="text-left col-sm-6 form-group has-feedback">
                             <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
@@ -48,6 +47,10 @@
                 </form>
             </div>
         </div>
+        <div class="response">
+            <p class='response-message js-message'></p>
+            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+        </div>
     </div>
 </div>
 <div class="modal fade" id="modal-delete-aliment" tabindex="-1" role="dialog" aria-labelledby="modal-delete" aria-hidden="true">
@@ -67,11 +70,14 @@
             </div>
             <div class="modal-footer">
                 <form role="form" class="js-form-deleteAliment" action="<?php echo HOME_URI; ?>API/alimento/">
-                    <input type="hidden" name="id_alimento" value="">
                     <button type="submit" class="btn btn-primary" style="background-color: #9d2f4c;">Deletar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </form>
             </div>
+        </div>
+        <div class="response">
+            <p class='response-message js-message'></p>
+            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
         </div>
     </div>
 </div>

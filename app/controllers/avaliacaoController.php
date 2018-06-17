@@ -14,31 +14,22 @@ class avaliacaoController{
     }*/
 
     public function create(){
-        $avaliacaoModel = new avaliacaoModel();
-        $avaliacaoVo = new avaliacaoVo();  
-        
-        $avaliacaoVo->setId($_POST["id"]);                 
-        $data = explode("/",$_POST["data_avaliacao"]);        
-        $avaliacaoVo->setData_nasc($data[2]."-".$data[1]."-".$data[0]);
-        
-        $cadastrarModel = $avaliacaoModel->create($avaliacaoVo);
+        $avaliacaoVo = new avaliacaoVo(); 
 
-        switch ($cadastrarModel) {
-            case "empty":
-                $_SESSION["msg"] = "Há campos vazios.";
-                header("Location: ");
-                break;
-
-            case "invalid_date":
-                $_SESSION["msg"] = "Data da avaliação inválida";
-                header("Location: ");
-                break;   
+        try{
+            $avaliacaoVo->setId($_POST["id"]);                 
+            $data = explode("/",$_POST["data_avaliacao"]);        
+            $avaliacaoVo->setData_nasc($data[2]."-".$data[1]."-".$data[0]);
             
-            case "success":
-                $_SESSION["msg"] = "Avaliação criada com sucesso";            
-                header("Location: ");
-                break;
-        }        
+            $avaliacaoModel = new avaliacaoModel();
+            $create = $avaliacaoModel->create($avaliacaoVo);
+
+            echo $create;
+
+        }
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }      
     }
 
     public function update(){       
@@ -71,20 +62,13 @@ class avaliacaoController{
     }
 
     public function delete(){
-        $avaliacaoModel = new avaliacaoModel();
-        $delete = $avaliacaoModel->delete($avaliacaoVo);
-
-        switch ($delete) {
-            case "success":
-                $_SESSION["msg"] = "Avaliação excluída com sucesso";            
-                header("Location: ");
-                echo $_SESSION["msg"];
-                break;
-            case "failed":
-                $_SESSION["msg"] = "Erro ao excluir a avaliação";
-                header("Location: ");
-                echo $_SESSION["msg"];
-                break; 
+        try{
+            $avaliacaoModel = new avaliacaoModel();
+            $delete = $avaliacaoModel->delete($avaliacaoVo);
+            echo $delete;
+        }
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
         }
     }
 }    

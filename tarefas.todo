@@ -2,22 +2,24 @@ ctrl+enter=criar item
 alt+d=done
 alt+c=cancelled
 
-Back-end:
-    Sprint 2:
-        ☐ Adicionar 
-    
+Thiago:
+    ✔ Separar as diferentes requisições de pacientes, alimentos e dietas em módulos @done (2018-6-9 14:08:38)
+    ✔ Consertar parte de Alimentos @done (2018-6-11 10:00:21)
+    ✔ Consertar página interna de pacientes @done (2018-6-11 11:06:35)
+    ☐ Consertar delete e update de pacientes
+    ☐ Consertar respostas de mensagens
+    ☐ Consertar geração de relatórios
+    ☐ Alterar itens da Index
+        ✔ Consertar Load @done (2018-6-11 11:06:33)
+        ☐ Alterar layout da Index
+        ☐ Integrar oAuth
+            ☐ Verificar o trabalho feito com o Rommel
+            ☐ Adicionar campo de "Logar com o Google"
+            ☐ Fazer parte do oAuth
+        ☐ Integrar parte de verificar senha
+            ☐ Adicionar campo na tabela de Nutricionista que permite receber um campo de verificação (Pergunta e Resposta)
+            ☐ Adicionar Modal que aparecerá quando o usuário clicar em "Esqueci minha senha" (Email, Pergunta, Resposta)
+    ☐ Fazer página de Consultar Dietas
+    ☐ Fazer página de Adicionar Dietas
 
-Front-end:
-    Sprint 2:
-        ☐ Criar tela de Consultas de Pacientes (Layout e Design)
-        ☐ Criar tela interna de Paciente (Layout e Design)
-        ☐ Criar tela de Adição de Paciente (Layout e Design)
-        ☐ Criar tela de Relatórios (Layout e Design)
-        ✔ Implementar AJAX @done (2018-4-9 14:15:06)
 
-Outras Tarefas:
-    ✔ Hospedar site no Azure @done (2018-4-9 14:23:00)
-    ✔ Realizar conexão com o banco de dados MySQL do Azure @done (2018-4-10 16:24:35)
-    ✔ Criar .htaccess para o Azure para tornar as urls amigáveis @done (2018-4-10 16:24:40)
-    ✔ Configurar links para funcionar em homologação e produção @done (2018-4-9 14:54:48)
-    ☐ Criar branch de homologação no git
