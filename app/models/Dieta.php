@@ -5,7 +5,7 @@
  * @Table(name="tb_dieta")
  * 
  */
-class Refeicao
+class Dieta
 {
     /**
      * @Id
