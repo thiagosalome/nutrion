@@ -53,7 +53,7 @@ class nutricionistaController{
         try{
             $nutricionistaVo->setNome($_POST["nome"]);
             $nutricionistaVo->setEmail($_POST["email"]);
-            $nutricionistaVo->setSenha($_POST["senha"]);
+            $nutricionistaVo->setSenha(password_hash($_POST["senha"], PASSWORD_DEFAULT));
             $nutricionistaVo->setConta("nutrion");
             
             $nutricionistaModel = new nutricionistaModel();

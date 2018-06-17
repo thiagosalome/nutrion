@@ -70,7 +70,7 @@ class nutricionistaModel{
                     if($usuario->getConta() == "google"){
                         return json::generate("Conflito", "409", "Já existe uma conta Google vinculada a esse email.", null);
                     }
-                    if($nutricionistaVo->getSenha() != $usuario->getSenha()){
+                    if(password_verify ( $nutricionistaVo->getSenha() , $usuario->getSenha() )){
                         return json::generate("Conflito", "409", "Usuário e/ou senha inválido.", null);
                     }
                     else{
