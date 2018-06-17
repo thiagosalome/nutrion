@@ -57,6 +57,11 @@ class Alimento
     public $nutricionista;
 
     /**
+     * @OneToMany(targetEntity="ItemRefeicao", mappedBy="alimento", orphanRemoval=true, cascade={"persist", "remove"})
+     */
+    public $alimentos;
+
+    /**
      * Get the value of id
      */ 
     public function getId()
@@ -211,6 +216,18 @@ class Alimento
     public function setNutricionista($nutricionista)
     {
         $this->nutricionista = $nutricionista;
+
+        return $this;
+    }
+
+    public function getAlimento()
+    {
+        return $this->alimentos;
+    }
+
+    public function setAlimento($alimentos)
+    {
+        $this->alimentos = $alimentos;
 
         return $this;
     }

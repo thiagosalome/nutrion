@@ -26,7 +26,7 @@ class refeicaoController{
         $refeicaoVo = new refeicaoVo();  
         
         try{
-            $refeicaoVo->setId($_GET["id"]);             
+            $refeicaoVo->setId($_PUT["id"]);             
             $refeicaoVo->setNome($_PUT["nome"]);
             $refeicaoVo->setHorario($_PUT["horario"]);       
             $refeicaoVo->setDieta($_PUT["dieta"]);

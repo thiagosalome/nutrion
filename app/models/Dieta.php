@@ -56,5 +56,16 @@ class Dieta
         $this->paciente = $paciente;
         return $this;
     }
+
+    public function getRefeicao()
+    {
+        return $this->refeicoes;
+    }
+
+    public function setRefeicao($refeicoes)
+    {
+        $this->refeicoes = $refeicoes;
+        return $this;
+    }
 }
 ?>
