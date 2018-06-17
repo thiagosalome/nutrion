@@ -29,7 +29,7 @@ class avaliacaoDAO{
                 
             $entityManager->persist($avaliacao);           
             $entityManager->flush();
-            return true;
+            return avaliacao;
         }
         catch (Expection $e){
             return $e->getMessage();

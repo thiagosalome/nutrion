@@ -37,9 +37,9 @@ class itemRefeicaoModel{
         }
     }
     public function delete(itemRefeicaoVo $itemRefeicaoVo){
-        $itemRefeicaoDAO = new itemRefeicaoDAO();            
-        if(is_object($delete)){
-            $delete = $itemRefeicaoDAO->delete($itemRefeicaoVo);
+        $itemRefeicaoDAO = new itemRefeicaoDAO();
+        $delete = $itemRefeicaoDAO->delete($itemRefeicaoVo);            
+        if($delete){            
             return json::generate("OK", "200", "Item refeição deletado com sucesso", null);
         }
         else{
