@@ -34,7 +34,19 @@ else{
     define( 'DB_USER', 'root'); // Usuário do DB
     define( 'DB_PASSWORD', ''); // Senha do DB
 }
- 
+
+$CALLBACK_URL = "http://localhost/vhosts/OAuthApp/OAuthCallback.php";
+
+define("CALLBACK_URL", "http://localhost/nutrion/nutricionista/apiCallback");
+define("GOOGLE_API_AUTH_URL", "https://accounts.google.com/o/oauth2/auth");
+define("GOOGLE_API_TOKEN_URL","https://accounts.google.com/o/oauth2/token");
+// define("GOOGLE_API_RESOURCE_URL","https://www.googleapis.com/oauth2/v2/userinfo");
+define("GOOGLE_API_RESOURCE_URL","https://www.googleapis.com/plus/v1/people/me");
+define("GOOGLE_CLIENT_ID","352421827967-f0nf6kmqqd0815umsno5a096jf5rp6h7.apps.googleusercontent.com");
+define("GOOGLE_CLIENT_SECRET_KEY","bOsmzCizL6e1itYWBQEtpo9w");
+// define("GOOGLE_SCOPE","https://www.googleapis.com/auth/plus.me");
+define("GOOGLE_SCOPE","https://www.googleapis.com/auth/userinfo.email");
+
 // Charset da conexão PDO
 define( 'DB_CHARSET', 'utf8' );
  

@@ -12,7 +12,7 @@ app.nutricionista = (function(){
             app.ajax.post(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){
-                    location = app.loadModules.getHomeUri() + "/paciente/consultar"
+                    location = app.loadModules.getHomeUri() + "paciente/consultar"
                 }
             });
         });
@@ -30,10 +30,10 @@ app.nutricionista = (function(){
         deleteNutricionist.on("submit", function(e){
             app.ajax.delete(e, function(response){
                 app.message.show(response.message);
+                if(response.message.indexOf("sucesso") != -1){
+                    location.reload();
+                }
             });
-            if(response.message.indexOf("sucesso") != -1){
-                location.reload();
-            }
         });
     
         updateNutricionist.on("submit", function(e){

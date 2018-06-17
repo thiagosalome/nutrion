@@ -6,6 +6,6 @@ RewriteRule ^nutricionista/?$ index.php?Route=nutricionista&Action=login
 RewriteRule ^API/([a-zA-Z0-9]+)/?$ index.php?Controller=$1
 RewriteRule ^API/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)?$ index.php?Controller=$1&id=$2
 
-RewriteRule ^([a-zA-Z0-9]+)/?$ index.php?Route=$1&Action=consultar
-RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)$ index.php?Route=$1&Action=$2
-RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)/([a-zA-z0-9]+)$ index.php?Route=$1&Action=$2&id=$3
+RewriteRule ^([a-zA-Z0-9]+)/?$ index.php?Route=$1&Action=consultar [QSA]
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)$ index.php?Route=$1&Action=$2 [QSA]
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-z0-9]+)/([a-zA-z0-9]+)$ index.php?Route=$1&Action=$2&id=$3 [QSA]

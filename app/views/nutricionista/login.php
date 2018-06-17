@@ -43,6 +43,7 @@
                     <input type="submit" value="login" name="login">
                 </form>
                 <a href="" class="form-forgot">Esqueceu a senha?</a>
+                <a href="<?php echo HOME_URI; ?>nutricionista/signIn?api=google" class="form-google">Login com Google</a>
             </div>
             <div class="block-form block-form-cad js-form-cad flex-bigger">
                 <h1 class="form-title">Cadastro</h1>

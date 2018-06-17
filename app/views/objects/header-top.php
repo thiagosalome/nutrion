@@ -9,11 +9,26 @@
         <input class="search-input" type="text" name="search" id="">
     </div>
     <div class="header-options js-header-options">
-        <ul>
-            <li><button data-toggle="modal" data-target="#modal-update">Editar Conta</button></li>
-            <li><button data-toggle="modal" data-target="#modal-delete">Deletar Conta</button></li>
-            <li><a href="<?php echo HOME_URI; ?>nutricionista/signOut">Sair</a></li>
-        </ul>
+        <?php
+            if(isset($_SESSION["api"])){
+            ?>
+                <ul>
+                    <li><button data-toggle="modal" data-target="#modal-delete">Deletar Conta</button></li>
+                    <li><a href="<?php echo HOME_URI; ?>nutricionista/signOut">Sair</a></li>
+                </ul>
+            <?php
+            }
+            else{
+            ?>
+                <ul>
+                    <li><button data-toggle="modal" data-target="#modal-update">Editar Conta</button></li>
+                    <li><button data-toggle="modal" data-target="#modal-delete">Deletar Conta</button></li>
+                    <li><a href="<?php echo HOME_URI; ?>nutricionista/signOut">Sair</a></li>
+                </ul>
+            <?php
+            }
+        ?>
+        
     </div>
     <div class="header-menu js-menu">
         <span></span>

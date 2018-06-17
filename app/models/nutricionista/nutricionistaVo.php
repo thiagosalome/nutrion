@@ -5,6 +5,7 @@ class nutricionistaVO{
     private $nome;
     private $email;
     private $senha;
+    private $conta;
 
 
     /**
@@ -103,6 +104,26 @@ class nutricionistaVO{
     public function setSenha($senha)
     {
         $this->senha = $senha;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of conta
+     */ 
+    public function getConta()
+    {
+        return $this->conta;
+    }
+
+    /**
+     * Set the value of conta
+     *
+     * @return  self
+     */ 
+    public function setConta($conta)
+    {
+        $this->conta = $conta;
 
         return $this;
     }

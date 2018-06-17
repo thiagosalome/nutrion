@@ -200,13 +200,17 @@
                     /* background-color: #452531; */
                 }
 
-            .form-forgot{
+            .form-forgot, .form-google{
                 font-size: 15px;
                 color: #911f4d;
                 margin-top: 13px;
                 display: inline-block;
                 text-decoration: none;
                 font-weight: lighter;
+            }
+
+            .form-google{
+                float: right;
             }
     
     .response{
