@@ -21,7 +21,7 @@ class infofisicasModel {
             
             if(is_object($insert)){
                 $insert_array = (array) $insert;
-                return json::generate("OK", "200", "Alimento cadastrado com sucesso", $insert_array);
+                return json::generate("OK", "200", "Informações Físicas cadastradas com sucesso", $insert_array);
             }
         }
     }

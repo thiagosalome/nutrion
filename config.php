@@ -8,7 +8,7 @@ define( 'ABSPATH', dirname( __FILE__ ) );
 
 // Pega o host
 $host = $_SERVER["HTTP_HOST"];
-if(strpos($host, "nutrion.azurewebsites")){
+if(strpos($host, "nutrion.azurewebsites") !== false){
     // URL da home
     foreach ($_SERVER as $key => $value) { 
         if (strpos($key, "MYSQLCONNSTR_") !== 0) { 

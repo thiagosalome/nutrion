@@ -1,7 +1,7 @@
 <?php
-require "app/models/avaliacao/avaliacaoDAO.php";
 require "app/models/avaliacao/avaliacaoVo.php";
 require "app/models/avaliacao/avaliacaoModel.php";
+require "app/models/avaliacao/avaliacaoDAO.php";
 
 class avaliacaoController{ 
 
@@ -13,19 +13,17 @@ class avaliacaoController{
         include "app/views/nutricionista/adicionarAvaliacao.php";
     }*/
 
-    public function create(){
+    public function create($params){
         $avaliacaoVo = new avaliacaoVo(); 
 
         try{
-            $avaliacaoVo->setId($_POST["id"]);                 
-            $data = explode("/",$_POST["data_avaliacao"]);        
-            $avaliacaoVo->setData_nasc($data[2]."-".$data[1]."-".$data[0]);
+            $avaliacaoVo->setInfoFisicas($params["infoFisica"]);                 
+            $avaliacaoVo->setDataAval($params["data"]);
             
             $avaliacaoModel = new avaliacaoModel();
             $create = $avaliacaoModel->create($avaliacaoVo);
 
             echo $create;
-
         }
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);

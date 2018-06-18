@@ -16,6 +16,7 @@ app.infoFisicas = (function(){
         addInfoFisicas.on("submit", function(e){
             app.ajax.post(e, function(response){
                 app.message.show(response.message);
+                debugger;
                 if(response.message.indexOf("sucesso") != -1){
                     location.reload();
                 }

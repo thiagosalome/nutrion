@@ -12,12 +12,19 @@ class Avaliacao
      * @GeneratedValue(strategy="AUTO")
      * @Column(type="integer", name="id")
      */
-    protected $id;
+    public $id;
 
     /**
-     * @Column(type="date", name="data_aval")
+     * @Column(type="date", name="dataAval")
      */
-    protected $data_aval;
+    public $dataAval;
+
+    /**
+     * @ManyToOne(targetEntity="InfoFisicas", inversedBy="avaliacao")
+     * @JoinColumn(name="id_infofisicas", referencedColumnName="id")
+     */
+    public $infoFisicas;
+
 
     /**
      * Get the value of id
@@ -28,20 +35,56 @@ class Avaliacao
     }
 
     /**
-     * Get the value of data_aval
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of dataAval
      */ 
     public function getDataAval()
     {
-        return $this->data_aval;
+        return $this->dataAval;
     }
 
-   /**
-     * @var InfoFisicaPaciente
+    /**
+     * Set the value of dataAval
      *
-     * @OneToMany(targetEntity="tb_infofisicas")
-     * @JoinColumn(name="id_infoFisicas", referencedColumnName="id")
+     * @return  self
      */ 
+    public function setDataAval($dataAval)
+    {
+        $this->dataAval = $dataAval;
 
+        return $this;
+    }
+
+    /**
+     * Get the value of infoFisicas
+     */ 
+    public function getInfoFisicas()
+    {
+        return $this->infoFisicas;
+    }
+
+    /**
+     * Set the value of infoFisicas
+     *
+     * @return  self
+     */ 
+    public function setInfoFisicas($infoFisicas)
+    {
+        $this->infoFisicas = $infoFisicas;
+
+        return $this;
+    }
 }
 
 ?>

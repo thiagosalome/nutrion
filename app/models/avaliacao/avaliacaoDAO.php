@@ -22,18 +22,15 @@ class avaliacaoDAO{
     public function insert(avaliacaoVo $avaliacaoVo){
         require "app/bootstrap.php";
         
-        try{
-            $avaliacao = new Avaliacao;
-            $avaliacao->setId($avaliacaoVo->getId());      
-            $avaliacao->setData_aval(new \DateTime($avaliacaoVo->getData_aval()." 00:00:00"));
-                
-            $entityManager->persist($avaliacao);           
-            $entityManager->flush();
-            return avaliacao;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }
+        $avaliacao = new Avaliacao;
+        $infoFisica = $entityManager->find("InfoFisicas", $avaliacaoVo->getInfoFisicas());
+
+        $avaliacao->setInfoFisicas($infoFisica);      
+        $avaliacao->setDataAval(new \DateTime($avaliacaoVo->getDataAval()." 00:00:00"));
+            
+        $entityManager->persist($avaliacao);           
+        $entityManager->flush();
+        return $avaliacao;
     }
 
     public function update(avaliacaoVo $avaliacaoVo){

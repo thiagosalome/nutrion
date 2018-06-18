@@ -1,11 +1,13 @@
 <?php
+
+
 class avaliacaoModel
 {
     public function create(avaliacaoVo $avaliacaoVo)
     {
-        $data = explode("-",$avaliacaoVo->getData_aval());
+        $data = explode("-",$avaliacaoVo->getDataAval());
         
-        if (empty($avaliacaoVo->getData_aval())) 
+        if (empty($avaliacaoVo->getDataAval())) 
         {
             return json::generate("Conflito", "409", "A data está em branco", null);            
         }
@@ -13,15 +15,14 @@ class avaliacaoModel
         {
             return json::generate("Conflito", "409", "A data digitada é inválida", null);  
         }
-        
         else{
-                $avaliacaoDAO = new avaliacaoDAO();
-                $insert = $avaliacaoDAO->insert($avaliacaoVo);
+            $avaliacaoDAO = new avaliacaoDAO();
+            $insert = $avaliacaoDAO->insert($avaliacaoVo);
 
-                if(is_object($insert)){
-                    $insert_array = (array) $insert;
-                    return json::generate("OK", "200", "Avaliação cadastrada com sucesso", $insert_array);
-                }
+            if(is_object($insert)){
+                $insert_array = (array) $insert;
+                return json::generate("OK", "200", "Avaliação cadastrada com sucesso", $insert_array);
+            }
         } 
     }
 

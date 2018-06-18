@@ -55,6 +55,10 @@ class InfoFisicas
      */
     public $paciente;
 
+    /**
+     * @OneToMany(targetEntity="Avaliacao", mappedBy="infoFisicas", orphanRemoval=true, cascade={"persist", "remove"})
+     */
+    public $avaliacao;
 
     public function getId()
     {
