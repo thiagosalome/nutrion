@@ -75,15 +75,17 @@ class avaliacaoDAO{
 
     }
 
-    public function getId($id){
-        require "app/bootstrap.php";        
-        try{
-            $avaliacao = $entityManager->getRepository("Avaliacao")->findOneBy(array("Id" => $id));            
-            return $avaliacao;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+    public function getAll($idInfoFisicas) {
+        require "app/bootstrap.php";
+        $infoFisica = $entityManager->find("InfoFisicas", $idInfoFisicas);
+        $avaliacoes = $infoFisica->getAvaliacoes();       
+        return $avaliacoes;
+    }
+
+    public function getById($idAvaliacao){
+        require "app/bootstrap.php";
+        $avaliacao = $entityManager->find("Avaliacao", $idAvaliacao);
+        return $avaliacao;
     }
 }
 ?>

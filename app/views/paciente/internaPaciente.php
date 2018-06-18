@@ -83,18 +83,25 @@
             </div>
             <div class="dashboard-patient-tab menu-tabs">
                 <ul>
-                    <li class="patient-tab-item js-patient-tab" data-tab="dados-fisicos">Dados Físicos</li>
-                    <li class="patient-tab-item js-patient-tab active" data-tab="adicionar-fisico">Adicionar Físico</li>
+                    <li class="patient-tab-item js-patient-tab active" data-tab="dados-fisicos">Dados Físicos</li>
+                    <li class="patient-tab-item js-patient-tab" data-tab="adicionar-fisico">Adicionar Físico</li>
                     <li class="patient-tab-item js-patient-tab" data-tab="historico">Histórico</li>
                 </ul>
             </div>
-            <div class="dashboard-statistics dashboard-patient-content js-patient-content" data-content="dados-fisicos">
+            <div class="dashboard-statistics dashboard-patient-content js-patient-content active" data-content="dados-fisicos">
+                <?php
+                    require "app/models/infofisicas/infofisicasDAO.php";
+                    $infoFisicasDAO = new infofisicasDAO();
+                    $infoFisica = $infoFisicasDAO->getAll($paciente->getId());
+                    $qtdInfoFisica = count($infoFisica);
+                    $ultimaInfoFisica = $infoFisica[$qtdInfoFisica - 1];
+                ?>
                 <div class="statistics-item">
                     <div class="statistics-item-image-blue">
                         <img src="<?php echo HOME_URI; ?>app/public/images/paciente/altura_icon.png" alt="Altura" title="Altura" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>1,75 m</span>
+                        <span><?= $ultimaInfoFisica->altura ?> m</span>
                         <p>Altura</p>
                     </div>
                 </div>
@@ -103,7 +110,7 @@
                         <img src="<?php echo HOME_URI; ?>app/public/images/paciente/peso_icon.png" alt="Peso" title="Peso" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>70 kg</span>
+                        <span><?= $ultimaInfoFisica->peso ?> kg</span>
                         <p>Peso</p>
                     </div>
                 </div>
@@ -112,7 +119,7 @@
                         <img src="<?php echo HOME_URI; ?>app/public/images/paciente/imc_icon.png" alt="Imc" title="Imc" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>22,9</span>
+                        <span><?= $ultimaInfoFisica->imc ?></span>
                         <p>IMC</p>
                     </div>
                 </div>
@@ -121,7 +128,7 @@
                         <img src="<?php echo HOME_URI; ?>app/public/images/paciente/cintura_icon.png" alt="Cintura" title="Cintura" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>75 cm</span>
+                        <span><?= $ultimaInfoFisica->cintura ?> cm</span>
                         <p>Cintura</p>
                     </div>
                 </div>
@@ -130,7 +137,7 @@
                         <img src="<?php echo HOME_URI; ?>app/public/images/paciente/quadril_icon.png" alt="Quadril" title="Quadril" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>70 cm</span>
+                        <span><?= $ultimaInfoFisica->quadril ?> cm</span>
                         <p>Quadril</p>
                     </div>
                 </div>
@@ -139,7 +146,7 @@
                         <img src="<?php echo HOME_URI; ?>app/public/images/paciente/icq_icon.png" alt="Icq" title="Icq" class="person-blue">
                     </div>
                     <div class="statistics-item-description">
-                        <span>22,9</span>
+                        <span><?= $ultimaInfoFisica->icq ?></span>
                         <p>ICQ</p>
                     </div>
                 </div>
@@ -149,20 +156,20 @@
                     </div>
                     <div class="statistics-item-description">
                         <span>IPAQ</span>
-                        <p>Muito Ativo</p>
+                        <p><?= $ultimaInfoFisica->classificacaoIPAQ ?></p>
                     </div>
                 </div>
             </div>
-            <div class="dashboard-form dashboard-patient-content js-patient-content active" data-content="adicionar-fisico">
+            <div class="dashboard-form dashboard-patient-content js-patient-content" data-content="adicionar-fisico">
                 <form role="form" class="largewidth largeww js-form-addInfoFisicas" action="<?php echo HOME_URI; ?>API/infofisicas/">
                     <input type="hidden" name="id_paciente" value="<?= $paciente->getId(); ?>">
                     <h3 class="formheader form-intern">Adicionar Físico</h3>
                     <div class="row">
                         <div class="text-left  col-sm-4 col-intern form-group">
-                            <input type="number" step="0.001" class="form-control input-default js-altura" name="altura" placeholder="Altura">
+                            <input type="number" step="0.001" class="form-control input-default js-altura" name="altura" placeholder="Altura (m)">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-peso" name="peso" placeholder="Peso">
+                            <input type="number" step="0.001" class="form-control input-default js-peso" name="peso" placeholder="Peso (kg)">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
                             <input type="number" step="0.001" class="form-control input-default js-imc" name="imc" placeholder="IMC">
@@ -170,10 +177,10 @@
                     </div>
                     <div class="row">
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura">
+                            <input type="number" step="0.001" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura (cm)">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril">
+                            <input type="number" step="0.001" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril (cm)">
                         </div>
                         <div class="text-left col-sm-4 col-intern form-group ">
                             <input type="number" step="0.001" class="form-control input-default js-icq" name="icq" placeholder="ICQ">

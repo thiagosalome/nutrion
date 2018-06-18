@@ -19,10 +19,10 @@ class avaliacaoModel
             $avaliacaoDAO = new avaliacaoDAO();
             $insert = $avaliacaoDAO->insert($avaliacaoVo);
 
-            if(is_object($insert)){
+            /*if(is_object($insert)){
                 $insert_array = (array) $insert;
                 return json::generate("OK", "200", "Avaliação cadastrada com sucesso", $insert_array);
-            }
+            }*/
         } 
     }
 
@@ -59,6 +59,33 @@ class avaliacaoModel
         }
         else{
             return json::generate("Conflito", "409", "Não é possível deletar uma avaliação inexistente.", null);
+        }
+    }
+
+    public function getAll($idInfoFisica){
+        $avaliacaoDAO = new avaliacaoDAO();  
+        $avaliacoes = $avaliacaoDAO->getAll($idInfoFisica);
+        $avaliacoes_array = array();
+        $avaliacao = array();
+        
+        for($i = 0; $i < count($avaliacoes); $i++){
+            $avaliacao["id"] = $avaliacoes[$i]->getId();
+            $avaliacao["data"] = $avaliacoes[$i]->getDataAval();
+
+            $avaliacoes_array[$i] = $avaliacao;
+        }
+        return json::generate("OK", "200", "Avaliações dessa informação física", $pacientes_array);
+    }
+
+    public function getById($id){
+        $avaliacaoDAO = new avaliacaoDAO();  
+        $avaliacao = $avaliacaoDAO->getById($id);
+        if($avaliacao != null){
+            $avaliacao_array = (array) $avaliacao;
+            return json::generate("OK", "200", "Avaliação encontrada", $avaliacao_array);
+        }
+        else{
+            return json::generate("OK", "200", "Avaliação não encontrada", $avaliacao);
         }
     }
 }
