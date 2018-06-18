@@ -52,29 +52,31 @@
                     <h1 class="header-title">Adicionar Dieta</h1>
                 </div>
             </header>
-            <div class="dashboard-statistics">
-                <?php include __DIR__ . "/../objects/statistics.php"; ?>
-            </div>
-            <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addDiet" action="<?php echo HOME_URI ?>API/dieta">
-                    <h3 class="formheader">Adicionar Dieta</h3>
-                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <select name="nome_paciente" class="form-control input-default">
-                                <option value="">Nome do paciente</option>
-                                <option value="nomea">Buscar nomes no banco</option>
-                            </select>
-                            <i class="glyphicon glyphicon-chevron-down "></i>
-                        </div>
-                            <div class="form-group text-center" style="margin-bottom: 0px;">
-                                <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
+            <div class="dashboard-content">
+                <div class="dashboard-statistics">
+                    <?php include __DIR__ . "/../objects/statistics.php"; ?>
+                </div>
+                <div class="dashboard-form">
+                    <form role="form" class="largewidth js-form-addDiet" action="<?php echo HOME_URI ?>API/dieta">
+                        <h3 class="formheader">Adicionar Dieta</h3>
+                        <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <select name="nome_paciente" class="form-control input-default">
+                                    <option value="">Nome do paciente</option>
+                                    <option value="nomea">Buscar nomes no banco</option>
+                                </select>
+                                <i class="glyphicon glyphicon-chevron-down "></i>
                             </div>
+                                <div class="form-group text-center" style="margin-bottom: 0px;">
+                                    <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
+                                </div>
+                        </div>
+                    </form>
+                    <div class="response">
+                        <p class='response-message js-message'></p>
+                        <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
                     </div>
-                </form>
-                <div class="response">
-                    <p class='response-message js-message'></p>
-                    <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
                 </div>
             </div>
         </section>       

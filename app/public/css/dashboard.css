@@ -15,17 +15,29 @@
     padding: 0;
 }
 
+body{
+    overflow: hidden;
+}
+
 .main-dashboard {
     display: flex;
 }
 
 .dashboard{
     position: relative;
-    background-color: #efefef;
     width: calc(100% - 255px);
     padding-bottom: 40px;
 }
-     
+
+.dashboard-content{
+    background-color: #efefef;
+    /* padding: 20px 0; */
+    /* height: 100vh; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 132px);
+}
+
 .dashboard-table, .dashboard-form, .dashboard-statistics{
     padding: 0 30px;
 }

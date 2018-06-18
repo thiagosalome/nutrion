@@ -53,23 +53,25 @@
                     <h1 class="header-title">Relatórios</h1>
                 </div>
             </header>
-            <div class="dashboard-reports">
-                <h2 class="reports-title">
-                    Gerar <span>Relatórios</span>
-                </h2>
-                <form role="form" method="POST" class="largewidth reports-form js-report-generate" action="<?php echo HOME_URI ?>relatorio/gerar">
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <select name="relatorio" class="form-control input-default">
-                                <option value="pacientes">Pacientes</option>
-                                <option value="alimentos">Alimentos</option>
-                                <option value="dietas">Dietas</option>
-                            </select>
-                            <i class="glyphicon glyphicon-chevron-down "></i> 
+            <div class="dashboard-content">
+                <div class="dashboard-reports">
+                    <h2 class="reports-title">
+                        Gerar <span>Relatórios</span>
+                    </h2>
+                    <form role="form" method="POST" class="largewidth reports-form js-report-generate" action="<?php echo HOME_URI ?>relatorio/gerar">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <select name="relatorio" class="form-control input-default">
+                                    <option value="pacientes">Pacientes</option>
+                                    <option value="alimentos">Alimentos</option>
+                                    <option value="dietas">Dietas</option>
+                                </select>
+                                <i class="glyphicon glyphicon-chevron-down "></i> 
+                            </div>
+                            <button class="btn btn-default col-md-3" style="float:inherit" name="generate_report" type="submit">Gerar</button>
                         </div>
-                        <button class="btn btn-default col-md-3" style="float:inherit" name="generate_report" type="submit">Gerar</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </section>
     </main>

@@ -20,7 +20,7 @@ app.loadModules = (function(jQuery){
             require("utilities/message");
             require("elements/menu");
             require("elements/tooltip");
-            require("elements/screen");
+            // require("elements/screen");
             require("entities/nutricionista");
 
             app.menu.init();

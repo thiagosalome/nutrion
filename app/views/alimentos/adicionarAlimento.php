@@ -52,52 +52,54 @@
                     <h1 class="header-title">Adicionar Alimento</h1>
                 </div>
             </header>
-            <div class="dashboard-statistics">
-                <?php include __DIR__ . "/../objects/statistics.php"; ?>
-            </div>
-            <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addAliment" action="<?php echo HOME_URI ?>API/alimento">
-                    <h3 class="formheader">Adicionar Alimento</h3>
-                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
-                    <div class="row">
-                        <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
+            <div class="dashboard-content">
+                <div class="dashboard-statistics">
+                    <?php include __DIR__ . "/../objects/statistics.php"; ?>
+                </div>
+                <div class="dashboard-form">
+                    <form role="form" class="largewidth js-form-addAliment" action="<?php echo HOME_URI ?>API/alimento">
+                        <h3 class="formheader">Adicionar Alimento</h3>
+                        <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
+                        <div class="row">
+                            <div class="text-left col-sm-6 form-group has-feedback">
+                                <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
+                            </div>
+                            <div class="text-left col-sm-6 form-group has-feedback">
+                                <input type="text" class="form-control input-default" name="medida" placeholder="Medida">
+                            </div>
                         </div>
-                        <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="medida" placeholder="Medida">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <select name="tipo_proteina" class="form-control input-default">
+                                    <option value="">Tipo de Proteína</option>
+                                    <option value="Vegetal">Vegetal</option>
+                                    <option value="Animal">Animal</option>
+                                </select>
+                                <i class="glyphicon glyphicon-chevron-down "></i>
+                            </div>
+                            <div class="text-left col-sm-6 form-group has-feedback">
+                                <input type="number" step="0.001" class="form-control input-default" name="proteina" placeholder="Proteína">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <select name="tipo_proteina" class="form-control input-default">
-                                <option value="">Tipo de Proteína</option>
-                                <option value="Vegetal">Vegetal</option>
-                                <option value="Animal">Animal</option>
-                            </select>
-                            <i class="glyphicon glyphicon-chevron-down "></i>
-                        </div>
-                        <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="number" step="0.001" class="form-control input-default" name="proteina" placeholder="Proteína">
-                        </div>
-                    </div>
-                    <div class="row">
-                    <div class="text-left col-sm-4 form-group has-feedback">
-                            <input type="number" step="0.001" class="form-control input-default" name="carboidrato" placeholder="Carboidratos">
-                        </div>
+                        <div class="row">
                         <div class="text-left col-sm-4 form-group has-feedback">
-                            <input type="number" step="0.001" class="form-control input-default" name="gordura" placeholder="Gorduras">
+                                <input type="number" step="0.001" class="form-control input-default" name="carboidrato" placeholder="Carboidratos">
+                            </div>
+                            <div class="text-left col-sm-4 form-group has-feedback">
+                                <input type="number" step="0.001" class="form-control input-default" name="gordura" placeholder="Gorduras">
+                            </div>
+                            <div class="text-left col-sm-4 form-group has-feedback">
+                                <input type="number" step="0.001" class="form-control input-default" name="caloria" placeholder="Calorias">
+                            </div>
                         </div>
-                        <div class="text-left col-sm-4 form-group has-feedback">
-                            <input type="number" step="0.001" class="form-control input-default" name="caloria" placeholder="Calorias">
+                        <div class="form-group text-center" style="margin-bottom: 0px;">
+                            <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
                         </div>
+                    </form>
+                    <div class="response">
+                        <p class='response-message js-message'></p>
+                        <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
                     </div>
-                    <div class="form-group text-center" style="margin-bottom: 0px;">
-                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
-                    </div>
-                </form>
-                <div class="response">
-                    <p class='response-message js-message'></p>
-                    <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
                 </div>
             </div>
         </section>       
