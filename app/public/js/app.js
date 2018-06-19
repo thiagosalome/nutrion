@@ -20,7 +20,7 @@ app.loadModules = (function(jQuery){
             require("utilities/message");
             require("elements/menu");
             require("elements/tooltip");
-            require("elements/screen");
+            // require("elements/screen");
             require("entities/nutricionista");
 
             app.menu.init();
@@ -39,7 +39,14 @@ app.loadModules = (function(jQuery){
                 require("entities/alimentos");
                 app.alimentos.init();
             }
-            app.screen.verify();
+            else if(location.href.indexOf("dieta") != -1){
+                require("elements/tab");
+                require("entities/dietas");
+                require("entities/refeicoes");
+                app.tab.execute();
+                app.dietas.init();
+                app.refeicoes.init();
+            }
         }
     };
 

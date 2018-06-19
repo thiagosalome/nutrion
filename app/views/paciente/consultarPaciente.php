@@ -52,44 +52,62 @@
                     <h1 class="header-title">Consultar Pacientes</h1>
                 </div>
             </header>
-            <div class="dashboard-statistics">
-                <?php include __DIR__ . "/../objects/statistics.php"; ?>
-            </div>
-            <div class="dashboard-table">
-                <div class="table-wrapper table-responsive">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Todos os <b>Pacientes</b></h2>
+            <div class="dashboard-content">
+                <div class="dashboard-statistics">
+                    <?php include __DIR__ . "/../objects/statistics.php"; ?>
+                </div>
+                <div class="dashboard-table">
+                    <div class="table-wrapper table-responsive">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>Todos os <b>Pacientes</b></h2>
+                                </div>
                             </div>
                         </div>
+                        <table class="js-table-patient table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Telefone</th>
+                                    <th>CPF</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    // $pacientes = $pacienteDAO->getAll($_SESSION["id_nutricionista"]);
+
+                                    for($i = 0; $i < count($pacientes); $i++){
+                                        ?>
+                                        <tr>
+                                            <td><?= $pacientes[$i]->getNome(); ?></td>
+                                            <td><?= $pacientes[$i]->getEmail(); ?></td>
+                                            <td><?= $pacientes[$i]->getTelefone(); ?></td>
+                                            <td><?= $pacientes[$i]->getCpf(); ?></td>
+                                            <td>
+                                                <a href='<?= HOME_URI . "paciente/interna/" . $pacientes[$i]->getId(); ?>' class='view'><i class='material-icons' data-toggle='tooltip' title='Visualizar'>visibility</i></a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                        <!-- <div class="clearfix">
+                            <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
+                            <ul class="pagination">
+                                <li class="page-item disabled"><a href="#">Anterior</a></li>
+                                <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
+                            </ul>
+                        </div> -->
                     </div>
-                    <table class="js-table-patient table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Telefone</th>
-                                <th>CPF</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           
-                        </tbody>
-                    </table>
-                    <!-- <div class="clearfix">
-                        <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Anterior</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
         </section>       

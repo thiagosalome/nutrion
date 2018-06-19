@@ -36,7 +36,15 @@
         margin-bottom: 10px;
     }
 
-    .patient-header-icon:hover{
+    .patient-header-icon-add{
+        color: #9D2F4C;
+        font-size: 25px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .patient-header-icon:hover, .patient-header-icon-add:hover{
         cursor: pointer;
     }
 

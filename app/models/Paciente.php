@@ -56,7 +56,7 @@ class Paciente{
     /**
      * @OneToMany(targetEntity="Dieta", mappedBy="paciente", orphanRemoval=true, cascade={"persist", "remove"})
      */
-    public $dietas; 
+    public $dietas;
 
 
     public function getId()

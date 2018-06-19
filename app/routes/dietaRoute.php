@@ -8,4 +8,8 @@ class dietaRoute{
     public function adicionar(){
         include "app/views/dieta/adicionarDieta.php";
     }
+    
+    public function interna(){
+        include "app/views/dieta/internaDieta.php";
+    }
 }

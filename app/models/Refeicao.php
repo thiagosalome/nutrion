@@ -73,5 +73,16 @@ class Refeicao
         $this->dieta = $dieta;
         return $this;
     }
+
+    public function getItensRefeicao()
+    {
+        return $this->itensrefeicao;
+    }
+
+    public function setItensRefeicao($itensrefeicao)
+    {
+        $this->itensrefeicao = $itensrefeicao;
+        return $this;
+    }
 }
 ?>

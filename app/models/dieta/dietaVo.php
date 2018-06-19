@@ -1,5 +1,5 @@
 <?php
-class DietaVo{
+class dietaVo{
     private $id;
     private $paciente;
     private $data;
@@ -16,23 +16,23 @@ class DietaVo{
         return $this;
     }
 
-    public function getpaciente()
+    public function getPaciente()
     {
         return $this->paciente;
     }
     
-    public function setpaciente($paciente)
+    public function setPaciente($paciente)
     {
         $this->paciente = $paciente;
         return $this;
     }
 
-    public function getdata()
+    public function getData()
     {
         return $this->data;
     }
     
-    public function setdata($data)
+    public function setData($data)
     {
         $this->data = $data;
         return $this;

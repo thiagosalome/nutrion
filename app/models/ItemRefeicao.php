@@ -2,48 +2,46 @@
 
 /**
  * @Entity
- * @Table(name="tb_itemRefeicao")
+ * @Table(name="tb_itemrefeicao")
  * 
  */
 class ItemRefeicao
 {
-    /**
-     * @Id
-     * @GeneratedValue(strategy="AUTO")
-     * @Column(type="integer", name="id")
-     */
-    public $idRefeicao;
+    /** @Id @ManyToOne(targetEntity="Refeicao", inversedBy="itensrefeicao") 
+    * @Column(type="integer", name="id_refeicao")
+    */
+    public $refeicao;
+
+    /** @Id @ManyToOne(targetEntity="Alimento", inversedBy="itensrefeicao") 
+    * @Column(type="integer", name="id_alimento")
+    */
+    public $alimento;
 
     /**
-     * @Column(type="string", name="nome")
-     */
-    public $idAlimento;
-
-    /**
-     * @Column(type="string", name="horario")
+     * @Column(type="string", name="quantidade")
      */
     public $quantidade;
 
 
-    public function getIdRefeicao()
+    public function getRefeicao()
     {
-        return $this->idRefeicao;
+        return $this->refeicao;
     }
 
-    public function setIdRefeicao($idRefeicao)
+    public function setRefeicao($refeicao)
     {
-        $this->idRefeicao = $idRefeicao;
+        $this->refeicao = $refeicao;
         return $this;
     }
 
-    public function getIdAlimento()
+    public function getAlimento()
     {
-        return $this->idAlimento;
+        return $this->alimento;
     }
 
-    public function setIdAlimento($idAlimento)
+    public function setAlimento($alimento)
     {
-        $this->idAlimento = $idAlimento;
+        $this->alimento = $alimento;
         return $this;
     }
 

@@ -52,47 +52,69 @@
                     <h1 class="header-title">Consultar Alimentos</h1>
                 </div>
             </header>
-            <div class="dashboard-statistics">
-                <?php include __DIR__ . "/../objects/statistics.php"; ?>
-            </div>
-            <div class="dashboard-table">
-                <div class="table-wrapper table-responsive">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Todos os <b>Alimentos</b></h2>
+            <div class="dashboard-content">
+                <div class="dashboard-statistics">
+                    <?php include __DIR__ . "/../objects/statistics.php"; ?>
+                </div>
+                <div class="dashboard-table">
+                    <div class="table-wrapper table-responsive">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>Todos os <b>Alimentos</b></h2>
+                                </div>
                             </div>
                         </div>
+                        <table class="js-table-aliment table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Medida</th>
+                                    <th>Tipo de Proteína</th>
+                                    <th>Proteína</th>
+                                    <th>Carboidratos</th>
+                                    <th>Gorduras</th>
+                                    <th>Calorias</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>                        
+                            <tbody>
+                                <?php
+                                    $alimentos = $alimentoDAO->getAll($_SESSION["id_nutricionista"]);
+
+                                    for($i = 0; $i < count($alimentos); $i++){
+                                        ?>
+                                        <tr>
+                                            <td data-item='nome'><?= $alimentos[$i]->getNome(); ?></td>
+                                            <td data-item='medida'><?= $alimentos[$i]->getMedida(); ?></td>
+                                            <td data-item='tipo_proteina'><?= $alimentos[$i]->getTipoProteina(); ?></td>
+                                            <td data-item='proteina'><?= $alimentos[$i]->getProteina(); ?></td>
+                                            <td data-item='carboidrato'><?= $alimentos[$i]->getCarboidrato(); ?></td>
+                                            <td data-item='gordura'><?= $alimentos[$i]->getGordura(); ?></td>
+                                            <td data-item='caloria'><?= $alimentos[$i]->getCaloria(); ?></td>
+                                            <td data-item='id_alimento'>
+                                                <a href="" data-id="<?= $alimentos[$i]->getId(); ?>" class='js-aliment-click-update' data-toggle='modal' data-target='#modal-update-aliment'><i class='material-icons' data-toggle='tooltip' title='Editar'>mode_edit</i></a>
+                                                <a href="" data-id="<?= $alimentos[$i]->getId(); ?>" class='js-aliment-click-delete' data-toggle='modal' data-target='#modal-delete-aliment'><i class='material-icons' data-toggle='tooltip' title='Apagar'>delete</i></a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                        <!-- <div class="clearfix">
+                            <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
+                            <ul class="pagination">
+                                <li class="page-item disabled"><a href="#">Anterior</a></li>
+                                <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
+                            </ul>
+                        </div> -->
                     </div>
-                    <table class="js-table-aliment table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Medida</th>
-                                <th>Tipo de Proteína</th>
-                                <th>Proteína</th>
-                                <th>Carboidratos</th>
-                                <th>Gorduras</th>
-                                <th>Calorias</th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>                        
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
-                    <!-- <div class="clearfix">
-                        <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Anterior</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
         </section>       

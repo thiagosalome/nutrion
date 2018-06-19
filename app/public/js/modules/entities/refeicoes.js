@@ -1,37 +1,45 @@
 var app = app || {};
 
-app.pacientes = (function(){
-    var addPatient = jQuery(".js-form-addPatient");
-    var deletePatient = jQuery(".js-form-deletePatient");
-    var updatePatient = jQuery(".js-form-updatePatient");
-    
+app.refeicoes = (function(){
+    var addMeal = jQuery(".js-form-addMeal");
+    var deleteMeal = jQuery(".js-form-deleteMeal");
+    var updateMeal = jQuery(".js-form-updateMeal");
+    // var mealItem = jQuery(".js-meal-item");
+    // var addMealItem = jQuery(".js-add-meal-item");
+
     function init(){
-        addPatient.on("submit", function(e){
+        addMeal.on("submit", function(e){
             app.ajax.post(e, function(response){
-                app.message.show(response.message);
-                if(response.message.indexOf("sucesso") != -1){
-                    location = app.loadModules.getHomeUri() + "/paciente/consultar"
-                }
-            });
-        });
-    
-        deletePatient.on("submit", function(e){
-            app.ajax.delete(e, function(response){
-                app.message.show(response.message);
-                if(response.message.indexOf("sucesso") != -1){
-                    location = app.loadModules.getHomeUri() + "/paciente/consultar"
-                }
-            });
-        });
-    
-        updatePatient.on("submit", function(e){
-            app.ajax.put(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){
                     location.reload();
                 }
             });
         });
+    
+        deleteMeal.on("submit", function(e){
+            app.ajax.delete(e, function(response){
+                app.message.show(response.message);
+                if(response.message.indexOf("sucesso") != -1){
+                    location.reload();
+                }
+            });
+        });
+
+        // addMealItem.on("click", function(){
+        jQuery(document).on("click", ".js-add-meal-item", function(){
+            var newItem = jQuery(this).closest(".js-meal-item").clone();
+            jQuery(this).closest(".js-meal-item").after(newItem);
+        });
+
+        /*updateMeal.on("submit", function(e){
+            app.ajax.put(e, function(response){
+                app.message.show(response.message);
+                if(response.message.indexOf("sucesso") != -1){
+                    location.reload();
+                }
+            });
+        });*/
     
         /*if(location.href.indexOf("paciente/consultar") != -1){
             var idNutricionista = app.nutricionista.getId();

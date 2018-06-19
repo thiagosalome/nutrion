@@ -1,18 +1,17 @@
 <?php
 class itemRefeicaoVo{
-    private $id;
+    private $refeicao;
     private $alimento;
     private $quantidade;
 
-    public function getId()
+    public function getRefeicao()
     {
-        return $this->id;
+        return $this->refeicao;
     }
     
-    public function setId($id)
+    public function setRefeicao($refeicao)
     {
-        $this->id = $id;
-
+        $this->refeicao = $refeicao;
         return $this;
     }
 

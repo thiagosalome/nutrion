@@ -8,7 +8,7 @@ class refeicaoModel{
             $refeicaoDAO = new refeicaoDAO;
             $create = $refeicaoDAO->create($refeicaoVo);
             if(is_object($create)){
-                $insert_array = (array) $insert;
+                $insert_array = (array) $create;
                 return json::generate("OK", "200", "Refeição cadastrada com sucesso", $insert_array);
             }
         }

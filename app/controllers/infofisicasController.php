@@ -20,9 +20,20 @@ class infofisicasController{
             $infofisicasVo->setIdPaciente($_POST["id_paciente"]);
     
             $infoFisicasModel = new infofisicasModel();
-            $create = $infoFisicasModel->create($infofisicasVo);
+            $create = json_decode($infoFisicasModel->create($infofisicasVo));
     
-            echo $create;   
+            if(strpos($create->message, "sucesso") !== false){
+                // Necessário cadastrar Avaliação aqui, passando o id da infofísica e a data
+                $params = array(
+                    "infoFisica" => $create->result->id,
+                    "data" => date("Y-m-d")
+                );
+                
+                require "app/controllers/avaliacaoController.php";
+                $avaliacaoController = new avaliacaoController();
+                $avaliacaoController->create($params);                
+            }
+            echo json_encode($create);   
         }
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);

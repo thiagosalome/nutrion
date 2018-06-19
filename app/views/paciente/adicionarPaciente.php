@@ -52,50 +52,52 @@
                     <h1 class="header-title">Adicionar Paciente</h1>
                 </div>
             </header>
-            <div class="dashboard-statistics">
-                <?php include __DIR__ . "/../objects/statistics.php"; ?>
-            </div>
-            <div class="dashboard-form">
-                <form role="form" class="largewidth js-form-addPatient" action="<?php echo HOME_URI; ?>API/paciente">
-                    <h3 class="formheader">Adicionar Paciente</h3>
-                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
-                    <div class="row">
-                        <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
-                            <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
+            <div class="dashboard-content">
+                <div class="dashboard-statistics">
+                    <?php include __DIR__ . "/../objects/statistics.php"; ?>
+                </div>
+                <div class="dashboard-form">
+                    <form role="form" class="largewidth js-form-addPatient" action="<?php echo HOME_URI; ?>API/paciente">
+                        <h3 class="formheader">Adicionar Paciente</h3>
+                        <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
+                        <div class="row">
+                            <div class="text-left col-sm-6 form-group has-feedback">
+                                <input type="text" class="form-control input-default" name="nome" placeholder="Nome">
+                                <i class="glyphicon glyphicon-user form-control-feedback glyphiconalign"></i> 
+                            </div>
+                            <div class="text-left col-sm-6 form-group has-feedback">
+                                <input type="tel" class="form-control input-default" name="telefone" placeholder="Telefone">
+                                <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
+                            </div>
                         </div>
-                        <div class="text-left col-sm-6 form-group has-feedback">
-                            <input type="tel" class="form-control input-default" name="telefone" placeholder="Telefone">
-                            <i class="glyphicon glyphicon-earphone form-control-feedback glyphiconalign"></i> 
+                        <div class="form-group has-feedback">
+                            <input type="email" class="form-control input-default" name="email" placeholder="Email">
+                            <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
                         </div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="email" class="form-control input-default" name="email" placeholder="Email">
-                        <i class="glyphicon glyphicon-envelope form-control-feedback"></i> 
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <select name="sexo" class="form-control input-default">
-                                <option value="">Sexo</option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Feminino</option>
-                            </select>
-                            <i class="glyphicon glyphicon-chevron-down "></i> 
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <select name="sexo" class="form-control input-default">
+                                    <option value="">Sexo</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                                <i class="glyphicon glyphicon-chevron-down "></i> 
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <input type="date" class="form-control input-default" name="nascimento" placeholder="Data de nascimento : DD/MM/YY">
+                            </div>
                         </div>
-                        <div class="col-sm-6 form-group">
-                            <input type="date" class="form-control input-default" name="nascimento" placeholder="Data de nascimento : DD/MM/YY">
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control input-default" name="cpf" placeholder="CPF">
                         </div>
+                        <div class="form-group text-center" style="margin-bottom: 0px;">
+                            <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
+                        </div>
+                    </form>
+                    <div class="response">
+                        <p class='response-message js-message'></p>
+                        <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
                     </div>
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control input-default" name="cpf" placeholder="CPF">
-                    </div>
-                    <div class="form-group text-center" style="margin-bottom: 0px;">
-                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
-                    </div>
-                </form>
-                <div class="response">
-                    <p class='response-message js-message'></p>
-                    <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
                 </div>
             </div>
         </section>       

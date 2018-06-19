@@ -59,243 +59,225 @@
                     <h1 class="header-title">Paciente</h1>
                 </div>
             </header>
-            <div class="dashboard-patient-header">
-                <div class="patient-header-item patient-header-perfil">
-                    <input type="hidden" class="id-patient" value="<?= $_GET["id"] ?>">
-                    <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil-<?php if($paciente->getSexo() == "F"){ echo "feminino"; }else{ echo "masculino"; } ?>.png" alt="" title="" class="header-logo">
-                </div>
-                <div class="patient-header-item">   
-                    <h1 class="patient-header-title"><?= $paciente->getNome(); ?></h1>
-                    <p><span class="red-label">Email: </span><?= $paciente->getEmail(); ?></p>
-                </div>
-                <div class="patient-header-item">
-                    <p><span class="red-label">Sexo: </span><?php if($paciente->getSexo() == "F"){ echo "Feminino"; }else{ echo "Masculino"; } ?></p>   
-                    <p><span class="red-label">Nascimento: </span><?= date_format($paciente->getDataNasc(), 'd/m/Y'); ?></p>
-                </div>
-                <div class="patient-header-item">
-                    <p><span class="red-label">Telefone: </span><?= $paciente->getTelefone(); ?></p>
-                    <p><span class="red-label">CPF: </span><?= $paciente->getCPF(); ?></p>
-                </div>
-                <div class="patient-header-item">
-                    <div class="patient-header-icon" data-toggle="modal" data-target="#modal-update-patient"><i class="material-icons" data-toggle="tooltip" title="Edit">mode_edit</i></div>
-                    <div class="patient-header-icon" data-toggle="modal" data-target="#modal-delete-patient"><i class="material-icons" data-toggle="tooltip" title="Delete">delete</i></div>
-                </div>
-            </div>
-            <div class="dashboard-patient-tab menu-tabs">
-                <ul>
-                    <li class="patient-tab-item js-patient-tab" data-tab="dados-fisicos">Dados Físicos</li>
-                    <li class="patient-tab-item js-patient-tab active" data-tab="adicionar-fisico">Adicionar Físico</li>
-                    <li class="patient-tab-item js-patient-tab" data-tab="historico">Histórico</li>
-                </ul>
-            </div>
-            <div class="dashboard-statistics dashboard-patient-content js-patient-content" data-content="dados-fisicos">
-                <div class="statistics-item">
-                    <div class="statistics-item-image-blue">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/altura_icon.png" alt="Altura" title="Altura" class="person-blue">
+            <div class="dashboard-content">
+                <div class="dashboard-patient-header">
+                    <div class="patient-header-item patient-header-perfil">
+                        <input type="hidden" class="id-patient" value="<?= $_GET["id"] ?>">
+                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/perfil-<?php if($paciente->getSexo() == "F"){ echo "feminino"; }else{ echo "masculino"; } ?>.png" alt="" title="" class="header-logo">
                     </div>
-                    <div class="statistics-item-description">
-                        <span>1,75 m</span>
-                        <p>Altura</p>
+                    <div class="patient-header-item">   
+                        <h1 class="patient-header-title"><?= $paciente->getNome(); ?></h1>
+                        <p><span class="red-label">Email: </span><?= $paciente->getEmail(); ?></p>
+                    </div>
+                    <div class="patient-header-item">
+                        <p><span class="red-label">Sexo: </span><?php if($paciente->getSexo() == "F"){ echo "Feminino"; }else{ echo "Masculino"; } ?></p>   
+                        <p><span class="red-label">Nascimento: </span><?= date_format($paciente->getDataNasc(), 'd/m/Y'); ?></p>
+                    </div>
+                    <div class="patient-header-item">
+                        <p><span class="red-label">Telefone: </span><?= $paciente->getTelefone(); ?></p>
+                        <p><span class="red-label">CPF: </span><?= $paciente->getCPF(); ?></p>
+                    </div>
+                    <div class="patient-header-item">
+                        <div class="patient-header-icon" data-toggle="modal" data-target="#modal-update-patient"><i class="material-icons" data-toggle="tooltip" title="Edit">mode_edit</i></div>
+                        <div class="patient-header-icon" data-toggle="modal" data-target="#modal-delete-patient"><i class="material-icons" data-toggle="tooltip" title="Delete">delete</i></div>
                     </div>
                 </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-agua">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/peso_icon.png" alt="Peso" title="Peso" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>70 kg</span>
-                        <p>Peso</p>
-                    </div>
+                <div class="dashboard-patient-tab menu-tabs">
+                    <ul>
+                        <li class="patient-tab-item js-patient-tab active" data-tab="dados-fisicos">Dados Físicos</li>
+                        <li class="patient-tab-item js-patient-tab" data-tab="adicionar-fisico">Adicionar Físico</li>
+                        <li class="patient-tab-item js-patient-tab" data-tab="historico">Histórico</li>
+                    </ul>
                 </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-green">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/imc_icon.png" alt="Imc" title="Imc" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>22,9</span>
-                        <p>IMC</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-orange">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/cintura_icon.png" alt="Cintura" title="Cintura" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>75 cm</span>
-                        <p>Cintura</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-yellow">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/quadril_icon.png" alt="Quadril" title="Quadril" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>70 cm</span>
-                        <p>Quadril</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-redLight">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/icq_icon.png" alt="Icq" title="Icq" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>22,9</span>
-                        <p>ICQ</p>
-                    </div>
-                </div>
-                <div class="statistics-item">
-                    <div class="statistics-item-image-redDark">
-                        <img src="<?php echo HOME_URI; ?>app/public/images/paciente/ipaq_icon.png" alt="Ipaq" title="Ipaq" class="person-blue">
-                    </div>
-                    <div class="statistics-item-description">
-                        <span>IPAQ</span>
-                        <p>Muito Ativo</p>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-form dashboard-patient-content js-patient-content active" data-content="adicionar-fisico">
-                <form role="form" class="largewidth largeww js-form-addInfoFisicas" action="<?php echo HOME_URI; ?>API/infofisicas/">
-                    <input type="hidden" name="id_paciente" value="<?= $paciente->getId(); ?>">
-                    <h3 class="formheader form-intern">Adicionar Físico</h3>
-                    <div class="row">
-                        <div class="text-left  col-sm-4 col-intern form-group">
-                            <input type="number" step="0.001" class="form-control input-default js-altura" name="altura" placeholder="Altura">
+                <?php
+                    require "app/models/infofisicas/infofisicasDAO.php";
+                    $infoFisicasDAO = new infofisicasDAO();
+                    $infoFisica = $infoFisicasDAO->getAll($paciente->getId());
+                    $qtdInfoFisica = count($infoFisica);
+                    $ultimaInfoFisica = $infoFisica[$qtdInfoFisica - 1];
+                ?>
+                <div class="dashboard-statistics dashboard-patient-content js-patient-content active" data-content="dados-fisicos">
+                    <?php
+                        if(count($infoFisica) > 0){
+                            ?>
+                    <div class="statistics-item">
+                        <div class="statistics-item-image-blue">
+                            <img src="<?php echo HOME_URI; ?>app/public/images/paciente/altura_icon.png" alt="Altura" title="Altura" class="person-blue">
                         </div>
-                        <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-peso" name="peso" placeholder="Peso">
-                        </div>
-                        <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-imc" name="imc" placeholder="IMC">
+                        <div class="statistics-item-description">
+                            <span><?= $ultimaInfoFisica->getAltura() ?> m</span>
+                            <p>Altura</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura">
+                    <div class="statistics-item">
+                        <div class="statistics-item-image-agua">
+                            <img src="<?php echo HOME_URI; ?>app/public/images/paciente/peso_icon.png" alt="Peso" title="Peso" class="person-blue">
                         </div>
-                        <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril">
-                        </div>
-                        <div class="text-left col-sm-4 col-intern form-group ">
-                            <input type="number" step="0.001" class="form-control input-default js-icq" name="icq" placeholder="ICQ">
+                        <div class="statistics-item-description">
+                            <span><?= $ultimaInfoFisica->getPeso() ?> kg</span>
+                            <p>Peso</p>
                         </div>
                     </div>
-                    <div class="row">                    
-                        <div class=" text-left col-sm-12 form-group  ">
-                            <select name="classificacaoIPAQ" class="form-control input-default">
-                                <option value="">Classificação IPAQ</option>
-                                <option value="Sedentário">Sedentário</option>
-                                <option value="Irregularmente Ativo">Irregularmente Ativo</option>
-                                <option value="Ativo">Irregularmente Ativo</option>
-                                <option value="Muito Ativo">Irregularmente Ativo</option>
-                            </select>
-                            <i class="glyphicon glyphicon-chevron-down "></i>
+                    <div class="statistics-item">
+                        <div class="statistics-item-image-green">
+                            <img src="<?php echo HOME_URI; ?>app/public/images/paciente/imc_icon.png" alt="Imc" title="Imc" class="person-blue">
+                        </div>
+                        <div class="statistics-item-description">
+                            <span><?= $ultimaInfoFisica->getImc() ?></span>
+                            <p>IMC</p>
                         </div>
                     </div>
-                    <div class="form-group text-center" style="margin-bottom: 0px;">
-                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
+                    <div class="statistics-item">
+                        <div class="statistics-item-image-orange">
+                            <img src="<?php echo HOME_URI; ?>app/public/images/paciente/cintura_icon.png" alt="Cintura" title="Cintura" class="person-blue">
+                        </div>
+                        <div class="statistics-item-description">
+                            <span><?= $ultimaInfoFisica->getCintura() ?> cm</span>
+                            <p>Cintura</p>
+                        </div>
                     </div>
-                </form>
-                <div class="response">
-                    <p class='response-message js-message'></p>
-                    <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+                    <div class="statistics-item">
+                        <div class="statistics-item-image-yellow">
+                            <img src="<?php echo HOME_URI; ?>app/public/images/paciente/quadril_icon.png" alt="Quadril" title="Quadril" class="person-blue">
+                        </div>
+                        <div class="statistics-item-description">
+                            <span><?= $ultimaInfoFisica->getQuadril() ?> cm</span>
+                            <p>Quadril</p>
+                        </div>
+                    </div>
+                    <div class="statistics-item">
+                        <div class="statistics-item-image-redLight">
+                            <img src="<?php echo HOME_URI; ?>app/public/images/paciente/icq_icon.png" alt="Icq" title="Icq" class="person-blue">
+                        </div>
+                        <div class="statistics-item-description">
+                            <span><?= $ultimaInfoFisica->getIcq() ?></span>
+                            <p>ICQ</p>
+                        </div>
+                    </div>
+                    <div class="statistics-item">
+                        <div class="statistics-item-image-redDark">
+                            <img src="<?php echo HOME_URI; ?>app/public/images/paciente/ipaq_icon.png" alt="Ipaq" title="Ipaq" class="person-blue">
+                        </div>
+                        <div class="statistics-item-description">
+                            <span>IPAQ</span>
+                            <p><?= $ultimaInfoFisica->getClassificacaoIPAQ() ?></p>
+                        </div>
+                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
-            </div>
-            <div class="dashboard-table dashboard-patient-content js-patient-content" data-content="historico">
-                <div class="table-wrapper table-responsive">
-                    <div class="table-title">
+                <div class="dashboard-form dashboard-patient-content js-patient-content" data-content="adicionar-fisico">
+                    <form role="form" class="largewidth largeww js-form-addInfoFisicas" action="<?php echo HOME_URI; ?>API/infofisicas/">
+                        <input type="hidden" name="id_paciente" value="<?= $paciente->getId(); ?>">
+                        <h3 class="formheader form-intern">Adicionar Físico</h3>
                         <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Histórico do <b>Paciente</b></h2>
+                            <div class="text-left  col-sm-4 col-intern form-group">
+                                <input type="number" step="0.001" class="form-control input-default js-altura" name="altura" placeholder="Altura (m)">
+                            </div>
+                            <div class="text-left col-sm-4 col-intern form-group ">
+                                <input type="number" step="0.001" class="form-control input-default js-peso" name="peso" placeholder="Peso (kg)">
+                            </div>
+                            <div class="text-left col-sm-4 col-intern form-group ">
+                                <input type="number" step="0.001" class="form-control input-default js-imc" name="imc" placeholder="IMC">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="text-left col-sm-4 col-intern form-group ">
+                                <input type="number" step="0.001" class="form-control input-default js-cintura" name="cintura" placeholder="Cintura (cm)">
+                            </div>
+                            <div class="text-left col-sm-4 col-intern form-group ">
+                                <input type="number" step="0.001" class="form-control input-default js-quadril" name="quadril" placeholder="Quadril (cm)">
+                            </div>
+                            <div class="text-left col-sm-4 col-intern form-group ">
+                                <input type="number" step="0.001" class="form-control input-default js-icq" name="icq" placeholder="ICQ">
+                            </div>
+                        </div>
+                        <div class="row">                    
+                            <div class=" text-left col-sm-12 form-group  ">
+                                <select name="classificacaoIPAQ" class="form-control input-default">
+                                    <option value="">Classificação IPAQ</option>
+                                    <option value="Sedentário">Sedentário</option>
+                                    <option value="Irregularmente Ativo">Irregularmente Ativo</option>
+                                    <option value="Ativo">Irregularmente Ativo</option>
+                                    <option value="Muito Ativo">Irregularmente Ativo</option>
+                                </select>
+                                <i class="glyphicon glyphicon-chevron-down "></i>
+                            </div>
+                        </div>
+                        <div class="form-group text-center" style="margin-bottom: 0px;">
+                            <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Adicionar</button>
+                        </div>
+                    </form>
+                    <div class="response">
+                        <p class='response-message js-message'></p>
+                        <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
                     </div>
-                    <table class="table table-striped table-hover ">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Altura</th>
-                                <th>Peso</th>
-                                <th>IMC</th>
-                                <th>Cintura</th>
-                                <th>Quadril</th>
-                                <th>ICQ</th>
-                                <th>IPAQ</th>
-                                <th>Data de avaliação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>1,65 m</td>
-                                <td>75 kg</td>
-                                <td>22</td>
-                                <td>75 cm</td>
-                                <td>80 cm</td>
-                                <td>0.9 </td>
-                                <td>Muito ativo</td>
-                                <td>15/06/1986</td>                                
-                            </tr>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>1,65 m</td>
-                                <td>75 kg</td>
-                                <td>22</td>
-                                <td>75 cm</td>
-                                <td>80 cm</td>
-                                <td>0.9 </td>
-                                <td>Muito ativo</td>
-                                <td>15/06/1986</td>                                
-                            </tr>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>1,65 m</td>
-                                <td>75 kg</td>
-                                <td>22</td>
-                                <td>75 cm</td>
-                                <td>80 cm</td>
-                                <td>0.9 </td>
-                                <td>Muito ativo</td>
-                                <td>15/06/1986</td>                                
-                            </tr>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>1,65 m</td>
-                                <td>75 kg</td>
-                                <td>22</td>
-                                <td>75 cm</td>
-                                <td>80 cm</td>
-                                <td>0.9 </td>
-                                <td>Muito ativo</td>
-                                <td>15/06/1986</td>                                
-                            </tr>
-                            <tr>
-                                <td>Maria Santos</td>
-                                <td>1,65 m</td>
-                                <td>75 kg</td>
-                                <td>22</td>
-                                <td>75 cm</td>
-                                <td>80 cm</td>
-                                <td>0.9 </td>
-                                <td>Muito ativo</td>
-                                <td>15/06/1986</td>                                
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="clearfix">
-                        <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Anterior</a></li>
-                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
-                        </ul>
+                </div>
+                <div class="dashboard-table dashboard-patient-content js-patient-content" data-content="historico">
+                    <div class="table-wrapper table-responsive">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>Histórico do <b>Paciente</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-hover ">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Altura</th>
+                                    <th>Peso</th>
+                                    <th>IMC</th>
+                                    <th>Cintura</th>
+                                    <th>Quadril</th>
+                                    <th>ICQ</th>
+                                    <th>IPAQ</th>
+                                    <th>Data de avaliação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    require "app/models/avaliacao/avaliacaoDAO.php";
+                                    $avaliacaoDAO = new avaliacaoDAO;
+
+                                    if(count($infoFisica) > 0){
+                                        for($i = 0; $i < count($infoFisica); $i++){
+                                            $avaliacao = $avaliacaoDAO->getAll($infoFisica[$i]->getId());
+                                        ?>
+                                            <tr>
+                                                <td><?= $paciente->getNome(); ?></td>
+                                                <td><?= $infoFisica[$i]->getAltura(); ?> m</td>
+                                                <td><?= $infoFisica[$i]->getPeso(); ?> kg</td>
+                                                <td><?= $infoFisica[$i]->getImc(); ?></td>
+                                                <td><?= $infoFisica[$i]->getCintura(); ?> cm</td>
+                                                <td><?= $infoFisica[$i]->getQuadril(); ?> cm</td>
+                                                <td><?= $infoFisica[$i]->getIcq(); ?></td>
+                                                <td><?= $infoFisica[$i]->getClassificacaoIPAQ(); ?></td>
+                                                <td><?= date_format($avaliacao[0]->getDataAval(), "d/m/Y") ?></td>                                
+                                            </tr>
+                                        <?php
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                        <!-- <div class="clearfix">
+                            <div class="hint-text">Exibindo <b>5</b> de <b>25</b> entradas</div>
+                            <ul class="pagination">
+                                <li class="page-item disabled"><a href="#">Anterior</a></li>
+                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                <li class="page-item"><a href="#" class="page-link">Próxima</a></li>
+                            </ul>
+                        </div> -->
                     </div>
                 </div>
             </div>
-            
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>

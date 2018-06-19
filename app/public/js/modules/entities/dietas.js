@@ -1,30 +1,30 @@
 var app = app || {};
 
-app.pacientes = (function(){
-    var addPatient = jQuery(".js-form-addPatient");
-    var deletePatient = jQuery(".js-form-deletePatient");
-    var updatePatient = jQuery(".js-form-updatePatient");
+app.dietas = (function(){
+    var addDiet = jQuery(".js-form-addDiet");
+    var deleteDiet = jQuery(".js-form-deleteDiet");
+    var updateDiet = jQuery(".js-form-updateDiet");
     
     function init(){
-        addPatient.on("submit", function(e){
+        addDiet.on("submit", function(e){
             app.ajax.post(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){
-                    location = app.loadModules.getHomeUri() + "/paciente/consultar"
+                    location = app.loadModules.getHomeUri() + "/dieta/consultar"
                 }
             });
         });
     
-        deletePatient.on("submit", function(e){
+        deleteDiet.on("submit", function(e){
             app.ajax.delete(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){
-                    location = app.loadModules.getHomeUri() + "/paciente/consultar"
+                    location = app.loadModules.getHomeUri() + "/dieta/consultar"
                 }
             });
         });
     
-        updatePatient.on("submit", function(e){
+        updateDiet.on("submit", function(e){
             app.ajax.put(e, function(response){
                 app.message.show(response.message);
                 if(response.message.indexOf("sucesso") != -1){

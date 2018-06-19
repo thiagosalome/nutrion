@@ -22,18 +22,15 @@ class avaliacaoDAO{
     public function insert(avaliacaoVo $avaliacaoVo){
         require "app/bootstrap.php";
         
-        try{
-            $avaliacao = new Avaliacao;
-            $avaliacao->setId($avaliacaoVo->getId());      
-            $avaliacao->setData_aval(new \DateTime($avaliacaoVo->getData_aval()." 00:00:00"));
-                
-            $entityManager->persist($avaliacao);           
-            $entityManager->flush();
-            return avaliacao;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }
+        $avaliacao = new Avaliacao;
+        $infoFisica = $entityManager->find("InfoFisicas", $avaliacaoVo->getInfoFisicas());
+
+        $avaliacao->setInfoFisicas($infoFisica);      
+        $avaliacao->setDataAval(new \DateTime($avaliacaoVo->getDataAval()." 00:00:00"));
+            
+        $entityManager->persist($avaliacao);           
+        $entityManager->flush();
+        return $avaliacao;
     }
 
     public function update(avaliacaoVo $avaliacaoVo){
@@ -78,15 +75,17 @@ class avaliacaoDAO{
 
     }
 
-    public function getId($id){
-        require "app/bootstrap.php";        
-        try{
-            $avaliacao = $entityManager->getRepository("Avaliacao")->findOneBy(array("Id" => $id));            
-            return $avaliacao;
-        }
-        catch(Exception $e){
-            return $e->getMessage();
-        }
+    public function getAll($idInfoFisicas) {
+        require "app/bootstrap.php";
+        $infoFisica = $entityManager->find("InfoFisicas", $idInfoFisicas);
+        $avaliacoes = $infoFisica->getAvaliacoes();       
+        return $avaliacoes;
+    }
+
+    public function getById($idAvaliacao){
+        require "app/bootstrap.php";
+        $avaliacao = $entityManager->find("Avaliacao", $idAvaliacao);
+        return $avaliacao;
     }
 }
 ?>

@@ -17,7 +17,7 @@ class Dieta
     /**
      * @Column(type="date", name="dataDieta")
      */
-    public $dataDieta;
+    public $data;
 
     /**
      * @ManyToOne(targetEntity="Paciente", inversedBy="dietas")
@@ -35,14 +35,16 @@ class Dieta
         return $this->id;
     }
 
-    public function getDataDieta()
+
+    public function getData()
     {
-        return $this->dataDieta;
+        return $this->data;
     }
 
-    public function setDataNasc($dataDieta)
+    public function setData($data)
     {
-        $this->dataDieta = $dataDieta;
+        $this->data = $data;
+
         return $this;
     }
 
@@ -54,6 +56,18 @@ class Dieta
     public function setPaciente($paciente)
     {
         $this->paciente = $paciente;
+        return $this;
+    }
+
+    public function getRefeicoes()
+    {
+        return $this->refeicoes;
+    }
+
+    public function setRefeicoes($refeicoes)
+    {
+        $this->refeicoes = $refeicoes;
+
         return $this;
     }
 }

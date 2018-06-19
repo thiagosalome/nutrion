@@ -25,7 +25,7 @@ class InfoFisicas
     public $altura;
 
     /**
-     * @Column(type="integer", name="imc")
+     * @Column(type="float", name="imc")
      */
     public $imc;
 
@@ -35,12 +35,12 @@ class InfoFisicas
     public $cintura;
 
     /**
-     * @Column(type="integer", name="quadril")
+     * @Column(type="float", name="quadril")
      */
     public $quadril;
 
     /**
-     * @Column(type="integer", name="icq")
+     * @Column(type="float", name="icq")
      */
     public $icq;
 
@@ -55,6 +55,10 @@ class InfoFisicas
      */
     public $paciente;
 
+    /**
+     * @OneToMany(targetEntity="Avaliacao", mappedBy="infoFisicas", orphanRemoval=true, cascade={"persist", "remove"})
+     */
+    public $avaliacoes;
 
     public function getId()
     {
@@ -146,6 +150,27 @@ class InfoFisicas
     public function setPaciente($paciente)
     {
         $this->paciente = $paciente;
+        return $this;
+    }
+
+
+    /**
+     * Get the value of avaliacoes
+     */ 
+    public function getAvaliacoes()
+    {
+        return $this->avaliacoes;
+    }
+
+    /**
+     * Set the value of avaliacoes
+     *
+     * @return  self
+     */ 
+    public function setAvaliacoes($avaliacoes)
+    {
+        $this->avaliacoes = $avaliacoes;
+
         return $this;
     }
 }

@@ -2,17 +2,19 @@
 require "app/models/itemRefeicao/itemRefeicaoDAO.php";
 require "app/models/itemRefeicao/itemRefeicaoVo.php";
 require "app/models/itemRefeicao/itemRefeicaoModel.php";
-class itemRefeicao{
-    public function create(){
+
+class itemRefeicaoController{
+    public function create($params){
         $itemRefeicaoVo = new itemRefeicaoVo;
 
         try{
-            $itemRefeicaoVo->setAlimento($_POST["alimento"]);
-            $itemRefeicaoVo->setQuantidade($_POST["quantidade"]);
+            $itemRefeicaoVo->setRefeicao($params["refeicao"]);
+            $itemRefeicaoVo->setAlimento($params["alimento"]);
+            $itemRefeicaoVo->setQuantidade($params["quantidade"]);
             
             $itemRefeicaoModel = new itemRefeicaoModel;
             $create = $itemRefeicaoModel->create($itemRefeicaoVo);        
-            echo $create;
+            // echo $create;
         }
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);

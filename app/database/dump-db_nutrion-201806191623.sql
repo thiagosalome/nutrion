@@ -35,7 +35,7 @@ CREATE TABLE `tb_alimento` (
   PRIMARY KEY (`id`),
   KEY `fk_nutricionistaXalimento` (`id_nutricionista`),
   CONSTRAINT `fk_nutricionistaXalimento` FOREIGN KEY (`id_nutricionista`) REFERENCES `tb_nutricionista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `tb_alimento` (
 
 LOCK TABLES `tb_alimento` WRITE;
 /*!40000 ALTER TABLE `tb_alimento` DISABLE KEYS */;
-INSERT INTO `tb_alimento` VALUES (7,'Arroz','g','Vegetal',68,93,29,52,1);
+INSERT INTO `tb_alimento` VALUES (7,'Arroz','g','Vegetal',68,93,29,52,1),(8,'FeijÃ£o','g','Vegetal',5,6,2,8,1);
 /*!40000 ALTER TABLE `tb_alimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `tb_avaliacao` (
   PRIMARY KEY (`id`),
   KEY `fk_infofisicasXavaliacao` (`id_infoFisicas`),
   CONSTRAINT `fk_infofisicasXavaliacao` FOREIGN KEY (`id_infoFisicas`) REFERENCES `tb_infofisicas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `tb_avaliacao` (
 
 LOCK TABLES `tb_avaliacao` WRITE;
 /*!40000 ALTER TABLE `tb_avaliacao` DISABLE KEYS */;
-INSERT INTO `tb_avaliacao` VALUES (1,1,'2018-02-21'),(2,2,'2018-01-01'),(4,4,'2018-04-20'),(5,25,'2018-06-18'),(6,26,'2018-06-18'),(7,27,'2018-06-18'),(8,31,'2018-06-18'),(9,32,'2018-06-18');
+INSERT INTO `tb_avaliacao` VALUES (1,1,'2018-02-21'),(2,2,'2018-01-01'),(4,4,'2018-04-20'),(5,25,'2018-06-18'),(6,26,'2018-06-18'),(7,27,'2018-06-18'),(8,31,'2018-06-18'),(9,32,'2018-06-18'),(10,33,'2018-06-18');
 /*!40000 ALTER TABLE `tb_avaliacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +122,7 @@ CREATE TABLE `tb_infofisicas` (
   PRIMARY KEY (`id`),
   KEY `fk_pacienteXinfofisicas` (`id_paciente`),
   CONSTRAINT `fk_pacienteXinfofisicas` FOREIGN KEY (`id_paciente`) REFERENCES `tb_paciente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,7 @@ CREATE TABLE `tb_infofisicas` (
 
 LOCK TABLES `tb_infofisicas` WRITE;
 /*!40000 ALTER TABLE `tb_infofisicas` DISABLE KEYS */;
-INSERT INTO `tb_infofisicas` VALUES (1,75.3,180,24.5,70,70,0.85,'Sedentário',1),(2,65.8,173,21.5,50,50,0.79,'Ativo',2),(4,66,173,22,52,52,0.81,'Muito Ativo',2),(5,5,5,0.2,16,20,5,'Irregularmente Ativo',1),(6,37,86,61,88,71,55,'Irregularmente Ativo',1),(7,65,88,60,37,2,57,'Irregularmente Ativo',1),(8,86,80,61,79,74,15,'Muito Ativo',1),(9,22,58,10,25,10,18,'SedentÃ¡rio',1),(10,89,6,73,27,40,62,'SedentÃ¡rio',1),(11,81,99,96,2,99,43,'Ativo',1),(12,5,55,84,64,40,95,'Muito Ativo',1),(13,88,99,17,53,81,91,'Irregularmente Ativo',1),(14,96,21,18,8,63,8,'Irregularmente Ativo',1),(15,49,4,22,76,47,89,'Irregularmente Ativo',1),(16,43,66,72,16,46,2,'Irregularmente Ativo',1),(17,74,11,90,93,75,85,'Irregularmente Ativo',1),(18,25,55,45,78,24,1,'Ativo',1),(19,17,63,5,35,72,43,'Ativo',1),(20,68,53,82,73,11,41,'SedentÃ¡rio',1),(21,49,63,20,10,42,28,'Muito Ativo',1),(22,31,79,16,58,99,90,'Muito Ativo',1),(23,85,86,39,27,73,61,'SedentÃ¡rio',1),(24,59,11,79,66,1,19,'Irregularmente Ativo',1),(25,5,40,100,99,59,92,'Muito Ativo',1),(26,33,20,5,6,4,61,'Muito Ativo',1),(27,3,15,15,20,93,11,'Muito Ativo',1),(28,85,2,27.444,58,55,1.054,'SedentÃ¡rio',1),(29,20,2,99,72,78,25,'Ativo',1),(30,27,2,84,66,94,38,'Ativo',1),(31,38,77,49,24,5,80,'SedentÃ¡rio',1),(32,27,1.76,5,32,87,34,'Ativo',1);
+INSERT INTO `tb_infofisicas` VALUES (1,75.3,180,24.5,70,70,0.85,'Sedentário',1),(2,65.8,173,21.5,50,50,0.79,'Ativo',2),(4,66,173,22,52,52,0.81,'Muito Ativo',2),(5,5,5,0.2,16,20,5,'Irregularmente Ativo',1),(6,37,86,61,88,71,55,'Irregularmente Ativo',1),(7,65,88,60,37,2,57,'Irregularmente Ativo',1),(8,86,80,61,79,74,15,'Muito Ativo',1),(9,22,58,10,25,10,18,'SedentÃ¡rio',1),(10,89,6,73,27,40,62,'SedentÃ¡rio',1),(11,81,99,96,2,99,43,'Ativo',1),(12,5,55,84,64,40,95,'Muito Ativo',1),(13,88,99,17,53,81,91,'Irregularmente Ativo',1),(14,96,21,18,8,63,8,'Irregularmente Ativo',1),(15,49,4,22,76,47,89,'Irregularmente Ativo',1),(16,43,66,72,16,46,2,'Irregularmente Ativo',1),(17,74,11,90,93,75,85,'Irregularmente Ativo',1),(18,25,55,45,78,24,1,'Ativo',1),(19,17,63,5,35,72,43,'Ativo',1),(20,68,53,82,73,11,41,'SedentÃ¡rio',1),(21,49,63,20,10,42,28,'Muito Ativo',1),(22,31,79,16,58,99,90,'Muito Ativo',1),(23,85,86,39,27,73,61,'SedentÃ¡rio',1),(24,59,11,79,66,1,19,'Irregularmente Ativo',1),(25,5,40,100,99,59,92,'Muito Ativo',1),(26,33,20,5,6,4,61,'Muito Ativo',1),(27,3,15,15,20,93,11,'Muito Ativo',1),(28,85,2,27.444,58,55,1.054,'SedentÃ¡rio',1),(29,20,2,99,72,78,25,'Ativo',1),(30,27,2,84,66,94,38,'Ativo',1),(31,38,77,49,24,5,80,'SedentÃ¡rio',1),(32,27,1.76,5,32,87,34,'Ativo',1),(33,55,1.65,20.202,46,50,0.92,'Irregularmente Ativo',2);
 /*!40000 ALTER TABLE `tb_infofisicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +146,10 @@ CREATE TABLE `tb_itemrefeicao` (
   `id_refeicao` int(11) NOT NULL,
   `id_alimento` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  PRIMARY KEY (`id_refeicao`,`id_alimento`)
+  PRIMARY KEY (`id_refeicao`,`id_alimento`),
+  KEY `fk_alimentoxitem` (`id_alimento`),
+  CONSTRAINT `fk_alimentoxitem` FOREIGN KEY (`id_alimento`) REFERENCES `tb_alimento` (`id`),
+  CONSTRAINT `fk_refeicaoxitem` FOREIGN KEY (`id_refeicao`) REFERENCES `tb_refeicao` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,7 +159,7 @@ CREATE TABLE `tb_itemrefeicao` (
 
 LOCK TABLES `tb_itemrefeicao` WRITE;
 /*!40000 ALTER TABLE `tb_itemrefeicao` DISABLE KEYS */;
-INSERT INTO `tb_itemrefeicao` VALUES (1,2,4),(2,2,1),(2,4,1),(3,3,1);
+INSERT INTO `tb_itemrefeicao` VALUES (1,7,4),(2,7,1),(20,7,23),(20,8,92),(21,7,68),(21,8,65);
 /*!40000 ALTER TABLE `tb_itemrefeicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +239,7 @@ CREATE TABLE `tb_refeicao` (
   PRIMARY KEY (`id`),
   KEY `fk_dietaXrefeicao` (`id_dieta`),
   CONSTRAINT `fk_dietaXrefeicao` FOREIGN KEY (`id_dieta`) REFERENCES `tb_dieta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +248,7 @@ CREATE TABLE `tb_refeicao` (
 
 LOCK TABLES `tb_refeicao` WRITE;
 /*!40000 ALTER TABLE `tb_refeicao` DISABLE KEYS */;
-INSERT INTO `tb_refeicao` VALUES (1,'café da manhã','09h00',1),(2,'almoço','12h00',1),(3,'janta','19h00',2);
+INSERT INTO `tb_refeicao` VALUES (1,'café da manhã','09h00',1),(2,'almoço','12h00',1),(3,'janta','19h00',2),(4,'Teste','20:05',1),(5,'Teste','20:05',1),(6,'Teste','20:05',1),(7,'teste','05:20',1),(8,'teste','05:20',1),(9,'teste','05:20',1),(10,'Teste a','05:06',1),(11,'Teste a','05:06',1),(12,'Teste a','05:06',1),(13,'Teste a','05:06',1),(14,'Teste a','05:06',1),(15,'Teste a','05:06',1),(16,'Teste','06:13',1),(17,'Teste','06:13',1),(18,'Teste','06:13',1),(19,'Novo','13:08',1),(20,'Teste','14:48',1),(21,'Novo','16:11',1);
 /*!40000 ALTER TABLE `tb_refeicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-18 10:59:03
+-- Dump completed on 2018-06-19 16:23:23
