@@ -39,11 +39,11 @@ class dietaController{
         }
     }
 
-    public function delete(){        
+    public function delete($_DELETE){        
         $dietaVo = new DietaVo;
         try{
         
-            $dietaVo->getId($_POST["id"]);
+            $dietaVo->setId($_GET["id"]);
             $dietaModel = new DietaModel;
             $delete = $dietaModel->delete($dietaVo);
 

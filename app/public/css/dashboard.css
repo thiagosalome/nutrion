@@ -90,6 +90,16 @@ body{
         display: none;
     }
 
+.card{
+    width: 18rem;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    display: inline-flex;
+    margin: 10px 30px 10px 0;
+    padding: 10px;
+    box-shadow: 1px 1px 1px #cccccc;
+}
 
 
 @media screen and (min-width: 1200px){

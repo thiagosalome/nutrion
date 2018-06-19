@@ -1,6 +1,6 @@
 <?php
 class DietaDAO{
-    public function insert(DietaVo $dietaVo){
+    public function insert(dietaVo $dietaVo){
         require "app/bootstrap.php";
         $dieta = new Dieta;
         $paciente = $entityManager->find("Paciente", $dietaVo->getPaciente());
@@ -26,22 +26,14 @@ class DietaDAO{
         return $update;
     }
 
-    public function delete(DietaVo $dietavo){
+    public function delete(dietaVo $dietaVo){
         require "app/bootstrap.php";
-        try{
-            $dietaDAO = new DietaDAO(); 
-            $dieta = new DietaVo();
-            $dieta = $dietaDAO->getId($dietaVo);
-                  
-            $delete = new dieta;
-            $delete = $entityManager->find('Dieta',$dieta->getId());
-            $entityManager->remove($delete); 
-            $entityManager->flush();
-            return true;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }  
+        $delete = new Dieta;
+
+        $delete = $entityManager->find('Dieta', $dietaVo->getId());
+        $entityManager->remove($delete); 
+        $entityManager->flush();
+        return true;
     }
 
     public function getAll($idPaciente){

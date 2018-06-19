@@ -59,17 +59,16 @@ class Dieta
         return $this;
     }
 
-    public function getRefeicao()
+    public function getRefeicoes()
     {
         return $this->refeicoes;
     }
 
-    public function setRefeicao($refeicoes)
+    public function setRefeicoes($refeicoes)
     {
         $this->refeicoes = $refeicoes;
+
         return $this;
     }
-
-    
 }
 ?>

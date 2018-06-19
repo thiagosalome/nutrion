@@ -28,13 +28,22 @@ class DietaModel{
     }
 
     public function delete(DietaVo $dietaVo){
-        $dietaDAO = new DietaDAO();        
-        if(is_object($delete)){
-            $delete = $dietaDAO->delete($dietaVo);
-            return json::generate("OK", "200", "Dieta deletada com sucesso", null);
+        
+        if(empty($dietaVo->getId())){
+            return json::generate("Conflito", "409", "É necessário passar id da dieta por parâmetro.", null);
         }
         else{
-            return json::generate("Conflito", "409", "Não é possível deletar uma dieta inexistente.", null);
+            $dietaDAO = new DietaDAO();
+            $dieta = $dietaDAO->getById($dietaVo->getId()); 
+
+            if(is_object($dieta)){
+                $delete = $dietaDAO->delete($dietaVo);
+                return json::generate("OK", "200", "Dieta deletada com sucesso", null);
+            }
+            else{
+                return json::generate("Conflito", "409", "Não é possível deletar uma dieta inexistente.", null);
+            }
+
         }
     }
 

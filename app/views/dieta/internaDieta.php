@@ -33,7 +33,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- link css -->
-
     <link rel="stylesheet" href="<?php echo HOME_URI; ?>app/public/css/dashboard.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
@@ -70,17 +69,36 @@
                         <p><span class="red-label">Data: </span><?= date_format($dieta->getData(), "d/m/Y"); ?></p>
                     </div>
                     <div class="patient-header-item">
-                        <div class="patient-header-icon" data-toggle="modal" data-target="#modal-update-patient"><i class="material-icons" data-toggle="tooltip" title="Edit">mode_edit</i></div>
-                        <div class="patient-header-icon" data-toggle="modal" data-target="#modal-delete-patient"><i class="material-icons" data-toggle="tooltip" title="Delete">delete</i></div>
+                        <div class="patient-header-icon" data-toggle="modal" data-target="#modal-update-diet"><i class="material-icons" data-toggle="tooltip" title="Edit">mode_edit</i></div>
+                        <div class="patient-header-icon" data-toggle="modal" data-target="#modal-delete-diet"><i class="material-icons" data-toggle="tooltip" title="Delete">delete</i></div>
                     </div>
                 </div>
                 <div class="dashboard-patient-tab menu-tabs">
                     <ul>
-                        <li class="patient-tab-item js-patient-tab" data-tab="refeicoes">Refeições</li>
-                        <li class="patient-tab-item js-patient-tab active" data-tab="adicionar-refeicao">Adicionar Refeição</li>
+                        <li class="patient-tab-item js-patient-tab active" data-tab="refeicoes">Refeições</li>
+                        <li class="patient-tab-item js-patient-tab" data-tab="adicionar-refeicao">Adicionar Refeição</li>
                     </ul>
                 </div>
-                <div class="dashboard-form dashboard-patient-content js-patient-content active" data-content="adicionar-refeicao">
+                <div class="dashboard-statistics dashboard-patient-content js-patient-content active" data-content="refeicoes">
+                    <?php
+                        require "app/models/refeicao/refeicaoDAO.php";
+                        $refeicaoDAO = new refeicaoDAO();
+                        $refeicoes = $refeicaoDAO->getAll($dieta->getId());
+
+                        for ($i = 0; $i < count($refeicoes); $i++) {
+                            ?>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5><?= $refeicoes[$i]->getNome(); ?></h5>
+                                    <h6><?= $refeicoes[$i]->getHorario(); ?></h6>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    ?>
+                   
+                </div>
+                <div class="dashboard-form dashboard-patient-content js-patient-content" data-content="adicionar-refeicao">
                     <form role="form" class="largewidth largeww js-form-addMeal" action="<?php echo HOME_URI; ?>API/refeicao/">
                         <input type="hidden" name="id_dieta" value="<?= $dieta->getId(); ?>">
                         <h3 class="formheader form-intern">Adicionar Refeição</h3>
@@ -131,6 +149,7 @@
         </section>       
     </main>
     <?php include __DIR__ . "/../objects/modal-nutricionista.php" ?>
+    <?php include __DIR__ . "/../objects/modal-dieta.php" ?>
     <script type="text/javascript" src="<?php echo HOME_URI; ?>app/public/js/app.js"></script>
 </body>
 </html>

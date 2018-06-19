@@ -1,5 +1,5 @@
 <?php
-class DietaVo{
+class dietaVo{
     private $id;
     private $paciente;
     private $data;
