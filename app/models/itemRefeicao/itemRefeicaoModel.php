@@ -4,14 +4,14 @@ class itemRefeicaoModel{
         if(empty( $itemRefeicaoVo->getAlimento())or empty( $itemRefeicaoVo->getQuantidade())){
             return json::generate("Conflito", "409", "É necessário passar todos os dados do Item refeição", null);
         }
-        if( ($itemRefeicaoVo->getQuantidade())>0){
+        if( ($itemRefeicaoVo->getQuantidade()) <= 0){
             return json::generate("Conflito", "409", "É necessário inserir uma quantidade válida, acima de 0", null);
         }
         else{
             $itemRefeicaoDAO = new  itemRefeicaoDAO;
             $create = $itemRefeicaoDAO->insert($itemRefeicaoVo);
             if(is_object($create)){
-                $insert_array = (array) $insert;
+                $insert_array = (array) $create;
                 return json::generate("OK", "200", "Item refeição cadastrado com sucesso", $insert_array);
             }
         }

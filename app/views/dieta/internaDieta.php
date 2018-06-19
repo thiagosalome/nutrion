@@ -81,25 +81,20 @@
                     </ul>
                 </div>
                 <div class="dashboard-form dashboard-patient-content js-patient-content active" data-content="adicionar-refeicao">
-                    <form role="form" class="largewidth largeww js-form-addInfoFisicas" action="<?php echo HOME_URI; ?>API/infofisicas/">
+                    <form role="form" class="largewidth largeww js-form-addMeal" action="<?php echo HOME_URI; ?>API/refeicao/">
+                        <input type="hidden" name="id_dieta" value="<?= $dieta->getId(); ?>">
                         <h3 class="formheader form-intern">Adicionar Refeição</h3>
                         <div class="row">
                             <div class="text-left  col-sm-6 col-intern form-group">
                                 <input type="text" step="0.001" class="form-control input-default" name="nome" placeholder="Nome">
                             </div>
                             <div class=" text-left col-sm-6 form-group">
-                                <select name="horario" class="form-control input-default">
-                                    <option value="">Horário</option>
-                                    <option value="Manhã">Manhã</option>
-                                    <option value="Tarde">Tarde</option>
-                                    <option value="Noite">Noite</option>
-                                </select>
-                                <i class="glyphicon glyphicon-chevron-down "></i>
+                            <input type="time" class="form-control input-default" name="horario" placeholder="Horário">
                             </div>
                         </div>
                         <div class="row js-meal-item">
                             <div class="text-left col-sm-6 col-intern form-group ">
-                                <select name="alimento" class="form-control input-default">
+                                <select name="alimento[]" class="form-control input-default">
                                     <option value="">Alimento</option>
                                     <?php
                                         require "app/models/alimento/alimentoDAO.php";
@@ -116,7 +111,7 @@
                                 <i class="glyphicon glyphicon-chevron-down "></i>
                             </div>
                             <div class="text-left col-sm-4 col-intern form-group ">
-                                <input type="number" step="1" class="form-control input-default" name="quantidade" placeholder="Quantidade">
+                                <input type="number" step="1" class="form-control input-default" name="quantidade[]" placeholder="Quantidade">
                             </div>
                             <div class="text-left col-sm-2 col-intern form-group">
                                 <div class="patient-header-icon-add"><i class="material-icons js-add-meal-item" data-toggle="tooltip" title="Add">add_circle_outline</i></div>

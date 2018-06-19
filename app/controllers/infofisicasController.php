@@ -30,7 +30,7 @@ class infofisicasController{
                 );
                 
                 require "app/controllers/avaliacaoController.php";
-                $avaliacaoController = new AvaliacaoController();
+                $avaliacaoController = new avaliacaoController();
                 $avaliacaoController->create($params);                
             }
             echo json_encode($create);   

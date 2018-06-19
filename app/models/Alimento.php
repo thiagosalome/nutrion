@@ -59,7 +59,7 @@ class Alimento
     /**
      * @OneToMany(targetEntity="ItemRefeicao", mappedBy="alimento", orphanRemoval=true, cascade={"persist", "remove"})
      */
-    public $alimentos;
+    public $itensrefeicao;
 
     /**
      * Get the value of id

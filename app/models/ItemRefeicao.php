@@ -2,7 +2,7 @@
 
 /**
  * @Entity
- * @Table(name="tb_itemRefeicao")
+ * @Table(name="tb_itemrefeicao")
  * 
  */
 class ItemRefeicao
@@ -12,13 +12,13 @@ class ItemRefeicao
     */
     public $refeicao;
 
-    /** @Id @ManyToOne(targetEntity="Alimento", inversedBy="alimentos") 
+    /** @Id @ManyToOne(targetEntity="Alimento", inversedBy="itensrefeicao") 
     * @Column(type="integer", name="id_alimento")
     */
     public $alimento;
 
     /**
-     * @Column(type="string", name="horario")
+     * @Column(type="string", name="quantidade")
      */
     public $quantidade;
 

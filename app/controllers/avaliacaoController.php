@@ -2,7 +2,6 @@
 require "app/models/avaliacao/avaliacaoVo.php";
 require "app/models/avaliacao/avaliacaoModel.php";
 require "app/models/avaliacao/avaliacaoDAO.php";
-// require "app/class/json.php";
 
 class avaliacaoController{ 
 

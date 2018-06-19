@@ -4,8 +4,8 @@ app.refeicoes = (function(){
     var addMeal = jQuery(".js-form-addMeal");
     var deleteMeal = jQuery(".js-form-deleteMeal");
     var updateMeal = jQuery(".js-form-updateMeal");
-    var mealItem = jQuery(".js-meal-item");
-    var addMealItem = jQuery(".js-add-meal-item");
+    // var mealItem = jQuery(".js-meal-item");
+    // var addMealItem = jQuery(".js-add-meal-item");
 
     function init(){
         addMeal.on("submit", function(e){
@@ -26,8 +26,10 @@ app.refeicoes = (function(){
             });
         });
 
-        addMealItem.on("click", function(){
-            mealItem.clone().appendTo(".js-form-addMeal");
+        // addMealItem.on("click", function(){
+        jQuery(document).on("click", ".js-add-meal-item", function(){
+            var newItem = jQuery(this).closest(".js-meal-item").clone();
+            jQuery(this).closest(".js-meal-item").after(newItem);
         });
 
         /*updateMeal.on("submit", function(e){
