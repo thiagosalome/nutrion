@@ -40,8 +40,12 @@ app.loadModules = (function(jQuery){
                 app.alimentos.init();
             }
             else if(location.href.indexOf("dieta") != -1){
+                require("elements/tab");
                 require("entities/dietas");
+                require("entities/refeicoes");
+                app.tab.execute();
                 app.dietas.init();
+                app.refeicoes.init();
             }
         }
     };
