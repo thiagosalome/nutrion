@@ -59,12 +59,19 @@
                 <div class="dashboard-form">
                     <form role="form" class="largewidth js-form-addDiet" action="<?php echo HOME_URI ?>API/dieta">
                         <h3 class="formheader">Adicionar Dieta</h3>
-                        <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                         <div class="row">
                             <div class="col-sm-6 form-group">
-                                <select name="nome_paciente" class="form-control input-default">
+                                <select name="id_paciente" class="form-control input-default">
                                     <option value="">Nome do paciente</option>
-                                    <option value="nomea">Buscar nomes no banco</option>
+                                    <?php
+
+                                        $pacientes = $pacienteDAO->getAll($_SESSION["id_nutricionista"]);
+                                        for($i = 0; $i < count($pacientes); $i++){
+                                            ?>
+                                            <option value="<?= $pacientes[$i]->getId(); ?>"><?= $pacientes[$i]->getNome(); ?></option>
+                                            <?php
+                                        }
+                                    ?>
                                 </select>
                                 <i class="glyphicon glyphicon-chevron-down "></i>
                             </div>

@@ -77,7 +77,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $pacientes = $pacienteDAO->getAll($_SESSION["id_nutricionista"]);
+                                    // $pacientes = $pacienteDAO->getAll($_SESSION["id_nutricionista"]);
 
                                     for($i = 0; $i < count($pacientes); $i++){
                                         ?>

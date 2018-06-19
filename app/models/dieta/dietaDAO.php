@@ -2,20 +2,15 @@
 class DietaDAO{
     public function insert(DietaVo $dietaVo){
         require "app/bootstrap.php";
-        
-        try{
-            $dieta = new Dieta;
-            $dieta->setId($dietaVo->getId());
-            $dieta->setPaciente($dietaVo->getPaciente());
-            $dieta->setData(new \DateTime($dietaVo->getData_aval()." 00:00:00"));
-                
-            $entityManager->persist($dieta);           
-            $entityManager->flush();
-            return $dieta;
-        }
-        catch (Expection $e){
-            return $e->getMessage();
-        }
+        $dieta = new Dieta;
+        $paciente = $entityManager->find("Paciente", $dietaVo->getPaciente());
+
+        $dieta->setPaciente($paciente);
+        $dieta->setData(new \DateTime($dietaVo->getData()." 00:00:00"));
+            
+        $entityManager->persist($dieta);           
+        $entityManager->flush();
+        return $dieta;
     }
     public function update(DietaVo $dietavo){
         require "app/bootstrap.php";

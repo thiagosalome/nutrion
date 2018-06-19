@@ -61,7 +61,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h2>Todos as <b>Dietas</b></h2>
+                                    <h2>Todas as <b>Dietas</b></h2>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,23 @@
                                 </tr>
                             </thead>                        
                             <tbody>
-                                
+                                <?php
+                                    for($i = 0; $i < count($pacientes); $i++){
+                                        $dietas = $dietaDAO->getAll($pacientes[$i]->getId());
+    
+                                        for($j = 0; $j < count($dietas); $j++){
+                                            ?>
+                                            <tr>
+                                                <td><?= $pacientes[$i]->getNome(); ?></td>
+                                                <td><?= date_format($dietas[$j]->getData(), "d/m/Y") ?></td>
+                                                <td>
+                                                    <a href='<?= HOME_URI . "dieta/interna/" . $dietas[$j]->getId(); ?>' class='view'><i class='material-icons' data-toggle='tooltip' title='Visualizar'>visibility</i></a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         <!-- <div class="clearfix">

@@ -15,9 +15,10 @@
     padding: 0;
 }
 
+/*
 body{
     overflow: hidden;
-}
+}*/
 
 .main-dashboard {
     display: flex;

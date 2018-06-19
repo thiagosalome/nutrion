@@ -2,11 +2,11 @@
 class DietaModel{
     public function create(DietaVo $dietaVo){
         if(empty( $dietaVo->getPaciente())or empty( $dietaVo->getData())){
-            return json::generate("Conflito", "409", "É necessário passar todos os dados do Item refeição", null);
+            return json::generate("Conflito", "409", "É necessário passar o paciente referente a tal dieta,", null);
         }
         else{
             $dietaDAO = new DietaDAO;
-            $create = $dietaDAO->create($dietaVo);
+            $create = $dietaDAO->insert($dietaVo);
             if(is_object($create)){
                 $insert_array = (array) $insert;
                 return json::generate("OK", "200", "Dieta cadastrada com sucesso", $insert_array);

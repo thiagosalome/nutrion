@@ -2,13 +2,15 @@
 require "app/models/dieta/dietaDAO.php";
 require "app/models/dieta/dietaVo.php";
 require "app/models/dieta/dietaModel.php";
+require "app/class/json.php";
+
 class dietaController{
     public function create(){
         $dietaVo = new DietaVo;
 
         try{   
-            $dietaVo->setpaciente($_POST["paciente"]);
-            $dietaVo->setdata($_POST["data"]);
+            $dietaVo->setPaciente($_POST["id_paciente"]);
+            $dietaVo->setData(date("Y-m-d"));
 
             $dietaModel = new DietaModel;
             $create = $dietaModel->create($dietaVo);        

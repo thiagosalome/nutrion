@@ -39,6 +39,10 @@ app.loadModules = (function(jQuery){
                 require("entities/alimentos");
                 app.alimentos.init();
             }
+            else if(location.href.indexOf("dieta") != -1){
+                require("entities/dietas");
+                app.dietas.init();
+            }
         }
     };
 
