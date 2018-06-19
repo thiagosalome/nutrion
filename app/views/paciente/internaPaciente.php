@@ -89,14 +89,17 @@
                         <li class="patient-tab-item js-patient-tab" data-tab="historico">Histórico</li>
                     </ul>
                 </div>
+                <?php
+                    require "app/models/infofisicas/infofisicasDAO.php";
+                    $infoFisicasDAO = new infofisicasDAO();
+                    $infoFisica = $infoFisicasDAO->getAll($paciente->getId());
+                    $qtdInfoFisica = count($infoFisica);
+                    $ultimaInfoFisica = $infoFisica[$qtdInfoFisica - 1];
+                ?>
                 <div class="dashboard-statistics dashboard-patient-content js-patient-content active" data-content="dados-fisicos">
                     <?php
-                        require "app/models/infofisicas/infofisicasDAO.php";
-                        $infoFisicasDAO = new infofisicasDAO();
-                        $infoFisica = $infoFisicasDAO->getAll($paciente->getId());
-                        $qtdInfoFisica = count($infoFisica);
-                        $ultimaInfoFisica = $infoFisica[$qtdInfoFisica - 1];
-                    ?>
+                        if(count($infoFisica) > 0){
+                            ?>
                     <div class="statistics-item">
                         <div class="statistics-item-image-blue">
                             <img src="<?php echo HOME_URI; ?>app/public/images/paciente/altura_icon.png" alt="Altura" title="Altura" class="person-blue">
@@ -160,6 +163,9 @@
                             <p><?= $ultimaInfoFisica->getClassificacaoIPAQ() ?></p>
                         </div>
                     </div>
+                    <?php
+                        }
+                    ?>
                 </div>
                 <div class="dashboard-form dashboard-patient-content js-patient-content" data-content="adicionar-fisico">
                     <form role="form" class="largewidth largeww js-form-addInfoFisicas" action="<?php echo HOME_URI; ?>API/infofisicas/">
@@ -233,21 +239,26 @@
                             </thead>
                             <tbody>
                                 <?php
-    
-                                    for($i = 0; $i < count($infoFisica); $i++){
-                                    ?>
-                                        <tr>
-                                            <td><?= $paciente->getNome(); ?></td>
-                                            <td><?= $infoFisica[$i]->getAltura(); ?> m</td>
-                                            <td><?= $infoFisica[$i]->getPeso(); ?> kg</td>
-                                            <td><?= $infoFisica[$i]->getImc(); ?></td>
-                                            <td><?= $infoFisica[$i]->getCintura(); ?> cm</td>
-                                            <td><?= $infoFisica[$i]->getQuadril(); ?> cm</td>
-                                            <td><?= $infoFisica[$i]->getIcq(); ?></td>
-                                            <td><?= $infoFisica[$i]->getClassificacaoIPAQ(); ?></td>
-                                            <td>15/06/1986</td>                                
-                                        </tr>
-                                    <?php
+                                    require "app/models/avaliacao/avaliacaoDAO.php";
+                                    $avaliacaoDAO = new avaliacaoDAO;
+
+                                    if(count($infoFisica) > 0){
+                                        for($i = 0; $i < count($infoFisica); $i++){
+                                            $avaliacao = $avaliacaoDAO->getAll($infoFisica[$i]->getId());
+                                        ?>
+                                            <tr>
+                                                <td><?= $paciente->getNome(); ?></td>
+                                                <td><?= $infoFisica[$i]->getAltura(); ?> m</td>
+                                                <td><?= $infoFisica[$i]->getPeso(); ?> kg</td>
+                                                <td><?= $infoFisica[$i]->getImc(); ?></td>
+                                                <td><?= $infoFisica[$i]->getCintura(); ?> cm</td>
+                                                <td><?= $infoFisica[$i]->getQuadril(); ?> cm</td>
+                                                <td><?= $infoFisica[$i]->getIcq(); ?></td>
+                                                <td><?= $infoFisica[$i]->getClassificacaoIPAQ(); ?></td>
+                                                <td><?= date_format($avaliacao[0]->getDataAval(), "d/m/Y") ?></td>                                
+                                            </tr>
+                                        <?php
+                                        }
                                     }
                                 ?>
                             </tbody>

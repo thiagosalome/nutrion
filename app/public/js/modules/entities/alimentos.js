@@ -33,7 +33,7 @@ app.alimentos = (function(){
             });
         });
     
-        if(location.href.indexOf("alimento/consultar") != -1){
+        /*if(location.href.indexOf("alimento/consultar") != -1){
             var idNutricionista = app.nutricionista.getId();
             var urlAlimento = app.loadModules.getHomeUri() + "API/alimento/?id_nutricionista=" + idNutricionista;
             app.ajax.get(urlAlimento, function(response){
@@ -54,9 +54,8 @@ app.alimentos = (function(){
                             "</tr>";
                     js_table_aliment.append(row);
                 }
-                // app.screen.verify();
             });
-        }
+        }*/
         
         jQuery(document).on("click", ".js-aliment-click-update", function(e){
             // setDataTableForm(e);

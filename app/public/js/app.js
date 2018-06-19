@@ -39,7 +39,6 @@ app.loadModules = (function(jQuery){
                 require("entities/alimentos");
                 app.alimentos.init();
             }
-            app.screen.verify();
         }
     };
 

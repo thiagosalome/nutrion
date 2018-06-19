@@ -33,7 +33,7 @@ app.pacientes = (function(){
             });
         });
     
-        if(location.href.indexOf("paciente/consultar") != -1){
+        /*if(location.href.indexOf("paciente/consultar") != -1){
             var idNutricionista = app.nutricionista.getId();
             var urlPaciente = app.loadModules.getHomeUri() + "API/paciente/?id_nutricionista=" + idNutricionista;
             app.ajax.get(urlPaciente, function(response){
@@ -52,7 +52,7 @@ app.pacientes = (function(){
                 }
                 // app.screen.verify();
             });
-        }
+        }*/
     }
 
     return {

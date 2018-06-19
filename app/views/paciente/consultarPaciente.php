@@ -76,7 +76,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               
+                                <?php
+                                    $pacientes = $pacienteDAO->getAll($_SESSION["id_nutricionista"]);
+
+                                    for($i = 0; $i < count($pacientes); $i++){
+                                        ?>
+                                        <tr>
+                                            <td><?= $pacientes[$i]->getNome(); ?></td>
+                                            <td><?= $pacientes[$i]->getEmail(); ?></td>
+                                            <td><?= $pacientes[$i]->getTelefone(); ?></td>
+                                            <td><?= $pacientes[$i]->getCpf(); ?></td>
+                                            <td>
+                                                <a href='<?= HOME_URI . "paciente/interna/" . $pacientes[$i]->getId(); ?>' class='view'><i class='material-icons' data-toggle='tooltip' title='Visualizar'>visibility</i></a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         <!-- <div class="clearfix">

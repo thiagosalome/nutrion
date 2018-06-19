@@ -16,7 +16,6 @@ app.infoFisicas = (function(){
         addInfoFisicas.on("submit", function(e){
             app.ajax.post(e, function(response){
                 app.message.show(response.message);
-                debugger;
                 if(response.message.indexOf("sucesso") != -1){
                     location.reload();
                 }
@@ -71,14 +70,14 @@ app.infoFisicas = (function(){
             var valAltura = altura.val();
             var valPeso = peso.val();
             var result = calculaIMC(valAltura, valPeso);
-            imc.val(result); //falta verificar se vai aparecer
+            imc.val(result.toFixed(3)); //falta verificar se vai aparecer
         });
         
         quadril.on("blur", function(){
             var valCintura = cintura.val();
             var valQuadril = quadril.val();
             var result = calculaICQ(valCintura, valQuadril);
-            icq.val(result); //falta verificar se vai aparecer
+            icq.val(result.toFixed(3)); //falta verificar se vai aparecer
         });
 
     }

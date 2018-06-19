@@ -31,7 +31,7 @@ class avaliacaoController{
         }      
     }
 
-    public function update(){       
+    /*public function update(){       
         $avaliacaoModel = new avaliacaoModel();
         $avaliacaoVo = new avaliacaoVo();  
         
@@ -69,7 +69,7 @@ class avaliacaoController{
         catch(Exception $e){
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
         }
-    }
+    }*/
 
     public function get($params){
         try{
