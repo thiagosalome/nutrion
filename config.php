@@ -26,6 +26,7 @@ if(strpos($host, "nutrion.azurewebsites") !== false){
     define('DB_NAME', $dbname); // Nome do DB
     define('DB_USER', $username); // Usuário do DB
     define('DB_PASSWORD', $password); // Senha do DB
+    define("CALLBACK_URL", "https://nutrion.azurewebsites.net/nutricionista/apiCallback");
 }
 else{
     define('HOME_URI', '/nutrion/'); // URL da home
@@ -33,11 +34,9 @@ else{
     define( 'DB_NAME', 'db_nutrion'); // Nome do DB
     define( 'DB_USER', 'root'); // Usuário do DB
     define( 'DB_PASSWORD', ''); // Senha do DB
+    define("CALLBACK_URL", "http://localhost/nutrion/nutricionista/apiCallback");
 }
 
-$CALLBACK_URL = "http://localhost/vhosts/OAuthApp/OAuthCallback.php";
-
-define("CALLBACK_URL", "http://localhost/nutrion/nutricionista/apiCallback");
 define("GOOGLE_API_AUTH_URL", "https://accounts.google.com/o/oauth2/auth");
 define("GOOGLE_API_TOKEN_URL","https://accounts.google.com/o/oauth2/token");
 // define("GOOGLE_API_RESOURCE_URL","https://www.googleapis.com/oauth2/v2/userinfo");
