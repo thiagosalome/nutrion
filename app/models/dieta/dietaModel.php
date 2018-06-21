@@ -50,25 +50,39 @@ class DietaModel{
     public function getAll($idPaciente){
         $dietaDAO = new dietaDAO();
         $dietas = $dietaDAO->getAll($idPaciente);
-        $dietas_array = array();
+        $dietasArray = array();
         $dieta = array();
         
         for($i = 0; $i < count($dietas); $i++){
             $dieta["id"] = $dietas[$i]->getId();
-            $dieta["paciente"] = $dietas[$i]->getpaciente();
-            $dieta["data"] = $dietas[$i]->getdata();
+            $dieta["data"] = date_format($dietas[$i]->getdata(), "d/m/Y");
+            $dietaRefeicoes = array();
+            for($j = 0; $j < count($dietas[$i]->getRefeicoes()); $j++){
+                $dietaRefeicoes[$j] = $dietas[$i]->getRefeicoes()[$j]->getId();
+            }
+            $dieta["refeicoes"] = $dietaRefeicoes;
 
-            $dietas_array[$i] = $dieta;
+            $dietasArray[$i] = $dieta;
         }
-        return json::generate("OK", "200", "Dietas deste paciente", $dietas_array);
+        return json::generate("OK", "200", "Dietas deste paciente", $dietasArray);
     }
 
     public function getById($id){
         $dietaDAO = new dietaDAO();
         $dieta = $dietaDAO->getById($id);
         if($dieta != null){
-            $dieta_array = (array) $dieta;
-            return json::generate("OK", "200", "Dieta encontrada", $dieta_array);
+            $dietaArray = array();
+
+            $dietaArray["id"] = $dieta->getId();
+            $dietaArray["paciente"] = $dieta->getpaciente()->getId();
+            $dietaArray["data"] = date_format($dieta->getdata(), "d/m/Y");
+            $dietaRefeicoes = array();
+            for($j = 0; $j < count($dieta->getRefeicoes()); $j++){
+                $dietaRefeicoes[$j] = $dieta->getRefeicoes()[$j]->getId();
+            }
+            $dietaArray["refeicoes"] = $dietaRefeicoes;
+
+            return json::generate("OK", "200", "Dieta encontrada", $dietaArray);
         }
         else{
             return json::generate("OK", "200", "Dieta não encontrada", $dieta);

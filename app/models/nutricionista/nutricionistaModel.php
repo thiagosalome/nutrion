@@ -12,25 +12,40 @@ class nutricionistaModel{
     public function getAll(){
         $nutricionistaDAO = new nutricionistaDAO();
         $nutricionistas = $nutricionistaDAO->getAll();
-        $nutricionistas_array = array();
+        $nutricionistasArray = array();
         $nutricionista = array();
         
         for($i = 0; $i < count($nutricionistas); $i++){
             $nutricionista["id"] = $nutricionistas[$i]->getId();
             $nutricionista["nome"] = $nutricionistas[$i]->getNome();
             $nutricionista["email"] = $nutricionistas[$i]->getEmail();
+            $nutricionistaPacientes = array();
+            for($j = 0; $j < count($nutricionista[$i]->getPacientes()); $j++){
+                $nutricionistaPacientes[$j] = $nutricionista[$i]->getPacientes()[$j]->getId();
+            }
+            $nutricionista["pacientes"] = $nutricionistaPacientes;
 
-            $nutricionistas_array[$i] = $nutricionista;
+            $nutricionistasArray[$i] = $nutricionista;
         }
-        return json::generate("OK", "200", "Nutricionistas encontrados", $nutricionistas_array);
+        return json::generate("OK", "200", "Nutricionistas encontrados", $nutricionistasArray);
     }
 
     public function getById($id){
         $nutricionistaDAO = new nutricionistaDAO();
         $nutricionista = $nutricionistaDAO->getById($id);
         if($nutricionista != null){
-            $nutricionista_array = (array) $nutricionista;
-            return json::generate("OK", "200", "Nutricionista encontrado", $nutricionista_array);
+            $nutricionistaArray = array();
+
+            $nutricionistaArray["id"] = $nutricionista->getId();
+            $nutricionistaArray["nome"] = $nutricionista->getNome();
+            $nutricionistaArray["email"] = $nutricionista->getEmail();
+            $nutricionistaPacientes = array();
+            for($j = 0; $j < count($nutricionista->getPacientes()); $j++){
+                $nutricionistaPacientes[$j] = $nutricionista->getPacientes()[$j]->getId();
+            }
+            $nutricionistaArray["pacientes"] = $nutricionistaPacientes;
+
+            return json::generate("OK", "200", "Nutricionista encontrado", $nutricionistaArray);
         }
         else{
             return json::generate("OK", "200", "Nutricionista não encontrado", $nutricionista);

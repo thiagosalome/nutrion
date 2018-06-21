@@ -81,7 +81,7 @@ class refeicaoController{
             
             if(isset($params["id"])){
                 $refeicao = $refeicaoModel->getById($params["id"]);
-                echo $paciente;
+                echo $refeicao;
             }
             else if(isset($params["dieta"])){
                 $refeicoes = $refeicaoModel->getAll($params["dieta"]);

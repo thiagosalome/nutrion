@@ -29,7 +29,7 @@ class infofisicasModel {
     public function getAll($idPaciente){
         $infoFisicasDAO = new infofisicasDAO();  
         $infoFisicas = $infoFisicasDAO->getAll($idPaciente);
-        $infofisicas_array = array();
+        $infoFisicasArray = array();
         $infofisica = array();
         
         for($i = 0; $i < count($infoFisicas); $i++){
@@ -41,18 +41,40 @@ class infofisicasModel {
             $infofisica["quadril"] = $infoFisicas[$i]->getQuadril();
             $infofisica["icq"] = $infoFisicas[$i]->getIcq();
             $infofisica["ipaq"] = $infoFisicas[$i]->getClassificacaoIPAQ();
+            $infoFisicasAvaliacoes = array();
+            for($j = 0; $j < count($infoFisicas[$i]->getAvaliacoes()); $j++){
+                $infoFisicasAvaliacoes[$j] = $infoFisicas[$i]->getAvaliacoes()[$j]->getId();
+            }
+            $infofisica["avaliacoes"] = $infoFisicasAvaliacoes;
 
-            $infofisicas_array[$i] = $infofisica;
+            $infoFisicasArray[$i] = $infofisica;
         }
-        return json::generate("OK", "200", "Informações físicas deste paciente", $pacientes_array);
+        return json::generate("OK", "200", "Informações físicas deste paciente", $infoFisicasArray);
     }
 
     public function getById($id){
         $infoFisicasDAO = new infofisicasDAO();  
         $infoFisica = $infoFisicasDAO->getById($id);
+
         if($infoFisica != null){
-            $infofisica_array = (array) $infoFisica;
-            return json::generate("OK", "200", "Informação física encontrada", $infofisica_array);
+            $infoFisicaArray = array();
+
+            $infoFisicaArray["id"] = $infoFisica->getId();
+            $infoFisicaArray["altura"] = $infoFisica->getAltura();
+            $infoFisicaArray["peso"] = $infoFisica->getPeso();
+            $infoFisicaArray["imc"] = $infoFisica->getImc();
+            $infoFisicaArray["cintura"] = $infoFisica->getCintura();
+            $infoFisicaArray["quadril"] = $infoFisica->getQuadril();
+            $infoFisicaArray["icq"] = $infoFisica->getIcq();
+            $infoFisicaArray["ipaq"] = $infoFisica->getClassificacaoIPAQ();
+            $infoFisicaArray["paciente"] = $infoFisica->getPaciente()->getId();
+            $infoFisicaAvaliacoes = array();
+            for($j = 0; $j < count($infoFisica->getAvaliacoes()); $j++){
+                $infoFisicaAvaliacoes[$j] = $infoFisica->getAvaliacoes()[$j]->getId();
+            }
+            $infoFisicaArray["avaliacoes"] = $infoFisicaAvaliacoes;
+
+            return json::generate("OK", "200", "Informação física encontrada", $infoFisicaArray);
         }
         else{
             return json::generate("OK", "200", "Informação física não encontrada", $infoFisica);

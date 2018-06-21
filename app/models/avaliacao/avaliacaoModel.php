@@ -65,24 +65,29 @@ class avaliacaoModel
     public function getAll($idInfoFisica){
         $avaliacaoDAO = new avaliacaoDAO();  
         $avaliacoes = $avaliacaoDAO->getAll($idInfoFisica);
-        $avaliacoes_array = array();
+        $avaliacoesArray = array();
         $avaliacao = array();
         
         for($i = 0; $i < count($avaliacoes); $i++){
             $avaliacao["id"] = $avaliacoes[$i]->getId();
-            $avaliacao["data"] = $avaliacoes[$i]->getDataAval();
+            $avaliacao["informacao_fisica"] = $avaliacoes[$i]->getInfoFisicas()->getId();
+            $avaliacao["data"] = date_format($avaliacoes[$i]->getDataAval(), "d/m/Y");
 
-            $avaliacoes_array[$i] = $avaliacao;
+            $avaliacoesArray[$i] = $avaliacao;
         }
-        return json::generate("OK", "200", "Avaliações dessa informação física", $pacientes_array);
+        return json::generate("OK", "200", "Avaliações dessa informação física", $avaliacoesArray);
     }
 
     public function getById($id){
         $avaliacaoDAO = new avaliacaoDAO();  
         $avaliacao = $avaliacaoDAO->getById($id);
         if($avaliacao != null){
-            $avaliacao_array = (array) $avaliacao;
-            return json::generate("OK", "200", "Avaliação encontrada", $avaliacao_array);
+            $avaliacaoArray = array();
+            $avaliacaoArray["id"] = $avaliacao->getId();
+            $avaliacaoArray["informacao_fisica"] = $avaliacao->getInfoFisicas()->getId();
+            $avaliacaoArray["data"] = date_format($avaliacao->getDataAval(), "d/m/Y");
+
+            return json::generate("OK", "200", "Avaliação encontrada", $avaliacaoArray );
         }
         else{
             return json::generate("OK", "200", "Avaliação não encontrada", $avaliacao);

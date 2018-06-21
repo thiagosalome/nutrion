@@ -76,12 +76,12 @@ class alimentoController{
                 $alimento = $alimentoModel->getById($params["id"]);
                 echo $alimento;
             }
-            else if(isset($params["id_nutricionista"])){
-                $alimentos = $alimentoModel->getAll($params["id_nutricionista"]);
+            else if(isset($params["nutricionista"])){
+                $alimentos = $alimentoModel->getAll($params["nutricionista"]);
                 echo $alimentos;
             }
             else{
-                echo json::generate("Conflito", "409", "Necessário passar o id do alimento para receber um alimento específico ou id_nutricionista para receber todos os alimentos referentes a ele", null);
+                echo json::generate("Conflito", "409", "Necessário passar o id do alimento para receber um alimento específico ou id do nutricionista para receber todos os alimentos referentes a ele", null);
             }
         }
         catch(Exception $e){
