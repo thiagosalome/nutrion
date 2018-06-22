@@ -2,25 +2,10 @@
 require "app/models/nutricionista/nutricionistaDAO.php";
 require "app/models/nutricionista/nutricionistaVo.php";
 require "app/models/nutricionista/nutricionistaModel.php";
-require "app/class/json.php";
 require "app/vendor/autoload.php";
 use GuzzleHttp\Client;
 
 class nutricionistaRoute{  
-
-    public function generateKey(){
-        try{
-            $nutricionistaVo = new nutricionistaVO(); 
-            $teste = "Frase da api";
-            $nutricionistaVo->setChave(password_hash($teste, PASSWORD_DEFAULT));
-            $nutricionistaVo->setId($_POST["id_nutricionista"]);
-            $nutricionistaModel = new nutricionistaModel();
-            $nutricionista = $nutricionistaModel->setKey($nutricionistaVo);
-        }
-        catch(Exception $e){
-            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
-        }
-    }
 
     public function login(){
         include "app/views/nutricionista/login.php";
@@ -165,6 +150,32 @@ class nutricionistaRoute{
                 echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
             }
         }
+    }
+
+    public function generateKey(){
+        try{
+            $nutricionistaVo = new nutricionistaVO(); 
+            $teste = "Frase da api";
+            $nutricionistaVo->setChave(password_hash($teste, PASSWORD_DEFAULT));
+            $nutricionistaVo->setId($_POST["id_nutricionista"]);
+            $nutricionistaModel = new nutricionistaModel();
+            $key = json_decode($nutricionistaModel->generateKey($nutricionistaVo));
+
+            if(strpos($key->message, "sucesso") !== false){
+                session_start();
+                $_SESSION["chave_nutricionista"] = $nutricionistaVo->getChave();
+            }
+            echo json_encode($key);
+        }
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }
+    }
+
+    public function validateKey($apiKey){
+        $nutricionistaModel = new nutricionistaModel();
+        $validate = $nutricionistaModel->validateKey($apiKey);
+        return $validate;
     }
 }
 

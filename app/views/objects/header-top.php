@@ -14,6 +14,7 @@
             ?>
                 <ul>
                     <li><button data-toggle="modal" data-target="#modal-delete">Deletar Conta</button></li>
+                    <li><button data-toggle="modal" data-target="#modal-api">Chave de API</button></li>
                     <li><a href="<?php echo HOME_URI; ?>nutricionista/signOut">Sair</a></li>
                 </ul>
             <?php

@@ -2,7 +2,6 @@
 require "app/models/dieta/dietaDAO.php";
 require "app/models/dieta/dietaVo.php";
 require "app/models/dieta/dietaModel.php";
-require "app/class/json.php";
 
 class dietaController{
     public function create(){

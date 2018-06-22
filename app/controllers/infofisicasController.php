@@ -2,7 +2,6 @@
 require "app/models/infofisicas/infofisicasDAO.php";
 require "app/models/infofisicas/infofisicasModel.php";
 require "app/models/infofisicas/infofisicasVo.php";
-require "app/class/json.php";
 
 class infofisicasController{
     

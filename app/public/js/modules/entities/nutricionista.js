@@ -6,7 +6,7 @@ app.nutricionista = (function(){
     var updateNutricionist = jQuery(".js-form-updateNutritionist");
     var deleteNutricionist = jQuery(".js-form-deleteNutritionist");
     var idNutricionist = jQuery(".js-idnutricionista").text();
-    var nutricionistKey = jQuery(".js-idnutricionista").text();
+    var keyNutricionist = jQuery(".js-form-keyNutritionist");
 
     function init(){
         loginNutricionist.on("submit", function(e){
@@ -46,8 +46,13 @@ app.nutricionista = (function(){
             });
         });
 
-        nutricionistKey.on("submit", function(e){
-
+        keyNutricionist.on("submit", function(e){
+            app.ajax.post(e, function(response){
+                app.message.show(response.message);
+                if(response.message.indexOf("sucesso") != -1){
+                    location.reload();
+                }
+            });
         });
     }
 

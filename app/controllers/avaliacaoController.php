@@ -71,7 +71,6 @@ class avaliacaoController{
     }*/
 
     public function get($params){
-        require "app/class/json.php";
         try{
             $avaliacaoModel = new avaliacaoModel();
             

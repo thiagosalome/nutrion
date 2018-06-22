@@ -9,9 +9,10 @@
             $nutricionistaController = new nutricionistaController();
             $nutricionista = $nutricionistaController->getNutricionistaByEmail($email);
             
-            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
             $_SESSION["id_nutricionista"] = $nutricionista->getId();
+            $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
+            $_SESSION["chave_nutricionista"] = $nutricionista->getChave();
         }
         if(isset($_GET["id"])){
             require "app/models/paciente/pacienteDAO.php";

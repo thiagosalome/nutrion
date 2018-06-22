@@ -2,7 +2,6 @@
 require "app/models/refeicao/refeicaoDAO.php";
 require "app/models/refeicao/refeicaoVo.php";
 require "app/models/refeicao/refeicaoModel.php";
-require "app/class/json.php";
 
 class refeicaoController{
     public function create(){

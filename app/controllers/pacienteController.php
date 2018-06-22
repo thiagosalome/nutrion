@@ -2,7 +2,6 @@
 require "app/models/paciente/pacienteDAO.php";
 require "app/models/paciente/pacienteVo.php";
 require "app/models/paciente/pacienteModel.php";
-require "app/class/json.php";
 require "app/class/cpf.php";
 
 class pacienteController{ 

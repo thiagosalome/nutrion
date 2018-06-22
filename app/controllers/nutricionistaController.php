@@ -2,7 +2,6 @@
 require "app/models/nutricionista/nutricionistaDAO.php";
 require "app/models/nutricionista/nutricionistaVo.php";
 require "app/models/nutricionista/nutricionistaModel.php";
-require "app/class/json.php";
 
 class nutricionistaController{  
 
@@ -114,5 +113,7 @@ class nutricionistaController{
             echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
         }
     }
+
+    
 }
 ?>

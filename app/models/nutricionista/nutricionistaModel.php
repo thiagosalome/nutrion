@@ -119,8 +119,18 @@ class nutricionistaModel{
                 $insert = $nutricionistaDao->insert($nutricionistaVo);
 
                 if(is_object($insert)){
-                    $insert_array = (array) $insert;
-                    return json::generate("OK", "200", "Nutricionista cadastrado com sucesso", $insert_array);
+                    $nutricionistaArray = array();
+
+                    $nutricionistaArray["id"] = $insert->getId();
+                    $nutricionistaArray["nome"] = $insert->getNome();
+                    $nutricionistaArray["email"] = $insert->getEmail();
+                    $nutricionistaPacientes = array();
+                    for($j = 0; $j < count($insert->getPacientes()); $j++){
+                        $nutricionistaPacientes[$j] = $insert->getPacientes()[$j]->getId();
+                    }
+                    $nutricionistaArray["pacientes"] = $nutricionistaPacientes;
+                    
+                    return json::generate("OK", "200", "Nutricionista cadastrado com sucesso", $nutricionistaArray);
                 }
             }
         }   
@@ -141,23 +151,60 @@ class nutricionistaModel{
             $nutricionistaDao = new nutricionistaDAO(); 
             
             $update = $nutricionistaDao->update($nutricionista);
-            $update_array = (array) $update;
-            return json::generate("OK", "200", "Nutricionista alterado com sucesso", $update_array);
+            if(is_object($update)){
+                $nutricionistaArray = array();
+
+                    $nutricionistaArray["id"] = $update->getId();
+                    $nutricionistaArray["nome"] = $update->getNome();
+                    $nutricionistaArray["email"] = $update->getEmail();
+                    $nutricionistaPacientes = array();
+                    for($j = 0; $j < count($update->getPacientes()); $j++){
+                        $nutricionistaPacientes[$j] = $update->getPacientes()[$j]->getId();
+                    }
+                    $nutricionistaArray["pacientes"] = $nutricionistaPacientes;
+
+                return json::generate("OK", "200", "Nutricionista alterado com sucesso", $nutricionistaArray);
+            }
         }
     } 
-
   
     public function delete(nutricionistaVO $nutricionista){
-        $nutricionistaDao = new nutricionistaDAO();       
-        $delete = $nutricionistaDao->delete($nutricionista);
+        $nutricionistaDAO = new nutricionistaDAO();       
+        $delete = $nutricionistaDAO->delete($nutricionista);
         return json::generate("OK", "200", "Nutricionista deletado com sucesso", null);
     }
 
-    public function setKey(nutricionistaVo $nutricionistaVo){
-        $nutricionistaDao = new nutricionistaDAO();
-        if($nutricionista->getId() != null){
-            $nutricionista = $nutricionistaDAO->setKey($nutricionistaVo);
+    public function generateKey(nutricionistaVo $nutricionistaVo){
+        $nutricionistaDAO = new nutricionistaDAO();
+        if($nutricionistaVo->getId() != null){
+            $key = $nutricionistaDAO->setKey($nutricionistaVo);
+            if(is_object($key)){
+                $nutricionistaArray = array();
+
+                    $nutricionistaArray["id"] = $key->getId();
+                    $nutricionistaArray["nome"] = $key->getNome();
+                    $nutricionistaArray["email"] = $key->getEmail();
+                    $nutricionistaPacientes = array();
+                    for($j = 0; $j < count($key->getPacientes()); $j++){
+                        $nutricionistaPacientes[$j] = $key->getPacientes()[$j]->getId();
+                    }
+                    $nutricionistaArray["pacientes"] = $nutricionistaPacientes;
+
+                return json::generate("OK", "200", "Chave gerada com sucesso", $nutricionistaArray);
+            }
         }
+    }
+
+    public function validateKey($apiKey){
+        $nutricionistaDAO = new nutricionistaDAO();
+        $nutricionistas = $nutricionistaDAO->getAll();
+        $validate = false;
+        for ($i = 0; $i < count($nutricionistas); $i++) { 
+            if($apiKey == $nutricionistas[$i]->getChave()){
+                $validate = true;
+            }
+        }
+        return $validate;
     }
 }
 ?>

@@ -75,13 +75,13 @@
                 <p>
                     Clique no botão abaixo para gerar uma chave que concede acesso a API do sistema Nutrion.
                 </p>
-                <form role="form" class="js-form-updateNutritionist" action="<?php echo HOME_URI; ?>nutricionista/generateKey">
+                <form role="form" class="js-form-keyNutritionist" action="<?php echo HOME_URI; ?>nutricionista/generateKey">
                     <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
                     <div class="text-left form-group has-feedback">
-                        <input type="text" class="form-control input-default" name="chave" placeholder="Chave" value="">
+                        <input type="text" class="form-control input-default" name="chave" placeholder="Chave" value="<?php if(isset($_SESSION['chave_nutricionista'])){echo $_SESSION['chave_nutricionista'];} ?>">
                     </div>
                     <div class="form-group text-center" style="margin-bottom: 0px;">
-                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Gerar Chave</button>
+                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit" <?php if(isset($_SESSION['chave_nutricionista'])){echo "disabled";} ?>>Gerar Chave</button>
                     </div>
                 </form>
             </div>

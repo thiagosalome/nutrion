@@ -2,7 +2,6 @@
 require "app/models/alimento/alimentoDAO.php";
 require "app/models/alimento/alimentoVo.php";
 require "app/models/alimento/alimentoModel.php";
-require "app/class/json.php";
 
 class alimentoController{
 
