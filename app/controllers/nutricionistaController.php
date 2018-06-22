@@ -27,26 +27,6 @@ class nutricionistaController{
         }
     }
 
-    /*public function signIn(){
-        $nutricionistaVo = new nutricionistaVO();  
-        
-        try{
-            $nutricionistaModel = new nutricionistaModel();
-            $nutricionistaVo->setEmail($_POST["email"]);
-            $nutricionistaVo->setSenha($_POST["senha"]);
-            
-            $logarModel = $nutricionistaModel->signIn($nutricionistaVo);
-            if($logarModel == "success_signin"){
-                session_start();
-                $_SESSION["email_nutricionista"] = $nutricionistaVo->getEmail();
-            }
-            echo $logarModel;
-        }
-        catch(Exception $e){
-            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
-        }
-    }*/
-
     public function create(){
         $nutricionistaVo = new nutricionistaVO();  
         

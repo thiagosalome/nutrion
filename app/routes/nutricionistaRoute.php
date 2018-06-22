@@ -8,6 +8,20 @@ use GuzzleHttp\Client;
 
 class nutricionistaRoute{  
 
+    public function generateKey(){
+        try{
+            $nutricionistaVo = new nutricionistaVO(); 
+            $teste = "Frase da api";
+            $nutricionistaVo->setChave(password_hash($teste, PASSWORD_DEFAULT));
+            $nutricionistaVo->setId($_POST["id_nutricionista"]);
+            $nutricionistaModel = new nutricionistaModel();
+            $nutricionista = $nutricionistaModel->setKey($nutricionistaVo);
+        }
+        catch(Exception $e){
+            echo json::generate("Exception", $e->getCode(), $e->getMessage(), null);
+        }
+    }
+
     public function login(){
         include "app/views/nutricionista/login.php";
     }

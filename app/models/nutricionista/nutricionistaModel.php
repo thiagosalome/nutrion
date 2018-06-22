@@ -52,11 +52,6 @@ class nutricionistaModel{
         }
     }
        
-    /**
-     * Método para definir regras de negócio do login do nutricionista
-     *
-     * @param nutricionistaVO $nutricionista
-     */ 
     public function signIn(nutricionistaVO $nutricionistaVo){
 
         if($nutricionistaVo->getConta() == "google"){
@@ -100,12 +95,7 @@ class nutricionistaModel{
             }   
         }
     }
-
-    /**
-     * Método para definir regras de negócio na criação e chamar método insert da classe nutricionistaDAO
-     *
-     * @param nutricionistaVO $nutricionista
-     */   
+ 
     public function create(nutricionistaVO $nutricionistaVo){
                
         if (empty($nutricionistaVo->getEmail()) or empty($nutricionistaVo->getSenha() or empty($nutricionistaVo->getNome())) or empty($nutricionistaVo->getConta())) {
@@ -136,11 +126,7 @@ class nutricionistaModel{
         }   
     }
 
-    /**
-     * Método para definir regras de negócio na edição e chamar método update da classe nutricionistaDAO
-     *
-     * @param nutricionistaVO $nutricionista     
-     */   
+
     public function update(nutricionistaVO $nutricionista){                
         if (empty($nutricionista->getEmail()) or empty($nutricionista->getSenha() or empty($nutricionista->getNome()))) {
             return json::generate("Conflito", "409", "É necessário passar todos os dados do nutricionista", null);
@@ -160,15 +146,18 @@ class nutricionistaModel{
         }
     } 
 
-    /**
-     * Método para definir regras de negócio na exclusão e chamar método delete da classe nutricionistaDAO
-     *
-     * @param nutricionistaVO $nutricionista     
-     */    
+  
     public function delete(nutricionistaVO $nutricionista){
         $nutricionistaDao = new nutricionistaDAO();       
         $delete = $nutricionistaDao->delete($nutricionista);
         return json::generate("OK", "200", "Nutricionista deletado com sucesso", null);
+    }
+
+    public function setKey(nutricionistaVo $nutricionistaVo){
+        $nutricionistaDao = new nutricionistaDAO();
+        if($nutricionista->getId() != null){
+            $nutricionista = $nutricionistaDAO->setKey($nutricionistaVo);
+        }
     }
 }
 ?>

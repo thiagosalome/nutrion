@@ -62,3 +62,33 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modal-api" tabindex="-1" role="dialog" aria-labelledby="modal-api" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Chave de API</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Clique no botão abaixo para gerar uma chave que concede acesso a API do sistema Nutrion.
+                </p>
+                <form role="form" class="js-form-updateNutritionist" action="<?php echo HOME_URI; ?>nutricionista/generateKey">
+                    <input type="hidden" name="id_nutricionista" value="<?php echo $_SESSION['id_nutricionista']; ?>">
+                    <div class="text-left form-group has-feedback">
+                        <input type="text" class="form-control input-default" name="chave" placeholder="Chave" value="">
+                    </div>
+                    <div class="form-group text-center" style="margin-bottom: 0px;">
+                        <button class="btn btn-default col-md-3" style="float:inherit" type="submit">Gerar Chave</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="response">
+            <p class='response-message js-message'></p>
+            <img src="<?php echo HOME_URI; ?>app/public/images/ajax-loader.gif" class="response-load js-load" title="Carregando..." alt="Carregando...">
+        </div>
+    </div>
+</div>

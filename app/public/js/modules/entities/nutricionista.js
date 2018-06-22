@@ -6,6 +6,7 @@ app.nutricionista = (function(){
     var updateNutricionist = jQuery(".js-form-updateNutritionist");
     var deleteNutricionist = jQuery(".js-form-deleteNutritionist");
     var idNutricionist = jQuery(".js-idnutricionista").text();
+    var nutricionistKey = jQuery(".js-idnutricionista").text();
 
     function init(){
         loginNutricionist.on("submit", function(e){
@@ -43,6 +44,10 @@ app.nutricionista = (function(){
                     location.reload();
                 }
             });
+        });
+
+        nutricionistKey.on("submit", function(e){
+
         });
     }
 
