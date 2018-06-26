@@ -2,7 +2,6 @@
 require "app/models/infofisicas/infofisicasDAO.php";
 require "app/models/infofisicas/infofisicasModel.php";
 require "app/models/infofisicas/infofisicasVo.php";
-require "app/class/json.php";
 
 class infofisicasController{
     
@@ -48,8 +47,8 @@ class infofisicasController{
                 $infoFisica = $infoFisicasModel->getById($params["id"]);
                 echo $infoFisica;
             }
-            else if(isset($params["id_paciente"])){
-                $infoFisicas = $infoFisicasModel->getAll($params["id_paciente"]);
+            else if(isset($params["paciente"])){
+                $infoFisicas = $infoFisicasModel->getAll($params["paciente"]);
                 echo $infoFisicas;
             }
             else{

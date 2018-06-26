@@ -6,20 +6,20 @@ Thiago:
     ✔ Separar as diferentes requisições de pacientes, alimentos e dietas em módulos @done (2018-6-9 14:08:38)
     ✔ Consertar parte de Alimentos @done (2018-6-11 10:00:21)
     ✔ Consertar página interna de pacientes @done (2018-6-11 11:06:35)
-    ☐ Consertar delete e update de pacientes
+    ✔ Consertar delete e update de pacientes @done (2018-6-21 10:12:47)
     ☐ Consertar respostas de mensagens
     ☐ Consertar geração de relatórios
     ☐ Alterar itens da Index
         ✔ Consertar Load @done (2018-6-11 11:06:33)
         ☐ Alterar layout da Index
-        ☐ Integrar oAuth
-            ☐ Verificar o trabalho feito com o Rommel
-            ☐ Adicionar campo de "Logar com o Google"
-            ☐ Fazer parte do oAuth
+        ✔ Integrar oAuth @done (2018-6-21 10:12:55)
+            ✔ Verificar o trabalho feito com o Rommel @done (2018-6-21 10:12:56)
+            ✔ Adicionar campo de "Logar com o Google" @done (2018-6-21 10:12:58)
+            ✔ Fazer parte do oAuth @done (2018-6-21 10:12:59)
         ☐ Integrar parte de verificar senha
             ☐ Adicionar campo na tabela de Nutricionista que permite receber um campo de verificação (Pergunta e Resposta)
             ☐ Adicionar Modal que aparecerá quando o usuário clicar em "Esqueci minha senha" (Email, Pergunta, Resposta)
-    ☐ Fazer página de Consultar Dietas
-    ☐ Fazer página de Adicionar Dietas
+    ✔ Fazer página de Consultar Dietas @done (2018-6-21 10:13:04)
+    ✔ Fazer página de Adicionar Dietas @done (2018-6-21 10:13:04)
 
 

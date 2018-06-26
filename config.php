@@ -33,7 +33,7 @@ else{
     define( 'HOSTNAME', 'localhost'); // Nome do host da base de dados
     define( 'DB_NAME', 'db_nutrion'); // Nome do DB
     define( 'DB_USER', 'root'); // Usuário do DB
-    define( 'DB_PASSWORD', ''); // Senha do DB
+    define( 'DB_PASSWORD', 'web1507'); // Senha do DB
     define("CALLBACK_URL", "http://localhost/nutrion/nutricionista/apiCallback");
 }
 

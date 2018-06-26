@@ -126,7 +126,7 @@ class pacienteModel{
     public function getAll($idNutricionista){
         $pacienteDAO = new pacienteDAO();
         $pacientes = $pacienteDAO->getAll($idNutricionista);
-        $pacientes_array = array();
+        $pacientesArray = array();
         $paciente = array();
         
         for($i = 0; $i < count($pacientes); $i++){
@@ -136,19 +136,52 @@ class pacienteModel{
             $paciente["telefone"] = $pacientes[$i]->getTelefone();
             $paciente["cpf"] = $pacientes[$i]->getCpf();
             $paciente["sexo"] = $pacientes[$i]->getSexo();
-            $paciente["dataNasc"] = $pacientes[$i]->getDataNasc();
+            $paciente["nascimento"] = date_format($pacientes[$i]->getDataNasc(), "d/m/Y");
+            $pacienteInfoFisicas = array();
+            for($j = 0; $j < count($pacientes[$i]->getInfoFisicas()); $j++){
+                $pacienteInfoFisicas[$j] = $pacientes[$i]->getInfoFisicas()[$j]->getId();
+            }
+            $paciente["informacoes_fisicas"] = $pacienteInfoFisicas;
+            
+            $pacienteDietas = array();
+            for($j = 0; $j < count($pacientes[$i]->getDietas()); $j++){
+                $pacienteDietas[$j] = $pacientes[$i]->getDietas()[$j]->getId();
+            }
+            $paciente["dietas"] = $pacienteDietas;
 
-            $pacientes_array[$i] = $paciente;
+            $pacientesArray[$i] = $paciente;
         }
-        return json::generate("OK", "200", "Pacientes deste nutricionista", $pacientes_array);
+        return json::generate("OK", "200", "Pacientes deste nutricionista", $pacientesArray);
     }
 
     public function getById($id){
         $pacienteDAO = new pacienteDAO();
         $paciente = $pacienteDAO->getById($id);
+        
         if($paciente != null){
-            $paciente_array = (array) $paciente;
-            return json::generate("OK", "200", "Paciente encontrado", $paciente_array);
+            $pacienteArray = array();
+            
+            $pacienteArray["id"] = $paciente->getId();
+            $pacienteArray["nome"] = $paciente->getNome();
+            $pacienteArray["email"] = $paciente->getEmail();
+            $pacienteArray["telefone"] = $paciente->getTelefone();
+            $pacienteArray["cpf"] = $paciente->getCpf();
+            $pacienteArray["sexo"] = $paciente->getSexo();
+            $pacienteArray["nascimento"] = date_format($paciente->getDataNasc(), "d/m/Y");
+            $pacienteArray["nutricionista"] = $paciente->getNutricionista()->getId();
+            $pacienteInfoFisicas = array();
+            for($i = 0; $i < count($paciente->getInfoFisicas()); $i++){
+                $pacienteInfoFisicas[$i] = $paciente->getInfoFisicas()[$i]->getId();
+            }
+            $pacienteArray["informacoes_fisicas"] = $pacienteInfoFisicas;
+            
+            $pacienteDietas = array();
+            for($i = 0; $i < count($paciente->getDietas()); $i++){
+                $pacienteDietas[$i] = $paciente->getDietas()[$i]->getId();
+            }
+            $pacienteArray["dietas"] = $pacienteDietas;
+
+            return json::generate("OK", "200", "Paciente encontrado", $pacienteArray);
         }
         else{
             return json::generate("OK", "200", "Paciente não encontrado", $paciente);

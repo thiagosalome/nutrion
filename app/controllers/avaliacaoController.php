@@ -78,8 +78,8 @@ class avaliacaoController{
                 $avaliacao = $avaliacaoModel->getById($params["id"]);
                 echo $avaliacao;
             }
-            else if(isset($params["id_infofisica"])){
-                $avaliacoes = $avaliacaoModel->getAll($params["id_infofisica"]);
+            else if(isset($params["infofisica"])){
+                $avaliacoes = $avaliacaoModel->getAll($params["infofisica"]);
                 echo $avaliacoes;
             }
             else{

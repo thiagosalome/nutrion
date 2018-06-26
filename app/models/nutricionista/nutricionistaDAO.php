@@ -76,6 +76,15 @@ class nutricionistaDAO{
         $entityManager->flush();
 
         return true;
-    }  
+    }
+
+    public function setKey(nutricionistaVo $nutricionistaVo){
+        require "app/bootstrap.php"; 
+        $nutricionista = $entityManager->getRepository("Nutricionista")->findOneBy(array("id" => $nutricionistaVo->getId()));
+        $nutricionista->setChave($nutricionistaVo->getChave());
+        $entityManager->persist($nutricionista);    
+        $entityManager->flush();
+        return $nutricionista;
+    }
 }
 ?>

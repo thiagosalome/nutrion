@@ -12,6 +12,7 @@
             $_SESSION["nome_nutricionista"] = $nutricionista->getNome();
             $_SESSION["id_nutricionista"] = $nutricionista->getId();
             $_SESSION["senha_nutricionista"] = $nutricionista->getSenha();
+            $_SESSION["chave_nutricionista"] = $nutricionista->getChave();
         }
     }
     else{

@@ -56,7 +56,7 @@ class refeicaoModel{
             $refeicao["id"] = $refeicoes[$i]->getId();
             $refeicao["nome"] = $refeicoes[$i]->getNome();
             $refeicao["horario"] = $refeicoes[$i]->getHorario();
-            $refeicao["dieta"] = $refeicoes[$i]->getDieta();
+            $refeicao["dieta"] = $refeicoes[$i]->getDieta()->getId();
 
             $refeicoes_array[$i] = $refeicao;
         }
@@ -67,8 +67,14 @@ class refeicaoModel{
         $refeicaoDAO = new refeicaoDAO();
         $refeicao = $refeicaoDAO->getById($id);
         if($refeicao != null){
-            $refeicao_array = (array) $refeicao;
-            return json::generate("OK", "200", "Refeição encontrada", $refeicao_array);
+            $refeicaoArray = array();
+
+            $refeicaoArray["id"] = $refeicao->getId();
+            $refeicaoArray["nome"] = $refeicao->getNome();
+            $refeicaoArray["horario"] = $refeicao->getHorario();
+            $refeicaoArray["dieta"] = $refeicao->getDieta()->getId();
+            
+            return json::generate("OK", "200", "Refeição encontrada", $refeicaoArray);
         }
         else{
             return json::generate("OK", "200", "Refeição não encontrada", $refeicao);

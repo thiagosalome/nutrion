@@ -35,6 +35,11 @@ class Nutricionista
     public $conta;
 
     /**
+     * @Column(type="string", name="chave")
+     */
+    public $chave;
+
+    /**
      * @OneToMany(targetEntity="Paciente", mappedBy="nutricionista", orphanRemoval=true, cascade={"persist", "remove"})
      */
     public $pacientes; //OBS: mappedBy pega o nome da variável de referência a nutricionista dentro da classe paciente
@@ -168,6 +173,26 @@ class Nutricionista
     public function setConta($conta)
     {
         $this->conta = $conta;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of chave
+     */ 
+    public function getChave()
+    {
+        return $this->chave;
+    }
+
+    /**
+     * Set the value of chave
+     *
+     * @return  self
+     */ 
+    public function setChave($chave)
+    {
+        $this->chave = $chave;
 
         return $this;
     }

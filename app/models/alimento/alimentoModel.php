@@ -84,9 +84,20 @@ class alimentoModel{
     public function getById($id){
         $alimentoDAO = new alimentoDAO();
         $alimento = $alimentoDAO->getById($id);
+
         if($alimento != null){
-            $alimento_array = (array) $alimento;
-            return json::generate("OK", "200", "Alimento encontrado", $alimento_array);
+            $alimentoArray = array();
+            $alimentoArray["id"] = $alimento->getId();
+            $alimentoArray["nome"] = $alimento->getNome();
+            $alimentoArray["medida"] = $alimento->getMedida();
+            $alimentoArray["tipoproteina"] = $alimento->getTipoproteina();
+            $alimentoArray["proteina"] = $alimento->getProteina();
+            $alimentoArray["carboidrato"] = $alimento->getCarboidrato();
+            $alimentoArray["gordura"] = $alimento->getGordura();
+            $alimentoArray["caloria"] = $alimento->getCaloria();
+            $alimentoArray["nutricionista"] = $alimento->getNutricionista()->getId();
+
+            return json::generate("OK", "200", "Alimento encontrado", $alimentoArray);
         }
         else{
             return json::generate("OK", "200", "Alimento não encontrado", $alimento);
