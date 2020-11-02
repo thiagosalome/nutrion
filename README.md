@@ -5,6 +5,7 @@
 
 <!-- Badges -->
 <p align="center">
+  <a href="https://nutrion.azurewebsites.net/" target="_blank"><img alt="Nutrion" title="Nutrion" href="https://img.shields.io/badge/Aplica%C3%A7%C3%A3o-Nutrion-9D2F4C" /></a>
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/thiagosalome/nutrion?color=9D2F4C">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/thiagosalome/nutrion?color=9D2F4C">
   <img alt="GitHub package.json version badge" src="https://img.shields.io/github/downloads/thiagosalome/nutrion/total?color=9D2F4C">
