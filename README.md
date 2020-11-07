@@ -51,19 +51,19 @@ O **Nutrion** foi um projeto que desenvolvi em conjunto com meus colegas de facu
   <tbody>
     <tr>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/html.png" width='50' alt="React">
+        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/html.png" width='50' alt="HTML">
         <p>HTML</p>
       </td>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/css.png" width='50' alt="React">
+        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/css.png" width='50' alt="CSS">
         <p>CSS</p>
       </td>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/javascript.png" width='50' alt="React">
+        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/javascript.png" width='50' alt="Javascript">
         <p>Javascript</p>
       </td>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/jquery.png" width='50' alt="React">
+        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/jquery.png" width='50' alt="jQuery">
         <p>jQuery</p>
       </td>
       <td align="center">
@@ -71,11 +71,11 @@ O **Nutrion** foi um projeto que desenvolvi em conjunto com meus colegas de facu
         <p>PHP</p>
       </td>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/doctrine.png" width='50' alt="React">
+        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/doctrine.png" width='50' alt="Doctrine">
         <p>Doctrine</p>
       </td>
       <td align="center">
-        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/mysql.png" width='50' alt="React">
+        <img src="https://raw.githubusercontent.com/thiagosalome/technologies-icons/master/mysql.png" width='50' alt="MySQL">
         <p>MySQL</p>
       </td>
     </tr>
