@@ -1,6 +1,6 @@
 <!-- Logo -->
 <p align="center">
-  <img src="./github/logo.png" alt="Ecoleta" title="Ecoleta">
+  <img src="./.github/logo.png" alt="Ecoleta" title="Ecoleta">
 </p>
 
 <!-- Badges -->
@@ -86,15 +86,15 @@ O **Nutrion** foi um projeto que desenvolvi em conjunto com meus colegas de facu
 
 ### Login
 
-<img src="./github/layout-login.png" alt="Layout Login" title="Layout Login">
+<img src="./.github/layout-login.png" alt="Layout Login" title="Layout Login">
 
 ### Dashboard
 
-<img src="./github/layout-dashboard.png" alt="Layout Dashboard" title="Layout Dashboard">
+<img src="./.github/layout-dashboard.png" alt="Layout Dashboard" title="Layout Dashboard">
 
 ## :movie_camera: Preview
 
-<img src="./github/preview-web.gif" alt="Preview Web" title="Preview Web">
+<img src="./.github/preview-web.gif" alt="Preview Web" title="Preview Web">
 
 ## :memo: Licença
 
