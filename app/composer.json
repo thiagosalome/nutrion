@@ -2,7 +2,7 @@
     "require": {
         "doctrine/orm": "2.*",
         "symfony/yaml": "2.*",
-        "dompdf/dompdf": "^0.8.2",
+        "dompdf/dompdf": "^2.0.1",
         "guzzlehttp/guzzle": "^6.3"
     },
     "autoload": {
